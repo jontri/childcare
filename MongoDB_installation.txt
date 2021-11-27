@@ -1,0 +1,34 @@
+Installation and set up of MongoDB 4.0 on Windows 10 (adjust instructions for non-Windows environments as appropriate)
+
+1. Follow instructions to install MongoDB for Windows from https://docs.mongodb.com/manual/installation/
+
+2. If you install using the MongoDB.msi file (using the Windows Installer Wizard as opposed to the Windows Command prompt), do not create a new "data" directory with "db" and "log" directories in the drive (generally C:) you install the application in.  This manual directory creation is required only if you install MongoDB using the Windows Command prompt.  The Installation Wizard creates data and log directories by default in C:\Program Files\MongoDB\Server\4.0.  If you choose a different location for the "data" and "log" directories, make sure to update your mongod.cfg (configuration) file located in C:\Program Files\MongoDB\Server\4.0\bin by changing the path for "dbPath" and "systemLog: path".
+
+3. After installing MongoDB, make sure to update your computer's environment variables to include C:\Program Files\MongoDB\Server\4.0\bin or whichever other folder contains your MongoDB executable files (generally in the "bin" folder).
+
+4. The first time you access the Mongo shell, just type "mongo" at the command prompt, which will take you to the MongoDB shell (make sure the MongoDB server is running first, else you won't be able to connect to the shell.  If MongoDB server is down, bring it up by typing "mongod" at the command prompt or start MongoDB server using Windows).
+
+5. Create a new user with admin rights in the admin database by using the following commands:
+	use admin
+	db.createUser( { user: "[pick a usernane to use]", pwd: "[pick a password to use]", roles: [ { role: "userAdminAnyDatabase", db: "admin" }, {role:"readWrite", db:"admin"}, {role:"readWrite", db:"databank"} ] } )
+
+6. Enable authentication by modifying the mongod.cfg file in C:\Program Files\MongoDB\Server\4.0\bin as follows:
+	Change "#security" to "security: authorization: enabled 
+
+7. Exit the MongoDB shell by pressing Ctrl-C.
+
+8. Log into the MongoDB shell again using authentication (this is how to log in to the local database using credential set up for the local datbase):
+	mongo -u "[chosen username]" -p "[chosen password]" --authenticationDatabase "admin"
+
+9. To access the remote Ratingsdev (development) database, use the following command:
+	mongo -u "[username]" -p "[password]" --authenticationDatabase "admin" --host 162.209.99.153
+
+10. To get a dump/copy of the development or production databases to your local drive, use the following command at the command prompt (outside the mongodb shell from step 8) :
+	mongodump --host [development address from step 9] --db databank [or any other database you want to get] --collection listings [or any other collection you want to get] --username "[username]" --password "[password]" --authenticationDatabase admin --out "[path where you want the data dump to be stored]"
+	If you don't specify the "--out" option, the data will be stored in the C:\Program Files\MongoDB\Server\4.0\bin\dump folder by default.  The directory for the "out" option is simply where the backup data is stored.  To see it in the MongoDB database, this data has to be restored to MongoDB using step 11.
+
+11. Once you have a backup copy of the development or production databases in your local drive (step 10), execute the mongorestore command from C:\Program Files\MongoDB\Server\4.0\bin to upload the database or individual collections to your local database:
+	mongorestore --db databank [or any other database you want to restore] --collection listings [or any other collection you want to restore] "dump\databank\[collection name.bson] [or any other directory that you saved the data to in step 10 by specifying it in the "out" option]"
+	[Note: 1) the collection argument is optional.  If you don't use mongorestore on a specific collection and want to restore the entire database instead, leave out the [collection name].bson from the path in the mongorestore command.
+		2) the directory path for where the backup data is saved using step 10 is relative to the path you run the mongorestore command from.  So if you run mongorestore from C:\, you have to specify the entire path of where the backup data is saved
+		3) use the "--drop" option if you commpletely want to erase the existing database and restore it with what's in the backup data form step 10.  Else, mongorestore will only insert new records relative to what already exists in the database you're restoring to]

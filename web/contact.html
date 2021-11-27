@@ -1,0 +1,139 @@
+﻿<div class="wrapper">
+  <header class="main-header narrow-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader" class="dark-header">
+      <div class="white-space-20"></div>
+      <h1 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h1>
+      <div class="white-space-20"></div>
+    </div>
+
+  </header>
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div class="bg-color1 block-section line-bottom">
+      <div class="container">
+        <h2 class="text-center">We're here to help in any way we can.<br>
+          <small> Please submit your request below and we'll get back to you shortly.</small>
+        </h2>
+        <div class="white-space-20"></div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="alert alert-success" role="alert" ng-if="message_ctrl.is_message_sent">
+              Message successfully sent.
+            </div>
+            <div class="pull-right">
+              <span>Note:</span>&nbsp;<b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+            </div>
+            <div class="white-space-20"></div>
+            <!-- form contact -->
+            <form ng-submit="message_ctrl.sendMessage(message_ctrl.new_message,message_ctrl.formContactUs)" name="message_ctrl.formContactUs"
+                  novalidate>
+              <div class="form-group col-xs-12">
+                <label>Subject</label>
+                <input type="text" name="subject" ng-model="message_ctrl.new_message.subject" class="form-control" focus="true"/>
+              </div>
+              <div class="form-group col-xs-12">
+                <label>Message <span style="color:red;">*</span></label>
+              <textarea name="message" class="form-control" ng-model="message_ctrl.new_message.message" rows="6"
+                        required></textarea>
+                <div ng-messages="message_ctrl.submitted && message_ctrl.formContactUs.message.$error" class="form-error-msg text-danger">
+                  <div ng-message="required">This is a required field.</div>
+                </div>
+              </div>
+              <div class="form-group col-xs-12">
+                <label>Your Email <span style="color:red;">*</span></label>
+                <input type="email" name="sender_email" ng-model="message_ctrl.new_message.sender_email" ng-pattern="message_ctrl.emailRegex"
+                       class="form-control" value="your@email.com" required/>
+                <div ng-messages="message_ctrl.submitted && message_ctrl.formContactUs.sender_email.$error" class="form-error-msg text-danger">
+                  <div ng-message="required">This is a required field.</div>
+                  <div ng-message="pattern">Enter a valid email address.</div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 center-col">
+                <div class="white-space-10"></div>
+                <button type="submit"  class="btn btn-theme btn-lg btn-long btn-t-primary full-width" ng-click="message_ctrl.submitted=true;">
+                  <span ng-if="!message_ctrl.is_loading">Submit</span>
+                  <span ng-if="message_ctrl.is_loading">Submitting message...</span>
+                </button>
+              </div>
+            </form>
+            <!-- end form contact -->
+
+            <div class="white-space-10"></div>
+            <!--<p class="text-center"><span class="span-line">OR</span></p>-->
+
+            <!--&lt;!&ndash; box with icon &ndash;&gt;-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-6">-->
+                <!--<div class="box-ic-center ">-->
+                  <!--<i class="fa fa-phone ic-box"></i>-->
+                  <!--<h4>Phone</h4>-->
+
+                  <!--<p>+(62) 1234-123-21</p>-->
+                <!--</div>-->
+
+              <!--</div>-->
+              <!--<div class="col-md-6">-->
+                <!--<div class="box-ic-center ">-->
+                  <!--<i class="fa fa-skype ic-box"></i>-->
+                  <!--<h4>Skype</h4>-->
+
+                  <!--<p>your.username</p>-->
+                <!--</div>-->
+
+              <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; end box with icon &ndash;&gt;-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- link map toogle -->
+    <div class="bg-color2 block-section-xs line-bottom">
+      <div class="container text-center">
+        <!--<a href="#map-toogle" id="btn-map-toogle" data-toggle="collapse">Check Our Office</a>-->
+      </div>
+    </div>
+    <!-- end link map toogle -->
+
+
+    <!-- block map -->
+    <div class="collapse" id="map-toogle">
+      <div class=" bg-color2" id="map-area">
+        <div class="container">
+
+          <!-- map description -->
+          <div class="marker-description">
+            <div class="inner">
+              <h4 class="no-margin-top">Office Location</h4>
+              Central Jakarta No 1234, Jakarta, Indonesia
+            </div>
+          </div>
+          <!-- end map description -->
+        </div>
+        <div class="map-area-detail">
+
+          <!-- change the data lat and lang here -->
+          <div class="box-map-detail" id="map-detail-job" data-lat="48.856318" data-lng="2.351866"></div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end block map -->
+
+    <auth-wrapper>
+      <content>
+        <sms-verify-modal backdrop="'static'" is-open="showSmsModal" keyboard="true"></sms-verify-modal>
+      </content>
+    </auth-wrapper>
+
+    <div ui-view="footer"></div>
+    <div ui-view="auditlog"></div>
+  </div>
+  <!--end body-content -->
+</div>

@@ -1,0 +1,204 @@
+<form name="StaffForm" ng-submit="checkProgress(StaffForm,1,'StaffRef')" enctype="multipart/form-data" novalidate>
+
+    <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+        <button type="button" class="btn btn-theme btn-t-primary"
+                ng-click="cancel('dashboard_staff_list', {daycareId:StaffListingId})">Cancel
+        </button>
+        <button type="submit" class="btn btn-theme btn-t-primary">
+            Continue
+            <i class="fa fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <div ng-init="setForm('StaffForm', StaffForm)" class="col-xs-12">
+        <div class="col-xs-12 info">
+            <div class="col-xs-12">
+            <h3 class="line-bottom-5">
+                Personal Information
+            </h3>
+            <div>
+                <span>Note:</span>&nbsp;
+                <b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+            </div>
+            <div class="form-inline">
+                <label>First Name
+                    <span style="color:red;">*</span>
+                </label>
+                <input type="text" name="firstName" class="form-control" ng-model="Staff.firstName" required>
+                <div ng-messages="StaffForm.$submitted && StaffForm.firstName.$error" class="error-label">
+                    <div class="text-danger" ng-message="required">This is a required field.</div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Middle Name
+                </label>
+                <input type="text" name="midInitial" class="form-control" ng-model="Staff.midInitial">
+            </div>
+            <div class="form-inline">
+                <label>Last Name
+                    <span style="color:red;">*</span>
+                </label>
+                <input type="text" name="lastName" class="form-control" ng-model="Staff.lastName" required>
+                <div ng-messages="StaffForm.$submitted && StaffForm.lastName.$error" class="error-label">
+                    <div class="text-danger" ng-message="required">This is a required field.</div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Email
+                    <span style="color:red;">*</span>
+                </label>
+                <input type="email" name="eadd" class="form-control" ng-model="Staff.email" autocomplete="off"
+                    ng-pattern="emailRegex" required>
+                <div ng-messages="StaffForm.$submitted && StaffForm.eadd.$error" class="error-label">
+                    <div class="text-danger" ng-message="required">This is a required field.</div>
+                    <div class="text-danger" ng-message="pattern">Please enter a valid email address.</div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Date of Birth
+                    <span style="color:red;">*</span>
+                </label>
+                <input type="text" name="birth" class="form-control" ng-model="Staff.birth" rv-date rv-date-min="16"
+                    placeholder="mm/dd/yyyy" maxlength="10" rv-date-max="'12/12/2999'" required>
+                <div ng-messages="StaffForm.$submitted && StaffForm.birth.$error" class="error-label">
+                    <div class="text-danger" ng-message="rvDate">Invalid date.</div>
+                    <div class="text-danger" ng-message="rvDateFormat">Enter date as MMDDYYYY.</div>
+                    <div class="text-danger" ng-message="rvDateMin">Staff member should be at least 16 years old.</div>
+                    <div class="text-danger" ng-message="required">This is a required field.</div>
+                    <div class="text-danger" ng-message="dateRequired">This is a required field.</div>
+                    <div class="text-danger" ng-message="rvDateAllowedMin">Must be after 01/01/1900.</div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Social Security Number
+                    <span style="color:red;">*</span>
+                </label>
+                <input type="text" ssn-field="" ssn-field-mask="true" name="ss" class="form-control" ng-model="Staff.ss"
+                    rv-social-security placeholder="xxx-xx-xxxx" maxlength="11" required/>
+                <div ng-messages="StaffForm.$submitted && StaffForm.ss.$error" class="error-label">
+                    <div class="text-danger" ng-message="required">This is a required field.</div>
+                    <div class="text-danger" ng-message="rvSocialSecurity">Must be 9 digits.</div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Cell Number
+                    <span style="color:red;">*</span>
+                </label>
+                <input type="text" class="form-control" name="mobileNumber" id="txtEditMobileNum"
+                    ng-model="Staff.mobileNumber" 
+                    placeholder="10 digits" 
+                    required maxlength="14" phone-number="Staff.mobileNumber">
+                <div ng-messages="StaffForm.$submitted && StaffForm.mobileNumber.$error" class="error-label">
+                    <div class="text-danger" ng-message="minlength">Phone number must be 10 digits.</div>
+                    <div class="text-danger" ng-message="required">This is a required field.</div>               
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Home Number
+                </label>
+                <input type="text" class="form-control" name="phoneNumber" ng-model="Staff.homeNumber"
+                        placeholder="10 digits"
+                        compare-to="Staff.mobileNumber" contrast="true"
+                        maxlength="14" phone-number="Staff.homeNumber">
+                <div ng-messages="StaffForm.$submitted && StaffForm.phoneNumber.$error" class="error-label">
+                    <div class="text-danger" ng-message="minlength">Phone number must be 10 digits.</div>
+                    <div class="text-danger" ng-message="compareTo"
+                            ng-show="!StaffForm.phoneNumber.$error.pattern && StaffForm.phoneNumber.$error.compareTo">
+                        Your home number cannot be the same as your cell number.
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Work Number
+                </label>
+                <input type="text" class="form-control" name="workNumber" ng-model="Staff.workNumber"
+                        placeholder="10 digits"
+                        compare-to="Staff.mobileNumber" contrast="true"
+                        maxlength="14" phone-number="Staff.workNumber">
+                <div ng-messages="StaffForm.$submitted && StaffForm.workNumber.$error" class="error-label">
+                    <div class="text-danger" ng-message="minlength">Phone number must be 10 digits.</div>
+                    <div class="text-danger" ng-message="compareTo"
+                            ng-show="!StaffForm.workNumber.$error.pattern && StaffForm.workNumber.$error.compareTo">
+                        Your work number cannot be the same as your cell number.
+                    </div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label>Role
+                    <span style="color:red;">*</span>
+                </label>
+                <select class="form-control" id="selRole" name="role" ng-model="Staff.role"
+                        ng-options="x for x in role.values" required>
+                </select>
+                <div ng-messages="StaffForm.$submitted && StaffForm.role.$error" class="error-label">
+                    <div class="text-danger" ng-message="required">This is a required field.</div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 info">
+                <h3 class="line-bottom-5">
+                    Home Address
+                </h3>
+                <div class="form-inline">
+                    <label>PO Box </label>
+                    <input type="text" name="pobox" class="form-control" ng-model="Staff.pobox">
+                </div>
+                <div class="form-inline">
+                    <label>Street
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="street" class="form-control" ng-model="Staff.street" required/>
+                    <div ng-messages="StaffForm.$submitted && StaffForm.street.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <label>Apt./Unit </label>
+                    <input type="text" name="apt" class="form-control" ng-model="Staff.apt">
+                </div>
+                <div class="form-inline">
+                    <label>Zip Code
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="zip" class="form-control" ng-model="Staff.zip"
+                            gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+                            gp-components="gpComponents"
+                            gp-callback="gpCallback(result, place)"
+                            restrict-to="[0-9]"
+                            placeholder="" required/>
+                    <div ng-messages="StaffForm.$submitted && StaffForm.zip.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <label>City
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="city" class="form-control" ng-model="Staff.city" placeholder="" required/>
+                    <div ng-messages="StaffForm.$submitted && StaffForm.city.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <label>State
+                        <span style="color:red;">*</span>
+                    </label>
+                    <select name="staffFormCityWorkState" class="form-control" ng-model="Staff.state" required ng-options="option for option in stateList" select-type="basic-dropdown" placeholder="Your State">
+                    </select>
+                    <div ng-messages="StaffForm.$submitted && StaffForm.state.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 visible-xs visible-sm">
+                <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_staff_list', {daycareId:StaffListingId})">Cancel</button>
+                <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+                <button type="submit" class="btn btn-theme btn-t-primary btn-responsive2">
+                    <i class="fa fa-save"></i>
+                    Continue
+                </button>
+            </div>
+        </div>            
+    </div>    
+</form>

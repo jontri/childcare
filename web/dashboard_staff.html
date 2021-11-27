@@ -1,0 +1,43 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px">
+    <div class="col-md-12 daycares">
+        <h3>Staff</h3>
+        <h4>Select a child care center</h4>
+        <div>To add your child care center, go to <a ui-sref="dashboard_daycares">Child Care Centers</a> and click Request Ownership</div>
+        <div class="daycare-item" ng-repeat="mydaycare in mydaycares | offset: offsetValue | limitTo: itemsPerPage">
+            <div class="row">
+                <div class="col-md-10">
+                    <h3 class="no-margin-top"><a ui-sref="dashboard_staff_list({daycareId: mydaycare._id})">{{mydaycare.name + ' (' + mydaycare.uid + ')'}}</a>
+                    </h3>
+                    <h5>
+                        <!--span class="color-white-mute">{{mydaycare.address.addressLine1}}, {{mydaycare.address.addressLine2}}, {{mydaycare.address.city}}, {{mydaycare.address.state}}, {{mydaycare.address.zip}}</span-->
+                        <span>
+                            <span ng-if="mydaycare.address.addressLine1">{{mydaycare.address.addressLine1}},</span>
+                            <span ng-if="mydaycare.address.addressLine2">{{mydaycare.address.addressLine2}},</span>
+                            {{mydaycare.address.city}}, {{mydaycare.address.state}}, {{mydaycare.address.zip}}
+                            <span ng-if="!mydaycare.address.addressLine1">(Street address not disclosed by provider)</span>
+                        </span>
+                    </h5>
+                </div>
+            </div>
+            <!--div class="actions text-right">
+            <a href="" ui-sref="manageDaycare({ listingId: mydaycare._id })" class="btn btn-primary">Edit</a>
+            </div-->
+        </div>
+        <!-- end item list -->
+        <ul class="pagination">
+            <li ng-class="prevPageDisabled()">
+                <a href="" ng-click="prevPage()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a href="">{{n+1}}</a>
+            </li>
+            <li ng-class="nextPageDisabled()">
+                <a href="" ng-click="nextPage()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

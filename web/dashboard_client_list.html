@@ -1,0 +1,139 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px" >
+  <div class="col-md-12 daycares" ng-init="listingInit(daycareId)">
+    <!--<a ui-sref="dashboard_client" class="pull-right"><i class="fa fa-reply" aria-hidden="true"></i> Go back to child care center list</a>-->
+    <h3>Client List</h3>
+      <span class="text-danger" ng-if="daycareList.length <= 0">To add a Client, you must first own a child care center.</span>
+      <div>To add your child care center, go to <a ui-sref="dashboard_daycares">Child Care Centers</a> and click
+          Request Ownership
+      </div>
+    <div class="white-space-10"></div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <span class="pull-left">
+                <button class="btn btn-theme btn-t-primary" ng-click="deleteSelectedClients()" ng-disabled="clientsToDelete<=0">Delete</button>
+            </span>
+
+        </div>
+    </div>
+
+    <div class="white-space-10"></div>
+
+
+    <div class="row">
+
+        <div class="col-xs-12 table-responsive hidden-xs">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th style="width: 1%">
+                    <div class="checkbox no-margin" align="center">
+                        <label><input type="checkbox" ng-model="allChecked" ng-change="selectAllClients(allChecked)" ng-disabled="clientData.length<=0" /></label>
+                    </div>
+                </th>
+                <th class="col-md-2">
+                    <a ng-click="sortClient('student.firstName student.lastName')">
+                        Child
+                        <span ng-show="sortType == 'student.firstName' && sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'student.firstName' && !sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th class="col-md-2">
+                    <a ng-click="sortClient('student.birth')">
+                        Age
+                        <span ng-show="sortType == 'student.birth' && sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'student.birth' && !sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th class="col-md-1">
+                    <a ng-click="sortClient('student.gender')">
+                        Gender
+                        <span ng-show="sortType == 'student.gender' && sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'student.gender' && !sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th class="col-md-2">Classroom</th>
+                <th class="col-md-2">Primary Parent/Guardian</th>
+                <th class="col-md-2">Secondary Parent/Guardian</th>
+                <th class="col-md-1"></th>
+            </tr>
+            </thead>
+
+
+            <tbody ng-repeat="daycare in daycareList" >
+                <tr>
+                    <td colspan="7" class="bg-color1">
+                        <input id="btn-{{daycare.daycareId}}" type="button" class="btn btn-primary btn-sm" value="+" ng-class="daycareList.length > 1 ? '' : 'hidden'" ng-click="toggleClientList(daycare.daycareId)" />
+                        <span class="h5" style="width:200px;">{{daycare.daycareName}} &nbsp;</span>
+
+                    </td>
+                    <td colspan="1" class="bg-color1">
+                        <a class="btn btn-xs btn-theme btn-secondary " ng-click="loadFormForClient(daycare.daycareId)">
+                            <i class="fa fa-plus"></i> Add Client
+                        </a>
+                    </td>
+
+                </tr>
+                <tr ng-repeat="client in daycare.clients | orderBy: sortType : sortReverse " ng-class="daycareList.length > 1 ? 'client-{{daycare.daycareId}} ' : ''" >
+                    <td>
+                        <div class="checkbox no-margin" align="center">
+                            <label><input type="checkbox" ng-model="client.toBeDeleted" ng-change="onSelectClient(client.toBeDeleted)" /></label>
+                        </div>
+                    </td>
+                    <td>{{client.student.firstName}} {{client.student.middleInitial}} {{client.student.lastName}}</td>
+                    <td>{{calculateAge(client.student.birth)}}</td>
+                    <td>{{client.student.gender}}</td>
+                    <td>{{client.student.class.name ? client.student.class.name : 'Not applicable'}}</td>
+                    <td>{{client.guardian.firstName}} {{client.guardian.middleInitial}} {{client.guardian.lastName}}</td>
+                    <td>
+                        <span ng-hide="client.secondaryGuardian">Not applicable</span>
+                        <span ng-show="client.secondaryGuardian">{{client.secondaryGuardian.firstName}} {{client.secondaryGuardian.middleInitial}} {{client.secondaryGuardian.lastName}}</span>
+                    </td>
+                    <td>
+                        <a class="btn btn-xs btn-theme btn-secondary" ui-sref="updateStudent({daycareId:daycareId,clientId:client._id})" style="display: block;"><i class="fa fa-edit"></i> Edit</a>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+        </div>
+
+        <div class="col-xs-12 visible-xs">
+            <div>
+                <label class="no-margin"><input type="checkbox" ng-model="allChecked" ng-change="selectAllClients(allChecked)" ng-disabled="clientData.length<=0" />
+                    Select all
+                </label>
+            </div>
+            <rv-list-block ng-repeat="daycare in daycareList" ng-if="daycare.clients.length > 0">
+                <h4 class="no-margin-top">{{daycare.daycareName}}  <a class="btn btn-xs btn-theme btn-secondary " ng-click="loadFormForClient(daycare.daycareId)">
+                    <i class="fa fa-plus"></i> Add Client
+                </a></h4>
+                <div class="d-table" ng-repeat="client in daycare.clients | orderBy: sortType : sortReverse" style="padding:10px; margin-top:20px; background:white">
+
+                    <div class="d-table-cell" style="padding-right: 10px;">
+                        <label><input type="checkbox" ng-model="client.toBeDeleted" ng-change="onSelectClient(client.toBeDeleted)" /></label>
+                    </div>
+                    <div class="d-table-cell full-width">
+                        <div><label>Child:</label> {{client.student.firstName}} {{client.student.middleInitial}} {{client.student.lastName}}</div>
+                        <div><label>Age:</label> {{calculateAge(client.student.birth)}}</div>
+                        <div><label>Gender:</label> {{client.student.gender}}</div>
+                        <div><label>Classroom:</label> {{client.student.class.name ? client.student.class.name : 'Not applicable'}}</div>
+                        <div><label>Primary Parent/Guardian:</label> {{client.guardian.firstName}} {{client.guardian.middleInitial}} {{client.guardian.lastName}}</div>
+                        <div><label>Secondary Parent/Guardian:</label>
+                            <span ng-hide="client.secondaryGuardian">Not applicable</span>
+                            <span ng-show="client.secondaryGuardian">{{client.secondaryGuardian.firstName}} {{client.secondaryGuardian.middleInitial}} {{client.secondaryGuardian.lastName}}</span>
+                        </div>
+                    </div>
+                    <div class="d-table-cell">
+                        <a class="btn btn-xs btn-theme btn-secondary" ui-sref="updateStudent({daycareId:daycareId,clientId:client._id})"><i class="fa fa-edit"></i> Edit</a>
+                    </div>
+                </div>
+            </rv-list-block>
+        </div>
+
+    </div>
+
+  </div>
+</div>      

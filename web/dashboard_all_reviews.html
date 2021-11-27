@@ -1,0 +1,52 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px">
+    <div class="col-md-12 users" style="float: none;">
+        <h3>Reviews</h3>
+
+        <ul class="nav all_reviews">
+            <li data-ng-repeat="review in reviews | offset: offsetValue | limitTo: itemsPerPage | orderBy: 'dateOrder'">
+                <review
+                    highlight-profanities="true"
+                    review="review">
+                    <daycare-details>
+                        <h4>{{review.daycare.name}}</h4>
+                    </daycare-details>
+                    <user-details>
+                        <p><label>{{review.user_id.email}}</label></p>
+                    </user-details>
+                    <actions class="actions pull-right">
+                        <button ng-disabled="review.approved && review.approved=='true'" class="btn btn-success"
+                                ng-click="approveReview(review,true)">Approve
+                        </button>
+                        <button ng-disabled="!review.approved && review.approved=='rejected'" class="btn btn-danger"
+                                ng-click="approveReview(review,false,0)">Insufficient Verification (Reject)
+                        </button>
+                        <button ng-disabled="!review.approved && review.approved=='rejected'" class="btn btn-danger"
+                                ng-click="approveReview(review,false,1)">Derogatory Words (Reject)
+                        </button>
+                    </actions>
+                </review>
+            </li>
+            <li data-ng-show="review.length <= 0">
+                <h4> No Reviews available yet.</h4>
+            </li>
+        </ul>
+
+        <ul class="pagination">
+            <li ng-class="prevPageDisabled()">
+                <a href="" ng-click="prevPage()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a href="">{{n+1}}</a>
+            </li>
+            <li ng-class="nextPageDisabled()">
+                <a href="" ng-click="nextPage()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+
+
+    </div>
+</div>      

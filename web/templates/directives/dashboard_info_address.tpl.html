@@ -1,0 +1,17 @@
+<div class="form-inline row">
+  <div class="form-group col-xs-12 col-sm-4" style="vertical-align: top;">
+    <label>{{rvLabel}} </label>
+  </div>
+  <div class="form-group col-xs-12 col-sm-4">
+    <span ng-if="!info.pobox&&!info.street&&!info.suite&&!info.city&&(!info.state||info.state=='State')&&!info.zip">Not available</span>
+    <div ng-if="info.pobox"><span>PO Box</span> <span>{{info.pobox}}</span></div>
+    <div ng-if="info.street">{{info.street}}</div>
+    <div ng-if="info.addressLine1">{{info.addressLine1}}</div>
+    <div ng-if="info.addressLine2">{{info.addressLine2}}</div>
+    <div ng-if="info.apt"><span>Apt./Unit</span> <span>{{info.apt}}</span></div>
+    <div ng-if="info.suite"><span>Suite/Unit</span> <span>{{info.suite}}</span></div>
+    <div><span>{{info.city}}</span><span 
+      ng-if="info.city&&((info.state&&info.state!='State')||info.zip)">, </span><span>{{info.state!="State" ? info.state+" " : ""}}</span><span>{{info.zip}}</span>
+    </div>
+  </div>
+</div>

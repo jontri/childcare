@@ -1,0 +1,206 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px">
+  <div class="col-md-3">
+    <div class="message-sidemenu">
+    	<ul class="nav">
+    		<li class="active"><a onclick="inbox_option(1)" href="">Inbox <span class="badge pull-right">{{messageInboxCount}}</span></a></li>
+    		<li><a onclick="inbox_option(2)" href="">Sent</a></li>
+    		<li><a onclick="inbox_option(3)" href="">Draft</a></li>
+    	</ul>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="message-content">
+    	<div class="mail-options">
+    		<div class="float-left">
+    			<!-- <button class="btn btn-default"><i class="fa fa-refresh"></i></button> -->
+	    		<button id="add-message-btn" class="btn btn-default"><i class="fa fa-plus"></i></button>
+	    		<button id="edit-message-btn" class="btn btn-default"><i class="fa fa-edit"></i></button>
+	    		<button id="delete-message-btn" class="btn btn-default"><i class="fa fa-trash"></i></button>
+    		</div>
+    		<div class="float-right">
+    			<span>1-10 of 20</span>
+    			<button class="btn btn-default"><i class="fa fa-chevron-left"></i></button>
+	    		<button class="btn btn-default"><i class="fa fa-chevron-right"></i></button>
+    		</div>
+    		
+    	</div>
+    	<table id="option1" class="table table-striped table-responsive">
+    		<thead>
+    			<tr>
+    				<th><input type="checkbox"></input></th>
+    				<th>Date</th>
+    				<th>From</th>
+    				<th>Subject</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr ng-repeat="result in dashboardCtrl.userMessageResult">
+    				<td><input type="checkbox"></input></td>
+    				<td onclick="inbox_option(4)" ng-click="setReadMessage(result.message,result.subject,result.sender_id,result.sender_name,result.email)" class="inbox_message_list">Today, 9:18AM </td>
+    				<td onclick="inbox_option(4)" ng-click="setReadMessage(result.message,result.subject,result.sender_id,result.sender_name,result.email)" class="inbox_message_list">{{result.sender_name}}</td>
+    				<td onclick="inbox_option(4)" ng-click="setReadMessage(result.message,result.subject,result.sender_id,result.sender_name,result.email)" class="inbox_message_list">{{result.subject}}</td>
+    			</tr>
+    		</tbody>
+    	</table>
+
+        <table id="option2" class="table table-striped table-responsive" hidden>
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></input></th>
+                    <th>Date</th>
+                    <th>Sent to</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="result in dashboardCtrl.userMessageResultSent">
+                    <td><input type="checkbox"></input></td>
+                    <td onclick="inbox_option(5)" ng-click="setReadMessage(result.message,result.subject,result.sender_id,result.recipient_name,result.recipient_email)" class="inbox_message_list">Today, 9:18AM</td>
+                    <td onclick="inbox_option(5)" ng-click="setReadMessage(result.message,result.subject,result.sender_id,result.recipient_name,result.recipient_email)" class="inbox_message_list">{{result.recipient_name}}</td>
+                    <td onclick="inbox_option(5)" ng-click="setReadMessage(result.message,result.subject,result.sender_id,result.recipient_name,result.recipient_email)" class="inbox_message_list">{{result.subject}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="option3" class="table table-striped table-responsive" hidden>
+            <thead>
+                <tr>
+                    <th><input type="checkbox"></input></th>
+                    <th>Date</th>
+                    <th>Sent to</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="result in dashboardCtrl.userMessageResultDraft">
+                    <td><input type="checkbox"></input></td>
+                    <td onclick="inbox_option(6)" ng-click="setReadMessage(result.message,result.subject,result.recipient_id,result.recipient_name,result.recipient_email,result.id);setDraftMessage(result.message)" class="inbox_message_list">Today, 9:18AM</td>
+                    <td onclick="inbox_option(6)" ng-click="setReadMessage(result.message,result.subject,result.recipient_id,result.recipient_name,result.recipient_email,result.id);setDraftMessage(result.message)" class="inbox_message_list">{{result.recipient_name}}</td>
+                    <td onclick="inbox_option(6)" ng-click="setReadMessage(result.message,result.subject,result.recipient_id,result.recipient_name,result.recipient_email,result.id);setDraftMessage(result.message)" class="inbox_message_list">{{result.subject}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="option4" hidden>
+           <label>From:</label> {{readmessage_sender_name}}
+           <br>
+           <label>Email:</label> {{readmessage_email}}
+           <br>
+           <label>Subject:</label> {{readmessage_subject}}
+           <div id="read-message" style="background:#f5f5f5;width: 100%;height:300px;overflow-y: scroll;padding: 10px;">
+           {{readmessage_message}}
+           </div>
+           <button id="replymessage" ng-click="addrecipient(readmessage_sender_id)" class="btn btn-default" style="margin-top: 10px;"><i class="fa fa-reply"></i> <label>Reply</label></button>
+        </div>
+         <div id="option5" hidden>
+           <label>To: Name</label> {{readmessage_sender_name}}
+           <br>
+           <label>To: Email:</label> {{readmessage_email}}
+           <br>
+           <label>Subject:</label> {{readmessage_subject}}
+           <div id="read-message" style="background:#f5f5f5;width: 100%;height:300px;overflow-y: scroll;padding: 10px;">
+           {{readmessage_message}}
+           </div>
+        </div>
+
+         <div id="reply-message" hidden>
+            <form ng-submit="dashboardCtrl.sendMessage(dashboardCtrl.new_message)">
+                <div class="form-group">
+                    <label>Reply to: {{readmessage_sender_name}}</label><br>
+                    <label>Subject</label>
+                    <input type="text" class="form-control" ng-model="dashboardCtrl.new_message.subject"/>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" cols="5" rows="10" ng-model="dashboardCtrl.new_message.message" style="resize:none;"></textarea>
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" ng-click="messageSent()" class="btn btn-default">Send</button>
+                    <button class="btn btn-default" ng-click="savedraft()">Save as Draft</button>
+                </div> 
+            </form>
+        </div>
+
+        <div id="option6" hidden>
+            <form ng-submit="dashboardCtrl.sendDraftMessage(dashboardCtrl.new_message_draft)">
+                <div class="form-group">
+                    <label>Sending to: {{readmessage_sender_name}}</label><br>
+                    <label>Subject</label>
+                    <input type="text" class="form-control" ng-value="readmessage_subject" ng-model="dashboardCtrl.new_message_draft.subject"/>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" cols="5" rows="10" ng-model="dashboardCtrl.new_message_draft.message" style="resize:none;">
+                    {{readmessage_message}}
+                    </textarea>
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-default">Send</button>
+                </div> 
+            </form>
+        </div>
+
+        <div id="add-message" hidden>
+            <form >
+                <div class="form-group">
+                    <label>Recipient Email</label>
+                    <input type="text" class="form-control" placeholder="Email" />
+                    <label>Subject</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea class="form-control" cols="5" rows="10    " style="resize:none;"></textarea>
+                </div>
+                <div class="form-group text-right">
+                    <button class="btn btn-default">Send</button>
+                </div>
+            </form>
+
+        </div>
+
+        <div id="view-message" hidden>
+            <form >
+                <div class="form-group">
+                    <label>From: <span>Jhon Smith</span></label>
+                    <p>Greetings!</p>
+                </div>
+                <div class="form-group">
+                    <label>Today 9:08AM</label>
+                    <p>Roin bibendum nibhsds. Nuncsdsd fermdada msit ametadasd consequat. Praes porr nulla sit amet dui lobortis, id venenatis nibh accums...</p>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>      
+
+<script type="text/javascript">
+    function inbox_option(num){
+        $( "#add-message" ).hide();
+        $( "#reply-message" ).hide();
+        $( "#option1").hide();
+        $( "#option2").hide();
+        $( "#option3").hide();
+        $( "#option4").hide();
+        $( "#option5").hide();
+        $( "#option6").hide();
+        $(".message-sidemenu ul li" ).removeClass('active');
+        $(".message-sidemenu ul li:nth-child("+ num +")" ).addClass('active');
+        $( "#option" + num ).show();
+    }
+
+    $("#replymessage").click(function(){
+        $( "#reply-message" ).show();
+        $( "#add-message" ).hide();
+        $( "#reply-draft-message" ).hide();
+        $( "#option1").hide();
+        $( "#option2").hide();
+        $( "#option3").hide();
+        $( "#option4").hide();
+        $( "#option5").hide();
+    });
+
+
+   
+    
+</script>

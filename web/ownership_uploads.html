@@ -1,0 +1,152 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+
+    <div ui-view="navbar"></div>
+
+  </header><!-- end main-header -->
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+    <div class="bg-color2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+
+            <!-- box item details -->
+            <div class="block-section box-item-details no-top" style="min-height: 500px;">
+              <div class="white-space-20"></div>
+              <h3 ng-if="!ownershipRequest && !isLoading">
+                Your ownership request for {{listing.name}} has expired. To take ownership of {{listing.name}}, please {{!AuthService.isAuthenticated()?'log in to your account and':''}} initiate a new
+                <a ui-sref="dashboard_daycares_owner_request">ownership request</a>.
+              </h3>
+              <div ng-if="ownershipRequest && !showLoginModal">
+                <h2>Supporting Documents for Ownership Request</h2>
+                <p>
+                  To approve your request, we need to review documentation that clearly lists you as owner of {{::ownershipRequest.listing.name}}.
+                  If you are not the owner, a Power of Attorney from {{::ownershipRequest.listing.name}} authorizing you to act on behalf of {{::ownershipRequest.listing.name}} is required.
+                </p>
+                <form name="ownershipUploadsForm" ng-submit="uploadFiles(ownershipUploadsForm)" novalidate>
+                  <div class="text-right">
+                    Acceptable file types: JPEG, PDF
+                    <br />
+                    Max file size: {{::maxFileSize}}
+                  </div>
+                  <div class="form-group">
+                    <h3 class="rel-pos">
+                      1. Valid government issued photo ID (required)
+                      <i class="fa fa-info-circle info-sup large-text" data-title="Examples: Copy of driver's license, passport or other state issued photo ID" data-placement="right" rv-tooltip></i>
+                    </h3>
+                    <button class="btn btn-sm btn-theme btn-secondary" type="button" name="photoId" ngf-select="onFileSelected($file,$invalidFile,'photoId');" ng-model="ownershipRequest.id_doc" ngf-model-options="modelOptions" ngf-max-size="{{::maxFileSize}}" ngf-pattern="{{::filePattern}}">
+                      <span ng-show="!selected.photoId && ownershipRequest.id_doc">Replace Document</span>
+                      <span ng-hide="!selected.photoId && ownershipRequest.id_doc">Select Document</span>
+                      <i class="fa fa-paperclip"></i>
+                    </button>
+                    <span class="fa fa-check green-text large-note" ng-show="ownershipUploadsForm.photoId.$valid && ownershipRequest.id_doc"></span>
+                    <span ng-show="selected.photoId && ownershipUploadsForm.photoId.$valid && ownershipRequest.id_doc">{{readyMsg(ownershipRequest.id_doc.name)}}</span>
+                    <div ng-messages="ownershipUploadsForm.photoId.$error" class="error-label">
+                      <div class="text-danger" ng-message="pattern">File type not supported.</div>
+                      <div class="text-danger" ng-message="maxSize">File too large. Max size is {{::maxFileSize}}.</div>
+                    </div>
+                    <span class="fa fa-warning orange-text large-note" ng-show="ownershipUploadsForm.photoId.$invalid"></span>
+                    <div ng-if="prevOwnershipRequest.id_doc">
+                      <a ng-href="assets/uploads/{{::prevOwnershipRequest.id_doc}}" target="_blank">View uploaded file</a>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <h3>2. Proof of Ownership</h3>
+                    <div>Select one of the following documents:</div>
+                    <ul>
+                      <li class="rel-pos">
+                        License
+                        <i class="fa fa-info-circle info-sup small-text" data-title="Issued by the child care regulatory body in {{::ownershipRequest.listing.address.state}}, this document must list: 1) Center name and address, 2) Owner's name, and 3) Expiration date" data-placement="right" data-observe="{{::ownershipRequest.listing._id}}" rv-tooltip></i>
+                      </li>
+                      <li class="rel-pos">
+                        Registration Letter
+                        <i class="fa fa-info-circle info-sup small-text" data-title="Issued by the child care regulatory body in {{::ownershipRequest.listing.address.state}}, this document must list: 1) Center name and address, 2) Owner's name, and 3) Expiration date" data-placement="right" data-observe="{{::ownershipRequest.listing._id}}" rv-tooltip></i>
+                      </li>
+                      <li class="rel-pos">
+                        IRS Letter of Employer Identification Number (EIN)
+                        <i class="fa fa-info-circle info-sup small-text" data-title="Issued by the IRS, this document must list: 1) Center name and address, 2) EIN, and 3) Responsible party’s name and position in the center" data-placement="right" rv-tooltip></i>
+                      </li>
+                      <li class="rel-pos">
+                        Other
+                        <i class="fa fa-info-circle info-sup small-text" data-title="Select any other document which sufficiently demonstrates your ownership of {{::ownershipRequest.listing.name}}" data-placement="right" data-observe="{{::ownershipRequest.listing._id}}" rv-tooltip></i>
+                      </li>
+                    </ul>
+                    <button class="btn btn-sm btn-theme btn-secondary" type="button" name="proofOwner" ngf-select="onFileSelected($file,$invalidFile,'irs');" ng-model="ownershipRequest.proof_owner_doc" ngf-model-options="modelOptions" ngf-max-size="{{::maxFileSize}}" ngf-pattern="{{::filePattern}}">
+                      <span ng-show="!selected.irs && ownershipRequest.proof_owner_doc">Replace Document</span>
+                      <span ng-hide="!selected.irs && ownershipRequest.proof_owner_doc">Select Document</span>
+                      <i class="fa fa-paperclip"></i>
+                    </button>
+                    <span class="fa fa-check green-text large-note" ng-show="ownershipUploadsForm.proofOwner.$valid && ownershipRequest.proof_owner_doc"></span>
+                    <span ng-show="selected.irs && ownershipUploadsForm.proofOwner.$valid && ownershipRequest.proof_owner_doc">{{readyMsg(ownershipRequest.proof_owner_doc.name)}}</span>
+                    <div ng-messages="ownershipUploadsForm.proofOwner.$error" class="error-label">
+                      <div class="text-danger" ng-message="pattern">File type not supported.</div>
+                      <div class="text-danger" ng-message="maxSize">File too large. Max size is {{::maxFileSize}}.</div>
+                    </div>
+                    <span class="fa fa-warning orange-text large-note" ng-show="ownershipUploadsForm.proofOwner.$invalid"></span>
+                    <div ng-if="prevOwnershipRequest.proof_owner_doc">
+                      <a ng-href="assets/uploads/{{::prevOwnershipRequest.proof_owner_doc}}" target="_blank">View uploaded file</a>
+                    </div>
+                  </div>
+                  <div class="radio" ng-if="ownershipRequest.proof_owner_doc || ownershipRequest.proof_owner !== undefined" ng-init="ownershipRequest.proof_owner = (ownershipRequest.proof_owner === undefined ? true : ownershipRequest.proof_owner)">
+                    <div>Does the Proof of Ownership document you selected list you as the owner of {{::ownershipRequest.listing.name}}?</div>
+                    <label class="radio-inline"><input type="radio" ng-model="ownershipRequest.proof_owner" ng-value="true" ng-change="proofOwnerChange(true)" />Yes</label>
+                    <label class="radio-inline"><input type="radio" ng-model="ownershipRequest.proof_owner" ng-value="false" ng-change="proofOwnerChange(false)" />No</label>
+                  </div>
+                  <div class="form-group" ng-if="ownershipRequest.proof_owner !== undefined && ownershipRequest.proof_owner === false">
+                    <h3 class="rel-pos">
+                      3. Power of Attorney (required)
+                      <i class="fa fa-info-circle info-sup large-text" data-title="A notarized Power of Attorney issued by {{::ownershipRequest.listing.name}} must list: 1) Center’s name, 2) Your name, 3) Owner’s name, and 4) Authorization for you to act on behalf of {{::ownershipRequest.listing.name}}." data-placement="right" data-observe="{{::ownershipRequest.listing._id}}" rv-tooltip></i>
+                    </h3>
+                    <button class="btn btn-sm btn-theme btn-secondary" type="button" name="powerAttorney" ngf-select="onFileSelected($file,$invalidFile,'power');" ng-model="ownershipRequest.power_attorney_doc" ngf-model-options="modelOptions" ngf-max-size="{{::maxFileSize}}" ngf-pattern="{{::filePattern}}">
+                      <span ng-show="!selected.power && ownershipRequest.power_attorney_doc">Replace Document</span>
+                      <span ng-hide="!selected.power && ownershipRequest.power_attorney_doc">Select Document</span>
+                      <i class="fa fa-paperclip"></i>
+                    </button>
+                    <span class="fa fa-check green-text large-note" ng-show="ownershipUploadsForm.powerAttorney.$valid && ownershipRequest.power_attorney_doc"></span>
+                    <span ng-show="selected.power && ownershipUploadsForm.powerAttorney.$valid && ownershipRequest.power_attorney_doc">{{readyMsg(ownershipRequest.power_attorney_doc.name)}}</span>
+                    <div ng-messages="ownershipUploadsForm.powerAttorney.$error" class="error-label">
+                      <div class="text-danger" ng-message="pattern">File type not supported.</div>
+                      <div class="text-danger" ng-message="maxSize">File too large. Max size is {{::maxFileSize}}.</div>
+                    </div>
+                    <span class="fa fa-warning orange-text large-note" ng-show="ownershipUploadsForm.powerAttorney.$invalid"></span>
+                    <div ng-if="prevOwnershipRequest.power_attorney_doc">
+                      <a ng-href="assets/uploads/{{::prevOwnershipRequest.power_attorney_doc}}" target="_blank">View uploaded file</a>
+                    </div>
+                  </div>
+                  <div class="white-space-10"></div>
+                  <div class="text-danger" ng-show="!agree && needAgree">
+                    Please check the box
+                  </div>
+                  <div class="checkbox">
+                    <label><input type="checkbox" ng-model="ownership_uploads_ctrl.agree" />
+                      I acknowledge and agree that it is a crime to forge any document issued by a federal or state government body, that the documents uploaded are electronic versions of genuine government issued documents, and that Ratingsville reserves the right to not accept any of the documents uploaded if it reasonably believes such document to be unauthentic or forged.
+                      I also authorize Ratingsville to verify the authenticity and accuracy of uploaded documents by contacting the government/regulatory body that issued them.
+                    </label>
+                  </div>
+                  <button type="button" class="btn btn-theme btn-t-primary" ng-click="uploadLater();">Upload Later</button>
+                  <button type="submit" class="btn btn-theme btn-t-primary">Upload Now</button>
+                </form>
+              </div>
+            </div><!-- end box item details -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--end body-content -->
+
+  <auth-wrapper>
+    <content>
+      <login-modal backdrop="'static'" email="{{ownershipRequest.owner.email || $stateParams.email}}" is-open="showLoginModal"></login-modal>
+      <sms-verify-modal backdrop="'static'" is-open="showSmsModal" keyboard="true"></sms-verify-modal>
+    </content>
+  </auth-wrapper>
+
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+
+</div><!-- end wrapper page -->

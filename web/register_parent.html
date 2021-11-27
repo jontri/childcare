@@ -1,0 +1,223 @@
+﻿<!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div class="block-section bg-color4">
+      <div class="container">
+        <div class="panel panel-custom">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12">
+                <!-- buttons top -->
+                <!--<p><a href="#" class="btn btn-primary btn-theme btn-block"><i-->
+                    <!--class="fa fa-facebook pull-left bordered-right"></i> Register with Facebook</a></p>-->
+                <!--<p><a href="#" class="btn btn-danger btn-theme btn-block"><i class="fa fa-google-plus pull-left bordered-right"></i> Register with Google</a></p>-->
+                <!-- end buttons top -->
+
+                <!--<div class="white-space-10"></div>-->
+                <!--<p class="text-center"><span class="span-line">OR</span></p>-->
+
+                <!-- form login -->
+                <form>
+                  <div class="col-md-12">
+                    <div class="form-group" >
+                      <label>Salutation</label><br>
+                      <span class="form-error text-danger" ng-bind="formError.salutation"></span>
+                      <label class="radio-inline">
+                        <input type="radio" name="salutation" ng-model="regForm.salutation" value="Mr.">Mr.
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="salutation" ng-model="regForm.salutation" value="Ms.">Ms.
+                      </label>
+                      <label class="radio-inline">
+                        <input type="radio" name="salutation" ng-model="regForm.salutation" value="Mrs.">Mrs.
+                      </label>
+
+                    </div>
+                  </div>
+                  <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label>First Name</label>
+                      <span class="form-error text-danger" ng-bind="formError.firstName"></span>
+                      <input type="text" class="form-control" placeholder="Your First Name" ng-model="regForm.firstName">
+                    </div>
+                  </div>
+
+                  <div class="col-md-2 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label>M.I</label>
+                      <span class="form-error text-danger" ng-bind="formError.middleName"></span>
+                      <input type="text" class="form-control" placeholder="M.I" ng-model="regForm.middleName">
+                    </div>
+                  </div>
+
+                  <div class="col-md-5 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label>Last Name</label>
+                      <span class="form-error text-danger" ng-bind="formError.lastName"></span>
+                      <input type="text" class="form-control" placeholder="Your Last Name" ng-model="regForm.lastName">
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 col-sm-2 col-xs-12">
+                    <div class="form-group">
+                      <label>Zip Code</label>
+                      <span class="form-error text-danger" ng-bind="formError.zip"></span>
+                      <input type="text" class="form-control" ng-model="regForm.zip" placeholder="Zip Code">
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="form-group">
+                      <label>Address (Street)</label>
+                      <span class="form-error text-danger" ng-bind="formError.addressStreet"></span>
+                      <input id="street" type="text" class="form-control" ng-model="regForm.addressStreet" placeholder="Your Street">
+
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="form-group">
+                      <label>City</label>
+                      <span class="form-error text-danger" ng-bind="formError.addressCity"></span>
+                      <input id="city" type="text" class="form-control" ng-model="regForm.addressCity" placeholder="Your City">
+
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="form-group">
+                      <label>State</label>
+                      <span class="form-error text-danger" ng-bind="formError.addressState"></span>
+                      <input id="state" type="text" class="form-control" ng-model="regForm.addressState" placeholder="Your State">
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 ">
+                    <div class="form-group">
+                      <label>Mailing Address (if different from physical address)</label>
+                      <span class="form-error text-danger" ng-bind="formError.mailAddress"></span>
+                      <input type="text" class="form-control" ng-model="regForm.mailAddress" placeholder="Your Mailing Address">
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+
+                    <div class="form-group">
+                      <label>Date of Birth</label>
+                      <span class="form-error text-danger" ng-bind="formError.birth"></span>
+                      <input type="date" class="form-control" placeholder="Your Date of Birth" ng-model="regForm.birth">
+
+                    </div>
+
+                    <div class="form-group">
+                      <label>Contact Number/s</label>
+                      <span class="form-error text-danger" ng-bind="formError.contactNum"></span>
+                      <input type="text" class="form-control" ng-model="regForm.contactNum" placeholder="Your Contact Number">
+
+                    </div>
+
+                    <div class="form-group">
+                      <label>Preferred Username</label>
+                      <span class="form-error text-danger" ng-bind="formError.usernameReg"></span>
+                      <input type="text" class="form-control" ng-model="regForm.usernameReg" placeholder="Your Preferred Username">
+
+                    </div>
+                    <div class="form-group">
+                      <label>Preferred Password</label>
+                      <span class="form-error text-danger" ng-bind="formError.passwordReg"></span>
+                      <input type="password" class="form-control" ng-model="regForm.passwordReg" placeholder="Your Preferred Password">
+
+                    </div>
+                    <div class="form-group">
+                      <label>Re-type Password</label>
+                      <span class="form-error text-danger" ng-bind="formError.rePassword"></span>
+                      <input type="password" class="form-control" ng-model="regForm.rePassword" placeholder="Re-type Your Password">
+
+                    </div>
+
+
+                  </div>
+
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+
+                    <div class="form-group">
+                      <label>Email</label>
+                      <span class="form-error text-danger" ng-bind="formError.emailReg"></span>
+                      <input type="email" class="form-control" ng-model="regForm.emailReg" placeholder="Your Email">
+
+                    </div>
+
+                    <div class="form-group">
+                      <label>Upload picture (optional)</label>
+                      <span class="form-error text-danger" ng-bind="formError.pic" ></span>
+                      <input type="file" class="form-control" >
+                    </div>
+
+                    <div class="form-group">
+                      <label># of children, genders and age (optional)</label>
+                      <span class="form-error text-danger" ng-bind="formError.childs"></span>
+                      <input type="text" class="form-control" ng-model="regForm.childs" placeholder="Children, Genders and Age">
+
+                    </div>
+
+                    <div class="form-group" style="padding-left: 20px;">
+                      <label style="margin-left: -20px">Household income (optional)</label>
+                      <span class="form-error text-danger" ng-bind="formError.income"></span>
+                      <label class="radio">
+                        <input type="radio" name="income" ng-model="regForm.income" value="$10,000 - $20,000">$10,000 - $20,000
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="income" ng-model="regForm.income" value="$20,000 - $30,000">$20,000 - $30,000
+                      </label>
+                      <label class="radio">
+                        <input type="radio" name="income" ng-model="regForm.income" value="$30,000 and above">$30,000 and above
+                      </label>
+                    </div>
+
+
+                  </div>
+
+
+
+
+
+                  <div class="white-space-10"></div>
+                  <div class="form-group no-margin">
+                    <button id="submit" class="btn btn-theme btn-lg btn-t-primary btn-block"
+                            ng-click="registerForm(regForm)">Register
+                    </button>
+                  </div>
+                </form>
+                <!-- form login -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="white-space-20"></div>
+        <div class="text-center color-white">By creating an account, you agree to Daycare <br><a href="#"
+                                                                                                 class="link-white"><strong>Terms
+          of Service</strong></a> and consent to our <a href="#" class="link-white"><strong>Privacy Policy</strong></a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="block-section bg-color2">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <i class="fa fa-question fa-5x box-icon"></i>
+
+            <h2 class=""> Why create an account?</h2>
+            <hr>
+            <p><i class="fa fa-check"></i> Access your saved daycare and notes from any computer</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--end body-content -->

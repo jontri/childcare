@@ -1,0 +1,38 @@
+<!-- DASHBOARD SIDEMENU -->
+<div class="sidenav">
+	<div class="list-group">
+		<a href="" class="list-group-item" ui-sref="dashboard_home" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-home"></i> &nbsp;Dashboard</a>
+        <a href="" class="list-group-item" ui-sref="dashboard_profile" ui-sref-opts="{reload: true}" class="list-group-item"><i class="glyphicon glyphicon-user"></i> &nbsp;Account Information</a>
+        <a href="" class="list-group-item" ui-sref="dashboard_security_information" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-tower"></i> &nbsp;Security Information</a>
+		<a href="" class="list-group-item" ui-sref="dashboard_change_password" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-exclamation-sign"></i> &nbsp;Change Password</a>
+		<a href="" ng-if="isParent || isProvider" class="list-group-item" ui-sref="dashboard_favorites" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-heart"></i> &nbsp;Favorites</a>
+		<a href="" ng-if="isParent" class="list-group-item" ui-sref="dashboard_reviews" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-tag"></i> &nbsp;Reviews Submitted</a>
+		<a href=""  ng-if="isProvider" class="list-group-item" ui-sref="dashboard_daycares" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-tag"></i> &nbsp;Child Care Centers</a>
+		<a href=""  ng-if="isProvider" class="list-group-item" ui-sref="dashboard_class" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-list-alt"></i> &nbsp;Classrooms</a>
+		<a href=""  ng-if="isProvider" class="list-group-item" ui-sref="dashboard_client_list" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-list"></i> &nbsp;Clients</a>
+		<a href=""  ng-if="isProvider" class="list-group-item" ui-sref="document_form_summary" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-list"></i> &nbsp;Documents</a>
+		<a href=""  ng-if="isProvider" class="list-group-item"  ui-sref="dashboard_ratings" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-stats"></i> &nbsp;Reviews Received</a>
+		<a href=""  ng-if="isProvider" class="list-group-item" ui-sref="dashboard_staff_list" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-list"></i> &nbsp;Staff</a>
+		<a href=""  ng-if="isProvider" class="list-group-item" ui-sref="dashboard_appointments" ui-sref-opts="{reload: true}"><i class="glyphicon glyphicon-list"></i> &nbsp;Appointments</a>
+		<a href="" ng-if="isAdmin" class="list-group-item" ui-sref="dashboard_users" ui-sref-opts="{reload: true}"><i class="fa fa-users"></i> &nbsp;Users</a>
+		<a href="" ng-if="isAdmin" class="list-group-item" ui-sref="dashboard_all_reviews" ui-sref-opts="{reload: true}"><i class="fa fa-users"></i> &nbsp;Reviews</a>
+		<!--<a href="" ng-if="isAdmin" class="list-group-item" ui-sref="dashboard_all_daycares"><i class="fa fa-users"></i> &nbsp;Daycares</a>-->
+		<a href="" ng-if="isAdmin" class="list-group-item" ui-sref="dashboard_all_owner_requests" ui-sref-opts="{reload: true}"><i class="fa fa-users"></i> &nbsp;Ownership Requests</a>
+		<a href="" ng-if="isAdmin" class="list-group-item" ui-sref="dashboard_all_feedbacks" ui-sref-opts="{reload: true}"><i class="fa fa-users"></i> &nbsp;Feedbacks</a>
+		<a href="" ng-if="isAdmin" class="list-group-item" ui-sref="dashboard_subscription" ui-sref-opts="{reload: true}"><i class="fa fa-credit-card"></i> &nbsp;Subscribe</a>
+		<!--<a href="" ng-if="isProvider" class="list-group-item" ui-sref="dashboard_subscription"><i class="fa fa-users"></i> &nbsp;Subscription</a>-->
+
+		<!--<a href="" class="list-group-item" ui-sref="dashboard_inbox"><i class="glyphicon glyphicon-comment"></i> &nbsp;My Messages</a>-->
+		<!--<a href="" ng-if="isParent" class="list-group-item" ui-sref="dashboard_daycares"><i class="glyphicon glyphicon-tag"></i> &nbsp;My Daycares</a>-->
+
+		<!--<a href="" class="list-group-item" ui-sref="dashboard_inbox" ng-if="!isParent"><i class="glyphicon glyphicon-comment"></i> &nbsp;My Messages</a>-->
+		<!--<a href=""  ng-if="isProvider" class="list-group-item"  ui-sref="dashboard_articles"><i class="glyphicon glyphicon-book"></i> &nbsp;My Articles</a>-->
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$('.sidemenu .collapse').collapse({
+	    toggle: false
+	});
+</script>

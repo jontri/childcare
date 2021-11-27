@@ -1,0 +1,160 @@
+     <div class="block-section-sm bg-color1 profile content-area" style="overflow: hidden;">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li id="crumbPickClient"
+                    ng-class="{completed: true,
+                active: documentCtrl.wizardProgress.index==0,
+                 'not-completed': false}"
+                     ng-if="documentCtrl.hasClient == false">
+                    <a data-target="#pickClient">Clients</a>
+                </li>
+                <li id="crumbPickForm"
+                    ng-class="{completed: true,
+                active: documentCtrl.wizardProgress.index==1,
+                'not-completed': false}">
+                    <a data-target="#pickForm">Document</a>
+                </li>
+                <li id="crumbComplete"
+                    ng-class="{completed: true,
+                active: documentCtrl.wizardProgress.index==2,
+                'not-completed': false}">
+                    <a data-target="#wizardComplete">Review and Submit</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <div class="tab-content">
+
+                <!-- PICK RECEIVING CLIENTS -->
+                <div class="tab-pane" id="pickClient" ng-class="documentCtrl.hasClient == false? 'active' : ''">
+                    <div class="action-item" style="float: right;">
+                            <a class="btn btn-t-primary btn-theme" ui-sref="document_form_summary">Cancel</a>
+                            <!--<a class="btn btn-t-primary btn-theme" ng-click="documentCtrl.wizardNext(1,true)">Go Back</a>-->
+                            <a class="btn btn-t-primary btn-theme" ng-click="documentCtrl.wizardNext(1)">Continue ></a>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div>
+                        <h3 class="line-bottom-5">Select clients you would like to send selected documents to</h3>
+                        <div><b>Number of clients selected: {{documentCtrl.pickClient.length || "0"}}</b></div>
+
+                        <div class="container">
+                            <div ng-if="daycare.clients.length" ng-repeat="daycare in documentCtrl.daycareList | orderBy:'daycareName'">
+                                <input id="btn-{{daycare.daycareId}}" type="button" class="btn btn-primary btn-sm" value="+" ng-class="documentCtrl.daycareList.length > 1 ? '' : 'hidden'" ng-click="documentCtrl.toggleClientList(daycare.daycareId, $index)" />
+                                <span class="h3" style="width:200px;">{{daycare.daycareName}} &nbsp;</span>
+                                <div id="daycareBody_{{$index}}" ng-class="documentCtrl.daycareList.length > 1 ? 'hidden' : ''">
+                                    <div>
+                                        <div ng-repeat="client in daycare.clients | orderBy:'student.firstName + student.middleInitial + client.student.lastName'">
+                                            <div>
+                                                <label style="min-height: 20px; font-weight: 400; padding-left: 0; width: auto;">
+                                                    <input type="checkbox"
+                                                            ng-click="documentCtrl.addClient(daycare.daycareId,client.student)">
+                                                    {{client.student.firstName}} {{client.student.middleInitial}}
+                                                    {{client.student.lastName}}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PICK DOC TO SEND -->
+                <div class="tab-pane" id="pickForm" ng-class="documentCtrl.hasClient? 'active' : ''">
+                    <div class="action-item" style="float: right;">
+                        <a class="btn btn-t-primary btn-theme"
+                            ui-sref="{{documentCtrl.sourceId == 'clients' ? '`' : 'document_form_summary(daycare.daycareId)' }}">Cancel</a>
+                        <a class="btn btn-t-primary btn-theme" ng-click="documentCtrl.wizardNext(1,true)" ng-if="documentCtrl.hasClient == false">Go Back</a>
+                        <a class="btn btn-t-primary btn-theme" ng-click="documentCtrl.wizardNext(0)">Continue ></a>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <h3 class="line-bottom-5">Select documents you would like to send to your clients</h3>
+                    <div style="padding: 0px 5%;margin: 0px auto;">
+                        <div>
+                            <label style="min-height: 20px; font-weight: 400; padding-left: 0; width: auto;">
+                                <input type="checkbox" ng-click="documentCtrl.addForm('enrollment', 'Enrollment Form')">
+                                Enrollment
+                            </label>
+                        </div>
+
+                        <div>
+                            <label style="min-height: 20px; font-weight: 400; padding-left: 0; width: auto;">
+                                <input type="checkbox" ng-click="documentCtrl.addForm('medauth', 'Authorization for Medication Form')">
+                                Authorization for Medication
+                            </label>
+                        </div>
+
+                        <div>
+                            <label style="min-height: 20px; font-weight: 400; padding-left: 0; width: auto;">
+                                <input type="checkbox" ng-click="documentCtrl.addForm('emergency', 'Emergency Card Form')">
+                                Emergency Card
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- OPTION TO SEND OR CANCEL -->
+                <div class="tab-pane" id="wizardComplete">
+                    <div class="action-item" style="float: right;">
+                        <div ng-if="!documentCtrl.wizardProgress.isSendComplete">
+                            <a class="btn btn-t-primary btn-theme"
+                                ui-sref="{{documentCtrl.sourceId == 'clients' ? 'dashboard_client_list' : 'document_form_summary' }}">Cancel</a>
+                            <a class="btn btn-t-primary btn-theme" ng-click="documentCtrl.wizardNext(2,true)">Go Back</a>
+                            <button class="btn btn-t-primary btn-theme" ng-click="documentCtrl.sendClientForm()">Submit</button>
+
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                    <div ng-if="!documentCtrl.wizardProgress.isSendComplete">
+                        <div>Click "Submit" to send an invitation to edit the documents to your clients.</div>
+
+                        <div class="white-space-10"></div>
+                        <div>
+                            <b>Documents:</b>
+                            <ul>
+                                <li ng-repeat="doc in documentCtrl.docList track by $index">
+                                    {{doc}}
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <b>Client List:</b>
+                            <ul>
+                                <li ng-repeat="client in documentCtrl.pickClient track by $index">
+                                    {{client.student.firstName}} {{client.student.middleInitial}}
+                                    {{client.student.lastName}}
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div ng-if="documentCtrl.wizardProgress.isSendComplete">
+                        <h3 class="line-bottom-5">Complete</h3>
+                        <div>The document forms are sent to your clients.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Confirm Form to Send -->
+    <div class="modal fade" id="confirm-send" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3>Confirm Send</h3>
+                    <div>Clients will receive an email with links to edit their documents</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success success" data-dismiss="modal"
+                            ng-click="documentCtrl.sendClientForm()">Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>

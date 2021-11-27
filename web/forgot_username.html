@@ -1,0 +1,111 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader">
+      <div class="white-space-20"></div>
+      <h3 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h3>
+      <div class="white-space-20"></div>
+    </div>
+  </header>
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div class="block-section bg-color4 forgot-username">
+      <div class="container">
+        <div class="panel panel-md">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12 col-sm-12 padding-5">
+                <!-- Block side right -->
+                <div class="pull-right small-note"><span>Note :</span>&nbsp;<b>(<span
+                    style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b></div>
+
+                <div class="white-space-40"></div>
+                <legend >Forgot Username?</legend>
+                <!--<div class="white-space-15"></div>-->
+                <div class="alert alert-danger" role="alert" ng-if="auth_ctrl.sending_email_error">
+                  Sorry, we were unable to send the link to you. Please try again.
+                </div>
+
+                <div class="alert alert-danger" role="alert" ng-if="auth_ctrl.error_code==='email_not_found'">
+                  The information you entered below does not match our records.
+                  Please review and try again or <a ui-sref="contactus">contact us</a> for further help.
+                </div>
+
+                <div class="alert alert-danger" role="alert" ng-if="auth_ctrl.error_code==='multiple_match_bday'">
+                  We have difficulty retrieving your username. Please <a ui-sref="contactus">contact us</a> for further help.
+                </div>
+
+                <div class="alert alert-danger" role="alert" ng-if="auth_ctrl.error_code==='multiple_match_zip'">
+                  We have difficulty retrieving your username. Please enter your Birth Date.
+                </div>
+
+                <!--<div class="alert alert-success" role="alert" ng-if="auth_ctrl.sending_email_success">-->
+                  <!--<p>Our records show your email address as </p>-->
+                  <!--<p><b>{{ auth_ctrl.emailClue }}</b></p>-->
+                  <!--<p>-->
+                    <!--Please use this email to login.</p>-->
+                  <!--<p>You will now be redirected to the Login page. If you are not redirected in 10 seconds, please click-->
+                    <!--<a ui-sref="login">here</a>.</p>-->
+                <!--</div>-->
+
+                <form ng-submit="auth_ctrl.sendForgottenUsername(auth_ctrl.user, auth_ctrl.formForgotUsername)"
+                      name="auth_ctrl.formForgotUsername" ng-if="!auth_ctrl.sending_email_success  && !(auth_ctrl.error_code ==='multiple_match_bday')" novalidate>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>First Name<span style="color:red;">*</span></label>
+                        <input type="text" ng-model="auth_ctrl.user.firstName" name="firstName" class="form-control"
+                               focus="true" autocomplete="off" required>
+                        <div ng-messages="auth_ctrl.formForgotUsername.firstName.$error"
+                             ng-if='auth_ctrl.formForgotUsername.firstName.$invalid && auth_ctrl.submitted'
+                             class="form-error-msg">
+                          <div class="text-danger" ng-message="required">This is a required field</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Last Name<span style="color:red;">*</span></label>
+                        <input type="text" ng-model="auth_ctrl.user.lastName" name="lastName" class="form-control"
+                               focus="false" autocomplete="off" required>
+                        <div ng-messages="auth_ctrl.formForgotUsername.lastName.$error"
+                             ng-if='auth_ctrl.submitted && auth_ctrl.formForgotUsername.lastName.$invalid'
+                             class="form-error-msg">
+                          <div class="text-danger" ng-message="required">This is a required field</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+						<!-- Mobile Num -->
+						<div class="form-inline">
+							<rv-phone-input form="auth_ctrl.formForgotUsername" inline="true" is-required="true" label="Cell Number" name="mobileNum" value="clientFormData.mobileNum"
+								ng-model="auth_ctrl.user.contactNum" ng-model-options="{}" next-elem=""></rv-phone-input>
+						</div>
+
+                  <div class="white-space-15"></div>
+                  <div class="form-group">
+                    <button type="submit"
+                            ng-click="auth_ctrl.submitted=true"
+                            class="btn btn-theme btn-t-primary btn-block btn-lg">
+                      <i class="fa fa-spinner fa-spin spin" style="font-size:18px"></i>&nbsp;&nbsp;
+                      <span ng-if="!auth_ctrl.is_loading">Retrieve Username</span>
+                      <span ng-if="auth_ctrl.is_loading"> Retrieving username...</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--end body-content -->
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+</div>

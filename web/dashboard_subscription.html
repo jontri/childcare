@@ -1,0 +1,101 @@
+<style>
+    .StripeElement {
+        background-color: white;
+        height: 40px;
+        padding: 10px 12px;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        box-shadow: 0 1px 3px 0 #e6ebf1;
+        -webkit-transition: box-shadow 150ms ease;
+        transition: box-shadow 150ms ease;
+    }
+
+    .StripeElement--focus {
+        box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+
+    .StripeElement--invalid {
+        border-color: #fa755a;
+    }
+
+    .StripeElement--webkit-autofill {
+        background-color: #fefde5 !important;
+    }
+</style>
+
+<div class="block-section-sm bg-color1" style="min-height: 800px;">
+    <div class="daycares col-md-10" style="float: none;">
+        <h3>Subscription</h3>
+        <span ng-if="userSubscription.active">
+        	Active Subscription
+      	</span>
+        <span ng-if="!userSubscription.active">
+
+        	<div class="col-md-12" style="padding: 50px 100px;">
+        		<div></div>
+        		<div class="center-block feature-privilege">
+		      		<span class="feature-flavor-text">Privileges you will get when you subscribe:</span>
+		      		<ul>
+		      			<li>
+		      				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consequat metus vel bibendum efficitur.
+		      			</li>
+		      			<li>
+		      				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consequat metus vel bibendum efficitur.
+		      			</li>
+		      			<li>
+		      				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam consequat metus vel bibendum efficitur.
+		      			</li>
+		      		</ul>
+					  
+					<div class="text-center">
+						<form name="payForm" id="payment-form">
+							<div stripe-validator stripe-form-id="payment-form"></div>
+							<br /><br />
+							<div class="col-md-12">
+								<button id="apply-subscription" class="btn btn-theme btn-lg btn-long btn-t-primary" type="submit">Apply for Subscription</button>                        
+							</div> 
+						</form>
+		        	</div>
+
+					<form action="your-server-side-code" method="POST">
+					  <script
+							  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+							  data-key="pk_test_SsJkxNbJJvlU8rBGPjw8xKEU"
+							  data-amount="1.00"
+							  data-name="Ratingsville Premium"
+							  data-description="Monthly Subscription"
+							  data-locale="auto"
+							  data-zip-code="true"
+							  data-billing-address="true">
+					  </script>
+					</form>
+	        	</div>
+        	</div>
+        	
+        </span>
+    </div>
+</div>
+<style type="text/css">
+    .feature-privilege {
+        padding: 50px 50px;
+        width: 800px;
+        border-color: #b89f80;
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    .feature-privilege > .feature-flavor-text {
+        font-size: 20px;
+    }
+
+    .feature-privilege > ul {
+        list-style-type: disc;
+        margin-top: 10px;
+    }
+
+    .feature-privilege > ul > li {
+        font-size: 17px;
+        margin-top: 8px;
+
+    }
+</style>

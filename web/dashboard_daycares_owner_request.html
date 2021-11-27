@@ -1,0 +1,106 @@
+<div class="block-section-sm bg-color1 clearfix" style="min-height: 800px;padding-top: 10px">
+  <div class="col-xs-12 daycares">
+
+    <a ui-sref="dashboard_daycares" class="pull-right"><i class="fa fa-reply" aria-hidden="true"></i> Go back to child care center list</a>
+		<div class="white-space-10 visible-xs visible-sm"></div>
+		<h3>Child Care Center Search</h3>
+		<div>
+			Note: (<span style="color:red">*</span>) = City/State or Zip Code is a Required Field
+		</div>
+		<div class="row">
+			<form name="daycareSearchForm" ng-submit="daycareSearch()" novalidate>
+				<div class="col-md-3 col-xs-12">
+					<div class="form-group">
+						<label>Child Care Name</label>
+						<input class="form-control" ng-model="daycareKeyword" placeholder="Name or Keyword" autofocus>
+					</div>
+				</div>
+				<div class="col-md-4 col-xs-12">
+					<div class="row no-margin">
+						<label>Location
+							<span style="color:red;">*</span>
+							<span class="text-danger" ng-show="daycareSearchForm.$submitted && !daycareLoc && !daycareZip">City/State or Zip Code is required.</span>
+							<span class="text-danger" ng-show="daycareSearchForm.$submitted && daycareZip && daycareZip.length != 5">Zip code must be 5 digits.</span>
+						</label>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-xs-12">
+							<input gp-gac="{ types: ['(cities)'],  componentRestrictions: { country: 'US' }}"
+								ng-model="daycareLoc"
+								gp-components="{ locality: 'long_name', administrative_area_level_1: 'short_name' }"
+								gp-callback="gpDaycareSearchCb(result, place, true)"
+								type="text"
+								id="txtCity"
+								name="txtCity"
+								class="form-control"
+								placeholder="City, State">
+							<div class="white-space-10 visible-xs visible-sm"></div>
+						</div>
+						<div class="col-md-6 col-xs-12">
+							<input
+								maxlength="5"
+								id="txtZip"
+								name="txtZip"
+								class="form-control"
+								ng-model="daycareZip"
+								placeholder="5 digit Zip Code">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-5 col-xs-12">
+					<div class="form-group">
+						<label>&nbsp;</label>
+						<div class="form-inline">
+							<button type="submit" class="form-control btn btn-sm btn-theme btn-t-primary" ng-disabled="searching">
+								<span ng-show="searching"><i class="fa fa-spinner fa-spin"></i></span>
+								Search
+							</button>
+							<div class="white-space-10 visible-xs"></div>
+							<button type="button" class="form-control btn btn-sm btn-theme btn-t-primary" ng-click="clearSearch()">Clear Search</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<span class="text-danger" ng-show="daycareSearchForm.$submitted && searchError">Sorry, we are experiencing challenges retrieving results for your search criteria. Please check you Search inputs and try again after a few minutes.</span>
+		<h5 ng-hide="daycareResults.length">Select your child care center</h5>
+		<h5 ng-show="daycareResults.length">Hold the Ctrl key or the Command key (&#8984; for Mac users) to select multiple child care centers</h5>
+		<div ng-repeat="req in daycaresReqExists" ng-if="ownerRequestForm.$submitted">
+			<span class="text-danger" ng-if="!req.isApproved">
+				An ownership request for {{req.daycareName}} is already outstanding. Please select another child care center.
+			</span>
+			<span class="text-danger" ng-if="req.isApproved">
+				Your ownership of {{req.daycareName}} has already been approved. Please select another child care center.
+			</span>
+		</div>
+		<span class="text-danger" ng-show="ownerRequestForm.$submitted && ownerReqError">Sorry, we are experiencing challenges creating your request. Please try again after a few minutes.</span>
+		<div ng-messages="ownerRequestForm.$submitted && ownerRequestForm.daycareResults.$error">
+			<span ng-message="required" class="text-danger">Please select at least 1 child care center.</span>
+		</div>
+		<form name="ownerRequestForm" ng-submit="requestOwnership(ownerRequestForm)" novalidate>
+			<div class="form-group daycare-select-div">
+				<select name="daycareResults" class="form-control" ng-model="selectedDaycares" ng-disabled="!daycareResults.length" multiple
+					ng-options="daycare.name+' (id: '+daycare.uid+')' for daycare in daycareResults" size="8" required></select>
+				<a href="" ng-show="numReturned && daycareResults.length" ng-click="daycareSearch(true)">Show more</a>
+				<span ng-show="!numReturned && daycareResults.length">There are no more child care centers to show for your search criteria.</span>
+			</div>
+			<rv-button type="submit" class="col-xs-12 col-sm-3 no-padding" styles="btn btn-sm btn-theme btn-t-primary form-control" is-disabled="!daycareResults.length"
+				is-loading="requestingOwnership">
+				Request Ownership
+			</rv-button>
+		</form>
+		<h3 ng-show="ownershipRequests.length" class="col-xs-12 no-padding">Outstanding Ownership Requests</h3>
+		<div class="row margin-bottom-10" ng-repeat="req in ownershipRequests">
+			<span id="{{req._id}}" ng-if="req.status == 'pending'">
+				<span class="col-md-3">{{req.listing.name}}</span>
+				<span class="col-md-4">
+					<a href="" class="btn btn-xs btn-theme btn-secondary" ng-click="uploadDocuments(req._id)">Upload Documents</a>
+					<rv-button styles="btn btn-xs btn-theme btn-secondary" action="cancelOwnership(req)" is-loading="cancellingOwnershipHash[req._id]">
+						Cancel Ownership
+					</rv-button>
+				</span>
+			</span>
+			<!-- <span id="{{req._id}}" ng-if="req.status == 'rejected'"><a href="" ng-click="requestOwnership(ownerRequestForm, req)">Request Ownership</a> to reset declined request for <a ui-sref="listingDetail({listingId: req.listing._id})">{{req.listing.name}}</a></span> -->
+    </div>
+  </div>
+</div>

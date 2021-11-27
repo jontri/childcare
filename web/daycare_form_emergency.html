@@ -1,0 +1,349 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: auto; min-height: 800px;">
+    <div class="col-md-12 ">
+        <h3 class="line-bottom-5">
+            Emergency Card Form <span ng-if="emFormCtrl.editMode">( Update )</span>
+        </h3>
+        <form name="emergencyForm" id="emergencyForm" enctype="multipart/form-data" novalidate>
+            <div class="col-md-12 info">               
+                <h3 class="line-bottom-5">
+                    Child
+                </h3>
+                <!-- First Name -->
+                <div class="form-inline">
+                    <label>First Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="firstName" class="form-control" autocomplete="off" 
+                    ng-model="emFormCtrl.childData.firstName" required />
+                    <div ng-messages="emergencyForm.firstName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <!-- Middle Name -->
+                <div class="form-inline">
+                    <label>Middle Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="middleName" class="form-control" autocomplete="off" 
+                    ng-model="emFormCtrl.childData.middleName"  required />
+                    <div ng-messages="emergencyForm.middleName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <!-- Last Name -->
+                <div class="form-inline">
+                    <label>Last Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="lastName" class="form-control" autocomplete="off" 
+                    ng-model="emFormCtrl.childData.lastName"  required />
+                    <div ng-messages="emergencyForm.lastName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <!-- Date of Birth -->
+                <div class="form-inline">
+                    <label>Date of Birth
+                        <span style="color:red;">*</span>
+                    </label>
+                    <select class="form-control" ng-model="emFormCtrl.childData.birthM" ng-options="index as m for (index,m) in emFormCtrl.datePick.m" name="birthM" ng-required="true">
+                        <!--<div ng-if="emFormCtrl.childData.birthM != null"><option value="" disabled selected>{{emFormCtrl.datePick.m[emFormCtrl.childData.birthM]}}</option></div>
+                        <div ng-if="emFormCtrl.childData.birthM == null"><option value="" disabled selected>Month</option></div>-->
+                        <option value="" disabled>{{emFormCtrl.datePick.m[emFormCtrl.childData.birthM] || 'Month'}}</option>
+                        
+                    </select>
+                    <select class="form-control" ng-model="emFormCtrl.childData.birthD" ng-options="d for d in emFormCtrl.datePick.d" name="birthD" ng-required="true">
+                        <option value="" disabled selected>Day</option>
+                        
+                    </select>
+                    <select class="form-control" ng-model="emFormCtrl.childData.birthY" ng-options="y for y in emFormCtrl.datePick.y" name="birthY" ng-required="true">
+                        <option value="" disabled selected>Year</option>
+                        
+                    </select>
+                    <div ng-messages="emergencyForm.$submitted && (emergencyForm.birthD.$error||emergencyForm.birthM.$error||emergencyForm.birthY.$error)" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 info">
+                <h3 class="line-bottom-5">
+                    Physical Address
+                </h3>
+                <div class="form-inline">
+                    <label>PO Box </label>
+                    <input type="text" name="pobox" class="form-control" ng-model="emFormCtrl.childData.pobox">
+                </div>
+                <div class="form-inline">
+                    <label>Street </label>
+                    <input type="text" name="street" class="form-control" ng-model="emFormCtrl.childData.street">
+                </div>
+                <div class="form-inline">
+                    <label>Zip Code </label>
+                    <input type="text" name="zip" class="form-control" ng-model="emFormCtrl.childData.zip">
+                </div>
+                <div class="form-inline">
+                    <label>City </label>
+                    <input type="text" name="city" class="form-control" ng-model="emFormCtrl.childData.city">
+                </div>
+                <div class="form-inline">
+                    <label>State </label>
+                    <select name="state" class="form-control" ng-model="emFormCtrl.childData.state" ng-options="state for state in emFormCtrl.states">
+                        <option value="" disabled selected>Select State</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 info">
+                <h3 class="line-bottom-5">
+                    Parent Information
+                </h3>
+                <!-- Mother Info -->
+                <div class="col-md-12 info">
+                    <h4 class="line-bottom-5">
+                        Mother
+                    </h4>
+                    <div class="form-inline">
+                        <label>Name </label>
+                        <input type="text" name="motherName" ng-model="emFormCtrl.motherData.name" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Home Address </label>
+                        <input type="text" name="motherAddress" ng-model="emFormCtrl.motherData.address" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>City </label>
+                        <input type="text" name="motherAddress" ng-model="emFormCtrl.motherData.city" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>State </label>
+                        <select name="state" name="motherState" class="form-control" ng-model="emFormCtrl.motherData.state" ng-options="state for state in emFormCtrl.states">
+                            <option value="" disabled selected>Select State</option>
+                        </select>
+                    </div>
+                    <div class="form-inline">
+                        <label>Home Phone </label>
+                        <input type="text" name="motherHomeNum" ng-model="emFormCtrl.motherData.homeNum" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Work Phone </label>
+                        <input type="text" name="motherWorkNum" ng-model="emFormCtrl.motherData.workNum" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Mobile Phone </label>
+                        <input type="text" name="motherMobileNum" ng-model="emFormCtrl.motherData.phoneNum" class="form-control">
+                    </div>
+                </div>
+                <!-- Father Info -->
+                <div class="col-md-12 info">
+                    <h4 class="line-bottom-5">
+                        Father
+                    </h4>
+                    <div class="form-inline">
+                        <label>Name </label>
+                        <input type="text" name="fatherName" ng-model="emFormCtrl.fatherData.name" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Home Address </label>
+                        <input type="text" name="fatherAddress" ng-model="emFormCtrl.fatherData.address" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>City </label>
+                        <input type="text" name="motherAddress" ng-model="emFormCtrl.fatherData.city" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>State </label>
+                        <select name="state" name="fatherState" class="form-control" ng-model="emFormCtrl.fatherData.state" ng-options="state for state in emFormCtrl.states">
+                            <option value="" disabled selected>Select State</option>
+                        </select>
+                    </div>
+                    <div class="form-inline">
+                        <label>Home Phone </label>
+                        <input type="text" name="fatherHomeNum" ng-model="emFormCtrl.fatherData.homeNum" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Work Phone </label>
+                        <input type="text" name="fatherWorkNum" ng-model="emFormCtrl.fatherData.workNum" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Mobile Phone </label>
+                        <input type="text" name="fatherMobileNum" ng-model="emFormCtrl.fatherData.phoneNum" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 info">
+                <h3 class="line-bottom-5">
+                    Medical Information
+                </h3>
+                <h4 class="text-warning">Should my child require emergenct treatment, I authorize the <strong>Daycare</strong> to call 911</h4>
+
+                <div class="col-md-12 info">
+                    <h4 class="line-bottom-5">
+                        Allergy
+                    </h4>
+
+                    <div class="col-md-12 info" ng-repeat="allergy in emFormCtrl.medicalData.allergy">
+                        <div class="form-inline">
+                            <label style="max-width: 20px;">
+                                {{$index+1}}. 
+                            </label>
+                            <input type="text" name="{{allergy.inputName}}" ng-model="allergy.name" class="form-control">
+                        </div>
+                    </div>
+                    <a ng-click="emFormCtrl.addMedInfo('allergy')">+ Add Allergy</a>
+                    <a ng-click="emFormCtrl.removeMedInfo('allergy')" ng-if="emFormCtrl.medicalData.allergy.length>1">- Remove Allergy</a>
+                </div>
+
+                <div class="col-md-12 info">
+                    <h4 class="line-bottom-5">
+                        Medication
+                    </h4>
+
+                    <div class="col-md-12 info" ng-repeat="med in emFormCtrl.medicalData.medication">
+                        <div class="form-inline">
+                            <label style="max-width: 20px;">
+                                {{$index+1}}. 
+                            </label>
+                            <input type="text" name="{{med.inputName}}" ng-model="med.name" class="form-control">
+                        </div>
+                    </div>
+                    <a ng-click="emFormCtrl.addMedInfo('medication')">+ Add Medication</a>
+                    <a ng-click="emFormCtrl.removeMedInfo('medication')" ng-if="emFormCtrl.medicalData.medication.length>1">- Remove Medication</a>
+                </div>
+
+                
+
+                <h3 class="line-bottom-5">
+                    Helpful Information about the Child
+                </h3>
+                <div class="form-inline">
+                    <label>Special Information</label>
+                    <textarea ng-model="emFormCtrl.childData.note" class="form-control" style="min-width: 300px" rows="5"></textarea>
+                </div>
+                
+            </div>
+            <div class="col-md-12 info">
+                <h3 class="line-bottom-5">
+                    Alternate Emergency Contacts
+                </h3>
+                
+                <div class="col-md-12 info" ng-repeat="contact in emFormCtrl.childData.contact">
+                    <h4 class="line-bottom-5">
+                        Contact #{{$index+1}}
+                    </h4>
+                    <div class="form-inline">
+                        <label>Name </label>
+                        <input type="text" ng-model="contact.name" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Address </label>
+                        <input type="text" ng-model="contact.relationship" class="form-control">
+                    </div>
+                    <div class="form-inline">
+                        <label>Home Number </label>
+                        <input type="text" ng-model="contact.phoneNum" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <a class="btn btn-theme btn-t-primary" ng-click="emFormCtrl.verifyForm(emergencyForm)">Submit</a>
+        </form>
+    </div>
+
+    <div ng-show="documentLoading == true" style="
+        position: absolute;
+        pointer-events: none;
+        background: rgba(255,255,255,0.6) no-repeat center center;
+        text-align: center;
+        width: 100%;
+        height: 100%;">
+        <i class="text-muted text-center center-block fa fa-refresh fa-spin"
+           style="font-size:40px;"></i>
+        <h3 style="font-size:40px;">Processing Form...</h3>
+
+    </div>
+
+    <div ng-show="errorLoading == true" style="
+        position: absolute;
+        pointer-events: none;
+        background: rgba(255,255,255,0.6) no-repeat center center;
+        text-align: center;
+        width: 100%;
+        height: 100%;">
+
+        <h3>Error Loading Application...</h3>
+    </div>
+</div>
+<div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            <h4>Confirm Emergency Card Information</h4>
+            <div style="display:none; max-height: 300px; overflow: auto;">
+                <table class="table table-striped">
+                <tr>
+                    <th>Field</th>
+                    <th>Entry</th>
+                </tr>
+                <tr ng-repeat="(x,y) in emFormCtrl.childData">
+                <td>{{x}}</td>
+                <td>{{y}}</td>
+                </tr>
+                <tr ng-repeat="(x,y) in emFormCtrl.motherData">
+                <td>{{x}}</td>
+                <td>{{y}}</td>
+                </tr>
+                <tr ng-repeat="(x,y) in emFormCtrl.fatherData">
+                <td>{{x}}</td>
+                <td>{{y}}</td>
+                </tr>
+                <tr ng-repeat="(x,y) in emFormCtrl.medicalData">
+                <td>{{x}}</td>
+                <td>{{y}}</td>
+                </tr>
+                
+                </table>
+            </div>
+            <p class="text-warning text-center">
+              By clicking <strong>Confirm</strong>, the displayed items and the information on
+this Emergency Card Form is complete and accurate.
+            </p>
+            
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                </button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="emFormCtrl.submitForm()">Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="display:none;position: fixed;left: 1000px;top: 150px;height: 500px;background-color: white;overflow-y: auto;">
+    
+    <table class="table table-striped">
+    <tr>
+        <th>Field</th>
+        <th>Entry</th>
+    </tr>
+
+    <tr ng-repeat="(x,y) in emFormCtrl.childData">
+    <td>{{x}}</td>
+    <td>{{y}}</td>
+    </tr>
+    <tr ng-repeat="(x,y) in emFormCtrl.motherData">
+    <td>{{x}}</td>
+    <td>{{y}}</td>
+    </tr>
+    <tr ng-repeat="(x,y) in emFormCtrl.fatherData">
+    <td>{{x}}</td>
+    <td>{{y}}</td>
+    </tr>
+    <tr ng-repeat="(x,y) in emFormCtrl.medicalData">
+    <td>{{x}}</td>
+    <td>{{y}}</td>
+    </tr>
+    </table>
+
+</div>

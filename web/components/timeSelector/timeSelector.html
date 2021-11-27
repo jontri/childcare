@@ -1,0 +1,5 @@
+<select class="form-control" name="{{$ctrl.name}}Hours" ng-model="$ctrl.timeArr[0]" ng-options="option for option in $ctrl.hours" ng-disabled="$ctrl.isDisabled"></select>
+{{':'}}
+<select class="form-control" name="{{$ctrl.name}}Minutes" ng-model="$ctrl.timeArr[1]" ng-options="option for option in $ctrl.minutes" ng-disabled="$ctrl.isDisabled"></select>
+{{' '}}
+<select class="form-control" name="{{$ctrl.name}}Periods" ng-model="$ctrl.timeArr[2]" ng-options="option for option in $ctrl.periods" ng-disabled="$ctrl.isDisabled"></select>

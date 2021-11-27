@@ -1,0 +1,92 @@
+<div class="col-xs-12 client">
+    <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+        <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancel('dashboard_client_list', {daycareId:daycareId})">Cancel</button>
+        <button type="button" class="btn btn-theme btn-t-primary" ng-click="overrideClientFormSequence(4,'clientFormPedia')">Go Back</button>
+        <button type="button" id="submit-primary" class="btn btn-theme btn-t-primary" ng-if="!progress.updateMode" ng-click="saveNewClient()">
+            <i class="fa fa-save"></i>
+            Save
+        </button>
+        <button type="submit" id="save-client-btn-add" ng-click="updateClient()" class="btn btn-theme btn-t-primary" ng-if="progress.updateMode" >
+            <i class="fa fa-save"></i>
+            Update
+        </button>
+    </div>
+
+    <h3 class="line-bottom-5">Child</h3>
+    <div class="col-xs-12 info">
+        <h4><b>Personal Information</b></h4>
+        <rv-info rv-label="'Name'"  rv-info-text="{{studentData.firstName}} {{studentData.middleInitial}} {{studentData.lastName}}"></rv-info>
+        <rv-info class="capitalize" rv-label="'Gender'" rv-info-text="{{studentData.gender}}"></rv-info>
+        <rv-info rv-label="'Date of Birth'" rv-info-text="{{studentData.birth | date:'longDate':'UTC'}}"></rv-info>
+        <rv-info rv-label="'Classroom'" rv-info-text="{{studentData.classroomName}}"></rv-info>
+        <rv-info rv-label="'Home Address'" rv-info-text="{{studentData.mailing_address}}" rv-type="address"></rv-info>
+        <div class="white-space-20"></div>
+    </div>
+
+    <h3 class="line-bottom-5">Primary Parent/Guardian</h3>
+    <div class="col-xs-12 info">
+        <h4><b>Personal Information</b></h4>
+        <rv-info rv-label="'Name'" rv-info-text="{{primaryGuardianData.firstName}} {{primaryGuardianData.middleInitial}} {{primaryGuardianData.lastName}}"></rv-info>
+        <rv-info class="capitalize" rv-label="'Relationship to Child'" rv-info-text="{{primaryGuardianData.relationship == 'other' ? primaryGuardianData.relationshipOther : primaryGuardianData.relationship}}"></rv-info>
+        <rv-info class="capitalize" rv-label="'Child Custody Status'" rv-info-text="{{primaryGuardianData.custody}}"></rv-info>
+        <rv-info rv-label="'Emergency Contact'" rv-info-text="{{primaryGuardianData.emergencyContact}}"></rv-info>
+        <rv-info rv-label="'Date of Birth'" rv-info-text="{{primaryGuardianData.birth | date:'longDate':'UTC'}}"></rv-info>
+        <rv-info rv-label="'Employer'" rv-info-text="{{primaryGuardianData.employer}}"></rv-info>
+        <div class="white-space-5"></div>
+        <h4><b>Contact Information</b></h4>
+        <rv-info rv-label="'Email'" rv-info-text="{{primaryGuardianData.email}}"></rv-info>
+		<rv-info rv-label="'Cell Number'" rv-info-text="{{primaryGuardianData.mobileNum|phoneFormatter}}"></rv-info>
+        <rv-info rv-label="'Home Number'" rv-info-text="{{primaryGuardianData.contactNum|phoneFormatter}}"></rv-info>
+        <rv-info rv-label="'Work Number'" rv-info-text="{{primaryGuardianData.workNum|phoneFormatter}}"></rv-info>
+        <rv-info rv-label="'Home Address'" rv-info-text="{{primaryGuardianData.mailing_address}}" rv-type="address"></rv-info>
+        <rv-info rv-label="'Work Address'" rv-info-text="{{primaryGuardianData.work_address}}" rv-type="address"></rv-info>
+        <div class="white-space-20"></div>
+    </div>
+
+    <h3 class="line-bottom-5">Secondary Parent/Guardian</h3>
+    <div class="col-xs-12 info">
+        <p ng-if="clientObj.noSecondary" class="form-inline med-text">Not applicable</p>
+        <div ng-if="!clientObj.noSecondary">
+            <h4><b>Personal Information</b></h4>
+            <rv-info rv-label="'Name'" rv-info-text="{{secondaryGuardianData.firstName}} {{secondaryGuardianData.middleInitial}} {{secondaryGuardianData.lastName}}"></rv-info>
+            <rv-info class="capitalize" rv-label="'Relationship to Child'" rv-info-text="{{secondaryGuardianData.relationship == 'other' ? secondaryGuardianData.relationshipOther : secondaryGuardianData.relationship}}"></rv-info>
+            <rv-info class="capitalize" rv-label="'Child Custody Status'" rv-info-text="{{secondaryGuardianData.custody}}"></rv-info>            
+            <rv-info rv-label="'Emergency Contact'" rv-info-text="{{secondaryGuardianData.emergencyContact}}"></rv-info>
+            <rv-info rv-label="'Date of Birth'" rv-info-text="{{secondaryGuardianData.birth | date:'longDate':'UTC'}}"></rv-info>
+            <rv-info rv-label="'Employer'" rv-info-text="{{secondaryGuardianData.employer}}"></rv-info>            
+            <!--<rv-info class="capitalize" rv-label="'Gender'" rv-info-text="{{secondaryGuardianData.gender}}"></rv-info>-->
+            <!--<rv-info rv-label="'Home Address'" rv-info-text="{{secondaryGuardianData.mailing_address}}" rv-type="address"></rv-info>-->
+            <div class="white-space-5"></div>
+            <h4><b>Contact Information</b></h4>
+            <rv-info rv-label="'Email'" rv-info-text="{{secondaryGuardianData.email}}"></rv-info>
+            <rv-info rv-label="'Cell Number'" rv-info-text="{{secondaryGuardianData.mobileNum|phoneFormatter}}"></rv-info>
+            <rv-info rv-label="'Home Number'" rv-info-text="{{secondaryGuardianData.contactNum|phoneFormatter}}"></rv-info>
+            <rv-info rv-label="'Work Number'" rv-info-text="{{secondaryGuardianData.workNum|phoneFormatter}}"></rv-info>
+            <rv-info rv-label="'Home Address'" rv-info-text="{{secondaryGuardianData.mailing_address}}" rv-type="address"></rv-info>
+            <rv-info rv-label="'Work Address'" rv-info-text="{{secondaryGuardianData.work_address}}" rv-type="address"></rv-info>
+        </div>
+        <div class="white-space-20"></div>
+    </div>
+
+    <h3 class="line-bottom-5">Pediatrician</h3>
+    <div class="col-xs-12 info">
+        <h4><b>Contact Information</b></h4>
+        <rv-info rv-label="'Name'" rv-info-text="{{studentData.pediatrician.firstName}} {{studentData.pediatrician.middleInitial}} {{studentData.pediatrician.lastName}}" rv-prefix="Dr."></rv-info>
+		<rv-info rv-label="'Work Number'" rv-info-text="{{studentData.pediatrician.workNum|phoneFormatter}}"></rv-info>
+        <rv-info rv-label="'Practice/Hospital Name'" rv-info-text="{{studentData.pediatrician.officeName}}"></rv-info>
+        <rv-info rv-label="'Office Address'" rv-info-text="{{studentData.pediatrician.work_address}}" rv-type="address"></rv-info>
+    </div>
+
+    <div class="col-xs-12 visible-xs visible-sm">
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_client_list', {daycareId:daycareId})">Cancel</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="overrideClientFormSequence(2,'clientForm')">Go Back</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="submit" class="btn btn-theme btn-t-primary btn-responsive2">
+            <i class="fa fa-save"></i>
+            Continue
+        </button>
+    </div>
+
+</div>
+

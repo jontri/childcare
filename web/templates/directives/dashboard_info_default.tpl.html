@@ -1,0 +1,3 @@
+<div class="form-inline row">
+  <label class="col-xs-12 col-sm-4">{{rvLabel}} </label> <span ng-if="!info" class="col-xs-12 col-sm-8">Not available</span><span ng-if="info" class="col-xs-12 col-sm-8" ng-bind-html="$sce.trustAsHtml(info)"></span>
+</div>

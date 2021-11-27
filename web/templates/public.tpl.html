@@ -1,0 +1,26 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header narrow-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader" class="dark-header">
+      <div class="white-space-20"></div>
+      <h1 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h1>
+      <div class="white-space-20"></div>
+    </div>
+  </header><!-- end main-header -->
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div ui-view></div>
+
+  </div>
+  <!--end body-content -->
+
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+
+</div><!-- end wrapper page -->

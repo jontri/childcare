@@ -1,0 +1,40 @@
+<div class="main-content clearfix">
+  <div class="daycare_details" ng-transclude="daycare"></div>
+  <div class="img-avatar">
+    <img ng-src="assets/uploads/{{$ctrl.review.user_id.photo}}"
+      data-ng-show="$ctrl.review.user_id.photo"
+      class="img-circle img-responsive" style="width:50px">
+    <img ng-src="assets/theme/images/people/avatar_blank_male.jpg"
+      data-ng-show="!$ctrl.review.user_id.photo"
+      class="img-circle img-responsive" style="width:50px">
+    <div ng-transclude="user">
+      <p class="text-center">
+        <label style="width: auto;">{{$ctrl.review.user_id | getAlias:true}}</label>
+      </p>
+    </div>
+  </div>
+
+  <div class="pull-right">
+    <span>{{$ctrl.review.dateSaved | dateToMilli | date:'longDate'}}</span>
+  </div>
+
+  <div>
+    <span><b>Safety</b> <span rating="{{$ctrl.review.reviewInfo.safetyRate}}" class="rate"></span></span>
+    <span ng-bind-html="$ctrl.review.reviewInfo.safetyComment | profanity:$ctrl.highlightProfanities | linebreakToBrTag"></span>
+    <br/>
+    <span><b>Facilities</b> <span rating={{$ctrl.review.reviewInfo.facilitiesRate}} class="rate"></span></span>
+    <span ng-bind-html="$ctrl.review.reviewInfo.facilitiesComment | profanity:$ctrl.highlightProfanities | linebreakToBrTag"></span>
+    <br/>
+    <span><b>Staff</b> <span rating={{$ctrl.review.reviewInfo.staffRate}} class="rate"></span></span>
+    <span ng-bind-html="$ctrl.review.reviewInfo.staffComment | profanity:$ctrl.highlightProfanities | linebreakToBrTag"></span>
+    <br/>
+    <span><b>Education</b> <span rating={{$ctrl.review.reviewInfo.educationRate}} class="rate"></span></span>
+    <span ng-bind-html="$ctrl.review.reviewInfo.educationComment| profanity:$ctrl.highlightProfanities | linebreakToBrTag"></span>
+    <br/>
+    <span><b>Overall</b> <span rating="{{$ctrl.review.reviewInfo.overAllRate}}" class="rate"></span></span>
+    <span ng-bind-html="$ctrl.review.reviewInfo.overAllComment | profanity:$ctrl.highlightProfanities | linebreakToBrTag"></span>
+    <br/>
+  </div>
+
+  <div ng-transclude="actions"></div>
+</div>

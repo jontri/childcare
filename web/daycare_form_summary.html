@@ -1,0 +1,163 @@
+<div class="block-section-sm bg-color1 content-area" style="overflow: hidden;">
+    <div class="col-md-12 daycares">
+        <div>
+            <a ui-sref="document_daycare_list" class="pull-right"><i class="fa fa-reply" aria-hidden="true"></i> Go back to
+                child care center list</a>
+            <h3>Document List</h3>
+            <div>To add your child care center, go to <a ui-sref="dashboard_daycares">Child Care Centers</a> and click
+                Request Ownership
+            </div>
+            <div class="white-space-10"></div>
+        </div>
+        <div class="row action-item">
+            <div class="col-md-12">
+                <span class="pull-left">
+                    <button class="btn btn-theme btn-t-primary" ng-click="documentCtrl.deleteSelectedDocs()"
+                            ng-disabled="docsToDelete<=0">Delete</button>
+                </span>
+                <span class="pull-left">
+                    &nbsp;
+                    <button class="btn btn-theme btn-t-primary" ng-click="documentCtrl.downloadSelectedDocs()"
+                            ng-disabled="docsToDelete<=0">Download</button>
+                </span>
+                <span class="pull-left">
+                    &nbsp;
+                    <button class="btn btn-theme btn-t-primary" ng-click="documentCtrl.printSelectedDocs()"
+                            ng-disabled="docsToDelete<=0">Print</button>
+                </span>
+                <span class="pull-right">
+                    <a class="btn btn-theme btn-t-primary" ui-sref="document_send_client({sourceId:'forms', pickClient: documentCtrl.pickClientId})" ng-disabled="documentCtrl.pickClientId<=0">Send Documents to Client</a>
+                </span>
+            </div>
+            <div class="white-space-10"></div>
+        </div>
+        <div class="row">
+
+            <div class="container alt-table">
+
+                <div class="row alt-header">
+
+                    <!--<div class="alt-th col-md-2">Daycare Name</div>-->
+                    <div class="alt-th col-md-2">Child</div>
+                    <div class="alt-th col-md-1">Age</div>
+                    <div class="alt-th col-md-1">Gender</div>
+                    <div class="alt-th col-md-3">Primary Parent/Guardian</div>
+                    <div class="alt-th col-md-5">Secondary Parent/Guardian</div>
+                </div>
+
+                <div class="row alt-tbody no-margin">
+                    <div class="row" ng-if="daycare.clients.length" ng-repeat="daycare in documentCtrl.daycareList">
+                        <div class="alt-td">
+                            <input id="btn-{{daycare.daycareId}}" type="button" class="btn btn-primary btn-sm" value="+" ng-class="documentCtrl.daycareList.length > 1 ? '' : 'hidden'" ng-click="documentCtrl.toggleClientList(daycare.daycareId, $index)" />
+                            <span class="h5" style="width:200px;">{{daycare.daycareName}} &nbsp;</span>
+                        </div>
+                        <div id="daycareBody_{{$index}}"  class="container alt-table alt-table-striped">
+                            <div class="alt-tbody">
+                                <div class="row" ng-repeat="client in daycare.clients">
+                                    <!--<div class="alt-td col-md-1">&nbsp;</div>-->
+                                    <!--<div class="alt-td col-md-1">-->
+                                        <!--<div class="checkbox no-margin" align="center">-->
+                                        <!--<label><input type="checkbox" ng-model="sendFormToClient"/></label>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <div class="alt-td col-md-2">
+                                        <input id="toggle-check-{{$index}}" class="client-{{client._id}}" type="checkbox" ng-click="documentCtrl.toggleCheck($index); documentCtrl.addClient(daycare.daycareId,client.student);" />
+                                        <a href='' ng-click="documentCtrl.showFiles(client)">
+                                        <span ng-if="client.docs && client.docs.length">
+                                         <!--<span ng-show="client.showFiles">-</span><span-->
+                                            <!--ng-hide="client.showFiles">+</span>-->
+                                        </span>
+                                            <span ng-if="!client.docs || !client.docs.length"></span>
+                                            &nbsp;&nbsp;
+                                            {{client.student.firstName}} {{client.student.middleInitial}}
+                                            {{client.student.lastName}}
+                                        </a>
+
+                                    </div>
+                                    <div class="alt-td col-md-1">{{calculateAge(client.student.birth)}}</div>
+                                    <div class="alt-td col-md-1">{{client.student.gender}}</div>
+                                    <div class="alt-td col-md-3">{{client.guardian.firstName}}
+                                        {{client.guardian.middleInitial}} {{client.guardian.lastName}}
+                                    </div>
+                                    <div class="alt-td col-md-5">
+                                        <span ng-hide="client.secondaryGuardian">Not applicable</span>
+                                        <span ng-show="client.secondaryGuardian">{{client.secondaryGuardian.firstName}} {{client.secondaryGuardian.middleInitial}} {{client.secondaryGuardian.lastName}}</span>
+                                    </div>
+
+
+                                    <div class="row no-margin" >
+                                        <div class="row no-margin" ng-repeat="doc in client.docs" ng-if="doc.pdfPath" style="clear: both;">
+                                            <!--<div class="alt-td col-md-1">&nbsp;</div>-->
+                                            <!--<div class="alt-td col-md-1">-->
+                                                <!--<div class="checkbox no-margin" align="center">-->
+                                                <!--<label><input type="checkbox" ng-model="sendFormToClient"/></label>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <!--<div class="alt-td col-md-1">-->
+                                                <!--<div class="checkbox no-margin" align="center">-->
+                                                    <!--<label><input type="checkbox" ng-model="doc.toBeDeleted"-->
+                                                                  <!--ng-change="documentCtrl.onSelectDoc(doc.toBeDeleted)"/></label>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                            <div class="alt-td col-md-4 indent-pad">
+                                                <label>
+                                                    <input class="client-doc-file" type="checkbox" ng-model="doc.toBeDeleted" ng-change="documentCtrl.onSelectDoc(doc.toBeDeleted, client._id, daycare.daycareId, client.student)"/></label>
+                                                &nbsp;
+                                                <span ng-if="doc.type == 'enrollment'">Enrollment Form</span>
+                                                <span ng-if="doc.type == 'emergencycard'">Emergency Card Form</span>
+                                                <span ng-if="doc.type == 'medauth'">Authorization for Medication Form</span>
+                                            </div>
+                                            <div class="alt-td col-md-3">{{doc.pdfDate | date:'longDate'}}</div>
+                                            <div class="alt-td col-md-3">
+                                                <a class="btn btn-xs btn-theme btn-secondary" href=""
+                                                   ng-click="documentCtrl.viewDoc(doc)">View</a>
+                                                <a class="btn btn-xs btn-theme btn-secondary" href=""
+                                                   ng-click="documentCtrl.goToEditDocPage(doc)">Edit</a>
+                                                <a class="btn btn-xs btn-theme btn-secondary" href=""
+                                                   ng-click="documentCtrl.openDocumentHistory(doc)">Versions</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div style="position: absolute; left: 50%; top:0px;">
+            <div ng-show="viewPdf == true" class="overlayPdf">
+            <span style="float: right">
+                <a ng-click="viewPdf = false" class="text-danger" style="">CLOSE</a>
+            </span>
+                <pdfviewer src="{{documentCtrl.pdfDocument}}" on-page-load='pageLoaded(page,total)' id="viewer"
+                           load-progress='loadProgress(loaded, total, state)'></pdfviewer>
+            </div>
+            <div ng-show="viewPdfNotFound == true" class="overlayPdf">
+            <span style="float: right">
+                <a ng-click="viewPdfNotFound = false" class="text-danger" style="">CLOSE</a>
+            </span>
+                <h3>FILE NOT FOUND</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div ng-controller="docHistoryCtrl as docHistoryCtrl">-->
+<ng-include src="'templates/modals/doc_history.modal.html'"></ng-include>
+<!--</div>-->
+
+<style type="text/css">
+    .overlayPdf {
+        background-color: lightgrey;
+        position: relative;
+        left: -50%;
+        border: 1px solid #b89f80;
+        background: center center no-repeat rgba(255, 255, 255, 0.6);
+
+        /*pointer-events: none;*/
+    }
+</style>

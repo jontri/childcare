@@ -1,0 +1,58 @@
+<form ng-submit="popup_login_ctrl.login(popup_login_ctrl.user)" name="popup_login_ctrl.formLogin" novalidate>
+  <div class="alert alert-danger" role="alert" ng-if="popup_login_ctrl.unauthorized">
+    Please try again. The Email Address and/or Password you entered is incorrect
+  </div>
+  <div class="alert alert-danger" role="alert" ng-if="popup_login_ctrl.account_blocked">
+    Your account has been locked due to three unsuccessful login attempts. To unlock your account, please <a
+      ui-sref="forgotPassword">reset your password</a>.
+  </div>
+
+
+  <div ng-if="!popup_login_ctrl.account_blocked">
+    <div class="form-group row">
+      <label>Email&nbsp;Address</label>
+      <input type="text" class="form-control" name="username" ng-model="popup_login_ctrl.user.username" required/>
+    </div>
+    <div class="form-group row">
+      <label>Password</label>
+      <input id="pass_login_pop" type="password" class="form-control" name="password"
+             ng-model="popup_login_ctrl.user.password" required/>
+      <a href="" class="show-pass pull-right" id="show_pass_pop">Show Password &nbsp;</a>
+    </div>
+
+    <div class="form-group form-inline">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="checkbox flat-checkbox">
+            <label>
+              <input type="checkbox">
+              <span class="fa fa-check"></span>
+              Remember me
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="white-space-15"></div>-->
+    <div class="form-group">
+      <div class="row">
+
+        <div class="col-md-12">
+          <button type="submit" ng-disabled="popup_login_ctrl.formLogin.$invalid"
+                  class="btn btn-theme btn-t-primary btn-block btn-login btn-block">
+            <i class="fa fa-spinner fa-spin spin" style="font-size:18px"></i>&nbsp;&nbsp;
+            Log In
+          </button>
+        </div>
+        <div class="col-md-12 text-center">
+          <p class="help-block ">Forgot <a class="forgotLink" ui-sref="forgotUsername">username</a> or
+            <a class="forgotLink" ui-sref="forgotPassword">password?</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</form>

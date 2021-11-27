@@ -1,0 +1,17 @@
+<form ng-submit="$ctrl.onSend({form: formReply, reply: $ctrl.reply, review: $ctrl.review})" name="formReply" novalidate>
+  <div class="form-group">
+    <label>Reply <span style="color:red;">*</span></label>
+    <textarea name="message" class="form-control" ng-model="$ctrl.reply.message" rows="6" required></textarea>
+    <div ng-messages="formReply.$submitted && formReply.message.$error" class="form-error-msg text-danger">
+      <div ng-message="required">This is a required field.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="white-space-10"></div>
+    <button type="button" class="btn btn-theme btn-t-primary" ng-click="$ctrl.cancelReply()">Cancel</button>
+    <button type="submit" class="btn btn-theme btn-t-primary">
+      <span ng-if="!$ctrl.reply.is_loading">Submit</span>
+      <span ng-if="$ctrl.reply.is_loading">Submitting message...</span>
+    </button>
+  </div>
+</form>

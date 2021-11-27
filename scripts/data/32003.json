@@ -1,0 +1,5169 @@
+[
+  {
+    "_distance": 0.17636812268895,
+    "Provider": {
+      "ProviderNumber": "C04CL0015 ",
+      "Name": "Childtime Children\u0027s Ctr. #314",
+      "Capacity": 150,
+      "LicenseExpirationDate": "06/16/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "06/17/1997",
+      "ProviderID": 35752,
+      "AddressID": 23294,
+      "StreetNumber": "1510",
+      "StreetPreDirection": null,
+      "StreetName": "Business Center",
+      "StreetSuffix": "Dr",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "7450",
+      "Latitude": 30.103100,
+      "Longitude": -81.711050,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042780606,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Drop In;Food Served;Full Day;Half Day;Infant Care;Open Year-Round;Transportation",
+      "FullAddress": "1510 Business Center Dr, Orange Park FL 32003-7450",
+      "GoldSealAccreditingAgency": "National Early Childhood Program Accreditation",
+      "GoldSealEffectiveDate": "03/31/2015",
+      "GoldSealExpirationDate": "03/31/2018",
+      "GoldSealStatusID": 1,
+      "MondayHours": " 6:30AM to 6:30PM",
+      "TuesdayHours": " 6:30AM to 6:30PM",
+      "WednesdayHours": " 6:30AM to 6:30PM",
+      "ThursdayHours": " 6:30AM to 6:30PM",
+      "FridayHours": " 6:30AM to 6:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 263195,
+          "HasViolation": true,
+          "InspectionDate": "2015-05-04 08:36:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 274726,
+          "HasViolation": true,
+          "InspectionDate": "2015-01-20 09:00:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 276066,
+          "HasViolation": false,
+          "InspectionDate": "2014-09-05 11:58:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 278702,
+          "HasViolation": false,
+          "InspectionDate": "2015-05-19 08:18:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 336221,
+          "HasViolation": false,
+          "InspectionDate": "2015-09-02 10:36:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 351241,
+          "HasViolation": true,
+          "InspectionDate": "2016-01-12 08:22:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 352713,
+          "HasViolation": false,
+          "InspectionDate": "2016-01-19 14:46:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 363169,
+          "HasViolation": false,
+          "InspectionDate": "2016-05-05 12:39:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 374862,
+          "HasViolation": false,
+          "InspectionDate": "2016-09-08 13:00:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 386179,
+          "HasViolation": false,
+          "InspectionDate": "2017-01-11 08:39:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 399700,
+          "HasViolation": false,
+          "InspectionDate": "2017-05-04 14:01:00",
+          "ProviderID": 35752,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [
+        {
+          "ID": "d19c21b2-8ed9-4b47-85f3-4ab6ed9ea184",
+          "ProviderID": 35752,
+          "Name": "National Early Childhood Program Accreditation",
+          "EffectiveDate": "06/30/2015",
+          "ExpirationDate": "06/30/2018",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "e2a4eac5-8b95-4548-a755-c606653cc4f3",
+          "ProviderID": 35752,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 20,
+          "InstructorCredential": "National Early Childhood Certificate",
+          "AgencyID": 2
+        },
+        {
+          "ID": "e20180a8-1766-4905-a702-c5c4a64351de",
+          "ProviderID": 35752,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 13,
+          "InstructorCredential": "Associate Degree",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "10b0c30f-fb2a-4e0a-80ca-7d48ddd626a1",
+          "ProviderID": 35752,
+          "Description": "LEARN START",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 399700,
+        "HasViolation": false,
+        "InspectionDate": "2017-05-04 14:01:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 386179,
+        "HasViolation": false,
+        "InspectionDate": "2017-01-11 08:39:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 374862,
+        "HasViolation": false,
+        "InspectionDate": "2016-09-08 13:00:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 363169,
+        "HasViolation": false,
+        "InspectionDate": "2016-05-05 12:39:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 352713,
+        "HasViolation": false,
+        "InspectionDate": "2016-01-19 14:46:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 351241,
+        "HasViolation": true,
+        "InspectionDate": "2016-01-12 08:22:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 336221,
+        "HasViolation": false,
+        "InspectionDate": "2015-09-02 10:36:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 278702,
+        "HasViolation": false,
+        "InspectionDate": "2015-05-19 08:18:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 263195,
+        "HasViolation": true,
+        "InspectionDate": "2015-05-04 08:36:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 274726,
+        "HasViolation": true,
+        "InspectionDate": "2015-01-20 09:00:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 276066,
+        "HasViolation": false,
+        "InspectionDate": "2014-09-05 11:58:00",
+        "ProviderID": 35752,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [
+      {
+        "ID": "d19c21b2-8ed9-4b47-85f3-4ab6ed9ea184",
+        "ProviderID": 35752,
+        "Name": "National Early Childhood Program Accreditation",
+        "EffectiveDate": "06/30/2015",
+        "ExpirationDate": "06/30/2018",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "e2a4eac5-8b95-4548-a755-c606653cc4f3",
+        "ProviderID": 35752,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 20,
+        "InstructorCredential": "National Early Childhood Certificate",
+        "AgencyID": 2
+      },
+      {
+        "ID": "e20180a8-1766-4905-a702-c5c4a64351de",
+        "ProviderID": 35752,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 13,
+        "InstructorCredential": "Associate Degree",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "10b0c30f-fb2a-4e0a-80ca-7d48ddd626a1",
+        "ProviderID": 35752,
+        "Description": "LEARN START",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "0.18 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Drop In": 1,
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "Open Year-Round": 1,
+      "Transportation": 1
+    }
+  },
+  {
+    "_distance": 0.504281574837261,
+    "Provider": {
+      "ProviderNumber": "C04CL0035 ",
+      "Name": "Kindercare Learning Center",
+      "Capacity": 187,
+      "LicenseExpirationDate": "05/24/2018",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "05/25/2000",
+      "ProviderID": 37497,
+      "AddressID": 14343,
+      "StreetNumber": "1735",
+      "StreetPreDirection": null,
+      "StreetName": "Eagle Harbor",
+      "StreetSuffix": "Pkwy",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "8330",
+      "Latitude": 30.103338,
+      "Longitude": -81.704835,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042787710,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Drop In;Food Served;Full Day;Half Day;Infant Care;Open Year-Round;Transportation",
+      "FullAddress": "1735 Eagle Harbor Pkwy, Orange Park FL 32003-8330",
+      "GoldSealAccreditingAgency": "National Accreditation Commission",
+      "GoldSealEffectiveDate": "01/27/2016",
+      "GoldSealExpirationDate": "01/27/2019",
+      "GoldSealStatusID": 1,
+      "MondayHours": " 6:00AM to 6:30PM",
+      "TuesdayHours": " 6:00AM to 6:30PM",
+      "WednesdayHours": " 6:00AM to 6:30PM",
+      "ThursdayHours": " 6:00AM to 6:30PM",
+      "FridayHours": " 6:00AM to 6:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 264146,
+          "HasViolation": true,
+          "InspectionDate": "2015-01-05 08:29:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 279812,
+          "HasViolation": false,
+          "InspectionDate": "2014-08-20 13:54:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 280552,
+          "HasViolation": true,
+          "InspectionDate": "2014-08-18 13:30:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 282833,
+          "HasViolation": true,
+          "InspectionDate": "2015-04-16 13:00:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 314098,
+          "HasViolation": false,
+          "InspectionDate": "2015-01-21 12:34:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 322145,
+          "HasViolation": false,
+          "InspectionDate": "2015-04-17 13:00:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 335462,
+          "HasViolation": false,
+          "InspectionDate": "2015-08-21 08:34:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 347249,
+          "HasViolation": false,
+          "InspectionDate": "2015-12-11 08:38:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 361703,
+          "HasViolation": true,
+          "InspectionDate": "2016-04-21 12:49:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 372566,
+          "HasViolation": true,
+          "InspectionDate": "2016-08-17 13:00:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 372956,
+          "HasViolation": false,
+          "InspectionDate": "2016-08-26 14:29:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 383782,
+          "HasViolation": false,
+          "InspectionDate": "2016-12-09 13:00:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 396113,
+          "HasViolation": true,
+          "InspectionDate": "2017-04-11 08:33:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 398563,
+          "HasViolation": false,
+          "InspectionDate": "2017-04-24 09:22:00",
+          "ProviderID": 37497,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [
+        {
+          "ID": "d69d65f6-5526-430c-a1da-08291267f74a",
+          "ProviderID": 37497,
+          "Name": "National Accreditation Commission",
+          "EffectiveDate": "10/03/2014",
+          "ExpirationDate": "10/03/2017",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "1b4f0c64-95f9-4625-b452-2c40f57c10d4",
+          "ProviderID": 37497,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 17,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        },
+        {
+          "ID": "366e2489-af28-4abf-bc3c-dfd7b3a29955",
+          "ProviderID": 37497,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 18,
+          "Enrollments": 17,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "773948c1-6d21-4d72-9274-9ecc589effd4",
+          "ProviderID": 37497,
+          "Description": "CREATIVE",
+          "PublisherName": null
+        },
+        {
+          "ID": "6267267a-379f-4dbf-9f6c-f7a75db799b0",
+          "ProviderID": 37497,
+          "Description": "FOUNDATIONS",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 398563,
+        "HasViolation": false,
+        "InspectionDate": "2017-04-24 09:22:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 396113,
+        "HasViolation": true,
+        "InspectionDate": "2017-04-11 08:33:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 383782,
+        "HasViolation": false,
+        "InspectionDate": "2016-12-09 13:00:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 372956,
+        "HasViolation": false,
+        "InspectionDate": "2016-08-26 14:29:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 372566,
+        "HasViolation": true,
+        "InspectionDate": "2016-08-17 13:00:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 361703,
+        "HasViolation": true,
+        "InspectionDate": "2016-04-21 12:49:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 347249,
+        "HasViolation": false,
+        "InspectionDate": "2015-12-11 08:38:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 335462,
+        "HasViolation": false,
+        "InspectionDate": "2015-08-21 08:34:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 322145,
+        "HasViolation": false,
+        "InspectionDate": "2015-04-17 13:00:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 282833,
+        "HasViolation": true,
+        "InspectionDate": "2015-04-16 13:00:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 314098,
+        "HasViolation": false,
+        "InspectionDate": "2015-01-21 12:34:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 264146,
+        "HasViolation": true,
+        "InspectionDate": "2015-01-05 08:29:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 279812,
+        "HasViolation": false,
+        "InspectionDate": "2014-08-20 13:54:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 280552,
+        "HasViolation": true,
+        "InspectionDate": "2014-08-18 13:30:00",
+        "ProviderID": 37497,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [
+      {
+        "ID": "d69d65f6-5526-430c-a1da-08291267f74a",
+        "ProviderID": 37497,
+        "Name": "National Accreditation Commission",
+        "EffectiveDate": "10/03/2014",
+        "ExpirationDate": "10/03/2017",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "1b4f0c64-95f9-4625-b452-2c40f57c10d4",
+        "ProviderID": 37497,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 17,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      },
+      {
+        "ID": "366e2489-af28-4abf-bc3c-dfd7b3a29955",
+        "ProviderID": 37497,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 18,
+        "Enrollments": 17,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "773948c1-6d21-4d72-9274-9ecc589effd4",
+        "ProviderID": 37497,
+        "Description": "CREATIVE",
+        "PublisherName": null
+      },
+      {
+        "ID": "6267267a-379f-4dbf-9f6c-f7a75db799b0",
+        "ProviderID": 37497,
+        "Description": "FOUNDATIONS",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "0.5 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Drop In": 1,
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "Open Year-Round": 1,
+      "Transportation": 1
+    }
+  },
+  {
+    "_distance": 0.546383324735165,
+    "Provider": {
+      "ProviderNumber": "C04CL0099 ",
+      "Name": "O2B Kids 7, LLC",
+      "Capacity": 38,
+      "LicenseExpirationDate": "06/22/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": false,
+      "OriginationDate": "08/29/2007",
+      "ProviderID": 36412,
+      "AddressID": 4849,
+      "StreetNumber": "1821",
+      "StreetPreDirection": null,
+      "StreetName": "Town Center",
+      "StreetSuffix": "Blvd",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": "Ste",
+      "SecondaryDesignatorSuffix": "101",
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "6313",
+      "Latitude": 30.097083,
+      "Longitude": -81.712520,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042644202,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "Half Day;Open Year-Round",
+      "FullAddress": "1821 Town Center Blvd Ste 101, Fleming Island FL 32003-6313",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 8:30AM to 12:30PM",
+      "TuesdayHours": " 8:30AM to 12:30PM",
+      "WednesdayHours": " 8:30AM to 12:30PM",
+      "ThursdayHours": " 8:30AM to 12:30PM",
+      "FridayHours": " 8:30AM to 12:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 263014,
+          "HasViolation": false,
+          "InspectionDate": "2015-05-14 08:47:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 270648,
+          "HasViolation": false,
+          "InspectionDate": "2014-09-15 11:18:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 321044,
+          "HasViolation": false,
+          "InspectionDate": "2015-01-29 10:55:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 337873,
+          "HasViolation": true,
+          "InspectionDate": "2015-09-14 09:55:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 353450,
+          "HasViolation": true,
+          "InspectionDate": "2016-01-26 08:31:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 363070,
+          "HasViolation": false,
+          "InspectionDate": "2016-05-09 11:45:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 376660,
+          "HasViolation": true,
+          "InspectionDate": "2016-09-19 08:38:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 377540,
+          "HasViolation": false,
+          "InspectionDate": "2016-09-30 13:30:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 386181,
+          "HasViolation": false,
+          "InspectionDate": "2017-01-13 08:32:00",
+          "ProviderID": 36412,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [
+        {
+          "ID": "46dfd1bc-3a1c-4061-98ee-40a449c43c39",
+          "ProviderID": 36412,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 9,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        },
+        {
+          "ID": "15f5e186-8e75-4940-947c-a53ba06eea3b",
+          "ProviderID": 36412,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 9,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        },
+        {
+          "ID": "98322171-d0d2-43a3-a473-268da3744023",
+          "ProviderID": 36412,
+          "ClassRoomCode": "CF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 5,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "7c9e4c45-1b3f-4acf-8d1f-4596629c01dc",
+          "ProviderID": 36412,
+          "Description": "O2B KIDS",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 386181,
+        "HasViolation": false,
+        "InspectionDate": "2017-01-13 08:32:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 377540,
+        "HasViolation": false,
+        "InspectionDate": "2016-09-30 13:30:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 376660,
+        "HasViolation": true,
+        "InspectionDate": "2016-09-19 08:38:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 363070,
+        "HasViolation": false,
+        "InspectionDate": "2016-05-09 11:45:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 353450,
+        "HasViolation": true,
+        "InspectionDate": "2016-01-26 08:31:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 337873,
+        "HasViolation": true,
+        "InspectionDate": "2015-09-14 09:55:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 263014,
+        "HasViolation": false,
+        "InspectionDate": "2015-05-14 08:47:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 321044,
+        "HasViolation": false,
+        "InspectionDate": "2015-01-29 10:55:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 270648,
+        "HasViolation": false,
+        "InspectionDate": "2014-09-15 11:18:00",
+        "ProviderID": 36412,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [
+      {
+        "ID": "46dfd1bc-3a1c-4061-98ee-40a449c43c39",
+        "ProviderID": 36412,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 9,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      },
+      {
+        "ID": "15f5e186-8e75-4940-947c-a53ba06eea3b",
+        "ProviderID": 36412,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 9,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      },
+      {
+        "ID": "98322171-d0d2-43a3-a473-268da3744023",
+        "ProviderID": 36412,
+        "ClassRoomCode": "CF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 5,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "7c9e4c45-1b3f-4acf-8d1f-4596629c01dc",
+        "ProviderID": 36412,
+        "Description": "O2B KIDS",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "0.55 miles",
+    "DisplayServices": {
+      "Half Day": 1,
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 0.643689154551175,
+    "Provider": {
+      "ProviderNumber": "C04CL0115 ",
+      "Name": "Ivy League Academy",
+      "Capacity": 120,
+      "LicenseExpirationDate": "10/07/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "10/08/2010",
+      "ProviderID": 31075,
+      "AddressID": 16878,
+      "StreetNumber": "2350",
+      "StreetPreDirection": null,
+      "StreetName": "Market",
+      "StreetSuffix": "Dr",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "4326",
+      "Latitude": 30.096910,
+      "Longitude": -81.707670,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042691190,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Drop In;Food Served;Full Day;Half Day;Infant Care;Open Year-Round;Transportation",
+      "FullAddress": "2350 Market Dr, Fleming Island FL 32003-4326",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 6:15AM to 6:15PM",
+      "TuesdayHours": " 6:15AM to 6:15PM",
+      "WednesdayHours": " 6:15AM to 6:15PM",
+      "ThursdayHours": " 6:15AM to 6:15PM",
+      "FridayHours": " 6:15AM to 6:15PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 290406,
+          "HasViolation": true,
+          "InspectionDate": "2014-09-04 08:37:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 290792,
+          "HasViolation": false,
+          "InspectionDate": "2015-01-13 14:15:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 294059,
+          "HasViolation": true,
+          "InspectionDate": "2015-01-05 11:06:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 300557,
+          "HasViolation": true,
+          "InspectionDate": "2015-05-04 11:19:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 332417,
+          "HasViolation": false,
+          "InspectionDate": "2014-09-16 14:44:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 335876,
+          "HasViolation": true,
+          "InspectionDate": "2015-08-25 12:15:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 335877,
+          "HasViolation": false,
+          "InspectionDate": "2015-08-28 09:15:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 351240,
+          "HasViolation": true,
+          "InspectionDate": "2016-01-12 12:03:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 362694,
+          "HasViolation": true,
+          "InspectionDate": "2016-04-26 10:15:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 363071,
+          "HasViolation": false,
+          "InspectionDate": "2016-05-10 09:05:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 372941,
+          "HasViolation": true,
+          "InspectionDate": "2016-08-24 12:16:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 373171,
+          "HasViolation": false,
+          "InspectionDate": "2016-08-29 09:15:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 386138,
+          "HasViolation": true,
+          "InspectionDate": "2017-01-09 10:20:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 387571,
+          "HasViolation": false,
+          "InspectionDate": "2017-01-20 15:19:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 398707,
+          "HasViolation": false,
+          "InspectionDate": "2017-04-25 08:33:00",
+          "ProviderID": 31075,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [
+        {
+          "ID": "f9e4a79f-17be-495d-b1fd-a6f2c8de1cfd",
+          "ProviderID": 31075,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 11,
+          "InstructorCredential": "National Early Childhood Certificate",
+          "AgencyID": 2
+        },
+        {
+          "ID": "93fdfa52-cd36-46d5-ad30-f4b9c1531f0b",
+          "ProviderID": 31075,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 19,
+          "Enrollments": 18,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "8358a54b-fb24-48ed-9360-dc55e1bf5a27",
+          "ProviderID": 31075,
+          "Description": "CREATIVE",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 398707,
+        "HasViolation": false,
+        "InspectionDate": "2017-04-25 08:33:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 387571,
+        "HasViolation": false,
+        "InspectionDate": "2017-01-20 15:19:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 386138,
+        "HasViolation": true,
+        "InspectionDate": "2017-01-09 10:20:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 373171,
+        "HasViolation": false,
+        "InspectionDate": "2016-08-29 09:15:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 372941,
+        "HasViolation": true,
+        "InspectionDate": "2016-08-24 12:16:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 363071,
+        "HasViolation": false,
+        "InspectionDate": "2016-05-10 09:05:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 362694,
+        "HasViolation": true,
+        "InspectionDate": "2016-04-26 10:15:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 351240,
+        "HasViolation": true,
+        "InspectionDate": "2016-01-12 12:03:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 335877,
+        "HasViolation": false,
+        "InspectionDate": "2015-08-28 09:15:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 335876,
+        "HasViolation": true,
+        "InspectionDate": "2015-08-25 12:15:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 300557,
+        "HasViolation": true,
+        "InspectionDate": "2015-05-04 11:19:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 290792,
+        "HasViolation": false,
+        "InspectionDate": "2015-01-13 14:15:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 294059,
+        "HasViolation": true,
+        "InspectionDate": "2015-01-05 11:06:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 332417,
+        "HasViolation": false,
+        "InspectionDate": "2014-09-16 14:44:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 290406,
+        "HasViolation": true,
+        "InspectionDate": "2014-09-04 08:37:00",
+        "ProviderID": 31075,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [
+      {
+        "ID": "f9e4a79f-17be-495d-b1fd-a6f2c8de1cfd",
+        "ProviderID": 31075,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 11,
+        "InstructorCredential": "National Early Childhood Certificate",
+        "AgencyID": 2
+      },
+      {
+        "ID": "93fdfa52-cd36-46d5-ad30-f4b9c1531f0b",
+        "ProviderID": 31075,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 19,
+        "Enrollments": 18,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "8358a54b-fb24-48ed-9360-dc55e1bf5a27",
+        "ProviderID": 31075,
+        "Description": "CREATIVE",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "0.64 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Drop In": 1,
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "Open Year-Round": 1,
+      "Transportation": 1
+    }
+  },
+  {
+    "_distance": 0.807956872417817,
+    "Provider": {
+      "ProviderNumber": "C04CL0069 ",
+      "Name": "Y M C A Before and After School @ Paterson Elementary",
+      "Capacity": 100,
+      "LicenseExpirationDate": "12/03/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "08/18/1992",
+      "ProviderID": 31982,
+      "AddressID": 16485,
+      "StreetNumber": "5400",
+      "StreetPreDirection": null,
+      "StreetName": "Pine",
+      "StreetSuffix": "Ave",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "8106",
+      "Latitude": 30.099780,
+      "Longitude": -81.700950,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9046440072,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;School Year Only",
+      "FullAddress": "5400 Pine Ave, Fleming Island FL 32003-8106",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "TuesdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "WednesdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "ThursdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "FridayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": false,
+      "VpkStatusID": 1,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 261117,
+          "HasViolation": false,
+          "InspectionDate": "2015-06-26 08:50:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 285815,
+          "HasViolation": true,
+          "InspectionDate": "2015-03-02 15:39:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 292251,
+          "HasViolation": false,
+          "InspectionDate": "2014-11-10 13:02:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 305822,
+          "HasViolation": false,
+          "InspectionDate": "2014-07-07 13:16:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 307819,
+          "HasViolation": true,
+          "InspectionDate": "2014-11-04 17:07:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 342937,
+          "HasViolation": false,
+          "InspectionDate": "2015-10-27 16:00:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 357492,
+          "HasViolation": true,
+          "InspectionDate": "2016-03-03 16:27:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 359997,
+          "HasViolation": false,
+          "InspectionDate": "2016-03-29 12:37:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 368726,
+          "HasViolation": false,
+          "InspectionDate": "2016-07-12 13:25:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 381244,
+          "HasViolation": false,
+          "InspectionDate": "2016-11-03 15:21:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 392059,
+          "HasViolation": false,
+          "InspectionDate": "2017-03-02 16:16:00",
+          "ProviderID": 31982,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [],
+      "VPKCurriculum": []
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 392059,
+        "HasViolation": false,
+        "InspectionDate": "2017-03-02 16:16:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 381244,
+        "HasViolation": false,
+        "InspectionDate": "2016-11-03 15:21:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 368726,
+        "HasViolation": false,
+        "InspectionDate": "2016-07-12 13:25:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 359997,
+        "HasViolation": false,
+        "InspectionDate": "2016-03-29 12:37:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 357492,
+        "HasViolation": true,
+        "InspectionDate": "2016-03-03 16:27:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 342937,
+        "HasViolation": false,
+        "InspectionDate": "2015-10-27 16:00:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 261117,
+        "HasViolation": false,
+        "InspectionDate": "2015-06-26 08:50:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 285815,
+        "HasViolation": true,
+        "InspectionDate": "2015-03-02 15:39:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 292251,
+        "HasViolation": false,
+        "InspectionDate": "2014-11-10 13:02:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 307819,
+        "HasViolation": true,
+        "InspectionDate": "2014-11-04 17:07:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 305822,
+        "HasViolation": false,
+        "InspectionDate": "2014-07-07 13:16:00",
+        "ProviderID": 31982,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [],
+    "VPKCurriculum": [],
+    "Distance": "0.81 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "School Year Only": 1
+    }
+  },
+  {
+    "_distance": 0.807956872417817,
+    "Provider": {
+      "ProviderNumber": "E04CL0034 ",
+      "Name": "Clay County School District- Paterson Elementary",
+      "Capacity": 0,
+      "LicenseExpirationDate": null,
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": false,
+      "OriginationDate": null,
+      "ProviderID": 281054,
+      "AddressID": 16485,
+      "StreetNumber": "5400",
+      "StreetPreDirection": null,
+      "StreetName": "Pine",
+      "StreetSuffix": "Ave",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "8106",
+      "Latitude": 30.099780,
+      "Longitude": -81.700950,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9047282078,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Public School",
+      "Status": "Active",
+      "Services": "Open Year-Round",
+      "FullAddress": "5400 Pine Ave, Fleming Island FL 32003-8106",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": null,
+      "TuesdayHours": null,
+      "WednesdayHours": null,
+      "ThursdayHours": null,
+      "FridayHours": null,
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Exempt",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [],
+      "VPKAccreditation": [
+        {
+          "ID": "9c59e8e6-7555-42df-96d2-2f0a02bba1ce",
+          "ProviderID": 281054,
+          "Name": "Southern Association of Colleges and Schools",
+          "EffectiveDate": "07/01/2016",
+          "ExpirationDate": "06/30/2017",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "14a429ac-4a19-47c6-a39b-ebd934599c09",
+          "ProviderID": 281054,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 9,
+          "Enrollments": 9,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "0b83ba44-d664-4ee7-b70c-9e34dc8c7afc",
+          "ProviderID": 281054,
+          "ClassRoomCode": "AF17",
+          "ClassType": "540",
+          "StartDate": "08/15/2017",
+          "EndDate": "06/07/2018",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 0,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "c98d7e42-a82b-4f04-a029-ea10e8cc6001",
+          "ProviderID": 281054,
+          "Description": "CREATIVE",
+          "PublisherName": null
+        },
+        {
+          "ID": "aaff1a4a-090a-4791-8892-f87a988c054c",
+          "ProviderID": 281054,
+          "Description": "EARLY LITERACY",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [],
+    "VPKAccreditation": [
+      {
+        "ID": "9c59e8e6-7555-42df-96d2-2f0a02bba1ce",
+        "ProviderID": 281054,
+        "Name": "Southern Association of Colleges and Schools",
+        "EffectiveDate": "07/01/2016",
+        "ExpirationDate": "06/30/2017",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "14a429ac-4a19-47c6-a39b-ebd934599c09",
+        "ProviderID": 281054,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 9,
+        "Enrollments": 9,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "0b83ba44-d664-4ee7-b70c-9e34dc8c7afc",
+        "ProviderID": 281054,
+        "ClassRoomCode": "AF17",
+        "ClassType": "540",
+        "StartDate": "08/15/2017",
+        "EndDate": "06/07/2018",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 0,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "c98d7e42-a82b-4f04-a029-ea10e8cc6001",
+        "ProviderID": 281054,
+        "Description": "CREATIVE",
+        "PublisherName": null
+      },
+      {
+        "ID": "aaff1a4a-090a-4791-8892-f87a988c054c",
+        "ProviderID": 281054,
+        "Description": "EARLY LITERACY",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "0.81 miles",
+    "DisplayServices": {
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 0.836300056312112,
+    "Provider": {
+      "ProviderNumber": "C04CL0098 ",
+      "Name": "Sharing Tree Preschool Fleming Island",
+      "Capacity": 80,
+      "LicenseExpirationDate": "04/15/2018",
+      "IsReligiousExempt": false,
+      "IsFaithBased": true,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": false,
+      "OriginationDate": "08/16/2007",
+      "ProviderID": 34273,
+      "AddressID": 10847,
+      "StreetNumber": "5900",
+      "StreetPreDirection": null,
+      "StreetName": "US Highway 17",
+      "StreetSuffix": null,
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "8034",
+      "Latitude": 30.095470,
+      "Longitude": -81.704400,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9046440310,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "Half Day;School Year Only",
+      "FullAddress": "5900 US Highway 17, Fleming Island FL 32003-8034",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 8:30AM to 2:00PM",
+      "TuesdayHours": " 8:30AM to 2:00PM",
+      "WednesdayHours": " 8:30AM to 2:00PM",
+      "ThursdayHours": " 8:30AM to 2:00PM",
+      "FridayHours": " 8:30AM to 12:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 262646,
+          "HasViolation": false,
+          "InspectionDate": "2014-07-14 14:11:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 273361,
+          "HasViolation": false,
+          "InspectionDate": "2014-12-02 11:41:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 301219,
+          "HasViolation": false,
+          "InspectionDate": "2015-07-30 10:07:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 303255,
+          "HasViolation": false,
+          "InspectionDate": "2015-03-02 11:16:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 345249,
+          "HasViolation": false,
+          "InspectionDate": "2015-11-10 11:31:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 359437,
+          "HasViolation": false,
+          "InspectionDate": "2016-03-22 08:27:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 371006,
+          "HasViolation": false,
+          "InspectionDate": "2016-07-29 10:03:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 381900,
+          "HasViolation": false,
+          "InspectionDate": "2016-11-09 08:24:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 392536,
+          "HasViolation": false,
+          "InspectionDate": "2017-03-09 11:16:00",
+          "ProviderID": 34273,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [
+        {
+          "ID": "439dce01-31ef-4d4d-9f3c-1c3e57fd3be5",
+          "ProviderID": 34273,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/25/2016",
+          "EndDate": "05/27/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 10,
+          "Enrollments": 9,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "308afa7b-2aef-4dce-839c-3fe1c932aad2",
+          "ProviderID": 34273,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/25/2016",
+          "EndDate": "05/27/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 10,
+          "Enrollments": 9,
+          "InstructorCredential": "Associate Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "c5fee137-5308-4217-a161-9cffb4ac0f60",
+          "ProviderID": 34273,
+          "ClassRoomCode": "CF16",
+          "ClassType": "540",
+          "StartDate": "08/25/2016",
+          "EndDate": "05/27/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 9,
+          "Enrollments": 9,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "8021729b-6732-4668-a7dd-5544fa0b498b",
+          "ProviderID": 34273,
+          "ClassRoomCode": "DF16",
+          "ClassType": "540",
+          "StartDate": "08/25/2016",
+          "EndDate": "05/27/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 9,
+          "Enrollments": 8,
+          "InstructorCredential": "National Early Childhood Certificate",
+          "AgencyID": 2
+        },
+        {
+          "ID": "536e0af9-c93b-472c-a210-bd2c5f7854ac",
+          "ProviderID": 34273,
+          "ClassRoomCode": "EF16",
+          "ClassType": "540",
+          "StartDate": "08/25/2016",
+          "EndDate": "05/27/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 8,
+          "Enrollments": 8,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "e267c62e-a2bd-492b-8ad8-5588cc86a96a",
+          "ProviderID": 34273,
+          "Description": "HIGH SCOPE",
+          "PublisherName": null
+        },
+        {
+          "ID": "227aff98-57f0-48ab-a803-65bb35179b7a",
+          "ProviderID": 34273,
+          "Description": "WEE LEARN2",
+          "PublisherName": null
+        },
+        {
+          "ID": "68d29bcd-3e0b-4c16-a231-e44966814603",
+          "ProviderID": 34273,
+          "Description": "WEE LEARN3",
+          "PublisherName": null
+        },
+        {
+          "ID": "ea91122e-ab99-4fb5-8cb7-d1523d6ec7b6",
+          "ProviderID": 34273,
+          "Description": "WEE LEARN4",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 392536,
+        "HasViolation": false,
+        "InspectionDate": "2017-03-09 11:16:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 381900,
+        "HasViolation": false,
+        "InspectionDate": "2016-11-09 08:24:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 371006,
+        "HasViolation": false,
+        "InspectionDate": "2016-07-29 10:03:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 359437,
+        "HasViolation": false,
+        "InspectionDate": "2016-03-22 08:27:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 345249,
+        "HasViolation": false,
+        "InspectionDate": "2015-11-10 11:31:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 301219,
+        "HasViolation": false,
+        "InspectionDate": "2015-07-30 10:07:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 303255,
+        "HasViolation": false,
+        "InspectionDate": "2015-03-02 11:16:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 273361,
+        "HasViolation": false,
+        "InspectionDate": "2014-12-02 11:41:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 262646,
+        "HasViolation": false,
+        "InspectionDate": "2014-07-14 14:11:00",
+        "ProviderID": 34273,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [
+      {
+        "ID": "439dce01-31ef-4d4d-9f3c-1c3e57fd3be5",
+        "ProviderID": 34273,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/25/2016",
+        "EndDate": "05/27/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 10,
+        "Enrollments": 9,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "308afa7b-2aef-4dce-839c-3fe1c932aad2",
+        "ProviderID": 34273,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/25/2016",
+        "EndDate": "05/27/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 10,
+        "Enrollments": 9,
+        "InstructorCredential": "Associate Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "c5fee137-5308-4217-a161-9cffb4ac0f60",
+        "ProviderID": 34273,
+        "ClassRoomCode": "CF16",
+        "ClassType": "540",
+        "StartDate": "08/25/2016",
+        "EndDate": "05/27/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 9,
+        "Enrollments": 9,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "8021729b-6732-4668-a7dd-5544fa0b498b",
+        "ProviderID": 34273,
+        "ClassRoomCode": "DF16",
+        "ClassType": "540",
+        "StartDate": "08/25/2016",
+        "EndDate": "05/27/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 9,
+        "Enrollments": 8,
+        "InstructorCredential": "National Early Childhood Certificate",
+        "AgencyID": 2
+      },
+      {
+        "ID": "536e0af9-c93b-472c-a210-bd2c5f7854ac",
+        "ProviderID": 34273,
+        "ClassRoomCode": "EF16",
+        "ClassType": "540",
+        "StartDate": "08/25/2016",
+        "EndDate": "05/27/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 8,
+        "Enrollments": 8,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "e267c62e-a2bd-492b-8ad8-5588cc86a96a",
+        "ProviderID": 34273,
+        "Description": "HIGH SCOPE",
+        "PublisherName": null
+      },
+      {
+        "ID": "227aff98-57f0-48ab-a803-65bb35179b7a",
+        "ProviderID": 34273,
+        "Description": "WEE LEARN2",
+        "PublisherName": null
+      },
+      {
+        "ID": "68d29bcd-3e0b-4c16-a231-e44966814603",
+        "ProviderID": 34273,
+        "Description": "WEE LEARN3",
+        "PublisherName": null
+      },
+      {
+        "ID": "ea91122e-ab99-4fb5-8cb7-d1523d6ec7b6",
+        "ProviderID": 34273,
+        "Description": "WEE LEARN4",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "0.84 miles",
+    "DisplayServices": {
+      "Half Day": 1,
+      "School Year Only": 1
+    }
+  },
+  {
+    "_distance": 0.925299797984756,
+    "Provider": {
+      "ProviderNumber": "E04CL0009 ",
+      "Name": "Fleming Island Elementary School",
+      "Capacity": 951,
+      "LicenseExpirationDate": null,
+      "IsReligiousExempt": null,
+      "IsFaithBased": null,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": null,
+      "OriginationDate": null,
+      "ProviderID": 24725,
+      "AddressID": 9732,
+      "StreetNumber": "4425",
+      "StreetPreDirection": null,
+      "StreetName": "Lakeshore",
+      "StreetSuffix": "Dr",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "7713",
+      "Latitude": 30.113550,
+      "Longitude": -81.724930,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042728100,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Public School",
+      "Status": "Active",
+      "Services": "Food Served;Full Day",
+      "FullAddress": "4425 Lakeshore Dr, Orange Park FL 32003-7713",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 7:30AM to 3:30PM",
+      "TuesdayHours": " 7:30AM to 3:30PM",
+      "WednesdayHours": " 7:30AM to 3:30PM",
+      "ThursdayHours": " 7:30AM to 3:30PM",
+      "FridayHours": " 7:30AM to 3:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Exempt",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [],
+      "VPKAccreditation": [
+        {
+          "ID": "0038073b-1f67-4cac-b703-e9985397bfb0",
+          "ProviderID": 24725,
+          "Name": "Southern Association of Colleges and Schools",
+          "EffectiveDate": "07/01/2016",
+          "ExpirationDate": "06/30/2017",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "508aaa13-cdcc-40f4-9dbd-a65e03531571",
+          "ProviderID": 24725,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 7,
+          "Enrollments": 6,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "fdd48438-c262-4047-ab7f-0446d544b757",
+          "ProviderID": 24725,
+          "ClassRoomCode": "AF17",
+          "ClassType": "540",
+          "StartDate": "08/15/2017",
+          "EndDate": "06/07/2018",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 0,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        },
+        {
+          "ID": "64591a47-f297-49be-98f4-37259deb47a2",
+          "ProviderID": 24725,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 9,
+          "Enrollments": 9,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "a32c7c44-11d7-4ce7-86f3-1191c470a4fb",
+          "ProviderID": 24725,
+          "ClassRoomCode": "BF17",
+          "ClassType": "540",
+          "StartDate": "08/15/2017",
+          "EndDate": "06/07/2018",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 0,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "d79c2596-da1c-4f9a-941e-02db5922a50e",
+          "ProviderID": 24725,
+          "Description": "EARLY LITERACY",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [],
+    "VPKAccreditation": [
+      {
+        "ID": "0038073b-1f67-4cac-b703-e9985397bfb0",
+        "ProviderID": 24725,
+        "Name": "Southern Association of Colleges and Schools",
+        "EffectiveDate": "07/01/2016",
+        "ExpirationDate": "06/30/2017",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "508aaa13-cdcc-40f4-9dbd-a65e03531571",
+        "ProviderID": 24725,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 7,
+        "Enrollments": 6,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "fdd48438-c262-4047-ab7f-0446d544b757",
+        "ProviderID": 24725,
+        "ClassRoomCode": "AF17",
+        "ClassType": "540",
+        "StartDate": "08/15/2017",
+        "EndDate": "06/07/2018",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 0,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      },
+      {
+        "ID": "64591a47-f297-49be-98f4-37259deb47a2",
+        "ProviderID": 24725,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 9,
+        "Enrollments": 9,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "a32c7c44-11d7-4ce7-86f3-1191c470a4fb",
+        "ProviderID": 24725,
+        "ClassRoomCode": "BF17",
+        "ClassType": "540",
+        "StartDate": "08/15/2017",
+        "EndDate": "06/07/2018",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 0,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "d79c2596-da1c-4f9a-941e-02db5922a50e",
+        "ProviderID": 24725,
+        "Description": "EARLY LITERACY",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "0.93 miles",
+    "DisplayServices": {
+      "Food Served": 1,
+      "Full Day": 1
+    }
+  },
+  {
+    "_distance": 0.925299797984756,
+    "Provider": {
+      "ProviderNumber": "C04CL0059 ",
+      "Name": "Y M C A Before and After School at Fleming Island Elementary",
+      "Capacity": 100,
+      "LicenseExpirationDate": "12/27/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "10/28/1997",
+      "ProviderID": 32132,
+      "AddressID": 9732,
+      "StreetNumber": "4425",
+      "StreetPreDirection": null,
+      "StreetName": "Lakeshore",
+      "StreetSuffix": "Dr",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "7713",
+      "Latitude": 30.113550,
+      "Longitude": -81.724930,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9046440072,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Open Year-Round",
+      "FullAddress": "4425 Lakeshore Dr, Orange Park FL 32003-7713",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "TuesdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "WednesdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "ThursdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "FridayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": false,
+      "VpkStatusID": 1,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 277343,
+          "HasViolation": true,
+          "InspectionDate": "2015-03-27 14:26:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 289727,
+          "HasViolation": false,
+          "InspectionDate": "2014-11-18 16:56:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 291831,
+          "HasViolation": false,
+          "InspectionDate": "2014-07-30 11:13:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 334982,
+          "HasViolation": false,
+          "InspectionDate": "2015-08-18 14:55:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 345504,
+          "HasViolation": false,
+          "InspectionDate": "2015-11-18 14:43:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 360144,
+          "HasViolation": true,
+          "InspectionDate": "2016-03-29 15:11:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 363700,
+          "HasViolation": false,
+          "InspectionDate": "2016-05-16 15:31:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 371007,
+          "HasViolation": false,
+          "InspectionDate": "2016-07-29 11:05:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 382157,
+          "HasViolation": false,
+          "InspectionDate": "2016-11-16 14:25:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 394320,
+          "HasViolation": false,
+          "InspectionDate": "2017-03-16 16:04:00",
+          "ProviderID": 32132,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [],
+      "VPKCurriculum": []
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 394320,
+        "HasViolation": false,
+        "InspectionDate": "2017-03-16 16:04:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 382157,
+        "HasViolation": false,
+        "InspectionDate": "2016-11-16 14:25:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 371007,
+        "HasViolation": false,
+        "InspectionDate": "2016-07-29 11:05:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 363700,
+        "HasViolation": false,
+        "InspectionDate": "2016-05-16 15:31:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 360144,
+        "HasViolation": true,
+        "InspectionDate": "2016-03-29 15:11:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 345504,
+        "HasViolation": false,
+        "InspectionDate": "2015-11-18 14:43:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 334982,
+        "HasViolation": false,
+        "InspectionDate": "2015-08-18 14:55:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 277343,
+        "HasViolation": true,
+        "InspectionDate": "2015-03-27 14:26:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 289727,
+        "HasViolation": false,
+        "InspectionDate": "2014-11-18 16:56:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 291831,
+        "HasViolation": false,
+        "InspectionDate": "2014-07-30 11:13:00",
+        "ProviderID": 32132,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [],
+    "VPKCurriculum": [],
+    "Distance": "0.93 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 1.14889809800789,
+    "Provider": {
+      "ProviderNumber": "C04CL0038 ",
+      "Name": "La Petite Academy",
+      "Capacity": 140,
+      "LicenseExpirationDate": "08/18/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "08/20/1990",
+      "ProviderID": 38653,
+      "AddressID": 13035,
+      "StreetNumber": "4321",
+      "StreetPreDirection": null,
+      "StreetName": "US Highway 17",
+      "StreetSuffix": null,
+      "StreetPostDirection": "S ",
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "7899",
+      "Latitude": 30.119880,
+      "Longitude": -81.704560,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042693767,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Food Served;Full Day;Half Day;Infant Care;Open Year-Round",
+      "FullAddress": "4321 US Highway 17 South, Orange Park FL 32003",
+      "GoldSealAccreditingAgency": "National Early Childhood Program Accreditation",
+      "GoldSealEffectiveDate": "05/17/2017",
+      "GoldSealExpirationDate": "04/30/2020",
+      "GoldSealStatusID": 1,
+      "MondayHours": " 6:00AM to 6:30PM",
+      "TuesdayHours": " 6:00AM to 6:30PM",
+      "WednesdayHours": " 6:00AM to 6:30PM",
+      "ThursdayHours": " 6:00AM to 6:30PM",
+      "FridayHours": " 6:00AM to 6:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 272426,
+          "HasViolation": false,
+          "InspectionDate": "2015-03-13 14:20:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 307460,
+          "HasViolation": false,
+          "InspectionDate": "2014-07-14 08:29:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 309804,
+          "HasViolation": true,
+          "InspectionDate": "2014-12-02 08:23:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 313115,
+          "HasViolation": false,
+          "InspectionDate": "2015-08-05 09:43:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 318544,
+          "HasViolation": true,
+          "InspectionDate": "2015-06-01 15:21:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 321780,
+          "HasViolation": true,
+          "InspectionDate": "2014-07-10 10:14:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 324454,
+          "HasViolation": true,
+          "InspectionDate": "2014-06-18 10:55:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 328268,
+          "HasViolation": false,
+          "InspectionDate": "2014-08-04 09:06:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 329336,
+          "HasViolation": true,
+          "InspectionDate": "2015-07-27 08:36:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 330717,
+          "HasViolation": true,
+          "InspectionDate": "2015-03-09 08:57:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 345308,
+          "HasViolation": true,
+          "InspectionDate": "2015-11-10 13:37:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 359012,
+          "HasViolation": false,
+          "InspectionDate": "2016-03-16 08:29:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 368710,
+          "HasViolation": true,
+          "InspectionDate": "2016-07-11 11:05:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 381724,
+          "HasViolation": true,
+          "InspectionDate": "2016-11-09 14:22:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 382123,
+          "HasViolation": false,
+          "InspectionDate": "2016-11-18 10:08:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 392789,
+          "HasViolation": true,
+          "InspectionDate": "2017-03-09 08:13:00",
+          "ProviderID": 38653,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [
+        {
+          "ID": "dcf32d7b-6f72-44ed-a521-9075d5c92871",
+          "ProviderID": 38653,
+          "Name": "National Early Childhood Program Accreditation",
+          "EffectiveDate": "06/30/2015",
+          "ExpirationDate": "06/30/2018",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "d00d18c8-0ab4-4551-80d0-9a3f3d2a449e",
+          "ProviderID": 38653,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 19,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "b14706b2-b2b6-4886-b837-dfd819ae7562",
+          "ProviderID": 38653,
+          "Description": "JOURNEY",
+          "PublisherName": null
+        },
+        {
+          "ID": "6e8946bd-0709-40ca-89e0-9ab879856cd2",
+          "ProviderID": 38653,
+          "Description": "LEARN START",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 392789,
+        "HasViolation": true,
+        "InspectionDate": "2017-03-09 08:13:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 382123,
+        "HasViolation": false,
+        "InspectionDate": "2016-11-18 10:08:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 381724,
+        "HasViolation": true,
+        "InspectionDate": "2016-11-09 14:22:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 368710,
+        "HasViolation": true,
+        "InspectionDate": "2016-07-11 11:05:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 359012,
+        "HasViolation": false,
+        "InspectionDate": "2016-03-16 08:29:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 345308,
+        "HasViolation": true,
+        "InspectionDate": "2015-11-10 13:37:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 313115,
+        "HasViolation": false,
+        "InspectionDate": "2015-08-05 09:43:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 329336,
+        "HasViolation": true,
+        "InspectionDate": "2015-07-27 08:36:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 318544,
+        "HasViolation": true,
+        "InspectionDate": "2015-06-01 15:21:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 272426,
+        "HasViolation": false,
+        "InspectionDate": "2015-03-13 14:20:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 330717,
+        "HasViolation": true,
+        "InspectionDate": "2015-03-09 08:57:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 309804,
+        "HasViolation": true,
+        "InspectionDate": "2014-12-02 08:23:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 328268,
+        "HasViolation": false,
+        "InspectionDate": "2014-08-04 09:06:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 307460,
+        "HasViolation": false,
+        "InspectionDate": "2014-07-14 08:29:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 321780,
+        "HasViolation": true,
+        "InspectionDate": "2014-07-10 10:14:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 324454,
+        "HasViolation": true,
+        "InspectionDate": "2014-06-18 10:55:00",
+        "ProviderID": 38653,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [
+      {
+        "ID": "dcf32d7b-6f72-44ed-a521-9075d5c92871",
+        "ProviderID": 38653,
+        "Name": "National Early Childhood Program Accreditation",
+        "EffectiveDate": "06/30/2015",
+        "ExpirationDate": "06/30/2018",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "d00d18c8-0ab4-4551-80d0-9a3f3d2a449e",
+        "ProviderID": 38653,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 19,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "b14706b2-b2b6-4886-b837-dfd819ae7562",
+        "ProviderID": 38653,
+        "Description": "JOURNEY",
+        "PublisherName": null
+      },
+      {
+        "ID": "6e8946bd-0709-40ca-89e0-9ab879856cd2",
+        "ProviderID": 38653,
+        "Description": "LEARN START",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "1.15 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 1.2339733935627,
+    "Provider": {
+      "ProviderNumber": "E04CL0022 ",
+      "Name": "Clay County School District - Fleming Island Eaglets",
+      "Capacity": 999,
+      "LicenseExpirationDate": null,
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": false,
+      "OriginationDate": null,
+      "ProviderID": 27247,
+      "AddressID": 9668,
+      "StreetNumber": "2233",
+      "StreetPreDirection": null,
+      "StreetName": "Village Square",
+      "StreetSuffix": "Pkwy",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "6354",
+      "Latitude": 30.087126,
+      "Longitude": -81.712714,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9045294928,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Public School",
+      "Status": "Active",
+      "Services": "Half Day;School Year Only",
+      "FullAddress": "2233 Village Square Pkwy, Orange Park FL 32003-6354",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 8:30AM to 11:30AM",
+      "TuesdayHours": " 8:30AM to 11:30AM",
+      "WednesdayHours": " 8:30AM to 11:30AM",
+      "ThursdayHours": " 8:30AM to 11:30AM",
+      "FridayHours": " 8:30AM to 11:30AM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Exempt",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [],
+      "VPKAccreditation": [
+        {
+          "ID": "6ae3db82-c502-4fa1-a7ae-bea486ec9a96",
+          "ProviderID": 27247,
+          "Name": "Southern Association of Colleges and Schools",
+          "EffectiveDate": "07/01/2016",
+          "ExpirationDate": "06/30/2017",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "ca057949-bc45-4976-9511-96c746aea373",
+          "ProviderID": 27247,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 9,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "f121ef4e-3ad0-4c8b-b426-cc95bb6a35ca",
+          "ProviderID": 27247,
+          "ClassRoomCode": "AF17",
+          "ClassType": "540",
+          "StartDate": "08/15/2017",
+          "EndDate": "06/07/2018",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 11,
+          "Enrollments": 0,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "8aad946a-011f-49c7-9b4e-6a5ae450dc73",
+          "ProviderID": 27247,
+          "Description": "CREATIVE",
+          "PublisherName": null
+        },
+        {
+          "ID": "ae2d1da5-494f-408b-87b1-67407dc69312",
+          "ProviderID": 27247,
+          "Description": "EARLY LITERACY",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [],
+    "VPKAccreditation": [
+      {
+        "ID": "6ae3db82-c502-4fa1-a7ae-bea486ec9a96",
+        "ProviderID": 27247,
+        "Name": "Southern Association of Colleges and Schools",
+        "EffectiveDate": "07/01/2016",
+        "ExpirationDate": "06/30/2017",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "ca057949-bc45-4976-9511-96c746aea373",
+        "ProviderID": 27247,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 9,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "f121ef4e-3ad0-4c8b-b426-cc95bb6a35ca",
+        "ProviderID": 27247,
+        "ClassRoomCode": "AF17",
+        "ClassType": "540",
+        "StartDate": "08/15/2017",
+        "EndDate": "06/07/2018",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 11,
+        "Enrollments": 0,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "8aad946a-011f-49c7-9b4e-6a5ae450dc73",
+        "ProviderID": 27247,
+        "Description": "CREATIVE",
+        "PublisherName": null
+      },
+      {
+        "ID": "ae2d1da5-494f-408b-87b1-67407dc69312",
+        "ProviderID": 27247,
+        "Description": "EARLY LITERACY",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "1.23 miles",
+    "DisplayServices": {
+      "Half Day": 1,
+      "School Year Only": 1
+    }
+  },
+  {
+    "_distance": 1.47993464445277,
+    "Provider": {
+      "ProviderNumber": "C04CL0126 ",
+      "Name": "Imagination Island of Fleming Island",
+      "Capacity": 152,
+      "LicenseExpirationDate": "12/12/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "12/13/2012",
+      "ProviderID": 33626,
+      "AddressID": 5491,
+      "StreetNumber": "2280",
+      "StreetPreDirection": null,
+      "StreetName": "Village Square",
+      "StreetSuffix": "Pkwy",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "6353",
+      "Latitude": 30.083618,
+      "Longitude": -81.711325,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042645565,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "Food Served;Full Day;Half Day;Infant Care;School Year Only",
+      "FullAddress": "2280 Village Square Pkwy, Fleming Island FL 32003-6353",
+      "GoldSealAccreditingAgency": "Accredited Professional Preschool Learning Environment",
+      "GoldSealEffectiveDate": "12/09/2015",
+      "GoldSealExpirationDate": "09/15/2018",
+      "GoldSealStatusID": 1,
+      "MondayHours": " 6:30AM to 6:30PM",
+      "TuesdayHours": " 6:30AM to 6:30PM",
+      "WednesdayHours": " 6:30AM to 6:30PM",
+      "ThursdayHours": " 6:30AM to 6:30PM",
+      "FridayHours": " 6:30AM to 6:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 274030,
+          "HasViolation": false,
+          "InspectionDate": "2015-03-10 09:54:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 275120,
+          "HasViolation": true,
+          "InspectionDate": "2015-03-02 13:16:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 283550,
+          "HasViolation": false,
+          "InspectionDate": "2014-11-04 08:21:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 298128,
+          "HasViolation": false,
+          "InspectionDate": "2014-06-30 13:33:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 321704,
+          "HasViolation": false,
+          "InspectionDate": "2015-06-29 08:29:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 343726,
+          "HasViolation": true,
+          "InspectionDate": "2015-11-04 08:32:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 357631,
+          "HasViolation": false,
+          "InspectionDate": "2016-03-10 08:43:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 370707,
+          "HasViolation": false,
+          "InspectionDate": "2016-07-25 09:39:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 381243,
+          "HasViolation": true,
+          "InspectionDate": "2016-11-03 08:39:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 392057,
+          "HasViolation": false,
+          "InspectionDate": "2017-03-02 08:23:00",
+          "ProviderID": 33626,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [
+        {
+          "ID": "45223f53-b550-4013-932a-cb8eab280096",
+          "ProviderID": 33626,
+          "Name": "Accredited Professional Preschool Learning Environment",
+          "EffectiveDate": "03/15/2010",
+          "ExpirationDate": "03/15/2020",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "372f0030-c8c0-4f92-a55a-80dca019d2dc",
+          "ProviderID": 33626,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/22/2016",
+          "EndDate": "06/09/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 18,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "70e050da-d833-4244-b226-0b13e2ec66f3",
+          "ProviderID": 33626,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/23/2016",
+          "EndDate": "05/31/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 20,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        },
+        {
+          "ID": "667c0a66-4786-4f18-af45-62fbb7094e22",
+          "ProviderID": 33626,
+          "ClassRoomCode": "CF16",
+          "ClassType": "540",
+          "StartDate": "08/22/2016",
+          "EndDate": "06/10/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 20,
+          "InstructorCredential": "Bachelor\u0027s Degree",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "b0e44b37-6255-4c60-8d7f-4752a973e14e",
+          "ProviderID": 33626,
+          "Description": "CREATIVE",
+          "PublisherName": null
+        },
+        {
+          "ID": "a694c840-3ade-4e57-a660-11de16d6b1a3",
+          "ProviderID": 33626,
+          "Description": "FROG STREET",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 392057,
+        "HasViolation": false,
+        "InspectionDate": "2017-03-02 08:23:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 381243,
+        "HasViolation": true,
+        "InspectionDate": "2016-11-03 08:39:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 370707,
+        "HasViolation": false,
+        "InspectionDate": "2016-07-25 09:39:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 357631,
+        "HasViolation": false,
+        "InspectionDate": "2016-03-10 08:43:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 343726,
+        "HasViolation": true,
+        "InspectionDate": "2015-11-04 08:32:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 321704,
+        "HasViolation": false,
+        "InspectionDate": "2015-06-29 08:29:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 274030,
+        "HasViolation": false,
+        "InspectionDate": "2015-03-10 09:54:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 275120,
+        "HasViolation": true,
+        "InspectionDate": "2015-03-02 13:16:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 283550,
+        "HasViolation": false,
+        "InspectionDate": "2014-11-04 08:21:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 298128,
+        "HasViolation": false,
+        "InspectionDate": "2014-06-30 13:33:00",
+        "ProviderID": 33626,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [
+      {
+        "ID": "45223f53-b550-4013-932a-cb8eab280096",
+        "ProviderID": 33626,
+        "Name": "Accredited Professional Preschool Learning Environment",
+        "EffectiveDate": "03/15/2010",
+        "ExpirationDate": "03/15/2020",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "372f0030-c8c0-4f92-a55a-80dca019d2dc",
+        "ProviderID": 33626,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/22/2016",
+        "EndDate": "06/09/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 18,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "70e050da-d833-4244-b226-0b13e2ec66f3",
+        "ProviderID": 33626,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/23/2016",
+        "EndDate": "05/31/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 20,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      },
+      {
+        "ID": "667c0a66-4786-4f18-af45-62fbb7094e22",
+        "ProviderID": 33626,
+        "ClassRoomCode": "CF16",
+        "ClassType": "540",
+        "StartDate": "08/22/2016",
+        "EndDate": "06/10/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 20,
+        "InstructorCredential": "Bachelor\u0027s Degree",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "b0e44b37-6255-4c60-8d7f-4752a973e14e",
+        "ProviderID": 33626,
+        "Description": "CREATIVE",
+        "PublisherName": null
+      },
+      {
+        "ID": "a694c840-3ade-4e57-a660-11de16d6b1a3",
+        "ProviderID": 33626,
+        "Description": "FROG STREET",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "1.48 miles",
+    "DisplayServices": {
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "School Year Only": 1
+    }
+  },
+  {
+    "_distance": 1.48518172764228,
+    "Provider": {
+      "ProviderNumber": "C04CL0073 ",
+      "Name": "Y M C A Before and After School at Thunderbolt Elementary",
+      "Capacity": 100,
+      "LicenseExpirationDate": "11/14/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "11/15/2000",
+      "ProviderID": 31597,
+      "AddressID": 20084,
+      "StreetNumber": "2020",
+      "StreetPreDirection": null,
+      "StreetName": "Thunderbolt",
+      "StreetSuffix": "Rd",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "8385",
+      "Latitude": 30.084950,
+      "Longitude": -81.722050,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9046440072,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Open Year-Round",
+      "FullAddress": "2020 Thunderbolt Rd, Orange Park FL 32003-8385",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "TuesdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "WednesdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "ThursdayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "FridayHours": " 2:00PM to 6:30PM; 6:30AM to 8:30AM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": false,
+      "VpkStatusID": 1,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 269188,
+          "HasViolation": false,
+          "InspectionDate": "2015-02-26 10:54:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 282287,
+          "HasViolation": false,
+          "InspectionDate": "2014-10-07 14:37:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 311335,
+          "HasViolation": true,
+          "InspectionDate": "2015-02-23 15:57:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 315776,
+          "HasViolation": false,
+          "InspectionDate": "2015-06-18 13:16:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 333779,
+          "HasViolation": false,
+          "InspectionDate": "2014-06-13 13:40:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 339911,
+          "HasViolation": false,
+          "InspectionDate": "2015-10-09 14:42:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 353766,
+          "HasViolation": true,
+          "InspectionDate": "2016-02-01 15:05:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 363703,
+          "HasViolation": false,
+          "InspectionDate": "2016-05-16 15:52:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 367471,
+          "HasViolation": false,
+          "InspectionDate": "2016-06-22 15:40:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 380219,
+          "HasViolation": true,
+          "InspectionDate": "2016-10-19 14:14:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 380221,
+          "HasViolation": false,
+          "InspectionDate": "2016-10-24 10:30:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 390021,
+          "HasViolation": true,
+          "InspectionDate": "2017-02-17 12:50:00",
+          "ProviderID": 31597,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [],
+      "VPKCurriculum": []
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 390021,
+        "HasViolation": true,
+        "InspectionDate": "2017-02-17 12:50:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 380221,
+        "HasViolation": false,
+        "InspectionDate": "2016-10-24 10:30:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 380219,
+        "HasViolation": true,
+        "InspectionDate": "2016-10-19 14:14:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 367471,
+        "HasViolation": false,
+        "InspectionDate": "2016-06-22 15:40:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 363703,
+        "HasViolation": false,
+        "InspectionDate": "2016-05-16 15:52:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 353766,
+        "HasViolation": true,
+        "InspectionDate": "2016-02-01 15:05:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 339911,
+        "HasViolation": false,
+        "InspectionDate": "2015-10-09 14:42:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 315776,
+        "HasViolation": false,
+        "InspectionDate": "2015-06-18 13:16:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 269188,
+        "HasViolation": false,
+        "InspectionDate": "2015-02-26 10:54:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 311335,
+        "HasViolation": true,
+        "InspectionDate": "2015-02-23 15:57:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 282287,
+        "HasViolation": false,
+        "InspectionDate": "2014-10-07 14:37:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 333779,
+        "HasViolation": false,
+        "InspectionDate": "2014-06-13 13:40:00",
+        "ProviderID": 31597,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [],
+    "VPKCurriculum": [],
+    "Distance": "1.49 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 1.59720437804816,
+    "Provider": {
+      "ProviderNumber": "C04CL0079 ",
+      "Name": "Primrose School of Fleming Island",
+      "Capacity": 180,
+      "LicenseExpirationDate": "06/22/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": false,
+      "OriginationDate": "06/23/2016",
+      "ProviderID": 271980,
+      "AddressID": 20888,
+      "StreetNumber": "2031",
+      "StreetPreDirection": null,
+      "StreetName": "Town Center",
+      "StreetSuffix": "Blvd",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "6323",
+      "Latitude": 30.082350,
+      "Longitude": -81.718470,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042983938,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Food Served;Full Day;Half Day;Infant Care;Open Year-Round;Transportation",
+      "FullAddress": "2031 Town Center Blvd, Fleming Island FL 32003-6323",
+      "GoldSealAccreditingAgency": "AdvancED",
+      "GoldSealEffectiveDate": "09/22/2016",
+      "GoldSealExpirationDate": "06/30/2021",
+      "GoldSealStatusID": 1,
+      "MondayHours": " 6:30AM to 6:30PM",
+      "TuesdayHours": " 6:30AM to 6:30PM",
+      "WednesdayHours": " 6:30AM to 6:30PM",
+      "ThursdayHours": " 6:30AM to 6:30PM",
+      "FridayHours": " 6:30AM to 6:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 365859,
+          "HasViolation": false,
+          "InspectionDate": "2016-06-10 08:30:00",
+          "ProviderID": 271980,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 375161,
+          "HasViolation": true,
+          "InspectionDate": "2016-09-09 13:01:00",
+          "ProviderID": 271980,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 376640,
+          "HasViolation": false,
+          "InspectionDate": "2016-09-21 12:52:00",
+          "ProviderID": 271980,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 386180,
+          "HasViolation": false,
+          "InspectionDate": "2017-01-11 12:21:00",
+          "ProviderID": 271980,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 400139,
+          "HasViolation": false,
+          "InspectionDate": "2017-05-09 09:59:00",
+          "ProviderID": 271980,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [
+        {
+          "ID": "186e989a-b45e-421c-a3a5-762f69264aec",
+          "ProviderID": 271980,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 19,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        },
+        {
+          "ID": "19fef93d-76eb-4bde-9e9f-20c1b726a4e8",
+          "ProviderID": 271980,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 20,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": []
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 400139,
+        "HasViolation": false,
+        "InspectionDate": "2017-05-09 09:59:00",
+        "ProviderID": 271980,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 386180,
+        "HasViolation": false,
+        "InspectionDate": "2017-01-11 12:21:00",
+        "ProviderID": 271980,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 376640,
+        "HasViolation": false,
+        "InspectionDate": "2016-09-21 12:52:00",
+        "ProviderID": 271980,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 375161,
+        "HasViolation": true,
+        "InspectionDate": "2016-09-09 13:01:00",
+        "ProviderID": 271980,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 365859,
+        "HasViolation": false,
+        "InspectionDate": "2016-06-10 08:30:00",
+        "ProviderID": 271980,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [
+      {
+        "ID": "186e989a-b45e-421c-a3a5-762f69264aec",
+        "ProviderID": 271980,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 19,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      },
+      {
+        "ID": "19fef93d-76eb-4bde-9e9f-20c1b726a4e8",
+        "ProviderID": 271980,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 20,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [],
+    "Distance": "1.6 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "Open Year-Round": 1,
+      "Transportation": 1
+    }
+  },
+  {
+    "_distance": 1.65577445551613,
+    "Provider": {
+      "ProviderNumber": "C04CL0121 ",
+      "Name": "First Steps Education",
+      "Capacity": 20,
+      "LicenseExpirationDate": "09/14/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": false,
+      "OriginationDate": "09/15/2016",
+      "ProviderID": 278381,
+      "AddressID": 5546,
+      "StreetNumber": "5095",
+      "StreetPreDirection": null,
+      "StreetName": "Lakeshore",
+      "StreetSuffix": "Dr",
+      "StreetPostDirection": "W ",
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "7775",
+      "Latitude": 30.103574,
+      "Longitude": -81.740690,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9046025113,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "After School;Before School;Drop In;Food Served;Full Day;Half Day;Open Year-Round",
+      "FullAddress": "5095 Lakeshore Dr W, Fleming Island FL 32003-7775",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 6:30AM to 6:00PM",
+      "TuesdayHours": " 6:30AM to 6:00PM",
+      "WednesdayHours": " 6:30AM to 6:00PM",
+      "ThursdayHours": " 6:30AM to 6:00PM",
+      "FridayHours": " 6:30AM to 6:00PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": false,
+      "VpkStatusID": 1,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 374861,
+          "HasViolation": false,
+          "InspectionDate": "2016-09-07 14:19:00",
+          "ProviderID": 278381,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 383052,
+          "HasViolation": false,
+          "InspectionDate": "2016-12-01 10:25:00",
+          "ProviderID": 278381,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 395570,
+          "HasViolation": true,
+          "InspectionDate": "2017-04-04 08:42:00",
+          "ProviderID": 278381,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 395880,
+          "HasViolation": false,
+          "InspectionDate": "2017-04-10 11:00:00",
+          "ProviderID": 278381,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [],
+      "VPKCurriculum": []
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 395880,
+        "HasViolation": false,
+        "InspectionDate": "2017-04-10 11:00:00",
+        "ProviderID": 278381,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 395570,
+        "HasViolation": true,
+        "InspectionDate": "2017-04-04 08:42:00",
+        "ProviderID": 278381,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 383052,
+        "HasViolation": false,
+        "InspectionDate": "2016-12-01 10:25:00",
+        "ProviderID": 278381,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 374861,
+        "HasViolation": false,
+        "InspectionDate": "2016-09-07 14:19:00",
+        "ProviderID": 278381,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [],
+    "VPKCurriculum": [],
+    "Distance": "1.66 miles",
+    "DisplayServices": {
+      "After School": 1,
+      "Before School": 1,
+      "Drop In": 1,
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 2.43753291580421,
+    "Provider": {
+      "ProviderNumber": "F04CL0094 ",
+      "Name": "Miranda Family Day Care Home",
+      "Capacity": 10,
+      "LicenseExpirationDate": "11/27/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "11/25/2005",
+      "ProviderID": 31987,
+      "AddressID": 7161,
+      "StreetNumber": "2378",
+      "StreetPreDirection": null,
+      "StreetName": "Yellow Jasmine",
+      "StreetSuffix": "Ln",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Orange Park",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "3370",
+      "Latitude": 30.071201,
+      "Longitude": -81.724761,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042693757,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Family Day Care Home",
+      "Status": "Regular/Annual",
+      "Services": "Food Served;Full Day;Infant Care;Night Care;Open 24 Hours;Open Year-Round",
+      "FullAddress": "2378 Yellow Jasmine Ln, Orange Park FL 32003-3370",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 12:00AM to 11:59AM",
+      "TuesdayHours": " 12:00AM to 11:59AM",
+      "WednesdayHours": " 12:00AM to 11:59AM",
+      "ThursdayHours": " 12:00AM to 11:59AM",
+      "FridayHours": " 12:00AM to 11:59AM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": false,
+      "VpkStatusID": 1,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 274203,
+          "HasViolation": true,
+          "InspectionDate": "2014-11-04 12:11:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 305040,
+          "HasViolation": false,
+          "InspectionDate": "2015-04-24 14:56:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 310896,
+          "HasViolation": true,
+          "InspectionDate": "2015-04-16 10:44:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 342997,
+          "HasViolation": true,
+          "InspectionDate": "2015-10-28 10:22:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 343266,
+          "HasViolation": false,
+          "InspectionDate": "2015-11-02 11:04:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 361702,
+          "HasViolation": true,
+          "InspectionDate": "2016-04-21 10:44:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 380119,
+          "HasViolation": false,
+          "InspectionDate": "2016-10-20 13:04:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 398676,
+          "HasViolation": true,
+          "InspectionDate": "2017-04-25 11:31:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 399230,
+          "HasViolation": false,
+          "InspectionDate": "2017-05-02 07:49:00",
+          "ProviderID": 31987,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [],
+      "VPKCurriculum": []
+    },
+    "reportIDs": null,
+    "_displayDistance": true,
+    "Inspections": [
+      {
+        "InspectionID": 399230,
+        "HasViolation": false,
+        "InspectionDate": "2017-05-02 07:49:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 398676,
+        "HasViolation": true,
+        "InspectionDate": "2017-04-25 11:31:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 380119,
+        "HasViolation": false,
+        "InspectionDate": "2016-10-20 13:04:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 361702,
+        "HasViolation": true,
+        "InspectionDate": "2016-04-21 10:44:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 343266,
+        "HasViolation": false,
+        "InspectionDate": "2015-11-02 11:04:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 342997,
+        "HasViolation": true,
+        "InspectionDate": "2015-10-28 10:22:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 305040,
+        "HasViolation": false,
+        "InspectionDate": "2015-04-24 14:56:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 310896,
+        "HasViolation": true,
+        "InspectionDate": "2015-04-16 10:44:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 274203,
+        "HasViolation": true,
+        "InspectionDate": "2014-11-04 12:11:00",
+        "ProviderID": 31987,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [],
+    "VPKCurriculum": [],
+    "Distance": "2.44 miles",
+    "DisplayServices": {
+      "Food Served": 1,
+      "Full Day": 1,
+      "Infant Care": 1,
+      "Night Care": 1,
+      "Open 24 Hours": 1,
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 9999,
+    "Provider": {
+      "ProviderNumber": "C04CL0092 ",
+      "Name": "O2B Kids 7, LLC",
+      "Capacity": 126,
+      "LicenseExpirationDate": "11/09/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": true,
+      "IsPublicSchool": false,
+      "OriginationDate": "11/09/2006",
+      "ProviderID": 35102,
+      "AddressID": 31099,
+      "StreetNumber": "1821",
+      "StreetPreDirection": null,
+      "StreetName": "Town Center",
+      "StreetSuffix": "Blvd",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "6313",
+      "Latitude": null,
+      "Longitude": null,
+      "DisplayAddressOnWeb": true,
+      "PhoneNumber": 9042644202,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Child Care Facility",
+      "Status": "Regular/Annual",
+      "Services": "Drop In;Food Served;Full Day;Half Day;Infant Care;Open Year-Round",
+      "FullAddress": "1821 Town Center Blvd, Fleming Island FL 32003-6313",
+      "GoldSealAccreditingAgency": "National Accreditation Commission",
+      "GoldSealEffectiveDate": "01/15/2016",
+      "GoldSealExpirationDate": "12/31/2018",
+      "GoldSealStatusID": 1,
+      "MondayHours": " 6:30AM to 7:00PM",
+      "TuesdayHours": " 6:30AM to 7:00PM",
+      "WednesdayHours": " 6:30AM to 7:00PM",
+      "ThursdayHours": " 6:30AM to 7:00PM",
+      "FridayHours": " 6:30AM to 7:00PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": true,
+      "VpkStatusID": 2,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 280303,
+          "HasViolation": false,
+          "InspectionDate": "2014-05-30 10:13:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 284701,
+          "HasViolation": false,
+          "InspectionDate": "2015-06-01 11:37:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 304334,
+          "HasViolation": false,
+          "InspectionDate": "2014-09-25 08:41:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 305295,
+          "HasViolation": true,
+          "InspectionDate": "2015-01-29 10:55:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 319513,
+          "HasViolation": false,
+          "InspectionDate": "2014-11-04 15:11:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 323069,
+          "HasViolation": false,
+          "InspectionDate": "2015-02-03 14:29:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 323615,
+          "HasViolation": true,
+          "InspectionDate": "2014-09-12 13:00:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 338858,
+          "HasViolation": true,
+          "InspectionDate": "2015-09-25 12:44:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 342695,
+          "HasViolation": true,
+          "InspectionDate": "2015-09-02 08:45:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 353666,
+          "HasViolation": true,
+          "InspectionDate": "2016-01-26 10:03:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 355776,
+          "HasViolation": false,
+          "InspectionDate": "2016-02-16 08:34:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 365313,
+          "HasViolation": false,
+          "InspectionDate": "2016-06-07 08:33:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 379657,
+          "HasViolation": true,
+          "InspectionDate": "2016-10-13 08:22:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 391415,
+          "HasViolation": true,
+          "InspectionDate": "2017-02-24 07:49:00",
+          "ProviderID": 35102,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [
+        {
+          "ID": "fdaf69ca-ed4d-4bd1-8c19-d1dd8390b8c7",
+          "ProviderID": 35102,
+          "Name": "National Accreditation Commission",
+          "EffectiveDate": "10/03/2014",
+          "ExpirationDate": "10/03/2017",
+          "AgencyID": 2
+        }
+      ],
+      "VPKClass": [
+        {
+          "ID": "230bf03c-13c5-4351-b661-e147dffd76e5",
+          "ProviderID": 35102,
+          "ClassRoomCode": "AF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 18,
+          "Enrollments": 14,
+          "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+          "AgencyID": 2
+        },
+        {
+          "ID": "7a367cdb-1df7-40df-8174-9e4d3cc5f2f1",
+          "ProviderID": 35102,
+          "ClassRoomCode": "BF16",
+          "ClassType": "540",
+          "StartDate": "08/16/2016",
+          "EndDate": "06/08/2017",
+          "Monday": null,
+          "Tuesday": null,
+          "Wednesday": null,
+          "Thursday": null,
+          "Friday": null,
+          "Saturday": null,
+          "Sunday": null,
+          "ClassRoomCount": 1,
+          "Capacity": 20,
+          "Enrollments": 15,
+          "InstructorCredential": "Associate Degree",
+          "AgencyID": 2
+        }
+      ],
+      "VPKCurriculum": [
+        {
+          "ID": "fc2bbbc2-5ee2-4710-93d8-9d358ef6d195",
+          "ProviderID": 35102,
+          "Description": "O2B KIDS",
+          "PublisherName": null
+        }
+      ]
+    },
+    "reportIDs": null,
+    "_displayDistance": false,
+    "Inspections": [
+      {
+        "InspectionID": 391415,
+        "HasViolation": true,
+        "InspectionDate": "2017-02-24 07:49:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 379657,
+        "HasViolation": true,
+        "InspectionDate": "2016-10-13 08:22:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 365313,
+        "HasViolation": false,
+        "InspectionDate": "2016-06-07 08:33:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 355776,
+        "HasViolation": false,
+        "InspectionDate": "2016-02-16 08:34:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 353666,
+        "HasViolation": true,
+        "InspectionDate": "2016-01-26 10:03:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 338858,
+        "HasViolation": true,
+        "InspectionDate": "2015-09-25 12:44:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 342695,
+        "HasViolation": true,
+        "InspectionDate": "2015-09-02 08:45:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 284701,
+        "HasViolation": false,
+        "InspectionDate": "2015-06-01 11:37:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 323069,
+        "HasViolation": false,
+        "InspectionDate": "2015-02-03 14:29:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 305295,
+        "HasViolation": true,
+        "InspectionDate": "2015-01-29 10:55:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 319513,
+        "HasViolation": false,
+        "InspectionDate": "2014-11-04 15:11:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 304334,
+        "HasViolation": false,
+        "InspectionDate": "2014-09-25 08:41:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 323615,
+        "HasViolation": true,
+        "InspectionDate": "2014-09-12 13:00:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 280303,
+        "HasViolation": false,
+        "InspectionDate": "2014-05-30 10:13:00",
+        "ProviderID": 35102,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [
+      {
+        "ID": "fdaf69ca-ed4d-4bd1-8c19-d1dd8390b8c7",
+        "ProviderID": 35102,
+        "Name": "National Accreditation Commission",
+        "EffectiveDate": "10/03/2014",
+        "ExpirationDate": "10/03/2017",
+        "AgencyID": 2
+      }
+    ],
+    "VPKClass": [
+      {
+        "ID": "230bf03c-13c5-4351-b661-e147dffd76e5",
+        "ProviderID": 35102,
+        "ClassRoomCode": "AF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 18,
+        "Enrollments": 14,
+        "InstructorCredential": "Florida Equivalent Credential: FCCPC/ECPC/CCAC/CDAE",
+        "AgencyID": 2
+      },
+      {
+        "ID": "7a367cdb-1df7-40df-8174-9e4d3cc5f2f1",
+        "ProviderID": 35102,
+        "ClassRoomCode": "BF16",
+        "ClassType": "540",
+        "StartDate": "08/16/2016",
+        "EndDate": "06/08/2017",
+        "Monday": null,
+        "Tuesday": null,
+        "Wednesday": null,
+        "Thursday": null,
+        "Friday": null,
+        "Saturday": null,
+        "Sunday": null,
+        "ClassRoomCount": 1,
+        "Capacity": 20,
+        "Enrollments": 15,
+        "InstructorCredential": "Associate Degree",
+        "AgencyID": 2
+      }
+    ],
+    "VPKCurriculum": [
+      {
+        "ID": "fc2bbbc2-5ee2-4710-93d8-9d358ef6d195",
+        "ProviderID": 35102,
+        "Description": "O2B KIDS",
+        "PublisherName": null
+      }
+    ],
+    "Distance": "N/A",
+    "DisplayServices": {
+      "Drop In": 1,
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "Open Year-Round": 1
+    }
+  },
+  {
+    "_distance": 9999,
+    "Provider": {
+      "ProviderNumber": "F04CL0166 ",
+      "Name": "Macadangdang Family Day Care Home",
+      "Capacity": 10,
+      "LicenseExpirationDate": "12/08/2017",
+      "IsReligiousExempt": false,
+      "IsFaithBased": false,
+      "IsHeadStart": false,
+      "IsOfferingSchoolReadiness": false,
+      "IsPublicSchool": false,
+      "OriginationDate": "12/09/2011",
+      "ProviderID": 32170,
+      "AddressID": 15664,
+      "StreetNumber": "2453",
+      "StreetPreDirection": null,
+      "StreetName": "Golden Bell",
+      "StreetSuffix": "Ln",
+      "StreetPostDirection": null,
+      "SecondaryDesignatorPrefix": null,
+      "SecondaryDesignatorSuffix": null,
+      "ExtraSecondaryDesignatorPrefix": null,
+      "ExtraSecondaryDesignatorSuffix": null,
+      "City": "Fleming Island",
+      "County": "Clay",
+      "State": "FL",
+      "ZipCode": "32003",
+      "ZipPlus4": "3386",
+      "Latitude": 30.072240,
+      "Longitude": -81.724500,
+      "DisplayAddressOnWeb": false,
+      "PhoneNumber": 9045794015,
+      "DisplayPhoneOnWeb": true,
+      "ProgramType": "Family Day Care Home",
+      "Status": "Regular/Annual",
+      "Services": "Food Served;Full Day;Half Day;Infant Care;Open Year-Round",
+      "FullAddress": "2453 Golden Bell Ln, Fleming Island FL 32003-3386",
+      "GoldSealAccreditingAgency": null,
+      "GoldSealEffectiveDate": null,
+      "GoldSealExpirationDate": null,
+      "GoldSealStatusID": null,
+      "MondayHours": " 6:45AM to 4:30PM",
+      "TuesdayHours": " 6:45AM to 4:30PM",
+      "WednesdayHours": " 6:45AM to 4:30PM",
+      "ThursdayHours": " 6:45AM to 4:30PM",
+      "FridayHours": " 6:45AM to 4:30PM",
+      "SaturdayHours": null,
+      "SundayHours": null,
+      "LicenseStatus": "Licensed",
+      "DBAName": null,
+      "IsVPK": false,
+      "VpkStatusID": 1,
+      "AgencyID": 2,
+      "AlternateProviderNumber": null,
+      "Inspections": [
+        {
+          "InspectionID": 298252,
+          "HasViolation": false,
+          "InspectionDate": "2015-04-24 11:29:00",
+          "ProviderID": 32170,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 306344,
+          "HasViolation": false,
+          "InspectionDate": "2014-11-04 16:07:00",
+          "ProviderID": 32170,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 343725,
+          "HasViolation": false,
+          "InspectionDate": "2015-11-04 11:52:00",
+          "ProviderID": 32170,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 362119,
+          "HasViolation": false,
+          "InspectionDate": "2016-04-26 13:46:00",
+          "ProviderID": 32170,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 380759,
+          "HasViolation": false,
+          "InspectionDate": "2016-10-26 08:33:00",
+          "ProviderID": 32170,
+          "AgencyID": 0
+        },
+        {
+          "InspectionID": 398677,
+          "HasViolation": false,
+          "InspectionDate": "2017-04-25 13:05:00",
+          "ProviderID": 32170,
+          "AgencyID": 0
+        }
+      ],
+      "VPKAccreditation": [],
+      "VPKClass": [],
+      "VPKCurriculum": []
+    },
+    "reportIDs": null,
+    "_displayDistance": false,
+    "Inspections": [
+      {
+        "InspectionID": 398677,
+        "HasViolation": false,
+        "InspectionDate": "2017-04-25 13:05:00",
+        "ProviderID": 32170,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 380759,
+        "HasViolation": false,
+        "InspectionDate": "2016-10-26 08:33:00",
+        "ProviderID": 32170,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 362119,
+        "HasViolation": false,
+        "InspectionDate": "2016-04-26 13:46:00",
+        "ProviderID": 32170,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 343725,
+        "HasViolation": false,
+        "InspectionDate": "2015-11-04 11:52:00",
+        "ProviderID": 32170,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 298252,
+        "HasViolation": false,
+        "InspectionDate": "2015-04-24 11:29:00",
+        "ProviderID": 32170,
+        "AgencyID": 0
+      },
+      {
+        "InspectionID": 306344,
+        "HasViolation": false,
+        "InspectionDate": "2014-11-04 16:07:00",
+        "ProviderID": 32170,
+        "AgencyID": 0
+      }
+    ],
+    "VPKAccreditation": [],
+    "VPKClass": [],
+    "VPKCurriculum": [],
+    "Distance": "N/A",
+    "DisplayServices": {
+      "Food Served": 1,
+      "Full Day": 1,
+      "Half Day": 1,
+      "Infant Care": 1,
+      "Open Year-Round": 1
+    }
+  }
+]

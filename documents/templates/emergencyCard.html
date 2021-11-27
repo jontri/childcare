@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body class="container-fluid noPad">
+<div class="a4landscape">
+    <div class="col-md-12 noPad">
+        <div>
+            <div style="text-align: center; ">
+                <div class="row text-center" style="margin-bottom: 20px;">
+                    <b class="formHeader">Child Care Facility</b>
+                    <br/>
+                    <small>Address Line, Contact Info</small>
+                </div>
+            </div>
+            <div style="float: left; border: 4px solid black; padding: 10px; font-size: 30px;">
+                <b>Emergency Card</b>
+            </div>
+            <div style="float: right; margin-right:50px; vertical-align: text-bottom;">
+                Updated on:
+                <span class="fieldSpace">{{pdfDate}}</span>
+            </div>
+        </div>
+        <div>
+            <table style="width: 95%;">
+                <tr class="noHeight">
+                    <th style="width:15%"></th>
+                    <th style="width:60%;"></th>
+                    <th style="width:10%; "></th>
+                    <th style="width:15%"></th>
+                </tr>
+                <tr>
+                    <td>Child's Name:</td>
+                    <td style="border-bottom:1px solid black;">{{ firstName }} {{ middleName }} {{ lastName }}</td>
+                    <td style="padding-left:15px">Birthday:</td>
+                    <td style="border-bottom:1px solid black;">{{ birthday }}</td>
+                </tr>
+                <tr>
+                    <td>Home Address:</td>
+                    <td style="border-bottom:1px solid black;">{{ pobox }} {{ street }} {{state}}</td>
+                    <td style="padding-left:15px">City/Zip:</td>
+                    <td style="border-bottom:1px solid black;">{{ zip }} {{ city }}</td>
+                </tr>
+            </table>
+        </div>
+        <!--MOTHER-->
+        <div>
+            <table style="width: 95%;">
+                <tr class="noHeight">
+                    <th style="width:15%"></th>
+                    <th style="width:60%;"></th>
+                    <th style="width:10%"></th>
+                    <th style="width:15%"></th>
+                </tr>
+                <tr>
+                    <td>Mother's Name:</td>
+                    <td style="border-bottom:1px solid black;"> {{ motherName }} </td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>Home Address:</td>
+                    <td style="border-bottom:1px solid black;">{{ motherAddress }} {{motherState}}</td>
+                    <td style="padding-left:15px" >City/Zip:</td>
+                    <td style="border-bottom:1px solid black;">{{ motherCity }}</td>
+                </tr>
+            </table>
+            <table style="width: 95%;">
+                <tr>
+                    <td style="width: 5%">PHONES Home:</td>
+                    <td style="width: 5%">Home:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ motherHomeNum }}</td>
+                    <td style="width: 5%">Cell:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ motherMobileNum }}</td>
+                    <td style="width: 5%">Work:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ motherWorkNum }}</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table style="width: 95%;">
+                <tr>
+                    <th style="width:5%"></th>
+                    <th style="width:5%"></th>
+                    <th style="width:5%"></th>
+                    <th style="width:5%"></th>
+                    <th style="width:5%"></th>
+                    <th style="width:5%"></th>
+                </tr>
+                <tr>
+                    <td style="width: 5%">PHONES Home:</td>
+                    <td style="width: 5%">Home:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ motherHomeNum }}</td>
+                    <td style="width: 5%">Cell:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ motherMobileNum }}</td>
+                    <td style="width: 5%">Work:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ motherWorkNum }}</td>
+                </tr>
+            </table>
+        </div>
+        <!--FATHER-->
+        <div>
+            <table style="width: 95%;">
+                <tr class="noHeight">
+                    <th style="width:15%"></th>
+                    <th style="width:60%;"></th>
+                    <th style="width:10%"></th>
+                    <th style="width:15%"></th>
+                </tr>
+                <tr>
+                    <td>Father's Name:</td>
+                    <td style="border-bottom:1px solid black;"> {{ fatherName }} </td>
+                </tr>
+                <tr>
+                    <td>Home Address:</td>
+                    <td style="border-bottom:1px solid black;">{{ fatherAddress }} {{ fatherState }}</td>
+                    <td style="padding-left:15px">City/Zip:</td>
+                    <td style="border-bottom:1px solid black;">{{ fatherCity }}</td>
+                </tr>
+            </table>
+            <table style="width: 95%;">
+                <tr>
+                    <td style="width: 5%">PHONES:</td>
+                    <td style="width: 5%">Home:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ fatherHomeNum }}</td>
+                    <td style="width: 5%">Cell:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ fatherMobileNum }}</td>
+                    <td style="width: 5%">Work:</td>
+                    <td style="width: 15%;border-bottom:1px solid black;">{{ fatherWorkNum }}</td>
+                </tr>
+            </table>
+        </div>
+        <!-- Medical Info -->
+        <div>
+            <table style="width: 95%;">
+                <tr class="noHeight">
+                    <th style="width: 8%"></th>
+                    <th></th>
+                    <th style="width: 8%"></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>Allergies:</td>
+                    <td style="border-bottom: 1px solid black"> {{ #medicalData.allergy }} ( {{.}} ) {{ /medicalData.allergy }}</td>
+                    <td>Medication:</td>
+                    <td style="border-bottom: 1px solid black"> {{ #medicalData.medication }} ( {{.}} ) {{ /medicalData.medication }}</td>
+                </tr>
+                <tr>
+                </tr>
+            </table>
+            <table style="width: 95%;">
+                <tr>
+                    <td style="width: 20%;">Special Information:</td>
+                    <td style="border-bottom: 1px solid black"> {{ note }} </td>
+                </tr>
+            </table>
+        </div>
+        <!-- Alternate Contacts -->
+        <div>
+            <table style="width: 95%;">
+                <tr>
+                    <td style="width: 18%;">Alternate Emergency Contact</td>
+                    <td>
+                        <ol style="margin: 0px;">
+                            <li style="margin-bottom: 10px; font-size: 6px;">
+                                <div style="border-bottom: 1px solid black">
+                                    <div class="topLabel">
+                                        {{ contact.0.name }}
+                                        <div class="bottomLabel">Name</div>
+                                    </div>
+                                    <div class="topLabel">
+                                        {{ contact.0.relationship }}
+                                        <div class="bottomLabel">Relationship</div>
+                                    </div>
+                                    <div class="topLabel">
+                                        {{ contact.0.phoneNum }}
+                                        <div class="bottomLabel">Home Number</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 10px; font-size: 6px;">
+                                <div style="border-bottom: 1px solid black">
+                                    <div class="topLabel">
+                                        {{ contact.1.name }}
+                                        <div class="bottomLabel">Name</div>
+                                    </div>
+                                    <div class="topLabel">
+                                        {{ contact.1.relationship }}
+                                        <div class="bottomLabel">Relationship</div>
+                                    </div>
+                                    <div class="topLabel">
+                                        {{ contact.1.phoneNum }}
+                                        <div class="bottomLabel">Home Number</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <table style="width: 95%">
+                <tr>
+                    <td style="width: 40%">
+                        <div style="border: 1px solid black; padding: 0px 5px;">
+                            <p>Should my child require emergency treatment,</p>
+                            <p>I authorize this Child Care Facility to call 911</p>
+                        </div>
+                    </td>
+                    <td style="width: 50%">
+                        <div style="border-bottom: 1px solid black">
+                            <div class="topLabel" style="width: 150px;">
+                                <div class="bottomLabel">Parent/Guardian Signature</div>
+                            </div>
+                            <div class="topLabel">
+                                <div class="bottomLabel">Date</div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
+<style type="text/css">
+
+    html {
+        zoom: 0.68; /*workaround for phantomJS2 rendering pages too large*/
+    }
+
+    body {
+        font-size: 15px;
+        background-color: white;
+    }
+
+    .pageA4 {
+        width: 21cm;
+        height: 29.7cm;
+        display: block;
+        margin: 0 auto;
+        /*padding: 0px 50px;*/
+        padding: 10px 40px;
+        margin-bottom: 0.5cm;
+    }
+    .a4landscape {
+        height: 21cm;
+        width: 29.7cm;
+        display: block;
+        margin: 0 auto;
+        /*padding: 0px 50px;*/
+        padding: 10px 40px;
+        margin-bottom: 0.5cm;
+    }
+    .noPad {
+        padding: 0;
+    }
+
+    .formHeader {
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 2px solid black;
+    }
+
+    .sectionTitle {
+        font-size: 16px;
+        font-weight: bold;
+        border-bottom: 2px solid black;
+    }
+
+    .fieldSpace {
+        text-align: center;
+        margin-right: 5px;
+        border-bottom: 1px solid black;
+    }
+
+    .inline {
+        display: inline-block;
+    }
+
+    .underlineField {
+        border-bottom: 1px solid black;
+    }
+
+
+    .row {
+        margin: 10px -15px;
+    }
+    .note{
+        padding: 0px 10px;
+        border: 1px solid black;
+        width: 100%;
+        height: 200px;
+    }
+</style>

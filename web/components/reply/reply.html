@@ -1,0 +1,22 @@
+<div class="reply main-content clearfix">
+  <div class="d-table">
+    <div class="img-avatar d-table-cell">
+      <img ng-src="assets/uploads/{{$ctrl.reply.sender_id.photo}}" data-ng-if="$ctrl.reply.sender_id.photo"
+        class="img-circle img-responsive" style="width:50px">
+      <img src="assets/theme/images/people/avatar_blank_male.jpg" data-ng-if="!$ctrl.reply.sender_id.photo"
+        class="img-circle img-responsive" style="width:50px">
+      <p class="text-center">
+        <label>{{$ctrl.reply.sender_id | getAlias:true}}</label>
+      </p>
+    </div>
+
+    <p class="message d-table-cell"
+      ng-bind-html="$ctrl.reply.message | profanity:$ctrl.highlightProfanities | linebreakToBrTag"></p>
+
+    <div class="date d-table-cell align-right">
+      <span>{{$ctrl.reply.date | dateToMilli | date:'longDate'}}</span>
+    </div>
+  </div>
+
+  <div ng-transclude="actions"></div>
+</div>

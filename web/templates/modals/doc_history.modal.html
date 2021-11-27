@@ -1,0 +1,44 @@
+<div class="modal fade" id="modalDocumentHistory" tabindex="-1" data-focus-on="input:first">
+    <div class="modal-dialog documentHistoryModal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Document History</h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="container alt-table alt-table-striped">
+
+                        <div class="row alt-header">
+                            <div class="alt-th col-md-2 text-center">Version</div>
+                            <div class="alt-th col-md-5">Date Modified</div>
+                            <div class="alt-th col-md-3">Document Type</div>
+                            <div class="alt-th col-md-2">Action</div>
+                        </div>
+
+                        <div class="row alt-tbody no-margin">
+                            <div class="row" ng-repeat="doc in documentCtrl.docHistory">
+                                <div class="alt-td  col-md-2  text-center">
+                                    {{doc.version}}
+                                </div>
+
+                                <div class="alt-td  col-md-5">{{doc.pdfDate | date:'longDate'}}</div>
+                                <div class="alt-td  col-md-3 text-capitalize">{{doc.type}}</div>
+                                <div class="alt-td  col-md-2">
+                                    <a class="btn btn-xs btn-theme btn-secondary" href="" ng-click="documentCtrl.viewDocHst(doc)">View</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

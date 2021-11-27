@@ -1,0 +1,97 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader">
+      <div class="white-space-20"></div>
+      <h3 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h3>
+      <div class="white-space-20"></div>
+    </div>
+  </header>
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <!-- block top -->
+    <div class="bg-color1 block-section-md line-bottom">
+      <div class="container">
+        <div class="col-md-10 col-md-offset-1">
+          <h2>Write An Article</h2>
+          <div ng-show="articleFailed" class="text-danger">Please Input Something.</div>
+          <div ng-show="articleSuccess" class="text-success"> Article Published ! </div>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+          <div class="white-space-20"></div>
+          <form>
+            <!-- <div class="form-group">
+              <label>Title :</label>
+              <input type='text' class="form-control">
+            </div> -->
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="title" placeholder="Article Title">
+              <br>
+              <textarea id="edit" name="content"></textarea>
+            </div>
+
+            <div id="article-tag-list">
+              <ul>
+                <li ng-repeat="tag in tags track by $index">{{tag}} <a ng-click="removetag($index)"><i class="fa fa-times" aria-hidden="true"></a></i></li>
+              </ul>              
+            </div>
+
+            <div>
+                <input type="text" class="form-control" ng-model="pretag">
+                <button ng-click="addArticleTag()" class="btn btn-default" style="margin-top: 5px;">Add tag</button>
+            </div>
+            <div class="form-group text-right">
+              <button id="preview-btn" class="btn btn-success">Preview <i class="fa fa-eye"></i></button>
+              <button id="" ng-click="submit_article();" class="btn btn-default">Submit</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-10 col-md-offset-1">
+          <div class="white-space-40"></div>
+          <div id="preview" hidden>
+
+          </div>
+        </div>
+
+      </div>
+      <!--end body-content -->
+    </div>
+
+  </div>
+
+
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $('#edit').froalaEditor({
+          heightMin: 300
+        })
+        .on('froalaEditor.contentChanged', function (e, editor) {
+          $('#preview').html(editor.html.get());
+        });
+
+
+    var ctr = 0;
+    $('#preview-btn').click(function () {
+      if (ctr == 0) {
+        $('#preview').show();
+        ctr = 1;
+      } else {
+        $('#preview').hide();
+        ctr = 0;
+      }
+
+    });
+  });
+</script>

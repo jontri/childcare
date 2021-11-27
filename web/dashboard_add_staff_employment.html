@@ -1,0 +1,134 @@
+<div class="col-md-12 col-sm-12">
+    <h3 class="line-bottom-5">
+        Current Employment
+    </h3>
+    <div class="form-inline">
+        <label>Start Date</label>
+        <input type="text" name="employmentStart" class="form-control" ng-model="Staff.employmentStart" rv-date="{compare:0}" rv-date-compare="Staff.employmentEnd" maxlength="10" placeholder="mm/dd/yyyy">
+        <div ng-messages="StaffEmployment.$submitted && StaffEmployment.employmentStart.$error" class="error-label">
+            <div class="text-danger" ng-message="rvDate">Invalid date.</div>
+            <div class="text-danger" ng-message="rvDateFormat">Enter date as MMDDYYYY.</div>
+            <div class="text-danger" ng-message="rvDateLess">Employment Start Date must be before Employment End Date.</div>
+        </div>
+    </div>
+    <div class="form-inline">
+        <label>End Date</label>
+        <input type="text" name="employmentEnd" class="form-control" ng-model="Staff.employmentEnd" rv-date="{compare:1}" rv-date-compare="Staff.employmentStart" maxlength="10" placeholder="mm/dd/yyyy">
+        <div ng-messages="StaffEmployment.$submitted && StaffEmployment.employmentEnd.$error" class="error-label">
+            <div class="text-danger" ng-message="rvDate">Invalid date.</div>
+            <div class="text-danger" ng-message="rvDateFormat">Enter date as MMDDYYYY.</div>
+            <div class="text-danger" ng-message="rvDateMore">Employment End Date must be after Employment Start Date.</div>
+        </div>
+    </div>
+    <div ng-repeat="employer in prevEmployer track by $index">
+        <h3 class="line-bottom-5">
+            Previous Employer #{{$index+1}}
+        </h3>
+        <div class="form-inline">
+            <label>Company Name</label>
+            <input type="text" name="{{employer.formName+'name'}}" class="form-control" ng-model="employer.name" >
+        </div>
+        <div class="form-inline">
+            <label>Company Address</label>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="form-inline">
+                <label class="indented">PO Box </label>
+                <input type="text" name="{{employer.formName+'pobox'}}" class="form-control" ng-model="employer.address.pobox" >
+            </div>
+            <div class="form-inline">
+                <label class="indented">Street </label>
+                <input type="text" name="{{employer.formName+'street'}}" class="form-control" ng-model="employer.address.street" >
+            </div>
+            <div class="form-inline">
+                <label class="indented">Suite/Unit </label>
+                <input type="text" name="{{employer.formName+'suite'}}" class="form-control" ng-model="employer.address.suite" >
+            </div>
+            <div class="form-inline">
+                <label class="indented">Zip Code </label>
+                <input type="text" name="{{employer.formName+'zip'}}" class="form-control" ng-model="employer.address.zip"
+                gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+                gp-components="gpComponents"
+                gp-callback="gpCallback(result, place, employer.address)"
+                restrict-to="[0-9]"
+                placeholder="" />
+            </div>
+            <div class="form-inline">
+                <label class="indented">City </label>
+                <input type="text" name="{{employer.formName+'city'}}" class="form-control" ng-model="employer.address.city" >
+            </div>
+            <div class="form-inline">
+                <label class="indented">State </label>
+                <select name="{{employer.formName+'state'}}" class="form-control" ng-model="employer.address.state" ng-options="option for option in stateList" select-type="basic-dropdown" placeholder="Your State">
+                </select>
+            </div>
+        </div>
+        <div class="form-inline">
+            <label>Start Date</label>
+            <input type="text" name="{{employer.formName+'employmentStart'}}" class="form-control" rv-date-max="'12/12/2999'"   ng-model="employer.employmentStart" rv-date="{compare:0}" rv-date-compare="employer.employmentEnd" maxlength="10" placeholder="mm/dd/yyyy">
+            <div ng-messages="StaffEmployment.$submitted && StaffEmployment[employer.formName+'employmentStart'].$error" class="error-label">
+                <div class="text-danger" ng-message="rvDate">Invalid date.</div>
+                <div class="text-danger" ng-message="rvDateFormat">Enter date as MMDDYYYY.</div>
+                <div class="text-danger" ng-message="rvDateLess">Employment Start Date must be before Employment End Date.</div>
+            </div>
+        </div>
+        <div class="form-inline">
+            <label>End Date</label>
+            <input type="text" name="{{employer.formName+'employmentEnd'}}"  rv-date-max="'12/12/2999'"  class="form-control" ng-model="employer.employmentEnd" rv-date="{compare:1}" rv-date-compare="employer.employmentStart" maxlength="10" placeholder="mm/dd/yyyy">
+            <div ng-messages="StaffEmployment.$submitted && StaffEmployment[employer.formName+'employmentEnd'].$error" class="error-label">
+                <div class="text-danger" ng-message="rvDate">Invalid date.</div>
+                <div class="text-danger" ng-message="rvDateFormat">Enter date as MMDDYYYY.</div>
+                <div class="text-danger" ng-message="rvDateMore">Employment End Date must be after Employment Start Date.</div>
+            </div>
+        </div>
+        <div class="form-inline">
+            <label>Point of Contact</label>
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <div class="form-inline">
+                <label class="indented">First Name</label>
+                <input type="text" class="form-control" name="{{employer.formName+'contactFirstName'}}" ng-model="employer.contactFirstName" >
+            </div>
+            <div class="form-inline">
+                <label class="indented">Middle Name</label>
+                <input type="text" class="form-control" name="{{employer.formName+'contactMiddleInitial'}}" ng-model="employer.contactMidInitial" >
+            </div>
+            <div class="form-inline">
+                <label class="indented">Last Name</label>
+                <input type="text" class="form-control" name="{{employer.formName+'contactLastName'}}" ng-model="employer.contactLastName" >
+            </div>
+            <div class="form-inline">
+                <label class="indented">Phone Number</label>
+                <input type="text" name="{{employer.formName+'phoneNumber'}}" class="form-control" ng-model="employer.phoneNumber" placeholder="10 digits" maxlength="14" phone-number="employer.phoneNumber">
+                <div ng-messages="StaffEmployment.$submitted && StaffEmployment[employer.formName+'phoneNumber'].$error" class="error-label">
+                    <div class="text-danger" ng-message="minlength">Phone number must be 10 digits.</div>
+                </div>
+            </div>
+            <div class="form-inline">
+                <label class="indented">Email</label>
+                <input type="email" name="{{employer.formName+'eadd'}}" class="form-control" ng-model="employer.contactEmail" autocomplete="off" ng-pattern="emailRegex">
+                <div ng-messages="StaffEmployment.$submitted && StaffEmployment[employer.formName+'eadd'].$error" class="error-label">
+                    <div class="text-danger" ng-message="pattern">Please enter a valid email address.</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-inline">
+            <label>Annual Ending Compensation</label>
+            <input type="number" class="form-control" name="{{employer.formName+'endingCompensation'}}" ng-model="employer.endingCompensation" >
+        </div>
+        <div class="form-inline">
+            <label>Reason for Leaving</label>
+            <textarea class="form-control no-resize" name="{{employer.formName+'reason'}}" ng-model="employer.reason" rows="5"></textarea>
+        </div>
+        <div class="form-inline">
+            <label>Authorization to Contact Employer</label>
+            <label><input type="checkbox" name="{{employer.formName+'authorizeContact'}}" ng-model="employer.authorizeContact" /> Yes</label>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <a class="btn btn-sm btn-secondary btn-theme pull-right" ng-click="addPrevEmployer()" style="margin-left: 5px;">
+            <i class="fa fa-plus" aria-hidden="true"></i> Add Employer</a>
+        <a class="btn btn-sm btn-secondary btn-theme pull-right" ng-click="removePrevEmployer()" ng-if="prevEmployer.length>=4">
+            <i class="fa fa-minus" aria-hidden="true"></i> Remove Employer</a>
+    </div>
+</div>

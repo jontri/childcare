@@ -1,0 +1,4 @@
+<button type="{{$ctrl.type}}" class="{{$ctrl.styles}}" ng-click="$ctrl.action()" ng-disabled="$ctrl.isDisabled || $ctrl.isLoading">
+  <span ng-show="$ctrl.isLoading"><i class="fa fa-spinner fa-spin"></i></span>
+  <ng-transclude></ng-transclude>
+</button>

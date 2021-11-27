@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html style="margin: 0;padding: 0;">
+<head>
+    <title></title>
+</head>
+<body style="margin: 0;padding: 0;border: 2px solid #FFF;">
+
+<div style="background: #7a7a7a;padding: 1% 10%;border:2px solid #FFF;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;">
+
+    <p class="logo_name"
+       style="font-size: 35px;font-weight: 600;color: #333; margin: 10px 0 10px 0;text-align: center;">
+        <img src="https://www.ratingsville.com/assets/img/logo-8.png"
+             style="width: 25%;position: relative;top: 10px;right: 10px;">
+        <!-- Ratingsville -->
+    </p>
+
+    <div class="body" style="position:relative;min-height: 150px;background: #FFF;padding: 20px 40px;border-radius:6px">
+        <h2 style="color: black;margin-bottom: 50px;font-weight:bold;">Hello <%= owner_request.owner.firstName %>,</h2>
+        <% if (type === 'received' || type === 'declined' || type === 'remind') { %>
+        <% if (type === 'received') { %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            We recently received your request for ownership of <%= owner_request.listing.name %>. If you haven't already uploaded documentation which demonstrates your ownership of, or your authority to act on behalf of, <%= owner_request.listing.name %>, please do so no later than <%= due_date %>.
+            Failure to receive the required documents by <%= due_date %> will result in expiration of this request. The list of required documents includes:
+        </p>
+        <ol style="font-size: 17px;line-height: 24px;">
+            <li>Valid government issued photo ID</li>
+            <li>
+                Proof of ownership (select one of the following):
+                <ul>
+                    <li>License issued by the <%= owner_request.listing.address.state %> child care regulatory body</li>
+                    <li>Registration letter issued by the <%= owner_request.listing.address.state %> child care regulatory body</li>
+                    <li>IRS letter assigning <%= owner_request.listing.name %> an Employer Identification Number (EIN)</li>
+                    <li>Other document which sufficiently demonstrates your ownership of <%= owner_request.listing.name %></li>
+                </ul>
+            </li>
+            <li>If you are an authorized representative for <%= owner_request.listing.name %> but not the Owner, a notarized Power of Attorney from the Owner which authorizes you to make all decisions for <%= owner_request.listing.name %> on behalf of the Owner.</li>
+        </ol>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            You may upload these documents by clicking <a href="<%= upload_link %>">Upload</a>. Please allow up to 14 days from submission for the review and approval process. Our rigorous approval process aims at preventing unauthorized individuals from taking charge of your child care center and acting in a manner that can adversely impact your center.
+        </p>
+        <% } else { %>
+        <% if (type === 'declined') { %>
+
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            We recently received your request for ownership of <%= owner_request.listing.name %> and regret to inform you that we are unable to approve it because of lack of documentation that demonstrates your ownership of, or authority to act on behalf of, <%= owner_request.listing.name %>.
+            The status of required documents is shown below:
+        </p>
+        <% } else { %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            We are writing to remind you that your ownership request for <%= owner_request.listing.name %> cannot be approved till you upload all documents necessary to demonstrate your ownership of, or your authority to act on behalf of, <%= owner_request.listing.name %>.
+            The status of required documents is shown below:
+        </p>
+        <% } %>
+        <ol style="font-size: 17px;line-height: 24px;">
+            <li>Valid government issued photo ID: <%= id_card_status %></li>
+            <li>Proof of ownership: <%= proof_owner_status %></li>
+            <% if (!owner_request.proof_owner) { %>
+            <li>Notarized Power of Attorney<% if (!owner_request.proof_owner_doc_sufficient) { %> (if applicable)<% } %>: <%= power_attorney_status %></li>
+            <br/>
+        <% } %>
+        </ol>
+        <% if (type === 'declined') { %>
+
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            To take ownership of <%= owner_request.listing.name %>, you will need to log in to your account and initiate a new ownership request.
+        </p>
+        <% } else { %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            Please ignore this message if you have already uploaded the required documents. Failure to upload the required documents by <%= due_date %> will result in expiration of this request. You will then need to log in to your account and initiate a new ownership request.
+            <br/><br/>
+            You can upload these documents by clicking <a href="<%= upload_link %>">Upload</a>. Please allow up to 14 days from submission of all documents for the review and approval process. Our rigorous approval process aims at preventing unauthorized individuals from taking charge of your child care center and acting in a manner that can adversely impact your center.
+        </p>
+        <% } %>
+        <% } %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            Please do not hesitate to <a href="<%= contact_link %>">contact us</a> if you have any questions.
+        </p>
+        <% } else if (type === 'canceled') { %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            We recently received your request to cancel your ownership of <%= owner_request.listing.name %> and have processed it. If you did not initiate this change, please <a href="<%= contact_link %>">contact us</a> immediately to help resolve the matter as well as strengthen our surveillance of your account to prevent such occurrences going forward.
+            We take the security of your account very seriously and appreciate your help in keeping your account secure.
+        </p>
+        <% } else if (type === 'approved') { %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            We recently received your request for ownership of <%= owner_request.listing.name %> and have approved it. You will now be able to see <%= owner_request.listing.name %> in the Child Care Centers section and any corresponding reviews/ratings from customers in the Ratings Received section of your dashboard upon logging in.
+            You can also click on <%= owner_request.listing.name %> from Child Care Centers and update any information pertaining to <%= owner_request.listing.name %>.
+            <br/><br/>
+            According to our policy, reviews you may have submitted for <%= owner_request.listing.name %> will no longer be available on our site to avoid any conflict of interest.
+            <br/><br/>
+            Please do not hesitate to <a href="<%= contact_link %>">contact us</a> if you have any questions.
+        </p>
+        <% } %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            Thank you for being a valued customer. We look forward to your continued partnership.
+        </p>
+        <br/>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">Sincerely,</p>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;"><b>The Ratingsville Team </b></p>
+        <hr style="border: none;border-bottom: 1px solid #ececec;margin: 40px 0 1.5rem 0;">
+
+
+    </div>
+
+
+    <div class="footer">
+        <p style="padding-top: 20px; font-size: 14px;color: white;text-align: center;font-weight: 600;">Copyright &copy;
+            2018 - Ratingsville</p>
+    </div>
+</div>
+<div style="height: 5px;"></div>
+</body>
+</html>
+
+

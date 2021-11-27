@@ -1,0 +1,24 @@
+{
+  "listing": {
+    "listingId": 1,
+    "name": "Johnny Ruiz",
+    "code": "wordpress-developer-1",
+    "address": "Davao City, Philippines",
+    "postcode": null,
+    "phoneNo": "7327074113",
+    "email": "jruiz@gmail.com",
+    "summary": "10 yrs. Professional Wordpress Developer",
+    "pictureUrl": "/images/listing/novenue.png",
+    "pictureAlt": null,
+    "pictureThumbUrl": "/images/listing/novenue.png",
+    "parentId": null,
+    "description": null,
+    "listingType": "resume",
+    "makerId": null,
+    "dateCreated": 1240508078000,
+    "dateModified": null,
+    "dateVisited": 1305864000000,
+    "status": "A",
+    "featured": false
+  }
+}

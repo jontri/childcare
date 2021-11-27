@@ -1,0 +1,72 @@
+<div class="block-section-sm bg-color1 profile" style="min-height: 800px">
+  <div class="col-md-12">
+      <div class="col-md-3 col-sm-12">
+          <img src="assets/theme/images/people/avatar_blank_female.jpg" ng-if="!selected_user.photo && selected_user.sex=='Female'" class="img-responsive img-full img-thumbnail">
+          <img src="assets/theme/images/people/avatar_blank_male.jpg" ng-if="!selected_user.photo && selected_user.sex!='Female'" class="img-responsive img-full img-thumbnail">
+          <img ng-src="assets/uploads/{{ selected_user.photo }}" ng-if="selected_user.photo" class="img-responsive img-full img-thumbnail">
+      </div>
+      <div class="col-md-6 col-sm-12 info">
+          <h3 class="line-bottom-5">
+              Personal Information
+          </h3>
+
+          <div class="form-inline">
+              <label>First Name : </label> <span >{{selected_user.firstName}}</span>
+          </div>
+
+          <div class="form-inline">
+              <label>Middle Initial : </label> <span>{{selected_user.middleName}}</span>
+          </div>
+
+          <div class="form-inline">
+              <label>Last Name : </label> <span>{{selected_user.lastName}}</span>
+          </div>
+      </div>
+
+      <div class="col-md-6 info">
+          <h3 class="line-bottom-5">
+              Contact Information
+          </h3>
+
+          <div class="form-inline">
+              <label>Email : </label> <span id="email">{{selected_user.email}}</span>
+          </div>  
+          <div class="form-inline">
+              <label>Phone Number : </label> <span>{{selected_user.contactNum}}</span>
+          </div>  
+          <div class="form-inline">
+              <label>Cell Number :  </label> <span>{{selected_user.mobileNum}}</span>
+          </div>
+          <div class="form-inline">
+              <label>Address :  </label> <span>{{selected_user.address.street}}</span> ,<span>{{selected_user.address.city}}</span> <span>{{selected_user.address.state}}</span> <span>{{selected_user.address.zip}}</span>
+          </div>  
+      </div> 
+
+      <!--<div class="col-md-6 info">-->
+          <!--<h3 class="line-bottom-5">-->
+              <!--Security Information-->
+          <!--</h3>-->
+
+          <!--<div class="form-inline">-->
+              <!--<label>selected_username : </label> <span>{{selected_user.username}}</span>-->
+          <!--</div>-->
+
+          <!--<div class="form-inline">-->
+              <!--<label>Password : </label> <span>********</span>-->
+          <!--</div>  -->
+
+          <!--<div class="form-inline">-->
+            <!--<a id="edit-profile-btn" class="btn btn-success" ui-sref="dashboard_edit_security_information"><i class="fa fa-edit"></i> Edit Security Information</a>-->
+          <!--</div>-->
+      <!--</div> -->
+
+
+        <div class="col-md-9 padding-top-10">
+          <!-- <a id="edit-profile-btn" class="btn btn-success pull-right" ui-sref="dashboard_edit_profile"><i class="fa fa-edit"></i> Edit Profile</a> -->
+          <a id="edit-profile-btn" class="btn btn-danger pull-right" ng-click="deleteUser(selected_user)"><i class="fa fa-trash"></i> Delete User</a>
+        </div>
+
+  </div>
+
+
+</div>      

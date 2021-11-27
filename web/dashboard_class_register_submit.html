@@ -1,0 +1,47 @@
+<div class="col-xs-12">
+    <div rv-floater="{{classCtrl.floaterInit}}" rv-obj-height="{{classCtrl.headerHeight}}" rv-right="{{classCtrl.rightOffset}}" class="hidden-xs hidden-sm">
+        <button type="button" class="btn btn-theme btn-t-primary" ng-click="classCtrl.cancel('dashboard_class')">Cancel</button>
+        <button type="button" class="btn btn-theme btn-t-primary" ng-click="classCtrl.overrideClassFormSequence(1,'classOverviewForm')">Go Back</button>
+        <button type="button" id="submit-primary" class="btn btn-theme btn-t-primary" ng-if="!classCtrl.progress.updateMode" ng-click="classCtrl.saveNewClass()">
+            <i class="fa fa-save"></i>
+            Save
+        </button>
+        <button type="submit" id="save-client-btn-add" ng-click="classCtrl.updateClass()" class="btn btn-theme btn-t-primary" ng-if="classCtrl.progress.updateMode" >
+            <i class="fa fa-save"></i>
+            Update
+        </button>
+    </div>
+
+    <h3 class="line-bottom-5">Class Registration</h3>
+    <div class="col-xs-12 info">
+        <rv-info rv-label="'Class Name'" rv-info-text="{{classCtrl.classFormData.name}}"></rv-info>
+        <rv-info rv-label="'Age Group'" rv-info-text="{{classCtrl.ageGroups[classCtrl.ageInput].name}}"></rv-info>
+        <rv-info rv-label="'Min Age'" rv-info-text="{{classCtrl.classFormData.ageGroup.min}} {{classCtrl.classFormData.ageGroup.minTime}}"></rv-info>
+        <rv-info rv-label="'Max Age'" rv-info-text="{{classCtrl.classFormData.ageGroup.max}} {{classCtrl.classFormData.ageGroup.maxTime}}"></rv-info>
+        <rv-info rv-label="'Max Slots'" rv-info-text="{{classCtrl.classFormData.capacityMax}}"></rv-info>
+        <rv-info rv-label="'Taken Slots'" rv-info-text="{{classCtrl.classFormData.capacityTaken}}"></rv-info>
+        <rv-info rv-label="'Vacant Slots'" rv-info-text="{{classCtrl.classFormData.capacityVacant}}"></rv-info>
+        <div class="form-inline row">
+            <label class="col-xs-12 col-sm-4 ng-binding" style="padding: 0;">Teachers/Caregivers </label>
+            <span class="col-xs-12 col-sm-8 ng-scope" style="padding: 0;" ng-bind-html="classCtrl.printTeachers()"></span>
+        </div>
+        <div class="white-space-20"></div>
+    </div>
+
+    <div class="col-xs-12 visible-xs visible-sm">
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="classCtrl.cancel('dashboard_class')">Cancel</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="classCtrl.overrideClassFormSequence(1,'classOverviewForm')">Go Back</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-if="!classCtrl.progress.updateMode" ng-click="classCtrl.saveNewClass()">
+            <i class="fa fa-save"></i>
+            Save
+        </button>
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-if="classCtrl.progress.updateMode" ng-click="classCtrl.updateClass()">
+            <i class="fa fa-save"></i>
+            Update
+        </button>
+    </div>
+
+</div>
+

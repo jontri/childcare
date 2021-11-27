@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="routerApp">
+<script type="text/javascript"> //<![CDATA[
+var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+</script>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Ratingsville</title>
+
+  <!--favicon-->
+  <link rel="apple-touch-icon" href="assets/theme/images/apple-touch-icon.png">
+  <link rel="shortcut icon" href="assets/theme/images/favicon.ico" type="image/x-icon">
+
+  <!-- Include Code Mirror style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
+  <!-- inject:css -->
+  <!-- endinject -->
+
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- JS (load angular, ui-router, and our custom js file) -->
+   <!--<script src="http://code.angularjs.org/1.2.13/angular.js"></script>-->
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script> -->
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCJLtNXz3CS8TWeIML51m-AwdeVn0gtRCw"></script>
+
+  <!-- inject:js -->
+  <!-- endinject -->
+
+  <!-- Include Code Mirror. -->
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+  <!-- CAPTCHA -->
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+
+  <!-- Stripe-->
+  <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+</head>
+<!-- apply our angular app to our site -->
+<body>
+
+
+<div ui-view autoscroll="true" id="rv-main-view"></div>
+
+<!--<script language="JavaScript" type="text/javascript">-->
+    <!--TrustLogo("https://www.ratingsville.com/assets/img/comodo_secure.png", "CL1", "none");-->
+<!--</script>-->
+<!--<a  href="https://ssl.comodo.com" id="comodoTL">Comodo SSL</a>-->
+</body>
+<!--<script type="text/javascript">-->
+  <!--new WOW().init();-->
+<!--</script>-->
+</html>

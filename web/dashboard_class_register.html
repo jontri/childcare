@@ -1,0 +1,34 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: auto; min-height: 800px;">
+  <div class="col-md-12 fixedProgressBar" >
+    <ul class="breadcrumb hidden-xs hidden-sm">
+        <li id="crumbOverview"
+        ng-class="{completed: classCtrl.progress.overviewCompleted,active: classCtrl.progress.formIndex ==1,'not-completed': !classCtrl.progress.overviewCompleted  && classCtrl.progress.formIndex !=1}">
+          <a ng-click="classCtrl.overrideClassFormSequence(1,'classOverviewForm',classCtrl.classFormData)" href="javascript:void(0);" data-target="#overview">Overview</a></li>
+
+      <li id="crumbComplete"
+      ng-class="{completed: classCtrl.progress.overviewCompleted,active: classCtrl.progress.formIndex ==2,
+              'not-completed': !classCtrl.progress.overviewCompleted }">
+      <a href="javascript:void(0);" ng-click="classCtrl.overrideClassFormSequence(2,null,classCtrl.classFormData)" data-target="#classComplete">Review and Save</a></li>
+    </ul>
+  </div>
+  <h2 class="col-xs-12 visible-xs visible-sm">
+    <span ng-show="classCtrl.progress.formIndex === 1">Overview</span>
+    <span ng-show="classCtrl.progress.formIndex === 2">Review and Save</span>
+  </h2>
+  <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" />
+  <div class="col-xs-12">
+    <div class="tab-content">
+
+      <!-- Overview Tab -->
+        <div class="tab-pane active" id="overview" >
+            <div ng-include="'dashboard_class_register_overview.html'"></div>
+        </div>
+
+      <!-- Complete -->
+        <div class="tab-pane" id="classComplete" >
+            <div ng-include="'dashboard_class_register_submit.html'"></div>
+        </div>
+    </div>
+      
+  </div>
+</div>

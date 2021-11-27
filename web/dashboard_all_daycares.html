@@ -1,0 +1,40 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px">
+  <div class="col-md-12 daycares">
+  	<h3>Daycares</h3>
+
+    <div class="daycare-item" ng-repeat="result in daycares | offset: offsetValue | limitTo: itemsPerPage">
+      <div class="row">
+        <div class="col-md-2 hidden-sm hidden-xs">
+          <div class="img-item"><img src="assets\theme\images\company-logo\1.jpg" alt=""></div>
+        </div>
+        <div class="col-md-10">
+          <h3 class="no-margin-top"><a ui-sref="listingDetail({ listingId: result.id })" class="">{{result.name}}
+            <!--<i class="fa fa-link color-white-mute font-1x"></i>-->
+            </a>
+          </h3>
+          <h5> <span class="color-white-mute">{{result.address.addressLine1}}, {{result.address.addressLine2}}, {{result.address.city}}, {{result.address.state}}, {{result.address.zip}}</span>
+          </h5>
+          <p>+{{result.phone}}, +{{result.altPhone}}</p>
+          <p class="text-truncate ">{{result.description}}</p>
+        </div>
+      </div>
+    </div><!-- end item list -->
+
+    <ul class="pagination">
+      <li ng-class="prevPageDisabled()">
+        <a href="" ng-click="prevPage()" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+          <a href="">{{n+1}}</a>
+      </li>
+      <li ng-class="nextPageDisabled()">
+        <a href="" ng-click="nextPage()" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</div>      

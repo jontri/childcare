@@ -1,0 +1,378 @@
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader">
+      <div class="white-space-20"></div>
+      <h3 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h3>
+      <div class="white-space-20"></div>
+    </div>
+  </header>
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div class="block-section bg-color4">
+      <div class="container">
+        <div class="panel panel-custom">
+          <div class="panel-body">
+            <form name="register_ctrl.formUpdateUser"
+                  ng-submit="register_ctrl.updateUser(register_ctrl.existing_user)">
+              <div class="row ">
+                <div class="col-md-12">
+
+                  <!-- form login -->
+                    <div class="col-md-3 spacer-bottom text-center">
+                      <label>Upload picture
+                        <i class="fa fa-info-circle"
+                           data-toggle="tooltip"
+                           data-title="File types 'jpg' and 'png' only and Max file size is 5mb"
+                           data-placement="top"
+                           rv-tooltip></i>
+                      </label>
+                      <div class="uploaded-photo-wrapper">
+                        <img ng-src="{{ register_ctrl.croppedDataUrl }}"/>
+                      </div>
+                      <button class="btn btn-sm btn-default"
+                              ng-click="register_ctrl.clickBtn('#btn-update-profile-photo')" type="button">Change
+                      </button>
+                      <input type="file" id="btn-update-profile-photo" class="btn-file-select" ngf-select
+                             ng-model="register_ctrl.existing_user.photo" name="file" ngf-max-size="5mb" name="file"
+                             ngf-pattern="'image/*'" ngf-accept="'image/*'"/>
+
+                      <p ng-show="register_ctrl.formUpdateUser.file.$error.maxSize" class="text-red font-small">File
+                        too large. Max size is 5mb</p>
+
+                      <p ng-show="register_ctrl.formUpdateUser.file.$error.pattern" class="text-red font-small">File
+                        type not supported.</p>
+                      <p ng-show="register_ctrl.formUpdateUser.file.$error.accept" class="text-red font-small">File
+                        type not supported.</p>
+
+                    </div>
+                    <div class="col-md-9">
+                      <div ngf-drop ng-model="register_ctrl.existing_user.photo" name="drop_file"
+                           ngf-pattern="image/*"
+                           class="cropArea">
+                        <img-crop
+                            ng-if="register_ctrl.formUpdateUser.file.$dirty || register_ctrl.formUpdateUser.drop_file.$dirty || register_ctrl.existing_user.photo === null"
+                            image="register_ctrl.existing_user.photo  | ngfDataUrl"
+                            result-image="register_ctrl.croppedDataUrl" result-image-format="image/png"
+                            area-type="square" ng-init="register_ctrl.croppedDataUrl=''">
+                        </img-crop>
+                      </div>
+                    </div>
+                    <div class="col-md-12 white-space-10"/>
+
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="form-group col-md-12">
+                    <label>Preffered Way to Address You:</label>
+                    <select name="way_to_address" class="form-control"
+                            ng-model="register_ctrl.existing_user.preferredWayToAddress"
+                            ng-options="way for way in ['First Name', 'Title and Last Name', 'Other']"></select>
+                    <div ng-if="register_ctrl.existing_user.preferredWayToAddress === 'Other'">
+                      <div class="white-space-10"></div>
+                      <input type="text" class="form-control" placeholder="What is your preffered way to address you?"
+                             ng-model="register_ctrl.existing_user.otherWayToAddress"/>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-sm-12 col-xs-12 padding-top-10">
+                  <div class="form-group col-md-12">
+                    <legend>Children Information</legend>
+                  </div>
+                </div>
+                <div class="col-md-8 col-sm-12 col-xs-12">
+                  <div class="form-group col-md-12">
+                    <label>Email Alias:</label>
+                    <input type="email" name="aliasEmail" class="form-control col-md-5"
+                           placeholder="Your Alias Email Address"
+                           ng-model="register_ctrl.existing_user.aliasEmail" required/>
+                    <div ng-messages="register_ctrl.formUpdateUser.aliasEmail.$error"
+                         ng-if='register_ctrl.formUpdateUser.aliasEmail.$dirty'>
+                      <div class="text-danger" ng-message="required">This is a required field.</div>
+                      <div class="text-danger" ng-message="email">Please provide a valid email address.</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                  <div class="form-group col-md-12">
+                    <label>Number of Children</label>
+                    <select name="numChildren" class="form-control"
+                            ng-options="value as value for value in [0, 1, 2, 3, 4, 5]"
+                            ng-model="register_ctrl.existing_user.numChildren">
+
+                    </select>
+                  </div>
+                </div>
+
+                <div ng-show="register_ctrl.is_Same_lastName" class="col-md-12 col-sm-12 col-xs-12">
+                  <div class="form-group col-md-12">
+                    <label>Child's Lastname the same as user's?
+                      <i class="fa fa-info-circle"
+                         data-toggle="tooltip"
+                         data-title="Not sure what question to put"
+                         data-placement="top"
+                         rv-tooltip></i>
+                      &nbsp;
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="same_lastName"
+                             ng-model="register_ctrl.children_lastName"
+                             value="Yes">Yes
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" name="same_lastName"
+                             ng-model="register_ctrl.children_lastName"
+                             value="No">No
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <fieldset>
+                    <!--<legend>Children Information</legend>-->
+                    <div>
+                      <uib-accordion close-others="register_ctrl.oneAtATime">
+                        <uib-accordion-group ng-repeat="child in register_ctrl.children track by $index" is-open="true">
+                          <uib-accordion-heading>
+                            Child #{{ $index + 1}} <i class="pull-right glyphicon"
+                                                      ng-class="{'glyphicon-chevron-up': register_ctrl.status.open, 'glyphicon-chevron-down': !register_ctrl.status.open}"></i>
+                          </uib-accordion-heading>
+                          <div class="row">
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+                              <div class="form-group">
+                                <label>Child's Name</label>
+                                <input type="text" name="firstName" class="form-control" placeholder="Your First Name"
+                                       ng-model="register_ctrl.existing_user.children[$index].firstName"/>
+                              </div>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                              <div class="form-group">
+                                <label></label>
+                                <input type="text" name="middleName" class="form-control" placeholder="M.I"
+                                       ng-model="register_ctrl.existing_user.children[$index].middleName"/>
+                              </div>
+                            </div>
+
+                            <div class="col-md-5 col-sm-12 col-xs-12">
+                              <div class="form-group">
+                                <label></label>
+                                <input type="text" name="lastName" class="form-control" placeholder="Your Last Name"
+                                       ng-model="register_ctrl.existing_user.children[$index].lastName"/>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                              <label>Date of Birth</label>
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <select name="birth_month" class="form-control"
+                                            ng-model="register_ctrl.existing_user.children[$index].birth.month"
+                                            ng-options="month for month in register_ctrl.months"></select>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <span class="form-error text-danger"></span>
+                                    <select name="birth_day" class="form-control"
+                                            ng-model="register_ctrl.existing_user.children[$index].birth.day"
+                                            ng-options="day for day in register_ctrl.days"></select>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <select name="birth_year" class="form-control"
+                                            ng-model="register_ctrl.existing_user.children[$index].birth.year"
+                                            ng-options="year for year in register_ctrl.years"></select>
+                                  </div>
+                                </div>
+
+
+                              </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="">Gender</label>
+                                  <select name="gender" class="form-control"
+                                          ng-model="register_ctrl.existing_user.children[$index].gender"
+                                          ng-options="gender for gender in ['Female', 'Male']">
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label for="">Attends Daycare?</label>
+                                  <select name="gender" class="form-control"
+                                          ng-model="register_ctrl.existing_user.children[$index].attends_daycare"
+                                          ng-options="answer for answer in ['yes', 'no']">
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div ng-if="register_ctrl.existing_user.children[$index].attends_daycare === 'yes'">
+                            <div class="row">
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group custom-select" 
+                                         ng-show="register_ctrl.existing_user.children[$index].show_daycare_dropdown && register_ctrl.existing_user.children[$index].show_daycare_fields === false">
+                                     <label>Daycare for {{ register_ctrl.existing_user.children[$index].firstName }}</label>
+                                     <select
+                                         class="form-control"
+                                         rv-dropdown-select
+                                         select-options="register_ctrl.daycare_list"
+                                         select-items="[]"
+                                         select-text-value="[]"
+                                         select-type="basic-dropdown"
+                                         select-model="{{ $index }}"
+                                         on-select-option="register_ctrl.updateChildDaycare(model, id, administrator)"
+                                         placeholder="Daycare Name">
+                                     </select>
+                                     <div ng-if="register_ctrl.existing_user.children[$index].daycare.administrator !== ''">
+                                        <b>Daycare Administrator: {{ register_ctrl.existing_user.children[$index].daycare.administrator }}</b>
+                                      </div>
+                                     <div>Cannot find your daycare? <a href="javascript:;" ng-click="register_ctrl.showDaycareAddressFields($index)">Click here to enter daycare details manually.</a></div>
+                                </div>
+                                <div class="form-group custom-select" 
+                                         ng-show="!register_ctrl.existing_user.children[$index].show_daycare_dropdown && register_ctrl.existing_user.children[$index].show_daycare_fields === true">
+                                     <label>Daycare for {{ register_ctrl.existing_user.children[$index].firstName }}</label>
+                                     <input type="text" class="form-control" ng-model="register_ctrl.existing_user.children[$index].daycare.name" name="daycareName" placeholder="Daycare Name">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row" ng-show="register_ctrl.existing_user.children[$index].show_daycare_fields">
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label>Address</label>
+                              </div>
+                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                  <label>Street</label>
+                                  <input type="text" class="form-control"
+                                         ng-model="register_ctrl.existing_user.children[$index].daycare.address.addressLine1"  placeholder="Street">
+                                </div>
+                              </div>
+
+                              <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                  <label>Zip Code</label>
+                                  <input type="number" name="zip" class="form-control"
+                                         ng-model="register_ctrl.existing_user.children[$index].daycare.address.zip"
+                                         ng-change="register_ctrl.changeDaycareZipcode(register_ctrl.existing_user.children[$index].daycare)"
+                                         maxlength="5" minlength="5" placeholder="Zip Code">
+                                  <div ng-messages="register_ctrl.formUpdateUser.zip.$error"
+                                       ng-if='register_ctrl.formUpdateUser.zip.$dirty'>
+                                    <div class="text-danger" ng-message="maxlength">Zip code should be 5 digits</div>
+                                    <div class="text-danger" ng-message="minlength">Zip code should be 5 digits</div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                  <label>City</label>
+                                  <input id="city" type="text" class="form-control"
+                                         ng-model="register_ctrl.existing_user.children[$index].daycare.address.city"
+                                         placeholder="City">
+                                </div>
+                              </div>
+                              <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                  <label>State</label>
+                                  <select
+                                      rv-dropdown-select
+                                      ng-if="register_ctrl.existing_user.children[$index].daycare.address_is_refreshed"
+                                      select-options="register_ctrl.states"
+                                      select-items="register_ctrl.existing_user.children[$index].daycare.selected_state"
+                                      select-text-value="[]"
+                                      select-type="basic-dropdown"
+                                      select-model="dropdown_destination"
+                                      class="form-control"
+                                      ng-model="register_ctrl.existing_user.children[$index].daycare.address.state"
+                                      placeholder="Your State"
+                                      name="dropdown_destination"
+                                      on-select-option="register_ctrl.updateDestinationModels(model, id)"
+                                  >
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                  <label>Do you authorize us to verify your child's enrollment with this daycare?
+                                    <i class="fa fa-info-circle"
+                                       data-toggle="tooltip"
+                                       data-title="Explanation why we are asking for this[change this content]"
+                                       data-placement="top"
+                                       rv-tooltip></i>
+                                  </label>
+                                  <label class="radio-inline">
+                                    <input type="radio" name="userType"
+                                           ng-model="register_ctrl.existing_user.children[$index].daycare.verify"
+                                           value="yes">Yes
+                                  </label>
+                                  <label class="radio-inline">
+                                    <input type="radio" name="userType"
+                                           ng-model="register_ctrl.existing_user.children[$index].daycare.verify"
+                                           value="no">No
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </uib-accordion-group>
+                      </uib-accordion>
+                    </div>
+
+                  </fieldset>
+                </div>
+                <div class="white-space-10"></div>
+
+                <div class="col-md-12 spacer-bottom text-center">
+                <div class="form-group  col-md-12">
+                  <button ng-disabled="register_ctrl.formUpdateUser.$invalid"
+                          class="btn btn-theme btn-lg btn-t-primary btn-block">
+                    <span>Continue</span>
+                  </button>
+                </div>
+                  </div>
+
+                <div class="col-md-12">
+                  <div class="pull-right">
+                      <span><a href="javascript:void(0)" data-ng-click="register_ctrl.previousPage()">Back to Previous
+                        Page</a></span>
+                  </div>
+                </div>
+
+            </form>
+            <!-- form login -->
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="white-space-20"></div>
+    <div class="text-center color-white">By creating an account, you agree to Daycare <br><a href="#"
+                                                                                             class="link-white"><strong>Terms
+      of Service</strong></a> and consent to our <a href="#" class="link-white"><strong>Privacy Policy</strong></a>.
+    </div>
+  </div>
+</div>
+
+
+</div>
+<!--end body-content -->
+<div ui-view="footer"></div>
+<div ui-view="auditlog"></div>
+</div>

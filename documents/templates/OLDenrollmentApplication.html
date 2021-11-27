@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body class="container-fluid noPad">
+    <div class="pageA4">
+        <div class="col-md-12 noPad">
+            <!-- FORM HEADER -->
+            <div class="row text-center" style="margin-bottom: 20px;">
+                <b class="formHeader">CHILD CARE APPLICATION FOR ENROLLMENT</b>
+            </div>
+            <!-- FORM BODY -->
+            <div class="row">
+                <table style="width:100%">
+                    <td style="width:25%"><span class="sectionTitle">Student Information:</span></td>
+                    <td style="width:25%">Date of Birth: <span class="fieldSpace">{{birthString}}</span></td>
+                    <td style="width:25%">Sex: <span class="fieldSpace">{{gender}}</span></td>
+                    <td style="width:25%">Date of Enrollment: <span class="fieldSpace"></span></td>
+                </table>
+            </div>
+            <div class="row">
+                <table style="width:100%">
+                    <tr>
+                        <td width="11%">Full Name: </td>
+                        <td class="nameField">
+                            {{firstName}}
+                        </td>
+                        <td class="nameField">
+                            {{middleName}}
+                        </td>
+                        <td class="nameField">
+                            {{lastName}}
+                        </td>
+                        <td class="nameField">
+                            {{nickName}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="bottomLabel">Last Name</td>
+                        <td class="bottomLabel">First Name</td>
+                        <td class="bottomLabel">Middle Name</td>
+                        <td class="bottomLabel">Nickname</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <table style="width:100%">
+                    <tr>
+                        <td width="24%;">Child's Physical Address: </td>
+                        <td class="nameField">
+                            {{pobox}}
+                        </td>
+                        <td class="nameField">
+                            {{street}}
+                        </td>
+                        <td class="nameField">
+                            {{apt}}
+                        </td>
+                        <td class="nameField">
+                            {{zip}}
+                        </td>
+                        <td class="nameField">
+                            {{city}}
+                        </td>
+                        <td class="nameField">
+                            {{state}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class="bottomLabel">PO Box</td>
+                        <td class="bottomLabel">Street</td>
+                        <td class="bottomLabel">Apt.</td>
+                        <td class="bottomLabel">Zip</td>
+                        <td class="bottomLabel">City</td>
+                        <td class="bottomLabel">State</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                Primary Hours of Care: From
+                <span class="fieldSpace"> {{careHourStartTxt}} </span> To
+                <span class="fieldSpace">{{careHourEndTxt}}</span>
+            </div>
+            <div class="row">
+                <table style="width:100%">
+                    <tr>
+                        <td width="17%">Days of Weeks in Care: </td>
+                        <td width="8%">
+                            {{#checkDay.0}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkDay.0}} M
+                        </td>
+                        <td width="8%">
+                            {{#checkDay.1}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkDay.1}} T
+                        </td>
+                        <td width="8%">
+                            {{#checkDay.2}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkDay.2}} W
+                        </td>
+                        <td width="8%">
+                            {{#checkDay.3}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkDay.3}} Th
+                        </td>
+                        <td width="8%">
+                            {{#checkDay.4}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkDay.4}} F
+                        </td>
+                        <td width="8%">
+                            {{#checkDay.5}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkDay.5}} Sa
+                        </td>
+                        <td width="8%">
+                            {{#checkDay.6}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkDay.6}} Su
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <table style="width:100%">
+                    <tr>
+                        <td width="36%">Meals Typically Served While in Care:</td>
+                        <td width="">
+                            {{#checkMeal.0}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkMeal.0}} Br
+                        </td>
+                        <td width="">
+                            {{#checkMeal.1}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkMeal.1}} AM Snack
+                        </td>
+                        <td width="">
+                            {{#checkMeal.2}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkMeal.2}} Lunch
+                        </td>
+                        <td width="">
+                            {{#checkMeal.3}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkMeal.3}} PM Snack
+                        </td>
+                        <td width="">
+                            {{#checkMeal.4}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkMeal.4}} Sup
+                        </td>
+                        <td width="">
+                            {{#checkMeal.5}}
+                            <i class="glyphicon glyphicon-ok"></i>{{/checkMeal.5}} Eve Snack
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <span class="sectionTitle">Family Information:</span>
+                Child live with:
+                <span class="fieldSpace">{{liveWith}}</span>
+                Custody: <span class="fieldSpace">{{custody}}</span>
+            </div>
+            <div class="row">
+                <div class="col-md-12 noPad">
+                    <table width="100%">
+                        <tr>
+                            <td width="50%">
+                                <table>
+                                    <tr>
+                                        <td>Mother: </td>
+                                        <td class="nameField">{{motherName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address: </td>
+                                        <td class="addressField">{{motherAddress}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Home #: </td>
+                                        <td class="nameField">{{motherHomeNum}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Work #: </td>
+                                        <td class="nameField">{{motherWorkNum}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile #: </td>
+                                        <td class="nameField">{{motherMobileNum}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Employer: </td>
+                                        <td class="nameField">{{motherEmployer}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Emp. Address: </td>
+                                        <td class="addressField">{{motherEmployerAddress}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Employer #: </td>
+                                        <td class="nameField">{{motherEmployerNum}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="50%">
+                                <table>
+                                    <tr>
+                                        <td>Father: </td>
+                                        <td class="nameField">{{fatherName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address: </td>
+                                        <td class="addressField">{{fatherAddress}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Home #: </td>
+                                        <td class="nameField">{{fatherHomeNum}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Work #: </td>
+                                        <td class="nameField">{{fatherWorkNum}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile #: </td>
+                                        <td class="nameField">{{fatherMobileNum}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Employer: </td>
+                                        <td class="nameField">{{fatherEmployer}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Emp. Address: </td>
+                                        <td class="addressField">{{fatherEmployerAddress}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Employer #: </td>
+                                        <td class="nameField">{{fatherEmployerNum}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <span class="sectionTitle">Medical Information:</span>
+                <p>{{#medicalPermission}}<i class="glyphicon glyphicon-ok"></i>{{/medicalPermission}} I hereby grant permission for the staff of this facility to contact the following medical personnel to obtain emergency medical care if warranted.</p>
+            </div>
+            <div class="row">
+                <table width="100%">
+                    {{#doctor}}
+                    <tr>
+                        <td style="width: 10%">Doctor:</td>
+                        <td class="underlineField">{{doctorName}}</td>
+                        <td style="width: 10%">Address:</td>
+                        <td class="underlineField">{{doctorAddress}}</td>
+                        <td style="width: 10%">Phone:</td>
+                        <td class="underlineField">{{doctorPhone}}</td>
+                    </tr>
+                    {{/doctor}}
+                </table>
+                <div>Hospital Preference: <span class="fieldSpace">{{hospital}}</span></div>
+            </div>
+            <div class="row">
+                <span class="sectionTitle">Contacts:</span>
+                <p>Child will be released only to the custodial parent or legal guardian and the persons listed below. The following people will also be contacted and are authorized to remove the child from the facility in case of illness, accident or emergency, if for some reason, the custodial parent or legal guardian cannot be reached:</p>
+            </div>
+            <div class="row">
+                <table width="100%">
+                    {{#contact}}
+                    <tr>
+                        <td class="nameField">{{contactName}}</td>
+                        <td class="nameField">{{contactAddress}}</td>
+                        <td class="nameField">{{contactWorkNum}}</td>
+                        <td class="nameField">{{contactHomeNum}}</td>
+                    </tr>
+                    <tr>
+                        <td class="bottomLabel">Name</td>
+                        <td class="bottomLabel">Address</td>
+                        <td class="bottomLabel">Work #</td>
+                        <td class="bottomLabel">Home #</td>
+                    </tr>
+                    {{/contact}}
+                </table>
+            </div>
+            <div class="row" style="page-break-before : always">
+                <span class="sectionTitle">Helpful Information About Child:</span><br/><br/>
+                <div class="note">
+                    {{note}}
+                </div>
+                <ul>
+                    <li>Section 65C-22.006(2), F.A.C., requires a current physical examination (Form 3040) and immunization record (Form 680 or 681) within 30 days of enrollment.</li>
+                    <li>Section 402.3125(5), F.S., requires that parents receive a copy of the Child Care Facility Brochure, "Know Your Child Care Facility” (CF/PI 175-24), or</li>
+                    <li>Section 65C-20.11(2)(c)(1), F.A.C., requires that parent(s) receive a copy of the family day care home brochure, “Selecting A Family Day Care Home Provider” (CF/PI 175-28).</li>
+                    <li>Section 65C-22.006(3)(c)2., F.A.C., requires that parents are notified in writing of the disciplinary practices used by the child care facility, or</li>
+                    <li>Section 65C-20.010(6)(c), F.A.C., requires that a written a copy of the family day care provider’s discipline policy be available for review by the parent(s).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<style type="text/css">
+body {
+    font-size: 15px;
+}
+
+.pageA4 {
+    width: 21cm;
+    height: 29.7cm;
+    display: block;
+    margin: 0 auto;
+    /*padding: 0px 50px;*/
+    padding: 10px 40px;
+    margin-bottom: 0.5cm;
+}
+
+.noPad {
+    padding: 0;
+}
+
+.formHeader {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+
+.sectionTitle {
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+
+.fieldSpace {
+    text-align: center;
+    margin-right: 5px;
+    border-bottom: 1px solid black;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.underlineField {
+    border-bottom: 1px solid black;
+}
+.nameField {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.addressField {
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 70%;
+    height: 40px;
+}
+
+.bottomLabel {
+    text-align: center;
+}
+
+.profileName {
+    height: 50px;
+}
+
+.row {
+    margin: 10px -15px;
+}
+.note{
+    padding: 0px 10px;
+    border: 1px solid black;
+    width: 100%;
+    height: 200px;
+}
+</style>

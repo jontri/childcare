@@ -1,0 +1,32 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px">
+  <div class="col-md-12">
+  		<div class="daycares-container">
+	    	<div class="daycare" ng-repeat="article in articles">
+		    	<a href="">
+		    		<div class="img text-center">
+		    			<img src="assets/theme/images/article.jpg" class="img-full">
+		    			<!-- <i class="fa fa-star color-white" style="font-size: 100px;"></i> -->
+		    		</div>
+		    		<div class="info">
+			    		<div class="desc">
+			    			<p class="name">
+			    				<h4>{{removeHtmlTagsTitle(article.title)}}</h4>
+			    			</p>
+			    			<p class="desc-content">
+			    				{{removeHtmlTagsContent(article.content)}}...
+			    			</p>
+			    		</div>
+			    		<div class="stats">
+			    			<p>
+			    				Views: <span class="views">87</span>
+			    			</p>
+			    		</div>
+		    		</div>
+				</a>
+				<button class="btn btn-sm btn-primary" style="margin-left: 5px;margin-bottom: 5px;">Edit</button>
+			    <button class="btn btn-sm btn-danger" style="margin-bottom: 5px;" ng-click="removeArticle(article.id)">Remove</button>
+	    	</div>
+	    </div>	
+
+  </div>
+</div>      

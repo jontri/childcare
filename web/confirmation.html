@@ -1,0 +1,32 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader" ng-if="!!register_ctrl.is_verify_successful">
+      <div class="white-space-20"></div>
+      <h3 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h3>
+      <div class="white-space-20"></div>
+    </div>
+  </header>
+  <!-- body-content -->
+  <div class="block-section bg-color4" >
+    <div class="container">
+      <div class="panel panel-md" ng-hide="register_ctrl.is_verify_successful">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <h2 align="center"><i class="fa fa-spinner fa-spin" style="font-size:36px;margin-right:10px;"></i>Verifying&#8230;</h2>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--end body-content -->
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+</div>

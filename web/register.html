@@ -1,0 +1,411 @@
+﻿<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader">
+      <div class="white-space-20"></div>
+      <h3 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h3>
+      <div class="white-space-20"></div>
+    </div>
+  </header>
+  <!-- body-content -->
+  <div class="body-content" id="body-content">
+    <div class="block-section bg-color4 registration">
+      <div class="container">
+        <div class="panel panel-custom-700">
+          <div class="panel-body">
+            <form id="registration-form" name="register_ctrl.formNewUser"
+                  ng-submit="register_ctrl.createUser(register_ctrl.new_user, register_ctrl.formNewUser)" novalidate>
+
+              <div class="col-md-12 registerForm">
+                <div class="pull-right "><span>Note :</span>&nbsp;<b>(<span
+                    style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b></div>
+
+                <legend>Registration Page</legend>
+
+                <!--<div class="col-md-12">-->
+
+                  <div class="form-group">
+                    <label>I am a<span style="color:red;">*</span><!--Are you a<span style="color:red;">*</span>-->
+                      <span class="text-danger" id="cbUserTypeErrorMsg" ng-show="register_ctrl.submitted && register_ctrl.userTypeRequired">
+                        Please select at least one (both if applicable)
+                      </span>
+                      <span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.userType.$error">
+                        <span class="text-danger" ng-message="required">
+                          Please select at least one (both if applicable)
+                        </span>
+                      </span>
+                    </label>
+                    <div class="well">
+            <!--<label style="display:initial;margin-right:5%">
+
+            <input id="cbUserType"
+            type="checkbox"
+            name="parent"
+            value="parent"
+            checked="true" 
+            onclick="return false;" 
+            />  Parent seeking/using daycare services
+          </label>        -->
+          <!-- USE IF USER WILL BE GIVEN OPTION TO BE DAYCARE PROVIDER -->
+					  <label ng-repeat="roles in register_ctrl.roles" style="display:initial;margin-right:5%">
+					  <input 
+					    id="cbUserType{{$index}}"
+						type="checkbox"
+						name="{{roles.value}}"
+						value="{{roles.value}}"
+            ng-checked="{{roles.checked}}" 
+						ng-click="register_ctrl.selectUserType(roles.value)"
+					  /> {{roles.description}}
+					</label>
+                    </div>
+                  </div>
+
+                  <!--<div class="form-group">-->
+                  <!--<label>Title<span style="color:red;">*</span>:-->
+
+                  <!--<span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.salutation.$error">-->
+                  <!--<span class="text-danger" ng-message="required">This is a required field.</span>-->
+                  <!--</span>-->
+
+                  <!--</label>-->
+
+                  <!--<select class="form-control" name="salutation"-->
+                  <!--ng-model="register_ctrl.new_user.salutation"-->
+                  <!--required>-->
+                  <!--<option value=""></option>-->
+                  <!--<option value="Mr.">Mr.</option>-->
+                  <!--<option value="Ms.">Ms.</option>-->
+                  <!--<option value="Mrs.">Mrs.</option>-->
+                  <!--<option value="Dr.">Dr.</option>-->
+                  <!--</select>-->
+
+                  <!--</div>-->
+
+                  <div class="form-group">
+                    <label>First Name<span style="color:red;">*</span>
+                     <span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.firstName.$error">
+                      <span class="text-danger" ng-message="required">This is a required field.</span>
+                    </span>
+                    </label>
+
+                    <input type="text" name="firstName" class="form-control"
+                           ng-model="register_ctrl.new_user.firstName" required/>
+
+
+                  </div>
+
+                  <!--<div class="form-group">-->
+                  <!--<label>Middle Initial:</label>-->
+
+                  <!--<input type="text" name="middleName" class="form-control"-->
+                  <!--ng-model="register_ctrl.new_user.middleName" ng-maxlength="1"/>-->
+
+                  <!--<div></div>-->
+                  <!--</div>-->
+
+                  <div class="form-group">
+                    <label>Last Name<span style="color:red;">*</span>
+                      <span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.lastName.$error">
+                        <span class="text-danger" ng-message="required">This is a required field.</span>
+                      </span>
+                    </label>
+
+                    <input type="text" name="lastName" class="form-control"
+                           ng-model="register_ctrl.new_user.lastName" required/>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Alias <i class="fa fa-info-circle"
+                                      data-toggle="tooltip"
+                                      data-title="To avoid revealing your identity, please choose a unique alias to be displayed next to anything you post on our site. Without an alias, your initials will be displayed instead."
+                                      data-placement="top"
+                                      rv-tooltip></i>
+                      <span ng-messages="register_ctrl.submitted">
+                        
+                      </span>
+                    </label>
+
+                    <input type="text" id="aliasName" name="aliasName" class="form-control"
+                           ng-model="register_ctrl.new_user.aliasName"/>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label>Cell Number<span style="color:red;">* </span>
+                      <span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.mobileNum.$error">
+                        <span class="text-danger" ng-message="required">This is a required field.</span>
+                        <span class="text-danger" ng-message="pattern">Phone number must be 10 digits</span>
+                        <span class="text-danger" ng-message="maxlength">Phone number must be 10 digits</span>
+                        <span class="text-danger" ng-message="minlength">Phone number must be 10 digits</span>
+                      </span>
+                    </label>
+
+                    <input type="text" id="mobile_register" name="mobileNum" class="form-control"
+                           ng-model="register_ctrl.new_user.mobileNum" maxlength="14" minlength="14"
+                           placeholder="10 digits"  phone-number="register_ctrl.new_user.mobileNum"
+                           required/>
+
+                  </div>
+
+
+                  <div class="form-group">
+                    <label>Email Address<span style="color:red;">*</span>
+                      <i class="fa fa-info-circle"
+                         data-toggle="tooltip"
+                         data-title="Your Username is your Email Address"
+                         data-placement="top"
+                         rv-tooltip></i>
+                      <span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.email.$error">
+                        <span class="text-danger" ng-message="required">This is a required field.</span>
+                        <span class="text-danger" ng-message="email">Enter a valid email address.</span>
+                        <span class="text-danger" ng-message="pattern">Enter a valid email address.</span>
+                      </span>
+                    </label>
+
+
+                    <input type="email" id="email_register" name="email" class="form-control"
+                           ng-model="register_ctrl.new_user.email"
+                           validateEmail ng-pattern="register_ctrl.emailRegex" autocomplete="off"
+                           ng-keyup="register_ctrl.submitted_email=false" required/>
+
+
+                  </div>
+
+                  <div class="form-group">
+                    <label>Password<span style="color:red;">* </span><i class="fa fa-info-circle"
+                                                                       data-toggle="tooltip"
+                                                                       data-title="Passwords must be 8 - 25 characters long and include both an upper case and lower case letter, a number and a special character (such as !,%,&,@,#,$,^,*,?,_,~).  We recommend against passwords which include identifying information such as your name, phone number, date of birth, social security number, etc. "
+                                                                       data-placement="top"
+                                                                       rv-tooltip></i>
+
+
+                      <span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.register_password.$error">
+                        <span class="text-danger" ng-message="required">This is a required field.</span>
+                        <span class="text-danger" ng-message="pattern">Password must meet guidelines shown in the <i
+                            class="fa fa-info-circle"></i> icon.
+                        </span>
+                      </span>
+
+                    </label>
+
+                    <a href="" class="show-pass pull-right" id="show_pass_reg"
+                       ng-click="register_ctrl.showPassword()">Show Password</a>
+
+                    <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+                    <input style="display:none" type="text" name="fakeusernameremembered"/>
+                    <input style="display:none" type="password" name="fakepasswordremembered"/>
+
+                    <input data-ng-disabled="register_ctrl.disableInput()" id="password" type="password"
+                           name="register_password" class="form-control"
+                           ng-pattern="register_ctrl.regexPassword" autocomplete="off"
+                           ng-model="register_ctrl.new_user.password"
+                           required/>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label>
+                      Confirm Password<span style="color:red;">*</span>
+
+                      <span ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.conf_password.$error">
+                        <span class="text-danger"
+                              ng-show="register_ctrl.submitted && register_ctrl.formNewUser.conf_password.$error.compareTo && !register_ctrl.formNewUser.register_password.$error.pattern">
+                          This password does not match the password entered above.
+                        </span>
+                        <span class="text-danger" ng-message="required">This is a required field.</span>
+                      </span>
+
+                    </label>
+
+                    <div>
+                      <div class="fake-input">
+                        <input data-ng-disabled="register_ctrl.disableInput()" type="password" id="conf_password"
+                               name="conf_password" class="form-control"
+                               ng-model="register_ctrl.new_user.conf_password"
+                               compare-to="register_ctrl.formNewUser.register_password.$viewValue"
+                               required/>
+                        <img src="assets/img/check.png" class="img-responsive"
+                             ng-show="!register_ctrl.formNewUser.conf_password.$error.compareTo && register_ctrl.new_user.conf_password.length && !register_ctrl.formNewUser.register_password.$error.pattern"/>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <!--<div class="col-md-12">-->
+                  <!--<div class="g-recaptcha" data-sitekey="6Ld9JCUTAAAAAKT0Kk0qUkbAzHMQnPER7iVHEFUy"></div>-->
+                  <!--<div class="white-space-20"></div>-->
+                  <!--<div class="white-space-20"></div>-->
+                  <!--</div>-->
+
+                  <div class="form-group">
+                    <input type="checkbox" required data-ng-model="register_ctrl.isAgree"> I represent that I am over 18 years of age and I agree to Ratingsville's
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#terms-use" tabindex="-1">Terms of Use</a>
+                    and
+                    <a href="javascript:void(0)" data-toggle="modal" data-target="#privacy-policy" tabindex="-1">Privacy Policy</a>.
+
+                  <span ng-if="register_ctrl.submitted && !register_ctrl.isAgree">
+                    <span class="text-danger">Please check the box</span>
+                  </span>
+
+                  </div>
+
+
+                  <div class="form-group">
+                    <button class="btn btn-theme btn-lg btn-t-primary btn-block"
+                            ng-click="register_ctrl.submitted=true; register_ctrl.submitted_email=true">
+                      <span>Save and Continue</span>
+                    </button>
+                  </div>
+                </div>
+
+            </form>
+            <!-- form login -->
+          </div>
+        </div>
+      <!--</div>-->
+      <!-- The Modal for Privacy Policy -->
+      <div class="modal fade" id="privacy-policy" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <div ui-view="privacycontent"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- The Modal for Terms of Use -->
+      <div class="modal fade" id="terms-use" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <div ui-view="termscontent"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="white-space-20"></div>
+    </div>
+  </div>
+  <!--end body-content -->
+</div>
+
+<div ui-view="footer"></div>
+<div ui-view="auditlog"></div>
+</div>
+
+
+<!--<div class="row">-->
+<!--<div class="col-md-2 col-sm-4">-->
+<!--<label>Street Address<span style="color:red;">*</span>:</label>-->
+<!--</div>-->
+<!--<div class="col-md-4 col-sm-12 col-xs-12">-->
+<!--<div class="form-group">-->
+<!--<input name="addressStreet" type="text" class="form-control"-->
+<!--ng-model="register_ctrl.new_user.address.street"  required/>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--<div class="col-md-4">-->
+<!--<div ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.addressStreet.$error">-->
+<!--<div class="text-danger" ng-message="required">This is a required field.</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-2 col-sm-4 col-xs-12">-->
+<!--<label>Apartment:</label>-->
+<!--</div>-->
+<!--<div class="col-md-4 col-sm-12 col-xs-12">-->
+<!--<div class="form-group">-->
+<!--<input name="apartment" type="text" class="form-control"-->
+<!--ng-model="register_ctrl.new_user.address.apartment" />-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-6">-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-2 col-sm-4 col-xs-12">-->
+<!--<label>Zip Code<span style="color:red;">*</span>:</label>-->
+<!--</div>-->
+<!--<div class="col-md-4 col-sm-12 col-xs-12">-->
+<!--<div class="form-group">-->
+<!--<input id="zip" type="zipcode" name="zip" class="form-control"-->
+<!--ng-model="register_ctrl.new_user.address.zip" ng-minlength="5" ng-maxlength="5" ng-pattern="register_ctrl.onlyNumbers"-->
+<!--placeholder="5 digits" required/>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-4" ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.zip.$error">-->
+<!--<div class="text-danger" ng-message="required">This is a required field.</div>-->
+<!--<div class="text-danger" ng-message="maxlength">This should be 5 digits</div>-->
+<!--<div class="text-danger" ng-message="minlength">This should be 5 digits</div>-->
+<!--<div class="text-danger" ng-message="pattern">This should be 5 digits</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-2 col-sm-4 col-xs-12">-->
+<!--<label>City<span style="color:red;">*</span>:</label>-->
+<!--</div>-->
+<!--<div class="col-md-4 col-sm-12 col-xs-12">-->
+<!--<div class="form-group">-->
+<!--<input id="city" name="addressCity" type="text" class="form-control"-->
+<!--ng-model="register_ctrl.new_user.address.city"  required/>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-4"-->
+<!--ng-messages="register_ctrl.submitted && register_ctrl.formNewUser.addressCity.$error">-->
+<!--<div class="text-danger" ng-message="required">This is a required field.</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+<!--<div class="col-md-2 col-sm-4 col-xs-12">-->
+<!--<label>State<span style="color:red;">*</span>:</label>-->
+<!--</div>-->
+<!--<div class="col-md-4 col-sm-12 col-xs-12">-->
+<!--<div class="form-group">-->
+<!--<select-->
+<!--class="form-control"-->
+<!--id="state"-->
+<!--rv-dropdown-select-->
+<!--ng-if="register_ctrl.address_is_refreshed"-->
+<!--select-options="register_ctrl.states"-->
+<!--select-items="register_ctrl.selected_state"-->
+<!--select-text-value="[]"-->
+<!--select-type="basic-dropdown"-->
+<!--select-model="dropdown_destination"-->
+<!--ng-model="register_ctrl.new_user.address.state"-->
+<!--name="addressState"-->
+<!--required>-->
+<!--</select>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--<div class="col-md-4"-->
+<!--ng-messages=" register_ctrl.submitted &&  register_ctrl.formNewUser.addressState.$error">-->
+<!--<div class="text-danger" ng-message="required">This is a required field.</div>-->
+<!--</div>-->
+<!--</div>-->

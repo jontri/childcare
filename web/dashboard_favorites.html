@@ -1,0 +1,110 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;" ng-init="getFavorites();">
+    <div class="col-md-12" >
+        <h3>Favorites ( {{totalFaveDayCareCount}} )</h3>
+        <rv-list-block class="visible-xs"
+                       ng-repeat="fav in favorites | orderBy: 'tmpIndex' | offset: offsetValue | limitTo: itemsPerPage track by $index">
+            <div class="row ">
+                <div class="col-md-1 hidden-sm hidden-xs">
+                    <div class="img-item">
+                        <img src="assets\theme\images\company-logo\1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-10 col-xs-9">
+                    <h3 class="no-margin-top">
+                        <a ui-sref="listingDetail({ listingId: fav._id })">{{fav.name}}</a>
+                    </h3>
+                    <h5>
+                        <span>
+                            <span ng-if="fav.address.addressLine1">{{fav.address.addressLine1}},</span>
+                            <span ng-if="fav.address.addressLine2">{{fav.address.addressLine2}},</span>
+                            {{fav.address.city}}, {{fav.address.state}}, {{fav.address.zip}}
+                            <span ng-if="!fav.address.addressLine1">(Street address not disclosed by provider)</span>
+                        </span>
+                    </h5>
+
+                    <p><i class="fa fa-phone" aria-hidden="true"></i> +{{fav.phone}}</p>
+
+                    <div class="col-md-4">
+                        <span ng-show="CheckTotalReviews(fav) == 1"><label>Number of Reviews: </label> {{fav.totalReviews?fav.totalReviews:0}} </span>
+                    </div>
+                    <div class="col-md-4">
+                        <p>
+                            <label>Overall Rating : </label>
+                            <span class="rate" rating={{fav.avgOverAllRatings}}></span>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="col-md-1 col-xs-3 text-center ">
+                    <!--h4><span class="color-white-mute">#{{$index+1}}</span></h4-->
+                    <!--<h4><span>#{{fav.tmpIndex+1}}</span></h4>-->
+                    <span class="btn btn-theme btn-sm btn-default fa fa-arrow-up pull-right"
+                          ng-click="rankFavorite(fav._id,-1);" style="margin-bottom: 6px;"></span>
+                    <span class="btn btn-theme btn-sm btn-default fa fa-arrow-down pull-right"
+                          ng-click="rankFavorite(fav._id,1);" style="margin-bottom: 8px;"></span>
+                    <span class="btn btn-theme btn-sm btn-secondary pull-right"
+                          ng-click="removeFavorite(fav)">Delete</span>
+                </div>
+            </div>
+            <!--div class="actions text-right"-->
+            <!-- <a href="" ui-sref="manageDaycare({ listingId: mydaycare._id })" class="btn btn-primary">Edit</a> -->
+            <!-- <a href="" ui-sref="removeFavorite()" class="btn btn-danger">Remove</a> -->
+            <!--button class="btn btn-danger" ng-click="removeFavorite(fav)">Remove</button-->
+            <!--/div-->
+        </rv-list-block>
+
+        <div class="table-responsive hidden-xs">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-md-3">Daycare Name</th>
+                        <th class="col-md-3">Phone Number</th>
+                        <th class="col-md-2" style="text-align: center">Reviews</th>
+                        <th class="col-md-2">Overall Rating</th>
+                        <th class="col-md-2"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                <tr ng-repeat="fav in favorites | orderBy: 'tmpIndex' | offset: offsetValue | limitTo: itemsPerPage track by $index"
+                    ng-if="favorites.length >= 1">
+                    <td><a ui-sref="listingDetail({ listingId: fav._id })">{{fav.name}}</a></td>
+                    <td><i class="fa fa-phone" aria-hidden="true"></i> +{{fav.phone}}</td>
+                    <td style="text-align: center">{{fav.totalReviews}}</td>
+                    <td><span class="rate" rating={{fav.avgOverAllRatings}}></span></td>
+                    <td>
+                    <span class="btn btn-theme btn-sm btn-default fa fa-arrow-up" ng-click="rankFavorite(fav._id,-1);"
+                          style="margin-bottom: 6px;"></span>
+                        <span class="btn btn-theme btn-sm btn-default fa fa-arrow-down"
+                              ng-click="rankFavorite(fav._id,1);"
+                              style="margin-bottom: 8px;"></span>
+                        <span class="btn btn-theme btn-sm btn-secondary" ng-click="removeFavorite(fav)">Delete</span>
+                    </td>
+                </tr>
+                <tr ng-if="favorites.length <= 0">
+                    <td>You currently do not own any favorites.</td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- end item list -->
+        <ul class="pagination">
+            <li ng-class="prevPageDisabled()">
+                <a href="" ng-click="prevPage()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a href="">{{n+1}}</a>
+            </li>
+            <li ng-class="nextPageDisabled()">
+                <a href="" ng-click="nextPage()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px">
+  <div class="col-md-12 users">
+  	<h3>Ownership Requests</h3>
+
+  	<table class="table table-responsive table-striped table-users">
+  		<thead>
+  			<tr>
+  				<th>Requester</th>
+          <th>Childcare</th>
+          <th>Existing Owner</th>
+          <th>status</th>
+          <th>documents</th>
+          <th></th>
+          <th class="col-md-3"></th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat="owner_request in all_owner_requests | offset: offsetValue | limitTo: itemsPerPage track by owner_request._id">
+  				<td><span ng-hide="owner_request.owner">User deleted</span> <a ng-show="owner_request.owner" href="" ui-sref="dashboard_selected_profile" ng-click="setSelectedUser(owner_request.owner)"><span ng-bind="owner_request.owner.firstName"></span> <span ng-bind="owner_request.owner.lastName"></span></a></td>
+  				<td><a ui-sref="listingDetail({ listingId: owner_request.listing._id })"><span ng-bind="owner_request.listing.name"></a></td>
+          <td><span ng-hide="owner_request.listing.owner_id">Not owned</span> <a ng-show="owner_request.listing.owner_id" href="" ui-sref="dashboard_selected_profile" ng-click="setSelectedUser(owner_request.listing.owner_id)"><span ng-bind="owner_request.listing.owner_id.firstName"></span> <span ng-bind="owner_request.listing.owner_id.lastName"></span></a></td>
+  				<td ng-bind="owner_request.status"></td>
+          <td>
+            <div ng-if="!owner_request.numDocs">None uploaded</div>
+            <div ng-if="owner_request.id_doc"><a ng-href="assets/uploads/{{::owner_request.id_doc}}" target="_blank">Photo ID</a></div>
+            <div ng-if="owner_request.proof_owner_doc"><a ng-href="assets/uploads/{{::owner_request.proof_owner_doc}}" target="_blank">Proof of Ownership</a></div>
+            <div ng-if="owner_request.power_attorney_doc"><a ng-href="assets/uploads/{{::owner_request.power_attorney_doc}}" target="_blank">Power of Attorney</a></div>
+            <div ng-if="owner_request.proof_owner_doc && !owner_request.power_attorney_doc && !owner_request.proof_owner">Power of Attorney<br />(required)</div>
+            <div ng-if="owner_request.proof_owner && owner_request.proof_owner_doc">Power of Attorney<br />(not required)</div>
+          </td>
+          <td>
+            <div ng-if="owner_request.id_doc"><label class="no-margin"><input class="no-margin" type="checkbox" ng-model="owner_request.id_doc_sufficient" ng-change="updateOwnerReqSufficient(owner_request,'id_doc_sufficient')" ng-disabled="reqLoadingHash[owner_request._id]" /> Sufficient</label></div>
+            <div ng-if="owner_request.proof_owner_doc"><label class="no-margin"><input class="no-margin" type="checkbox" ng-model="owner_request.proof_owner_doc_sufficient" ng-change="updateOwnerReqSufficient(owner_request,'proof_owner_doc_sufficient')" ng-disabled="reqLoadingHash[owner_request._id]" /> Sufficient</label></div>
+            <div ng-if="owner_request.power_attorney_doc"><label class="no-margin"><input class="no-margin" type="checkbox" ng-model="owner_request.power_attorney_sufficient" ng-change="updateOwnerReqSufficient(owner_request,'power_attorney_doc_sufficient')" ng-disabled="reqLoadingHash[owner_request._id]" /> Sufficient</label></div>
+          </td>
+          <td class="col-md-3">
+            <rv-button ng-if="owner_request.status == 'pending'" styles="btn btn-success" action="activateOwnerRequest(owner_request,'approved')"
+              is-loading="reqLoadingHash[owner_request._id+'approve'] && reqLoading" is-disabled="(!reqLoadingHash[owner_request._id+'approve'] || reqLoadingHash[owner_request._id]) && reqLoading">Approve</rv-button>
+            <rv-button ng-if="owner_request.status == 'pending'" styles="btn btn-danger" action="activateOwnerRequest(owner_request,'rejected')"
+              is-loading="reqLoadingHash[owner_request._id+'reject'] && reqLoading" is-disabled="(!reqLoadingHash[owner_request._id+'reject'] || reqLoadingHash[owner_request._id]) && reqLoading">Reject</rv-button>
+            <rv-button ng-if="owner_request.status == 'rejected'" styles="btn btn-success" action="activateOwnerRequest(owner_request,'pending')"
+              is-loading="reqLoadingHash[owner_request._id+'unreject'] && reqLoading" is-disabled="(!reqLoadingHash[owner_request._id+'unreject'] || reqLoadingHash[owner_request._id]) && reqLoading">Unreject</rv-button>
+            <rv-button styles="btn btn-danger" action="deleteOwnerRequest(owner_request)"
+              is-loading="reqLoadingHash[owner_request._id+'delete'] && reqLoading" is-disabled="(!reqLoadingHash[owner_request._id+'delete'] || reqLoadingHash[owner_request._id]) && reqLoading">Delete</rv-button>
+          </td>
+  			</tr>
+  		</tbody>
+      <tfoot>
+        <td colspan="5">
+          <ul class="pagination">
+            <li ng-class="prevPageDisabled()">
+              <a href="" ng-click="prevPage()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a href="">{{n+1}}</a>
+            </li>
+            <li ng-class="nextPageDisabled()">
+              <a href="" ng-click="nextPage()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </td>
+      </tfoot>
+  	</table>
+  </div>
+</div>      

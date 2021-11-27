@@ -1,0 +1,96 @@
+<div class="block-section-sm bg-color1 " style="overflow: hidden; min-height: 800px;">
+    <div class="col-xs-12 margin-b-20">
+        <h3>
+            My Class
+        </h3>
+        <div class="text-danger" ng-if="classCtrl.daycareList && !classCtrl.daycareList.length">To add a Classroom, you must first own a child care center</div>
+        <div>To add your child care center, go to <a ui-sref="dashboard_daycares">Child Care Centers</a> and click
+            Request Ownership
+        </div>
+        <div class="white-space-10"></div>
+        <button class="btn btn-theme btn-t-primary pull-left" ng-click="classCtrl.deleteSelectedClasses()" ng-disabled="classCtrl.isSelectAllDisabled()">Delete</button>
+    </div>
+
+    <div class="col-xs-12 table-responsive hidden-xs">
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th style="width: 1%">
+                        <div class="checkbox no-margin" align="center">
+                            <label><input type="checkbox" ng-model="classCtrl.allChecked" ng-change="classCtrl.selectAllClasses(classCtrl.allChecked)" ng-disabled="classCtrl.isSelectAllDisabled()" /></label>
+                        </div>
+                    </th>
+                    <th class="col-md-2">Class Name</th>
+                    <th class="col-md-2">Age Group</th>
+                    <th class="col-md-2">Max Capacity</th>
+                    <th class="col-md-2">Slots taken</th>
+                    <th class="col-md-2">Slots available</th>
+                    <th class="col-md-2">Number of Teachers</th>
+                    <th class="col-md-1"></th>
+                </tr>
+            </thead>
+
+            <tbody ng-repeat="daycare in classCtrl.daycareList track by $index">
+                <tr>
+                    <td colspan="3" class="bg-color1">
+                        <span class="h5" style="width:200px;">{{daycare.name}} &nbsp;</span>
+                    </td>
+                    <td colspan="5" class="bg-color1">
+                        <a class="btn btn-xs btn-theme btn-secondary" ui-sref="dashboard_class_register({listingId: daycare._id})">
+                            <i class="fa fa-plus"></i> Add Classroom
+                        </a>
+                    </td>
+                </tr>
+                <tr ng-repeat="class in daycare.classList track by $index">
+                    <td>
+                        <div class="checkbox no-margin" align="center">
+                            <label><input type="checkbox" ng-model="class.toBeDeleted" ng-change="classCtrl.onSelectClass(class.toBeDeleted)" /></label>
+                        </div>
+                    </td>
+                    <td>{{class.name}}</td>
+                    <td ng-if="class.ageGroup.minTime === class.ageGroup.maxTime">{{class.ageGroup.min}} - {{class.ageGroup.max}} {{class.ageGroup.minTime}} old</td>
+                    <td ng-if="class.ageGroup.minTime !== class.ageGroup.maxTime">{{class.ageGroup.min}} {{class.ageGroup.minTime}} - {{class.ageGroup.max}} {{class.ageGroup.maxTime}}</td>
+                    <td>{{class.capacityMax}}</td>
+                    <td>{{class.capacityTaken}}</td>
+                    <td>{{class.capacityVacant}}</td>
+                    <td>{{class.teachers.length}}</td>
+                    <td>
+                        <a class="btn btn-xs btn-theme btn-secondary" ui-sref="dashboard_class_update({classId:class._id})"><i class="fa fa-edit"></i> Edit</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        
+    </div>
+
+    <div class="col-xs-12 visible-xs">
+        <div>
+            <label class="no-margin"><input type="checkbox" ng-model="classCtrl.allChecked" ng-change="classCtrl.selectAllClasses(classCtrl.allChecked)" ng-disabled="classCtrl.classList.length<=0" />
+                Select all
+            </label>
+        </div>
+        <rv-list-block ng-repeat="daycare in classCtrl.daycareList track by $index">
+            <h4 class="no-margin-top">{{daycare.name}}  <a class="btn btn-xs btn-theme btn-secondary" ui-sref="dashboard_class_register({listingId: daycare._id})">
+                <i class="fa fa-plus"></i> Add Classroom
+            </a></h4>
+            <div class="d-table" ng-repeat="class in daycare.classList track by $index" style="padding:10px; margin-top:20px; background:white">
+                <div class="d-table-cell" style="padding-right: 10px;">
+                    <label><input type="checkbox" ng-model="class.toBeDeleted" ng-change="classCtrl.onSelectClass(class.toBeDeleted)" /></label>
+                </div>
+                <div class="d-table-cell full-width">
+                    <h3 class="no-margin-top">{{class.name}}</h3>
+                    <p><label>Age Group:</label> {{class.ageGroup.min}} - {{class.ageGroup.max}} {{class.ageGroup.minTime}} old</p>
+                    <p><label>Max Capacity:</label> {{class.capacityMax}}</p>
+                    <p><label>Slots taken:</label> {{class.capacityTaken}}</p>
+                    <p><label>Slots available:</label> {{class.capacityVacant}}</p>
+                    <p><label>Number of Teachers:</label> {{class.teacher.length}}</p>
+                </div>
+                <div class="d-table-cell">
+                    <a href="" ui-sref="dashboard_class_update({classId:class._id})" class="btn btn-sm btn-theme btn-t-primary">Edit</a>
+                </div>
+            </div>
+        </rv-list-block>
+    </div>
+</div>

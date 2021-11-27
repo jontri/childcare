@@ -1,0 +1,106 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;">
+    <div ng-init="tmpReviews = approvedReviews;pageTitle = 'Approved Reviews'" class="col-md-12 home" style="float: none;">
+        <h3>{{pageTitle}}</h3>
+        <div class="row">
+            <span class="col-xs-12 col-sm-3">
+                <a class="btn btn-sm btn-theme btn-t-primary full-width" ng-click="tmpReviews = approvedReviews;pageTitle = 'Approved Reviews'">
+                    Approved Reviews ( <span ng-bind="approvedReviews.length"></span> )
+                </a>
+                <div class="visible-xs white-space-10"></div>
+            </span>
+            <span class="col-xs-12 col-sm-3">
+                <a class="btn btn-sm btn-theme btn-t-primary full-width" ng-click="tmpReviews = pendingReviews;pageTitle = 'Reviews Awaiting Approval'">
+                    Pending Reviews ( <span ng-bind="pendingReviews.length"></span> )
+                </a>
+                <div class="visible-xs white-space-10"></div>
+            </span>
+            <span class="col-xs-12 col-sm-3">
+                <a class="btn btn-sm btn-theme btn-t-primary full-width" ng-click="tmpReviews = rejectedReviews;pageTitle = 'Rejected Reviews'">
+                    Rejected Reviews ( <span ng-bind="rejectedReviews.length"></span> )
+                </a>
+            </span>
+        </div>
+
+        <ul class="nav all_reviews">
+
+            <li data-ng-repeat="review in tmpReviews | offset: offsetValue | limitTo: itemsPerPage | orderBy: '-dateOrder'">
+                <review
+                    highlight-profanities="true"
+                    review="review">
+                    <daycare-details>
+                        <h4>{{review.daycare.name}}</h4>
+                    </daycare-details>
+                    <actions>
+                        <div class="white-space-10"></div>
+                        <div class="btn-group pull-left">
+                            <button class="btn btn-sm btn-theme btn-t-primary"
+                                    ng-click="editReview({reviewId: review._id, daycareId: review.daycare_id})">
+                                Edit
+                            </button>
+                            <button class="btn btn-sm btn-theme btn-t-primary"
+                                    ng-click="deleteReview(review._id)">
+                                Delete
+                            </button>
+                        </div>
+                        <div class="pull-right" ng-if="replies[review._id].length">
+                            <a class="btn btn-sm btn-theme btn-link" href="" ng-click="createReply(review)">
+                                <span ng-if="replies[review._id] && replies[review._id].length == 1">Reply</span>
+                                <span ng-if="replies[review._id] && replies[review._id].length > 1">New Reply</span>
+                            </a>
+                        </div>
+                    </actions>
+                </review>
+                <reply-form id="replyForm{{review._id}}" class="d-block col-md-offset-1" ng-if="review.newReply"
+                    on-send="onSend(form, reply, review)"
+                    reply="review.newReply"
+                    review="review">
+                </reply-form>
+                
+                <ul class="col-md-offset-1 nav all_replies" ng-if="replies[review._id] && replies[review._id].length">
+                        <div>Latest reply<span class="pull-right" ng-if="replies[review._id].length > 1">
+                            <a href="" ng-hide="review.showOldReplies" ng-click="review.showOldReplies = true">View all replies</a>
+                            <a href="" ng-show="review.showOldReplies" ng-click="review.showOldReplies = false">Hide older replies</a>
+                        </span></div>
+                    <li ng-repeat="reply in replies[review._id]" ng-show="$index == 0 || review.showOldReplies">
+                            <reply
+                                highlight-profanities="true"
+                                reply="reply">
+                            <actions class="pull-right">
+                                <a class="btn btn-sm btn-theme btn-link" ng-if="reply.sender_id._id === user._id && $first" ng-click="editReply(reply)">Edit</a>
+                            </actions>
+                        </reply>
+                        <reply-form id="replyForm{{reply._id}}" ng-if="reply.isEditMode"
+                            on-send="onSend(form, reply, review)"
+                            reply="reply"
+                            review="review">
+                        </reply-form>
+                    </li>
+                </ul>
+            </li>
+            <li data-ng-show="tmpReviews.length <= 0">
+                <div class="main-content">
+                    <h4 ng-if="pageTitle === 'Approved Reviews'"> No Reviews available yet.</h4>
+                    <h4 ng-if="pageTitle === 'Reviews Awaiting Approval'"> No reviews awaiting approval.</h4>
+                    <h4 ng-if="pageTitle === 'Rejected Reviews'"> No rejected reviews.</h4>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="pagination" style="vertical-align: middle;">
+            <li ng-class="prevPageDisabled()">
+                <a href="" ng-click="prevPage()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a href="">{{n+1}}</a>
+            </li>
+            <li ng-class="nextPageDisabled()">
+                <a href="" ng-click="nextPage()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>

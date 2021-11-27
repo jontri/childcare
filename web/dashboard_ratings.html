@@ -1,0 +1,63 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px">
+    <div class="col-xs-12 home" style="float: none;">
+        <h3>Reviews Received</h3>
+
+        <div>
+          <table class="table table-striped hidden-xs">
+              <thead><tr>
+              <th class="col-md-2">Child Care Center Name</th>
+              <th class="col-md-1">Overall Rating</th>
+              <th class="col-md-1"></th>
+
+
+              </tr></thead>
+
+              <tbody  >
+
+                <tr ng-repeat="mydaycare in mydaycares | offset: offsetValue | limitTo: itemsPerPage" ng-if="mydaycares.length >= 1">
+                  <td><a ui-sref="dashboard_ratings_listing({ listingId: mydaycare._id })" class="">{{mydaycare.name}}</a></td>
+                  <!--td>{{(staff.ss | ssnFilter:'true')|| 'N/A' }} </td-->
+                  <td><span class="rate" rating={{mydaycare.avgOverAllRatings}}></span>
+                            ({{ mydaycare.avgOverAllRatings ? mydaycare.avgOverAllRatings.toFixed(1) : '0.0' }})</td>
+                    <td><a class="btn btn-xs btn-theme btn-secondary" ui-sref="dashboard_ratings_listing({ listingId: mydaycare._id })">View Reviews</a> </td>
+                </tr>
+                <tr ng-if="mydaycares.length <= 0">
+                    <td>No Ratings available yet.</td>
+                </tr>
+              </tbody>
+
+          </table>
+
+        <rv-list-block class="visible-xs" ng-repeat="mydaycare in mydaycares | offset: offsetValue | limitTo: itemsPerPage" ng-if="mydaycares.length >= 1">
+            <div class="d-table">
+                <div class="d-table-cell full-width">
+                    <h3 class="no-margin-top">
+                        <a ui-sref="dashboard_ratings_listing({ listingId: mydaycare._id })" class="">{{mydaycare.name}}</a>
+                    </h3>
+                    <label>Overall Rating : </label> <span class="rate" rating={{mydaycare.avgOverAllRatings}}>
+                        ({{ mydaycare.avgOverAllRatings ? mydaycare.avgOverAllRatings.toFixed(1) : '0.0' }})
+                    </span>
+                </div>
+                <div class="d-table-cell">
+                    <a class="btn btn-xs btn-theme btn-secondary" ui-sref="dashboard_ratings_listing({ listingId: mydaycare._id })">View Reviews</a>
+                </div>
+            </div>
+        </rv-list-block>
+        </div>
+        <ul class="pagination">
+            <li ng-class="prevPageDisabled()">
+                <a href="" ng-click="prevPage()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a href="">{{n+1}}</a>
+            </li>
+            <li ng-class="nextPageDisabled()">
+                <a href="" ng-click="nextPage()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

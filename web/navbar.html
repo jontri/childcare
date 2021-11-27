@@ -1,0 +1,408 @@
+<!-- main navbar -->
+
+<nav class="navbar navbar_home navbar-default navbar-fixed-top main-navbar  hidden-sm hidden-xs">
+  <!--<div class="announcement-top" id="announcement-box">-->
+    <!--<span class="close-thik pull-right" id="close-announcement" ng-click="home_ctrl.closeAnnouncement()"></span>-->
+    <!--<p><span class="announcement-title">Announcement:</span> Now serving Florida, New Jersey, New York and Virginia.</p>-->
+  <!--</div>-->
+  <div class="container-fluid navbar-main-top">
+    <div class="col-md-2">
+         <img src="assets/img/logo-8.png" class="img-20">
+    </div>
+
+    <div class="col-md-10 text-right">
+      <div class="col-md-12">
+        <rv-login-popup ng-if="!header_ctrl.user_is_logged_in">
+          <form class="form-inline" name="popup_login_ctrl.formLogin" ng-submit="popup_login_ctrl.processUser()" novalidate>
+            <div class="row">
+              <div class="form-group" style="position: relative;">
+                <div class="login-message-username text-danger" ng-show='popup_login_ctrl.submitted==true &&  popup_login_ctrl.formLogin.email.$invalid' >
+                  Enter a valid email address
+                </div>
+
+                <div ng-messages="popup_login_ctrl.submitted==true &&  popup_login_ctrl.formLogin.email.$invalid">
+                  <div class="login-message-username" ng-message="required">This is a required field.</div>
+                </div>
+
+                <label>Username &nbsp;</label>
+                <input type="email" class="form-control" name="email" ng-pattern="popup_login_ctrl.emailRegex" id="email_login" placeholder="Your email address"
+                       ng-model="popup_login_ctrl.user.username"  required autofocus>
+
+              </div>
+              &nbsp;
+              <div class="form-group" style="position: relative;z-index: 1;">
+                <div class="text-danger login-message-password"
+                     ng-show='popup_login_ctrl.submitted==true && popup_login_ctrl.formLogin.password.$invalid'>
+                  This is a required field.
+                </div>
+                <label>Password &nbsp;</label>
+                <input id="pass_login" type="password" name="password" class="form-control"
+                       ng-model="popup_login_ctrl.user.password" required>
+                <a href="" id="show_pass" class="show-pass-left">Show Password</a>
+              </div>
+
+              <div class="form-group">
+                <div class="form-group">
+                  <button id="log-in-btn" type="button"
+                          class="btn btn-theme btn-t-primary btn-block btn-login btn-block" ng-click="popup_login_ctrl.submitted=true;popup_login_ctrl.login(popup_login_ctrl.user);">
+                    <i class="fa fa-spinner fa-spin spin" style="font-size:18px"></i>
+                    Log In
+                  </button>
+                  <button id="hidden-log-in-btn" type="submit" style="display:none" />
+                </div>
+                <div class="form-group">
+                  <button type="button" ui-sref="register" ui-sref-opts="{reload: true}" class="btn btn-theme btn-t-primary btn-block btn-login btn-block">
+                    Register
+                  </button>
+                </div>
+              </div>
+
+              <div class="form-group" style=" z-index: 0;">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6 forgot-block">
+                  <p class="help-block ">Forgot <a ui-sref="forgotUsername" ui-sref-opts="{reload: true}">username</a> or <a
+                      ui-sref="forgotPassword" ui-sref-opts="{reload: true}">password?</a></p>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+        </rv-login-popup>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container-fluid" style="background-color:#000; color:#FFF;padding: 0 150px 8px 110px;">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="main-nav-top nav navbar-nav">
+        <li><a ng-if="header_ctrl.user_is_logged_in" ui-sref="home" ui-sref-opts="{reload: true}" ng-class="{'active': header_ctrl.state == 'home'}">Home</a></li>
+        <li><a ng-if="!header_ctrl.user_is_logged_in" ui-sref="home" ui-sref-opts="{reload: true}" ng-class="{'active': header_ctrl.state == 'home'}">Home</a></li>
+        <li class="dropdown about-us">
+          <a ui-sref="aboutus" ui-sref-opts="{reload: true}" ng-class="{'active': header_ctrl.state == 'aboutus'}" class="dropdown-toggle" data-toggle="dropdown" role="button">About Us<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a ui-sref="history" ng-class="{'active': header_ctrl.state == 'history'}" ui-sref-opts="{reload: true}" tabindex="-1">Our History</a></li>
+            <li><a ui-sref="purpose" ng-class="{'active': header_ctrl.state == 'purpose'}" ui-sref-opts="{reload: true}" tabindex="-1">Our Purpose</a></li>
+            <li><a ui-sref="leadership" ng-class="{'active': header_ctrl.state == 'leadership'}" ui-sref-opts="{reload: true}" tabindex="-1">Leadership</a></li>
+          </ul>
+        </li>
+
+
+        <li ><a ui-sref="contactus" ng-class="{'active': header_ctrl.state == 'contactus'}">Contact Us</a></li>
+        <!-- <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">Terms &amp; Privacy<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a ui-sref="privacyPolicy" tabindex="-1" ng-class="{'active': header_ctrl.state == 'privacyPolicy'}">Privacy Policy</a></li>
+            <li><a ui-sref="termsOfUse" tabindex="-1" ng-class="{'active': header_ctrl.state == 'termsOfUse'}">Terms of Use</a></li>
+          </ul>
+        </li> -->
+        <li ><a href="" id="searchLink" ui-sref="search({link:true})" ui-sref-opts="{reload: true}"
+        data-toggle="collapse" data-target="#searchDiv" 
+        ng-click="header_ctrl.resetSearch()"
+        ng-class="{'active': header_ctrl.state == 'search'}">Child Care Search</a></li>
+        
+      </ul>
+
+
+      <ul class="nav navbar-nav navbar-right" ng-if="header_ctrl.user_is_logged_in">
+        <li class="dropdown">
+          <a href="#/dashboard/profile" class="link-profile dropdown-toggle" data-toggle="dropdown">
+            <img src="assets/theme/images/people/avatar_blank_female.jpg"
+                 ng-if="!header_ctrl.user.photo && header_ctrl.user.sex=='Female'" class="img-profile">
+            <img src="assets/theme/images/people/avatar_blank_male.jpg"
+                 ng-if="!header_ctrl.user.photo && header_ctrl.user.sex!='Female'" class="img-profile">
+            <img ng-src="{{ header_ctrl.user.photo }}" ng-if="header_ctrl.user.photo"
+                 class="img-profile">
+            &nbsp; {{ header_ctrl.user.firstName }}
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a ui-sref="dashboard_home" tabindex="-1"> Dashboard </a></li>
+            <!--<li><a href="#/dashboard/inbox"> My Alerts </a></li>-->
+            <!--<li><a href="#/dashboard/security/edit"> Change Password</a></li>-->
+            <!--<li><a ui-sref="dashboard_inbox" tabindex="-1"> Notifications <span class="badge ">5</span></a></li>-->
+            <li><a ui-sref="logout" tabindex="-1"> Logout </a></li>
+          </ul>
+        </li>
+        <li>
+
+        </li>
+      </ul>
+
+
+    </div>
+    <div id="lightbox" class="wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="1s">
+      <div class="container-fluid text-center">
+        <span id="message">Welcome Back!</span>
+      </div>
+    </div>
+  </div>
+
+
+</nav><!-- end main navbar -->
+
+<div class="modal fade" id="securityQuestionsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form name="header_ctrl.formUpdateUser"
+            ng-submit="header_ctrl.updateUser(header_ctrl.user_update)">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Security Information :</h4>
+
+          <div ng-show='header_ctrl.formUpdateError' class="text-danger">Please complete the fields.</div>
+
+        </div>
+        <div class="modal-body">
+
+
+          <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <label><span style="color:red;">*</span> Security Question: </label>
+                <select ng-model="header_ctrl.user_update.security_question.question1"
+                        ng-options="secQ as secQ for secQ in header_ctrl.securityQuestion|filter:filter2|filter:filter3"
+                        class="form-control" name="security_question1"
+                >
+                  <option value="">-- Select a question --</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <label><span style="color:red;">*</span>Answer : </label>
+                <input type="text" id="question_answer1" name="question_answer1" class="form-control"
+                       placeholder="Your Answer" ng-model="header_ctrl.user_update.security_question.answer1">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <select ng-model="header_ctrl.user_update.security_question.question2"
+                        ng-options="secQ as secQ for secQ in header_ctrl.securityQuestion|filter:filter1|filter:filter3"
+                        class="form-control" name="security_question2"
+                >
+                  <option value="">-- Select a question --</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <input type="text" id="question_answer2" name="question_answer2" class="form-control"
+                       placeholder="Your Answer" ng-model="header_ctrl.user_update.security_question.answer2">
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <select ng-model="header_ctrl.user_update.security_question.question3"
+                        ng-options="secQ as secQ for secQ in header_ctrl.securityQuestion|filter:filter1|filter:filter2"
+                        class="form-control" name="security_question3">
+                  <option value="">-- Select a question --</option>
+                </select>
+
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <input type="text" id="question_answer3" name="question_answer3" class="form-control"
+                       placeholder="Your Answer" ng-model="header_ctrl.user_update.security_question.answer3">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <div ng-show='header_ctrl.formUpdateSuccess' class="text-success">Update Successful.</div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- mobile navbar -->
+<div class="container-fluid bg-color5">
+  <nav class="mobile-nav hidden-md hidden-lg" ng-if="!header_ctrl.routesNoMobileMenu[header_ctrl.state]">
+
+    <ul class="nav navbar-nav nav-block-left d-inline-block" ng-if="header_ctrl.user_is_logged_in" >
+      <li class="dropdown">
+        <a class="link-profile dropdown-toggle" data-toggle="dropdown">
+          <img src="assets/theme/images/people/avatar_blank_female.jpg"
+            ng-if="!header_ctrl.user.photo && header_ctrl.user.sex=='Female'" class="img-profile">
+          <img src="assets/theme/images/people/avatar_blank_male.jpg"
+            ng-if="!header_ctrl.user.photo && header_ctrl.user.sex!='Female'" class="img-profile">
+          <img ng-src="{{ header_ctrl.user.photo }}" ng-if="header_ctrl.user.photo"
+            class="img-profile">
+          &nbsp; {{header_ctrl.user.firstName}} <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a ui-sref="dashboard_home">Dashboard</a></li>
+          <li><a ui-sref="logout">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+    <button data-target="#mobile-nav-collapse" class="btn-nav-toogle first navbar-nav pull-right" data-toggle="collapse">
+      <span class="bars"></span>
+      Menu
+    </button>
+    <div class="mobile-nav-block" id="mobile-nav-collapse">
+      <button data-target="#mobile-nav-collapse" class="btn-nav-toogle pull-right" data-toggle="collapse">
+        <span class="barsclose"></span>
+        Close
+      </button>
+      <h4>Navigation</h4>
+
+      <ul class="nav navbar-nav">
+        <li ng-if="!header_ctrl.user_is_logged_in"><a ui-sref="login"><strong>Login</strong></a></li>
+        <li ng-if="!header_ctrl.user_is_logged_in"><a ui-sref="register"><strong>Register</strong></a></li>
+        <li><a ui-sref="home"><strong>Home</strong></a></li>
+        <li class="dropdown" ng-if="header_ctrl.user_is_logged_in && header_ctrl.state.indexOf('dashboard') !== -1">
+          <a id="dashboardDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>Dashboard</strong> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="dashboardDropdown">
+            <li><a ui-sref="dashboard_home" ui-sref-opts="{reload: true}">Dashboard</a></li>
+            <li><a ui-sref="dashboard_profile" ui-sref-opts="{reload: true}">Account Information</a></li>
+            <li><a ui-sref="dashboard_security_information" ui-sref-opts="{reload: true}">Security Information</a></li>
+            <li><a ui-sref="dashboard_change_password" ui-sref-opts="{reload: true}">Change Password</a></li>
+            <li ng-if="header_ctrl.isParent || header_ctrl.isProvider"><a ui-sref="dashboard_favorites" ui-sref-opts="{reload: true}">Favorites</a></li>
+            <li ng-if="header_ctrl.isParent"><a ui-sref="dashboard_reviews" ui-sref-opts="{reload: true}">Reviews Submitted</a></li>
+            <li ng-if="header_ctrl.isProvider"><a ui-sref="dashboard_daycares" ui-sref-opts="{reload: true}">Child Care Centers</a></li>
+            <li ng-if="header_ctrl.isProvider"><a ui-sref="dashboard_class" ui-sref-opts="{reload: true}">Classrooms</a></li>
+            <li ng-if="header_ctrl.isProvider"><a ui-sref="dashboard_client" ui-sref-opts="{reload: true}">Clients</a></li>
+            <li ng-if="header_ctrl.isProvider"><a  ui-sref="dashboard_ratings" ui-sref-opts="{reload: true}">Reviews Received</a></li>
+            <li ng-if="header_ctrl.isProvider"><a ui-sref="dashboard_staff" ui-sref-opts="{reload: true}">Staff</a></li>
+            <li ng-if="header_ctrl.isProvider"><a ui-sref="dashboard_appointments" ui-sref-opts="{reload: true}">Appointments</a></li>
+            <li ng-if="header_ctrl.isAdmin"><a ui-sref="dashboard_users" ui-sref-opts="{reload: true}">Users</a></li>
+            <li ng-if="header_ctrl.isAdmin"><a ui-sref="dashboard_all_reviews" ui-sref-opts="{reload: true}">Reviews</a></li>
+            <li ng-if="header_ctrl.isAdmin"><a ui-sref="dashboard_all_owner_requests" ui-sref-opts="{reload: true}">Ownership Requests</a></li>
+            <li ng-if="header_ctrl.isAdmin"><a ui-sref="dashboard_all_feedbacks" ui-sref-opts="{reload: true}">Feedbacks</a></li>
+          </ul>
+        </li>
+        <li><a ui-sref="contactus"><strong>Contact Us</strong></a></li>
+        <!-- <li class="dropdown">
+          <a href="#" id="termsDropdown" class="dropdown-toggle" data-toggle="dropdown" role="button"><strong>Terms &amp; Privacy</strong> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="termsDropdown">
+            <li><a ui-sref="privacyPolicy">Privacy Policy</a></li>
+            <li><a ui-sref="termsOfUse">Terms of Use</a></li>
+          </ul>
+        </li> -->
+        <li><a ui-sref="search({link:true})"><strong>Child Care Search</strong></a></li>
+      </ul>
+    </div>
+  </nav>
+  <div  id="multipleInviteContainer" align="right">
+   <button ng-show="header_ctrl.user_is_logged_in" id="multipleInviteBtn" type="button" class="btn btn-theme btn-secondary"><i class="fa fa-share" aria-hidden="true"></i> Invite Friends</button>
+   <div id="multipleInviteTextContainer" >
+     <button id="multipleInviteBtn2" type="button" class="btn btn-theme btn-secondary"><i class="fa fa-close fa-" aria-hidden="true"></i> &nbsp;Close</button>
+    <form name="multipleInviteForm" ng-submit="submitMultipleInvite(multipleInviteForm)" novalidate>
+
+      <label class="pull-left">To:
+        <!--<i class="fa fa-info-circle ng-isolate-scope" data-toggle="tooltip" data-title="Invite multiple friends by entering their email addresses separated by commas." data-placement="top" rv-tooltip="" data-original-title="" title=""></i>-->
+      </label>
+      <div ng-messages="multipleInviteForm.$submitted && multipleInviteForm.multipleInviteEmails.$error">
+        <div class="text-danger" ng-message="required">This is a required field.</div>
+        <div class="text-danger" ng-message="pattern">Please enter a valid email address.</div>
+      </div>
+      <input name="multipleInviteEmails" id="multipleInviteEmails" type="text" placeholder="Recipient's email (required)" class="form-control" ng-model="multipleInviteModel.multipleInviteEmails" required>
+      <div ng-messages="multipleInviteForm.$submitted && multipleInviteForm.multipleInviteTextArea.$error">
+        <div class="text-danger" ng-message="required">This is a required field.</div>
+      </div>
+      <textarea ng-if="!header_ctrl.user_is_logged_in" name="multipleInviteTextArea" id="multipleInviteTextArea" rows="12" placeholder="Personal message (required)" class="form-control" ng-model="multipleInviteModel.multipleInviteText" required></textarea>
+      <textarea ng-if="header_ctrl.user_is_logged_in" name="multipleInviteTextArea" id="multipleInviteTextArea" rows="12" style="margin-bottom:10px;" placeholder="Personal message (required)" class="form-control" ng-model="multipleInviteModel.multipleInviteText" required readonly></textarea>
+      <div ng-messages="multipleInviteForm.$submitted && multipleInviteForm.multipleInviteEmailArea.$error">
+        <div class="text-danger" ng-message="required">This is a required field.</div>
+        <div class="text-danger" ng-message="pattern">Please enter a valid email address.</div>
+      </div>
+
+      <div ng-if="!header_ctrl.user_is_logged_in">
+          <label class="pull-left">From: </label>
+          <div ng-messages="multipleInviteForm.$submitted && multipleInviteForm.multipleInviteEmailSender.$error">
+            <div class="text-danger" ng-message="required">This is a required field.</div>
+          </div>
+          <input ng-change="updateInviteText()" name="multipleInviteEmailSender" id="multipleInviteEmailSender" type="email"  placeholder="Your Email (required)" class="form-control" style="margin-bottom:10px;" ng-model="multipleInviteModel.multipleInviteEmailSender" ng-pattern="header_ctrl.emailRegex" ng-if="!header_ctrl.user_is_logged_in" required>
+
+      </div>
+
+      <div class="row" ng-if="!header_ctrl.user_is_logged_in">
+        <div class="form-group col-sm-6">
+          <label class="pull-left">First Name<span style="color:red;">*</span>
+            <i class="fa fa-info-circle ng-isolate-scope" data-toggle="tooltip" data-title="Your first and last name help ensure that the recipient does not consider your invitation to be spam." data-placement="top" rv-tooltip="" data-original-title="" title=""></i>
+          </label>
+          <input ng-change="updateInviteText()" type="text" name="firstName" class="form-control" placeholder="First Name" ng-model="multipleInviteModel.firstName" required>
+          <div ng-messages="multipleInviteForm.$submitted && multipleInviteForm.firstName.$error">
+            <div class="text-danger" ng-message="required">Required.</div>
+          </div>
+
+        </div>
+        <div class="form-group col-sm-6">
+          <label class="pull-left">Last Name<span style="color:red;">*</span></label>
+          <input ng-change="updateInviteText()" type="text" name="lastName" class="form-control" placeholder="Last Name" ng-model="multipleInviteModel.lastName" required>
+          <div ng-messages="multipleInviteForm.$submitted && multipleInviteForm.lastName.$error">
+            <div class="text-danger" ng-message="required">Required.</div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-theme btn-secondary btn-block">Submit</button>
+    </form>
+   </div>
+  </div>
+  <div id="feedbackContainer" align="right">
+    <button id="feedbackBtn" type="button" class="btn btn-theme btn-secondary"><i class="fa fa-comments" aria-hidden="true"></i> Feedback</button>
+   <div id="feedbackTextContainer" >
+     <button id="feedbackBtn2" type="button" class="btn btn-theme btn-secondary"><i class="fa fa-close" aria-hidden="true"></i> &nbsp;Close</button>
+    <form name="feedbackForm" ng-submit="submitFeedback(feedbackForm)" novalidate>
+      <div ng-messages="feedbackForm.$submitted && feedbackForm.feedbackTextArea.$error">
+        <div class="text-danger" ng-message="required">This is a required field.</div>
+      </div>
+      <textarea ng-if="!header_ctrl.user_is_logged_in" name="feedbackTextArea" id="feedbackTextArea" rows="5" placeholder="Your feedback (required)" class="form-control" ng-model="feedbackForm.feedbackText" required></textarea>
+      <textarea ng-if="header_ctrl.user_is_logged_in" name="feedbackTextArea" id="feedbackTextArea" rows="7" placeholder="Your feedback (required)" class="form-control" ng-model="feedbackForm.feedbackText" required></textarea>
+      <div ng-messages="feedbackForm.$submitted && feedbackForm.feedbackEmailArea.$error">
+        <div class="text-danger" ng-message="required">This is a required field.</div>
+        <div class="text-danger" ng-message="pattern">Enter a valid email address.</div>
+      </div>
+      <input id="feedbackEmailArea" name="feedbackEmailArea" type="email"  placeholder="Your Email (required)" class="form-control" ng-model="feedbackForm.feedbackEmail" ng-pattern="header_ctrl.emailRegex" ng-if="!header_ctrl.user_is_logged_in" required>
+      <button type="submit" class="btn btn-theme btn-secondary btn-block">Submit</button>
+    </form>
+   </div>
+  </div>
+ 
+</div><!-- mobile navbar -->
+
+<script>
+$(document).ready(function () {
+
+  $("#feedbackBtn").click(function(){
+     $("#feedbackBtn").hide();
+     $("#multipleInviteBtn").hide();
+     $("#feedbackContainer").animate({'margin-bottom':'2'});
+  });
+
+  $("#feedbackBtn2").click(function(){
+    $("#feedbackBtn").show();
+    $("#feedbackContainer").animate({'margin-bottom':'-380'});
+    $("#multipleInviteBtn").show();
+
+  });
+
+  $("#multipleInviteBtn").click(function(){
+     $("#multipleInviteBtn").hide();
+     $("#multipleInviteContainer").animate({'margin-bottom':'2'});
+     setTimeout(function () {
+          $('#multipleInviteEmails').focus();          
+     }, 1);
+     $("#feedbackBtn").hide();
+    //  $("#multipleInviteEmails").val("");
+  });
+
+  $("#multipleInviteBtn2").click(function(){
+    $("#multipleInviteBtn").show();
+    $("#multipleInviteContainer").animate({'margin-bottom':'-750'});
+    $("#feedbackBtn").show();
+  });
+
+});
+</script>

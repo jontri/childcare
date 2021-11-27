@@ -1,0 +1,816 @@
+﻿<!-- wrapper page -->
+<div class="wrapper">
+    <!-- main-header -->
+    <header class="main-header narrow-header">
+
+
+        <div ui-view="navbar"></div>
+        <div class="body-content clearfix"></div>
+
+        <!-- form search area-->
+        <button class="btn btn-theme btn-t-primary defaultNarrowStyle narrowBtn" id="fixedNarrowBtn">Change filters
+        </button>
+        <button class="btn btn-theme btn-t-primary" id="fixedFindDaycare">Search again</button>
+        <div class="dark-header collapse in" id="searchDiv">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- form search -->
+                        <h3 class="color-white" align="center">Child Care Center Search
+                        </h3>
+
+                        <div id="divAdvancedNote" ng-show="search_ctrl.advancedSearch == 1"
+                             style=" position:relative;"
+                             class="color-white pull-right">Note: (<span style="color:red">*</span>) = Required Field
+                        </div>
+                        <div id="divBasicNote" ng-show="search_ctrl.advancedSearch == 0"
+                             style=" position:relative;"
+                             class=" color-white pull-right">Note: (<span style="color:red">*</span>) = City/State, Zip
+                            Code or County is a Required Field
+                        </div>
+
+                        <form class="form-search-list" id="search-form" name="search_ctrl.formSearch"
+                              ng-submit="search_ctrl.submitNewPage()">
+
+                            <div id="divBasicSearch" ng-show="search_ctrl.advancedSearch == 0">
+                                <div class="col-md-3 col-xs-12 no-padding padding-r-md">
+                                    <div class="form-group">
+                                        <label class="color-white">Child Care Center Name
+                                        </label>
+                                        <input class="form-control" ng-model="search_ctrl.keyword"
+                                               placeholder="Name or Keyword" focus="true" id="txtDayCare">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="row">
+                                        <label class="color-white">Location
+                                            <span style="color:red;">*</span>
+                                            <span class="border-none border-error-text"
+                                                  ng-show="search_ctrl.formSearch.$submitted && !search_ctrl.county && !search_ctrl.zip  && !search_ctrl.location">City/State, Zip Code or County is required.</span>
+                                            <span style="color:red;"
+                                                  ng-show="search_ctrl.formSearch.$submitted && search_ctrl.zip && search_ctrl.zip.length != 5 ">Zip code must be 5 digits.</span>
+                                        </label>
+                                    </div>
+                                    <div class="row"
+                                         ng-class="(search_ctrl.formSearch.$submitted && (!search_ctrl.county && !search_ctrl.zip  && !search_ctrl.location || (search_ctrl.zip  && search_ctrl.zip.length != 5) ) ) ? 'border-error' : 'border-none'">
+                                        <div class="col-xs-12 input-group">
+                                            <div class="form-group col-md-5 col-xs-12 no-padding padding-r-md">
+                                                <input gp-gac="{ types: ['(cities)'],  componentRestrictions: { country: 'US' }}"
+                                                       ng-model="search_ctrl.location"
+                                                       gp-components="{ locality: 'long_name', administrative_area_level_1: 'short_name' }"
+                                                       gp-callback="search_ctrl.gpSearchCb(result, place, true)"
+                                                       type="text"
+                                                       name="txtCity"
+                                                       id="txtCity"
+                                                       class="form-control"
+                                                       placeholder="City, State"
+                                                       emptyFocus
+                                                       ng-keydown="search_ctrl.keyPress($event)">
+                                            </div>
+                                            <div class="form-group col-md-4 col-xs-12 no-padding padding-r-md">
+                                                <!--ALPHABET: (charCode > 31 && (charCode < 48 || charCode > 57))-->
+                                                <input onkeypress='return !(event.charCode > 31 && (event.charCode<48 || event.charCode >57) )'
+                                                       ng-maxlength="5"
+                                                       maxlength="5"
+                                                       class="form-control"
+                                                       ng-model="search_ctrl.zip"
+                                                       id="txtZip"
+                                                       placeholder="5 digit Zip Code"
+                                                       ng-blur="validateZip=true">
+                                            </div>
+
+                                            <div class="col-md-3 col-xs-12 no-padding padding-r-md">
+                                                <input class="form-control" ng-model="search_ctrl.county"
+                                                       id="txtCounty"
+                                                       placeholder="County">
+                                            </div>
+                                        </div>
+                                    </div> <!--end row required-->
+                                </div>
+                                <div class="col-md-3 col-xs-12">
+                                    <div class="row">
+                                        <label class="color-white">&nbsp;</label>
+                                    </div>
+                                    <div class="border-none white-space-normal row" role="group"
+                                         aria-label="Button group with nested dropdown">
+                                        <div class="col-xs-12 col-md-5 form-group no-padding padding-r-md">
+                                            <button id="search_button_basic" type="submit"
+                                                    class="btn btn-theme btn-t-primary full-width"
+                                                    ng-keydown="search_ctrl.keyPress($event)">Search
+                                            </button>
+                                        </div>
+                                        <div class="btn-group col-xs-12 col-md-7 form-group no-padding" role="group"
+                                             id="searchGroupbtn">
+                                            <button id="btnSearchGroupBasic" type="button"
+                                                    class="btn dropdown-toggle btn-theme btn-t-primary full-width"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">Other Options
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu full-width" aria-labelledby="btnSearchGroup">
+                                                <a class="dropdown-menu-item-search btn-block link-list"
+                                                   id="btnGotoAdvanceSearch"
+                                                   href=""
+                                                   ng-keydown="search_ctrl.keyPress($event)"
+                                                   ng-click="search_ctrl.gotoAdvanceSearch();search_ctrl.formSearch.$submitted=false">Search
+                                                    By Distance</a>
+                                                <a id="previousSearch"
+                                                   class="dropdown-menu-item-search btn-block link-list"
+                                                   ng-if="search_ctrl.isAuthenticated"
+                                                   href=""
+                                                   ng-click="search_ctrl.openSaveSearch()"
+                                                   ng-keydown="search_ctrl.keyPress($event)">Previous Searches</a>
+                                                <a id="clearSearch"
+                                                   class="dropdown-menu-item-search btn-block link-list"
+                                                   ng-click="search_ctrl.formSearch.$submitted=false; search_ctrl.clearSearch()"
+                                                   ng-keydown="search_ctrl.keyPress($event)" href="">Clear Search
+                                                    Data</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div id="divAdvancedSearch" ng-show="search_ctrl.advancedSearch == 1">
+                                <div class="col-md-3 col-xs-12 no-padding padding-r-md">
+                                    <div class="form-group">
+                                        <label class="color-white">Child Care Center Name </label>
+                                        <input class="form-control" ng-model="search_ctrl.keyword"
+                                               placeholder="Name or Keyword" focus="true" id="txtDayCareAdv">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-xs-12 no-padding padding-r-md">
+                                    <div class="form-group">
+                                        <label class="color-white">
+                                            Address
+                                            <span style="color:red;">*</span>
+                                            <span style="color:red;"
+                                                  ng-show="(search_ctrl.formSearch.$submitted && !search_ctrl.fullAddress)">This is a required field.</span>
+                                        </label>
+
+                                        <input gp-gac="{ componentRestrictions: { country: 'US' } }"
+                                               ng-model="search_ctrl.fullAddress"
+                                               gp-callback="search_ctrl.gpSearchCb(result, place, false)"
+                                               type="text"
+                                               name="txtAddress"
+                                               id="txtAddress"
+                                               class="form-control"
+                                               placeholder="Enter any address"
+                                               ng-blur="validateAdd=true"
+                                               ng-focus="validateAdd=false"
+                                               ng-keydown="search_ctrl.keyPress($event)">
+
+                                        </input>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-xs-12 no-padding padding-r-md">
+                                    <div>
+                                        <label class="color-white">Distance from Address</label>
+                                        <select id="withinDistance" class="form-control"
+                                                ng-keydown="search_ctrl.keyPress($event)"
+                                                ng-model="search_ctrl.within">
+                                            <option value="5">5 mi
+                                            <option value="10">10 mi
+                                            <option value="20">20 mi
+                                            <option value="30">30 mi
+                                            <option value="40">40 mi
+                                            <option value="50">50 mi
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-xs-12">
+                                    <div class="row">
+                                        <label class="color-white">&nbsp;</label>
+                                    </div>
+                                    <div class="border-none white-space-normal row" role="group"
+                                         aria-label="Button group with nested dropdown">
+                                        <div class="col-xs-12 col-md-5 form-group no-padding padding-r-md">
+                                            <button id="search_button_main" type="submit"
+                                                    class="btn-theme btn btn-t-primary full-width"
+                                                    ng-keydown="search_ctrl.keyPress($event)">Search
+                                            </button>
+                                        </div>
+                                        <div class="btn-group col-xs-12 col-md-7 form-group no-padding" role="group">
+                                            <button id="btnSearchGroupAdvance" type="button"
+                                                    class="btn btn-t-primary dropdown-toggle btn-theme full-width"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">Other Options
+                                                <i class="fa fa-caret-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu full-width" aria-labelledby="btnSearchGroup">
+                                                <a id="btnGotoBasicSearch"
+                                                   class="dropdown-menu-item-search btn-block link-list" href=""
+                                                   ng-keydown="search_ctrl.keyPress($event)"
+                                                   ng-click="search_ctrl.gotoBasicSearch();search_ctrl.formSearch.$submitted=false">Basic
+                                                    Search &nbsp; &nbsp; </a>
+                                                <a id="advPreviousSearch"
+                                                   class="dropdown-menu-item-search btn-block link-list"
+                                                   ng-if="search_ctrl.isAuthenticated" href=""
+                                                   ng-keydown="search_ctrl.keyPress($event)"
+                                                   ng-click="search_ctrl.openSaveSearch()">Previous Searches</a>
+                                                <a id="advClearSearch"
+                                                   class="dropdown-menu-item-search btn-block link-list"
+                                                   ng-keydown="search_ctrl.keyPress($event)"
+                                                   ng-click="search_ctrl.formSearch.$submitted=false;search_ctrl.clearSearch()"
+                                                   href="">Clear Search Data</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>  <!-- form search -->
+                    </div>
+                </div>
+            </div><!-- end form search area-->
+        </div>
+    </header><!-- end main-header -->
+
+
+    <!-- body-content -->
+
+
+    <div class="body-content clearfix">
+
+        <div class="bg-color2 ">
+            <div class="container">
+                <div class="row">
+                    <div ui-view="filter"></div>
+                    <div class="col-xs-12 col-md-9">
+
+                        <!-- box listing -->
+                        <div class="block-section-sm box-list-area">
+                            <!-- desc top -->
+                            <div class="divPagination search-page-tracker-relative row" id="search-page-tracker"
+                                 ng-class="{'no-margin': !search_ctrl.isDesktop}"
+                                 ng-if="!(search_ctrl.count==0 || search_ctrl.pages==0 || isNan(search_ctrl.pages))">
+                                <div class="col-xs-12 col-md-10" ng-class="{'no-padding': !search_ctrl.isDesktop}">
+                                    <span id="first-pg-btn"
+                                          ng-class="!search_ctrl.isDesktop ? 'col-xs-2 no-padding' : ''">
+                                        <button type="button" class="btn btn-theme btn-secondary btn-short btn-sm"
+                                                ng-class="!search_ctrl.isDesktop ? 'full-width' : ''"
+                                                ng-click="search_ctrl.pressedFirst()"><span
+                                                class="glyphicon glyphicon-step-backward"></span></button>
+                                    </span>
+                                    <span id="prev-pg-btn"
+                                          ng-class="!search_ctrl.isDesktop ? 'col-xs-2 no-padding' : ''">
+                                        <button type="button" class="btn btn-theme btn-secondary btn-short btn-sm"
+                                                ng-class="!search_ctrl.isDesktop ? 'full-width' : ''"
+                                                ng-click="search_ctrl.pressedPrev()"><span
+                                                class="glyphicon glyphicon-chevron-left"></span></button>
+                                    </span>
+                                    <span class="hidden-xs hidden-sm">
+                                        Page
+                                        <form name="search_ctrl.newPageForm"
+                                              style="display:inline;">
+                                            <input class="form-control"
+                                                   style="width:50px;height:30px;display:inline-block;" name="page"
+                                                   ng-model="search_ctrl.currentPage" min="1"
+                                                   max="{{search_ctrl.pages}}"
+                                                   value="1" readonly>
+                                        </form>
+                                        of {{search_ctrl.pages}}
+                                    </span>
+                                    <span class="visible-xs visible-sm text-center col-xs-4">
+                                        {{search_ctrl.currentPage}} of {{search_ctrl.pages}}
+                                    </span>
+                                    <span id="next-pg-btn"
+                                          ng-class="!search_ctrl.isDesktop ? 'col-xs-2 no-padding' : ''">
+                                        <button type="button" class="btn btn-theme btn-secondary btn-short btn-sm"
+                                                ng-class="!search_ctrl.isDesktop ? 'full-width' : ''"
+                                                ng-click="search_ctrl.pressedNext()"><span
+                                                class="glyphicon glyphicon-chevron-right"></span></button>
+                                    </span>
+                                    <span id="last-pg-btn"
+                                          ng-class="!search_ctrl.isDesktop ? 'col-xs-2 no-padding' : ''">
+                                        <button type="button" class="btn btn-theme btn-secondary btn-short btn-sm"
+                                                ng-class="!search_ctrl.isDesktop ? 'full-width' : ''"
+                                                ng-click="search_ctrl.pressedLast()"><span
+                                                class="glyphicon glyphicon-step-forward"></span></button>
+                                    </span>
+                                    <span id="results-pg-btn"
+                                          ng-class="!search_ctrl.isDesktop ? 'col-xs-6 no-padding' : ''">
+                                        <div class="btn-group" role="group"
+                                             ng-class="!search_ctrl.isDesktop ? 'full-width' : ''">
+                                            <button id="btnGroupDrop1" type="button"
+                                                    ng-class="!search_ctrl.isDesktop ? 'full-width' : ''"
+                                                    class="btn btn-theme btn-secondary dropdown-toggle btn-sm"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                {{search_ctrl.limit}} items per page <span
+                                                    class="glyphicon glyphicon-chevron-down"></span>
+                                            </button>
+                                            <div class="dropdown-menu full-width" aria-labelledby="btnGroupDrop1">
+                                                <a class=" btn-block link-list" href=""
+                                                   ng-click="search_ctrl.setLimit(10)">10 items per page</a>
+                                                <a class=" btn-block link-list" href=""
+                                                   ng-click="search_ctrl.setLimit(20)">20 items per page</a>
+                                                <a class=" btn-block link-list" href=""
+                                                   ng-click="search_ctrl.setLimit(40)">40 items per page</a>
+                                                <a class=" btn-block link-list" href=""
+                                                   ng-click="search_ctrl.setLimit(60)">60 items per page</a>
+                                                <a class=" btn-block link-list" href=""
+                                                   ng-click="search_ctrl.setLimit(100)">100
+                                                    items per page</a>
+                                            </div>
+                                        </div>
+                                    </span>
+
+                                    <span class="hidden-xs hidden-sm">&nbsp;</span>
+                                    <span id="sort-pg-btn"
+                                          ng-class="!search_ctrl.isDesktop ? 'col-xs-6 no-padding' : ''">
+                                        <div class="btn-group" role="group"
+                                             ng-class="!search_ctrl.isDesktop ? 'full-width' : ''">
+                                            <button id="btnGroupSort" type="button"
+                                                    ng-class="!search_ctrl.isDesktop ? 'full-width' : ''"
+                                                    class="btn btn-theme btn-secondary dropdown-toggle btn-sm"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true" aria-expanded="false">
+                                                {{search_ctrl.sortName}}<span
+                                                    class="glyphicon glyphicon-chevron-down"></span>
+                                            </button>
+                                            <div class="dropdown-menu full-width" aria-labelledby="btnGroupSort">
+                                                <a class=" btn-block link-list" href=""
+                                                   ng-repeat="sort in search_ctrl.sorting"
+                                                   ng-click="search_ctrl.sortResults(sort.value, sort.name)">{{sort.name}}</a>
+
+                                            </div>
+                                        </div>
+                                    </span>
+
+                                    <div id="compareGrp" class="btn-group" role="group"
+                                         ng-class="!search_ctrl.isDesktop ? 'col-xs-12 no-padding' : ''">
+                                        <button type="button"
+                                                ng-class="!search_ctrl.isDesktop ? 'col-xs-11' : ''"
+                                                ng-click="search_ctrl.transformCompare()"
+                                                class="btn btn-theme btn-secondary btn-sm"
+                                                aria-haspopup="true" aria-expanded="false">Compare Child Care Centers -
+                                            {{search_ctrl.compare.length}} Selected
+                                            <span class="glyphicon glyphicon-stats"></span>
+                                        </button>
+                                        <button id="compareDropdown" type="button"
+                                                ng-class="!search_ctrl.isDesktop ? 'col-xs-1' : ''"
+                                                class="btn btn-theme btn-secondary dropdown-toggle btn-sm"
+                                                data-toggle="dropdown">
+                                            <span class="glyphicon glyphicon-chevron-down"></span>
+                                        </button>
+
+                                        <div class="dropdown-menu full-width" aria-labelledby="compareDropdown">
+                                            <div ng-repeat="c in search_ctrl.compare track by $index"
+                                                 class="btn-block link-list"
+                                                 style="text-align: left;padding-left: 3px;padding-right: 3px;"
+                                                 ng-click="search_ctrl.removeCompare(c);$event.stopPropagation();">
+                                                 <span class=" glyphicon glyphicon-remove"
+                                                       style="color:red"></span>
+                                                {{c.name}}
+
+                                            </div>
+                                        </div>
+                                        <button id="compareModalBtn" data-toggle="modal" data-target="#modalCompare"
+                                                style="display:none"></button>
+                                        <!--<div class="btn-group">-->
+                                        <!---->
+                                        <!--</div>-->
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="hidden-xs hidden-sm">
+                                    <p class="text-right">
+                                        {{search_ctrl.pageStart}} to {{search_ctrl.pageEnd}} of {{ search_ctrl.count }}
+                                    </p>
+                                </div>
+                            </div><!-- end desc top -->
+
+
+                            <!-- item list -->
+                            <div class="box-list" ng-init="search_ctrl.loadFavorites()">
+                                <div id="tracker-search-count" class="visible-xs visible-sm">
+                                    {{search_ctrl.pageStart}} to {{search_ctrl.pageEnd}} of {{ search_ctrl.count }}
+                                </div>
+                                <div class="item white-space-100"
+                                     ng-if="(search_ctrl.loadingStatus == 'loading')">
+                                    <div class="white-space-100">
+                                        <i class="text-muted text-center center-block fa fa-refresh fa-spin"
+                                           style="font-size:24px;"></i> Loading Results...
+                                    </div>
+                                </div>
+
+                                <div class="item white-space-100"
+                                     ng-if=" search_ctrl.loadingStatus == 'fail' && (search_ctrl.count==0 || search_ctrl.pages==0 || isNan(search_ctrl.pages) )">
+                                    <div class="white-space-100 text-danger">Loading results failed</div>
+                                </div>
+
+                                <div class="item white-space-100"
+                                     ng-if=" search_ctrl.loadingStatus == 'success' && (search_ctrl.count==0 || search_ctrl.pages==0 || isNan(search_ctrl.pages) )">
+                                    <div class="white-space-100">No results found</div>
+                                </div>
+
+                                <div ng-if="search_ctrl.count>0">
+
+                                    <div class="item" ng-repeat="result in search_ctrl.searchResult"
+                                         ng-init="result.isFavorite = search_ctrl.checkFavorite(result)">
+                                        <div class="d-table">
+
+                                            <div class="d-table-cell-top">
+                                                <div class="img-item">
+                                                    <img ng-src="{{!result.logo ? 'assets/theme/images/company-logo/1.jpg' : 'assets/uploads/' + result.logo}}"
+                                                         alt="">
+                                                </div>
+                                                <div>
+                                                    <button
+                                                            ng-class="search_ctrl.getCompareBtnClass(result)"
+                                                            data-ng-click="search_ctrl.toggleCompare(result)"> Compare
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="d-table-cell row">
+                                                <div class="col-xs-12">
+
+                                                    <h3 class="no-margin-top ">
+                                                        <a ui-sref="listingDetail({ listingId: result._id })"
+                                                           ng-click="add_previous_page()">{{result.name}} </a>
+
+                                                    </h3>
+                                                    <h4 ng-if="result.ownership_status === 'approved'">You are the
+                                                        owner</h4>
+                                                    <h4 ng-if="result.ownership_status === 'rejected'">Ownership request
+                                                        has been declined</h4>
+                                                    <h5>
+                                                        <span>
+                                                            <!--<span ng-if="result.address.addressLine1 && (!result.displayAddress || result.displayAddress == 'Y')">{{result.address.addressLine1}},</span>-->
+                                                            <!--<span ng-if="result.address.addressLine2 && (!result.displayAddress || result.displayAddress == 'Y')">{{result.address.addressLine2}},</span>-->
+                                                            <!--{{result.address.city}}, {{result.address.state}}, {{result.address.zip}}-->
+                                                            <!--<span ng-if="!result.address.addressLine1 || (result.displayAddress && result.displayAddress == 'N')">(Street address not disclosed by provider)</span>-->
+                                                            {{search_ctrl.formatAddress(result.address, result.displayAddress)}}
+                                                        </span>
+                                                    </h5>
+                                                    <p><i class="fa fa-phone" aria-hidden="true"></i> +{{result.phone |
+                                                        phoneFormatter}}
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-4">
+                                                    <p ng-show="search_ctrl.CheckTotalReviews(result) == 1">
+                                                        <a ui-sref="listingDetail({ listingId: result._id })"
+                                                           class="btn btn-xs btn-theme btn-link"
+                                                           ng-click="search_ctrl.setReviewsTab()">
+                                                            <label>Number of Reviews : </label> {{result.totalReviews?result.totalReviews:0}}
+                                                        </a>
+                                                    </p>
+
+                                                    <span ng-if="search_ctrl.userHasReview(result._id)">You Reviewed this daycare</span>
+
+                                                </div>
+                                                <div class="col-xs-12 col-md-4">
+                                                    <p><label>Overall Rating : </label> <span class="rate"
+                                                                                              rating={{result.avgOverAllRatings}}></span>
+                                                        ({{ result.avgOverAllRatings ?
+                                                        result.avgOverAllRatings.toFixed(1) : '0.0' }})
+                                                    </p>
+                                                </div>
+                                                <div class="col-xs-12 col-md-4">
+                                                    <!--<p><label>Cost : </label> <span>{{result.cost}}</span>-->
+                                                    <!--</p>-->
+                                                </div>
+
+                                                <div class="col-xs-12" ng-if="result.distance">
+                                                    <p><label>Approx. Distance : </label> <span>{{result.distance | number : 2}} miles</span>
+                                                        <!--<span ng-if="search_ctrl.isFar(result.distance)">miles</span>-->
+                                                        <!--<span ng-if="!search_ctrl.isFar(result.distance)">mile</span>-->
+                                                    </p>
+                                                </div>
+
+                                                <div id="searchResultBtn" class="col-xs-12">
+
+                                                    <div id="notifs-{{$index}}" class="alert alert-success" ng-show="result.selectedIndex == $index">
+                                                        <span ng-bind-html="result.favoritesDisplay">
+                                                        </span>
+                                                    </div>
+
+                                                    <span ng-show="search_ctrl.isAuthenticated">
+                                                        <a data-toggle="modal"
+                                                           class="btn btn-xs btn-theme btn-link no-margin"
+                                                           ng-click="search_ctrl.updateFavorites(result, $index)">
+                                                            {{(result.isFavorite)?"Remove from Favorites":"Add to Favorites"}} </a>
+                                                    </span>
+
+                                                    <span ng-show="!search_ctrl.isAuthenticated">
+                                                        <a href="javascript:;"
+                                                           data-toggle="modal"
+                                                           ng-click="search_ctrl.alertRegister()"
+                                                           class="btn btn-xs btn-theme btn-link no-margin">Add to Favorites</a>
+                                                    </span>
+
+                                                    <span>
+                                                        -
+                                                        <a href="javascript:;"
+                                                           class="btn btn-xs btn-theme btn-link no-margin"
+                                                           rv-modal
+                                                           modal-src-obj="{ recipient_name: result.name, recipient_id: result.owner_id , listing_id: result._id }"
+                                                           modal-id="#modalSendMessage">
+                                                            Contact Center
+                                                        </a>
+                                                    </span>
+
+                                                    <span ng-show="search_ctrl.isParent && search_ctrl.userHasReview(result._id) && search_ctrl.userInfo._id !== result.owner_id">
+                                                      -
+                                                      <a href="javascript:void(0)"
+                                                         class="btn btn-xs btn-theme btn-link no-margin"
+                                                         ng-click="search_ctrl.updateReview(result)"
+                                                         ng-show="search_ctrl.isAuthenticated">Update Review
+                                                      </a>
+                                                    </span>
+                                                    <span ng-show="!search_ctrl.userHasReview(result._id)">
+                                                      <span ng-if="!search_ctrl.isAuthenticated || (search_ctrl.isParent && result.ownership_status !== 'approved')">-</span>
+
+                                                      <a href="javascript:void(0)"
+                                                         class="btn btn-xs btn-theme btn-link no-margin"
+                                                         ng-click="search_ctrl.writeReview(result)"
+                                                         ng-show="search_ctrl.isParent && search_ctrl.isAuthenticated && result.ownership_status !== 'approved'">Submit a Review
+                                                      </a>
+                                                      <a href="javascript:void(0)"
+                                                         class="btn btn-xs btn-theme btn-link no-margin"
+                                                         ng-click="search_ctrl.alertRegister()"
+                                                         ng-show="!search_ctrl.isAuthenticated">Submit a Review
+                                                      </a>
+                                                    </span>
+                                                    <span ng-show="!search_ctrl.isAuthenticated">
+                                                        -
+                                                        <a href="javascript:void(0)"
+                                                           class="btn btn-theme btn-xs btn-link no-margin"
+                                                           ng-click="search_ctrl.alertRegister()">
+                                                            Schedule Appointment
+                                                        </a>
+                                                    </span>
+                                                    <span ng-show="search_ctrl.isAuthenticated">
+                                                        -
+                                                        <a href="javascript:void(0)"
+                                                           ng-click="search_ctrl.schedule(result)"
+                                                           ui-sref="daycare_appointment({listingId:result._id,listingName:result.name})"
+                                                           class="btn btn-theme btn-xs btn-link no-margin">
+                                                            Schedule Appointment
+                                                        </a>
+                                                    </span>
+                                                    <span ng-show="search_ctrl.isAuthenticated && search_ctrl.isProvider && (!result.ownership_status || result.ownership_status === 'rejected')">
+                                                        -
+                                                        <a href="javascript:void(0)"
+                                                           ng-click="search_ctrl.requestOwnership(result)"
+                                                           class="btn btn-theme btn-xs btn-link no-margin">
+                                                            Request Ownership
+                                                        </a>
+                                                    </span>
+                                                    <span ng-show="search_ctrl.isAuthenticated && search_ctrl.isProvider && result.ownership_status === 'pending'">
+                                                        -
+                                                        <a href="javascript:void(0)"
+                                                           ng-click="search_ctrl.cancelOwnership(result)"
+                                                           class="btn btn-theme btn-xs btn-link no-margin">
+                                                            Cancel Ownership
+                                                        </a>
+                                                    </span>
+                                                    <span ng-show="search_ctrl.isAuthenticated && search_ctrl.isProvider && result.ownership_status === 'pending'">
+                                                        -
+                                                        <a href="javascript:void(0)"
+                                                           ng-click="search_ctrl.uploadDocuments(result.ownership_id)"
+                                                           class="btn btn-theme btn-xs btn-link no-margin">
+                                                            Upload Documents
+                                                        </a>
+                                                    </span>
+                                                    <!--<div class="btn-group">-->
+                                                    <!--<button class="btn btn-theme btn-xs btn-default dropdown-toggle"-->
+                                                    <!--data-toggle="dropdown">More... <span-->
+                                                    <!--class="caret"></span></button>-->
+                                                    <!--<ul class="dropdown-menu">-->
+                                                    <!--<li><a href="javascript:void(0)"-->
+                                                    <!--ng-click="search_ctrl.alertRegister()"-->
+                                                    <!--ng-show="!search_ctrl.isAuthenticated">Submit-->
+                                                    <!--Application/Documents</a></li>-->
+                                                    <!--<li><a href="javascript:void(0)"-->
+                                                    <!--ng-show="search_ctrl.isAuthenticated"-->
+                                                    <!--ui-sref="listingDetail({ listingId: result._id })"-->
+                                                    <!--ng-click="search_ctrl.formSubmitCookie()">Submit-->
+                                                    <!--Application/Documents</a></li>-->
+                                                    <!--</ul>-->
+                                                    <!--</div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div><!-- end box listing -->
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div><!--end body-content -->
+
+
+            <div ui-view="footer"></div>
+            <div ui-view="auditlog"></div>
+
+        </div><!-- end wrapper page -->
+
+
+        <!-- modals -->
+        <ng-include ng-show="search_ctrl.canCompare = (search_ctrl.compare!==null && search_ctrl.compare.length>1)"
+                    src="'templates/modals/compare.modal.html'"></ng-include>
+
+        <div ng-controller="authCtrl as auth_ctrl">
+            <ng-include src="'templates/modals/sms_verify.modal.html'"></ng-include>
+        </div>
+
+        <div ng-controller="ModalCtrl as modal_ctrl">
+            <ng-include src="'templates/modals/new_message.modal.html'"></ng-include>
+        </div>
+
+        <div ng-controller="saveSearchCtrl as save_search_ctrl">
+            <ng-include src="'templates/modals/tag_search.modal.html'"></ng-include>
+        </div>
+
+    </div>
+</div>
+<!-- end modals  -->
+<script>
+    $(document).ready(function () {
+
+        // Media queries
+        var mw990 = window.matchMedia('only screen and (min-width: 990px)');
+
+        var currentTop;
+        var lastScrollTop = 0, delta = 5;
+        var showSearchFloatBtn;
+        var isDesktop;
+
+        var mw990Func = function (mq) {
+            if (isDesktop = mq.matches) {
+                // desktop
+                showSearchFloatBtn = 150;
+            } else {
+                // mobile
+                showSearchFloatBtn = 500;
+            }
+        };
+
+        mw990.addListener(mw990Func);
+        mw990Func(mw990);
+
+        $(window).scroll(function () {
+            var currScrollTop = $(window).scrollTop();
+            if (currScrollTop > showSearchFloatBtn) {
+                //$("#search-page-tracker").addClass("search-page-tracker-fixed");
+                $("#fixedFindDaycare").show();
+            }
+            if (currScrollTop < showSearchFloatBtn) {
+                //$("#search-page-tracker").removeClass("search-page-tracker-fixed");
+                $("#fixedFindDaycare").hide();
+            }
+
+            var filterBottom = 0;
+
+            if ($('#search-list-filter').offset()) {
+                filterBottom = $('#search-list-filter').offset().top + $('#search-list-filter').height();
+            }
+            var paginationBarTop = 0;
+
+            if ($("#search-page-tracker").offset()) {
+                paginationBarTop = $("#search-page-tracker").offset().top;
+            }
+            
+            // console.log('filterBottom', filterBottom);
+            if (currScrollTop >= 1025 && filterBottom <= 1103.1875) {
+                $("#fixedNarrowBtn").show();
+                $("#fixedNarrowBtn").addClass("narrowBtn");
+            } else if ($('#fixedNarrowBtn').is(':visible')) {
+                $("#fixedNarrowBtn").hide();
+            }
+
+            if (!isDesktop) {
+                if ($('#search-page-tracker').hasClass('search-page-tracker-fixed')) {
+                    var paginationBarHeight = $('#search-page-tracker').height();
+                    if (!parseInt($("#fixedNarrowBtn").css('top'))) {
+                        $("#fixedNarrowBtn").css('top', paginationBarHeight);
+                    }
+                    if (!parseInt($("#fixedFindDaycare").css('top'))) {
+                        $("#fixedFindDaycare").css('top', paginationBarHeight);
+                    }
+                } else {
+                    if ($("#fixedNarrowBtn").css('top')) {
+                        $("#fixedNarrowBtn").css('top', '');
+                    }
+                    if ($("#fixedFindDaycare").css('top')) {
+                        $("#fixedFindDaycare").css('top', '');
+                    }
+                }
+            }
+
+            if (currScrollTop > lastScrollTop) {
+                // scroll down
+                if (isDesktop) {
+                    var navbarBottom = $('nav.navbar').offset().top + $('nav.navbar').height();
+                    if (navbarBottom > paginationBarTop) {
+                        $("#search-page-tracker").addClass("search-page-tracker-fixed");
+                        $("#search-page-tracker").css('top', '');
+                    }
+                } else {
+                    if (currScrollTop > paginationBarTop) {
+                        $("#search-page-tracker").addClass("search-page-tracker-fixed")
+                            .removeClass('no-margin').find('> [class^="col-"]').removeClass('no-padding');
+                        $("#search-page-tracker").css('top', '172px');
+                    }
+                }
+            } else {
+                if (isDesktop) {
+                    var searchBarBottom = 0;
+                    if ($('#searchDiv').offset()) {
+                        searchBarBottom = $('#searchDiv').offset().top + $('#searchDiv').height();
+                    }
+                    if (searchBarBottom > paginationBarTop && $('#search-page-tracker').hasClass('search-page-tracker-fixed')) {
+                        $('#search-page-tracker').removeClass('search-page-tracker-fixed');
+                    }
+                } else {
+                    if (filterBottom > paginationBarTop && $('#search-page-tracker').hasClass('search-page-tracker-fixed')) {
+                        $('#search-page-tracker').removeClass('search-page-tracker-fixed')
+                            .addClass('no-margin').find('> [class^="col-"]').addClass('no-padding');
+                    }
+                }
+            }
+
+            if (currentTop > currScrollTop) {
+
+                var nowScrollTop = $(this).scrollTop();
+                if (Math.abs(lastScrollTop - nowScrollTop) >= delta) {
+                    if (nowScrollTop > lastScrollTop) {
+                        $("#search-list-filter").css({"top": "visible"});
+                        //scrolled down
+                    }
+                    else {
+                        if (currScrollTop > $(document).height() - 1250) {
+
+                        }
+                        else {
+                            $("#search-list-filter").css({"top": currScrollTop - 200});
+                            //console.log("scrolled up");
+                            currentTop = currScrollTop;
+                        }
+                    }
+                    lastScrollTop = nowScrollTop;
+                }
+
+            }
+            if (currScrollTop < 200) {
+                currentTop = null;
+                $("#search-list-filter").css({"position": "relative", "top": "0"});
+            }
+            lastScrollTop = currScrollTop;
+        });
+
+//        $("#btnSearchGroupBasic").mouseover(function(){
+//            $("#btnSearchGroupBasic").click();
+//        });
+
+
+        $("#fixedNarrowBtn").click(function () {
+            currentTop = $(window).scrollTop();
+//            console.log("The currentTop is" + currentTop)
+//            console.log($(document).height());
+            $("#fixedNarrowBtn").hide();
+            // $("#search-list-filter").addClass("search-sidebar-onscroll");
+//            if ($(window).scrollTop() > $(document).height() - 1250) {
+//                $("#search-list-filter").css({"top": $(document).height() - 1600});
+//            } else {
+//                $("#search-list-filter").css({"top": $(window).scrollTop() - 200});
+//            }
+            $("html, body").animate({scrollTop: 0}, "fast");
+        });
+
+        $("#fixedFindDaycare").click(function () {
+            $("html, body").animate({scrollTop: 0}, "slow");
+            $('#txtDayCare').focus();
+        });
+
+        $(window).off('keyup').keyup(function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code == 9) {
+                if (document.activeElement.id == "btnSearchGroupBasic") {
+                    $("#btnSearchGroupBasic").click();
+                } else if (document.activeElement.id == "btnSearchGroupAdvance") {
+                    $("#btnSearchGroupAdvance").click();
+                }
+            }
+        });
+    });
+
+
+</script>
+

@@ -1,0 +1,165 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px">
+	<div class="col-md-12 users">
+		<h3>Appointments</h3>
+  
+		<table class="table table-responsive table-striped table-users">
+			<thead>
+				<tr>
+					<th>Daycare</th>
+					<th>Appointment Date</th>
+					<th>Appointment Schedule</th>
+					<th>Status</th>
+					<th class="col-md-3"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="appointment in appointments | orderBy:'date'" >
+					<td><a ui-sref="listingDetail({ listingId: appointment.listing._id })">{{appointment.listing.name}}</a></td>	
+					<td>{{appointment.date | date:"EEEE, MMM dd yyyy 'at' h:mm a"}}</td>
+					<td><span ng-show="appointment.status == 'approved'"><a ui-sref="daycare_appointment({listingId: appointment.listing._id, listingName: appointment.listing.name})">View</a></span></td>
+					<td ng-bind="appointment.status"></td>
+					<td class="col-md-3">
+						<button ng-show="appointment.status == 'pending'" class="btn btn-success" ng-click="updateAppointment(appointment,'approved')">Approve</button>
+						<button ng-show="appointment.status == 'pending'" class="btn btn-danger" ng-click="updateAppointment(appointment,'rejected')">Reject</button>
+						<!--<button ng-show="appointment.status == 'rejected'" class="btn btn-success" ng-click="activateOwnerRequest(owner_request,'pending')">Unreject</button>
+						<button class="btn btn-danger" ng-click="deleteOwnerRequest(owner_request)">Delete</button>-->
+					</td>
+				</tr>
+			</tbody>
+		<tfoot>
+		</tfoot>
+		</table>
+		<div class="row" ng-if="!appointments || !appointments.length">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				You have no appointments.
+			</div>
+		</div>
+	</div>
+  </div>      
+
+<!--<div class="block-section-sm bg-color1" style="min-height: 800px">
+  <div class="col-md-12 home">
+	<div class="col-md-8 col-sm-8 col-xs-12">
+		<div class="box-container padding-20">
+			<h3 class="no-margin">Appointments</h3>
+			<div class="white-space-10"></div>
+			<div class="row" ng-repeat="appointment in appointments | orderBy:'date'">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<b>{{appointment.listing.name}}:</b> Requested for <b>{{appointment.date | date:"EEEE, MMM dd yyyy 'at' h:mm a"}}</b>.
+					Click <a ui-sref="daycare_appointment({listingId: appointment.listing._id, listingName: appointment.listing.name})">reschedule</a> to change.
+				</div>
+			</div>
+			<div class="row" ng-if="!appointments || !appointments.length">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					You have no appointments.
+				</div>
+			</div>
+		</div>
+	</div>-->
+    <!--div class="col-md-3 col-sm-6 col-xs-12">
+    	<div class="box-container">
+    		<div class="top">
+    			<div class="icon">
+	    			<i class="fa fa-comments"></i>
+	    		</div>
+	    		<div class="desc">
+	    			<h3>Messages</h3>
+	    		</div>
+    		</div>
+    		
+    		<div class="btm text-right">
+
+    			<a href="" ui-sref="dashboard_inbox"><span>View &nbsp; <i class="fa fa-arrow-right"></i></span></a>
+    		</div>
+    	</div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+    	<div class="box-container">
+    		<div class="top">
+    			<div class="icon">
+	    			<i class="glyphicon glyphicon-book"></i>
+	    		</div>
+	    		<div class="desc">
+	    			<h3>Articles</h3>
+	    		</div>
+    		</div>
+    		
+    		<div class="btm text-right">
+
+    			<a href="" ui-sref="dashboard_articles"><span>View &nbsp; <i class="fa fa-arrow-right"></i></span></a>
+    		</div>
+    	</div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+    	<div class="box-container">
+    		<div class="top">
+    			<div class="icon">
+	    			<i class="fa fa-pencil"></i>
+	    		</div>
+	    		<div class="desc">
+	    			<h3>Reviews</h3>
+	    		</div>
+    		</div>
+    		
+    		<div class="btm text-right">
+
+    			<a href="" ><span>View &nbsp; <i class="fa fa-arrow-right"></i></span></a>
+    		</div>
+    	</div>
+    </div>
+    <div class="col-md-3 col-sm-6 col-xs-12">
+    	<div class="box-container">
+    		<div class="top">
+    			<div class="icon">
+	    			<i class="glyphicon glyphicon-tag"></i>
+	    		</div>
+	    		<div class="desc">
+	    			<h3>Daycares</h3>
+	    		</div>
+    		</div>
+    		
+    		<div class="btm text-right">
+
+    			<a href="" ui-sref="dashboard_daycares"><span>View &nbsp; <i class="fa fa-arrow-right"></i></span></a>
+    		</div>
+    	</div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-top: 10px;">
+        <div class="box-container">
+            <div class="top">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-heart"></i>
+                </div>
+                <div class="desc">
+                    <h3>Favorites</h3>
+                </div>
+            </div>
+            
+            <div class="btm text-right">
+
+                <a href="" ui-sref="dashboard_favorites"><span>View &nbsp; <i class="fa fa-arrow-right"></i></span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12" style="margin-top: 10px;" ng-if="isProvider">
+        <div class="box-container">
+            <div class="top">
+                <div class="icon">
+                    <i class="glyphicon glyphicon-list"></i>
+                </div>
+                <div class="desc">
+                    <h3>Clients</h3>
+                </div>
+            </div>
+            
+            <div class="btm text-right">
+
+                <a href="" ui-sref="dashboard_client"><span>View &nbsp; <i class="fa fa-arrow-right"></i></span></a>
+            </div>
+        </div>
+    </div>-->
+
+  </div>
+</div>      

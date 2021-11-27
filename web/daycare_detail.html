@@ -1,0 +1,501 @@
+﻿<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+
+    <div ui-view="navbar"></div>
+
+  </header><!-- end main-header -->
+
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <!-- link top -->
+    <div class="bg-color2 block-section-xs line-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 hidden-xs">
+            <!--<div>Daycare details :</div>-->
+          </div>
+          <div class="col-sm-6">
+            <div class="text-right">
+              <!--<a ui-sref="search" class="highlight-blue">&laquo; Go back to childcare listings</a>-->
+              &nbsp;
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- end link top -->
+
+    <div class="bg-color2">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9">
+
+            <!-- box item details -->
+            <div class="block-section box-item-details no-top">
+
+              <div class="action-div">
+                <a ui-sref="{{goBackToList()}}"><i class="fa fa-reply" aria-hidden="true"></i>
+                  Go back to child care center list
+                </a>
+
+                <a ng-click="listing_ctrl.downloadPdf()" class="link">
+                  <i class="fa fa-download">&nbsp;</i>Download PDF
+                </a>
+
+              </div>
+
+              <h2 class="title detail-title">
+                {{ listing_ctrl.listing.name }}
+              </h2>
+              <div class="content" ng-show="listing_ctrl.isAdmin">
+                <a href="" ui-sref="manageDaycare({ listingId: listing_ctrl.listing._id })"
+                   class="btn btn-primary">Manage Daycare</a>
+              </div>
+
+              <button id="ownership-btn" class="btn btn-theme btn-t-primary"
+                      ng-show="listing_ctrl.isProvider" ng-disabled="listing_ctrl.disableOwnerBtn"
+                      ng-click="listing_ctrl.requestOwnership()">
+                <!--<i class="fa fa-spinner fa-spin"></i>-->
+                {{ listing_ctrl.ownerBtnDisplay }}
+              </button>
+              <a class="btn btn-theme btn-t-primary"
+                      ng-show="listing_ctrl.ownerBtnDisplay === 'Cancel Request'"
+                      ui-sref="ownershipUploads({ownershipId: listing_ctrl.ownerRequest._id})">
+                      Upload Documents
+              </a>
+
+              <div class="white-space-40"></div>
+
+              <div class="">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"><a href="" data-target="#about" aria-controls="about"
+                                             role="tab" data-toggle="tab"><i
+                          class="fa fa-map-marker"></i> About</a></li>
+                  <!--<li role="presentation"><a href="" data-target="#fee" aria-controls="fee" role="tab" data-toggle="tab"><i class="fa fa-money"></i> Fee</a></li>-->
+                  <li role="presentation"><a href="" data-target="#details" aria-controls="details"
+                                             role="tab" data-toggle="tab"><i class="fa fa-info"></i>
+                    Details</a></li>
+                  <li role="presentation"><a href="reviews" data-target="#reviews"
+                                             aria-controls="other" role="tab" data-toggle="tab"
+                                             ng-click="GetReviewsDetail(listing_ctrl.listing._id)"><i
+                          class="fa fa-info"></i> Ratings/Reviews</a></li>
+                  <!-- <li role="presentation"><a href="formsdocument" data-target="#formsdocument"
+                                             aria-controls="other" role="tab" data-toggle="tab"
+                                             id="formsdocumentTab"><i class="fa fa-info"></i>
+                    Forms/Documents</a></li> -->
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content" style="padding-top: 20px">
+                  <div role="tabpanel" class="tab-pane fade" id="about">
+                    <!--<p><label>Facility Program:</label>   {{ listing_ctrl.listing.program }}</p>-->
+                    <p><label class="label-left">{{listing_ctrl.COMMON.leadAdmin}}:</label><span class="content-right">{{ listing_ctrl.listing.director }}</span></p>
+                    <p><label class="label-left">{{listing_ctrl.COMMON.address}}:</label><span class="content-right">{{ listing_ctrl.listing.formattedAddress }}</span></p>
+                    <p><label class="label-left">{{listing_ctrl.COMMON.phone}}:</label><span class="content-right">{{ listing_ctrl.listing.phone }}</span></p>
+                    <p><label class="label-left">{{listing_ctrl.COMMON.fax}}:</label><span class="content-right">{{ listing_ctrl.listing.fax }}</span></p>
+                    <p><label class="label-left">{{listing_ctrl.COMMON.email}}:</label><span class="content-right">{{ listing_ctrl.listing.email }}</span></p>
+                    <p><label class="label-left">{{listing_ctrl.COMMON.website}}:</label><span class="content-right">{{ listing_ctrl.listing.website }}</span></p>
+                    <p><label class="label-left">{{listing_ctrl.COMMON.aboutus}}:</label><span class="content-right" ng-bind-html="listing.description"></span></p>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="details">
+                    <div class="content">
+                      <div><label class="label-left">{{listing_ctrl.COMMON.facilityType}}:</label><span class="content-right">{{ listing_ctrl.listing.program }}</span></div>
+                      <div><label class="label-left">{{listing_ctrl.COMMON.facilityOpened}}:</label><span class="content-right">{{ listing_ctrl.listing.dateFounded ? (listing_ctrl.listing.dateFounded | date:'MM/dd/yyyy':'+0') : "Not Available" }}</span></div>
+                      <div><label class="label-left">{{listing_ctrl.COMMON.capacity}}:</label><span class="content-right">{{ listing_ctrl.listing.capacity }}</span></div>
+					  <div ng-switch="listing.rawData.opHoursAvailable">
+                            <div ng-switch-when = "N"><label class="label-left">{{listing_ctrl.COMMON.hoursOfOp}}:</label><class="content-right">Not available</div>
+                            <div ng-switch-default>
+                                <p><label class="label-left">{{listing_ctrl.COMMON.hoursOfOp}}:</label><div class="content-right">
+                                        <span ng-if="listing_ctrl.listing.operatingHours">
+                                            <span ng-repeat="day in listing.operatingHours">
+                                                <span class="hours-layout">{{day.day}}:</span>
+                                                    <span ng-repeat="sched in day.sched">
+                                                        <span ng-switch = "sched.open">
+                                                            <span ng-switch-when = "">
+                                                                Closed <br/>
+                                                            </span>
+                                                            <span ng-switch-default style="{{ $index > 0 ? 'margin-left: 100px;' : '' }}">
+                                                                {{sched.open}} - {{sched.close}}<br/>
+                                                            </span>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                </p>
+                            </div>
+                        </div>
+
+                      <!-- span ng-if="!listing_ctrl.listing.openHours && !listing_ctrl.listing.closeHours">{{listing_ctrl.listing.formattedHours}}</span -->
+                      <div><label class="label-left">{{listing_ctrl.COMMON.licenseNum}}:</label><span class="content-right">{{ listing_ctrl.listing.uid }}</span></div>
+                      <div><label class="label-left">{{listing_ctrl.COMMON.licenseExp}}:</label><span class="content-right">{{ listing_ctrl.listing.license.endDate }}</span></div>
+                      <div><label class="label-left">{{listing_ctrl.COMMON.accredited}}:</label><span class="content-right">{{listing_ctrl.listing.formattedAccreditations}}</span></div>
+					  <div><label class="label-left">{{listing_ctrl.COMMON.goldSeal}}<br/>({{ listing_ctrl.listing.address.state | qualityProgram}}):</label><br/><span class="content-right">{{listing_ctrl.listing.formattedGoldSeal}}</span></div>
+                      <div><label class="label-left">{{listing_ctrl.COMMON.curriculum}}:</label><span class="content-right">{{listing_ctrl.listing.formattedCurriculum}}</span></div>
+                    </div>
+
+                    <div class="white-space-40"></div>
+
+                  </div>
+
+                  <div role="tabpanel" class="tab-pane fade" id="reviews">
+                    <div class="content" style="float:right" ng-show="!listing_ctrl.isAdmin">
+                      <p><a href="javascript:void(0)" ng-click="listing_ctrl.writeReview()"
+                            ng-if="listing_ctrl.isParent && !listing_ctrl.userAlreadyReviewed && listing_ctrl.ownerBtnDisplay !== 'You Own This Daycare'"
+                            class="btn btn-theme btn-t-primary btn-lg"> Submit a Review</a>
+                          <a href="javascript:void(0)" ng-click="listing_ctrl.updateReview()"
+                            ng-if="listing_ctrl.userAlreadyReviewed && listing_ctrl.ownerBtnDisplay !== 'You Own This Daycare'"
+                            class="btn btn-theme btn-t-primary btn-lg"> Update Review</a></p>
+                    </div>
+                    
+                    <div class="content">
+                      <p ng-model="listing_ctrl.listing.description"></p>
+                    </div>
+
+                    <div class="content">
+                      <h4>Ratings:</h4>
+
+                      <p ng-repeat="result in listing_ctrl.ratings">
+                        <label>{{result.label}}:</label>
+                        <span class="rate" rating={{result.rating}}></span>
+                        ({{ result.rating ? result.rating.toFixed(1) : '0.0' }})
+                      </p>
+                    </div>
+
+                    <div class="white-space-40"></div>
+                    <div class="content row">
+
+                      <div class="col-xs-12" style="cursor:pointer">
+                        <h4>Summary:</h4>
+                        <div class="col-md-3 col-xs-12">
+                          <nvd3 style="display: inline-block;" options="optionSafety"
+                                data="safetyData"></nvd3>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                          <nvd3 style="display: inline-block;" options="optionFacilities"
+                                data="facilitiesData"></nvd3>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                          <nvd3 style="display: inline-block;" options="optionStaff"
+                                data="staffData"></nvd3>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                          <nvd3 style="display: inline-block;" options="optionEducation"
+                                data="educationData"></nvd3>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                          <nvd3 style="display: inline-block;" options="optionOverAll"
+                                data="overAllData"></nvd3>
+                        </div>
+                      </div>
+                    </div>
+                      
+                      <div class="content reviews" ng-show="!listing_ctrl.isAdmin">
+                        <p>
+                        <h4>Reviews: <button class="btn btn-sm btn-theme btn-t-primary " ng-click="listing_ctrl.filterReview(null,null);">View All</button></h4>
+                        <ul class="nav">
+                          <li data-ng-repeat="review in filteredReviews | orderBy: '-dateOrder' track by $index"
+                              ng-if="review.approved">
+
+                            <review id="review{{review._id}}"
+                              review="currRevHash[review._id]">
+                              <actions>
+                                <!--<div class="white-space-10" ng-if="!listing_ctrl.isAuthenticated"></div>-->
+                                <div align="right" ng-if="listing_ctrl.ownerBtnDisplay !== 'You Own This Daycare'">
+                                  <p>
+                                    <span ng-if="isReviewOwner(currRevHash[review._id])">
+                                      <button data-toggle="tooltip"
+                                              data-title="You cannot vote for your own review"
+                                              data-placement="top"
+                                              rv-tooltip class="btn btn-theme btn-secondary btn-sm">
+                                      <i class="fa fa-thumbs-up"></i> {{currRevHash[review._id].helpfulVotes}}
+                                      </button>
+                                      <button data-toggle="tooltip"
+                                              data-title="You cannot vote for your own review"
+                                              data-placement="top"
+                                              rv-tooltip class="btn btn-theme btn-secondary btn-sm">
+                                      <i class="fa fa-thumbs-down"></i> {{currRevHash[review._id].unHelpfulVotes}}
+                                      </button>
+                                      <button data-toggle="tooltip"
+                                              data-title="You cannot flag your own review as offensive/fake."
+                                              data-placement="top"
+                                              rv-tooltip class="btn btn-sm btn-theme btn-secondary"
+                                        >
+                                      <i class="fa fa-flag"></i>
+                                      </button>
+                                    </span>
+
+                                    <span ng-if="!isReviewOwner(currRevHash[review._id])">
+                                      <button ng-click="!listing_ctrl.isAuthenticated ? alertRegister() : addTag(currRevHash[review._id],'helpful')"
+                                              data-toggle="tooltip"
+                                              data-title="Review is helpful"
+                                              data-placement="top"
+                                              rv-tooltip class="btn btn-theme btn-secondary btn-sm">
+                                      <i class="fa fa-thumbs-up"></i> {{currRevHash[review._id].helpfulVotes}}
+                                      </button>
+                                      <button ng-click="!listing_ctrl.isAuthenticated ? alertRegister() : addTag(currRevHash[review._id],'unhelpful')"
+                                              data-toggle="tooltip"
+                                              data-title="Review is not helpful"
+                                              data-placement="top"
+                                              rv-tooltip class="btn btn-theme btn-secondary btn-sm">
+                                      <i class="fa fa-thumbs-down"></i> {{currRevHash[review._id].unHelpfulVotes}}
+                                      </button>
+                                      <button ng-if="currRevHash[review._id].userFlagged > 0" ng-click="!listing_ctrl.isAuthenticated ? alertRegister() : addTag(currRevHash[review._id],'flagged')"
+                                                       data-toggle="tooltip"
+                                                       data-title="Flagged as offensive/fake"
+                                                       data-placement="top"
+                                                       rv-tooltip class="btn btn-sm btn-theme btn-secondary">
+                                        <i class="fa fa-flag iconcolor-red" ></i>
+                                      </button>
+                                      <button ng-if="currRevHash[review._id].userFlagged == 0" ng-click="!listing_ctrl.isAuthenticated ? alertRegister() : addTag(currRevHash[review._id],'flagged')"
+                                              data-toggle="tooltip"
+                                              data-title="Flag as offensive/fake"
+                                              data-placement="top"
+                                              rv-tooltip class="btn btn-sm btn-theme btn-secondary">
+
+                                        <i class="fa fa-flag" ></i>
+                                      </button>
+                                    </span>
+                                  </p>
+                                </div>
+
+                                <div align="right" ng-if="listing_ctrl.ownerBtnDisplay == 'You Own This Daycare'">
+                                  <p><span>
+                                    <button class="btn btn-theme btn-secondary btn-sm" data-toggle="tooltip"
+                                            data-title="Owners not allowed to vote on reviews  for child care center they own"
+                                            data-placement="top"
+                                            rv-tooltip>
+                                    <i class="fa fa-thumbs-up"></i> {{currRevHash[review._id].helpfulVotes}}
+                                    </button>
+                                    <button class="btn btn-theme btn-secondary btn-sm" data-toggle="tooltip"
+                                            data-title="Owners not allowed to vote on reviews  for child care center they own"
+                                            data-placement="top"
+                                            rv-tooltip>
+                                    <i class="fa fa-thumbs-down"></i> {{currRevHash[review._id].unHelpfulVotes}}
+                                    </button>
+                                    <button data-toggle="tooltip"
+                                            data-title="Owners not allowed to flag child care center they own"
+                                            data-placement="top"
+                                            rv-tooltip class="btn btn-sm btn-theme btn-secondary">
+                                    <i class="fa fa-flag"></i>
+                                    </button>
+                                  </span></p>
+                                </div>
+
+
+
+                                <div>
+                                  <div class="pull-left" ng-if="review.oldReview && false">
+                                    <span ng-hide="review.show_old_review">
+                                      <a href="" ng-click="showOldReview(true, review)">View previous review,</a>
+                                      submitted on {{review.oldReview.dateSaved | dateToMilli | date:'longDate'}}
+                                    </span>
+                                    <span ng-show="review.show_old_review">
+                                      <a href="" ng-click="showOldReview(false, review)">View updated review,</a>
+                                      submitted on {{review.dateSaved | dateToMilli | date:'longDate'}}
+                                    </span>
+                                  </div>
+                                  <div class="pull-right">
+                                    <a href="" ng-if="replies[currRevHash[review._id]._id].replies.length" ng-click="replies[currRevHash[review._id]._id].show_replies = !replies[currRevHash[review._id]._id].show_replies">
+                                      <span ng-hide="replies[currRevHash[review._id]._id].show_replies">View replies</span>
+                                      <span ng-show="replies[currRevHash[review._id]._id].show_replies">Hide replies</span>
+                                    </a>
+                                    <span ng-if="!replies[currRevHash[review._id]._id].replies.length">This review has no replies yet</span>
+                                  </div>
+                                </div>
+                              </actions>
+                            </review>
+
+                            <ul class="nav col-md-offset-1 all_replies" ng-if="replies[currRevHash[review._id]._id].show_replies">
+                              <li ng-repeat="reply in replies[currRevHash[review._id]._id].replies track by $index">
+                                <reply reply="reply"></reply>
+                              </li>
+                              <div class="text-center">
+                                <span ng-if="!replies[currRevHash[review._id]._id].no_more_replies">
+                                    <span ng-show="replies[currRevHash[review._id]._id].old_replies_is_loading">loading...</span> <a href="" ng-hide="replies[currRevHash[review._id]._id].old_replies_is_loading" ng-click="getOldReplies(currRevHash[review._id]._id)">View older replies</a>
+                                </span>
+                                <span ng-if="replies[currRevHash[review._id]._id].no_more_replies">There are no more replies</span>
+                              </div>
+                            </ul>
+                          </li>
+                          <li data-ng-show="listing_ctrl.reviews.length <= 0">
+                            <div class="main-content">
+                              <h4> No Reviews available yet.</h4>
+                            </div>
+                          </li>
+                        </ul>
+                        </p>
+
+
+                      </div>
+
+                      <div class="content" ng-hide="!listing_ctrl.user.isAdmin">
+                        <div class="col-md-6 no-padding ">
+                          <label ng-show="listing_ctrl.listing.status == 'approved'">
+                            Status : <span class="text-success">Approved !</span>
+                          </label>
+                          <label ng-show="listing_ctrl.listing.status == 'rejected'">
+                            Status : <span class="text-danger">Rejected !</span>
+                          </label>
+                          <label ng-show="!listing_ctrl.listing.status">
+                            Status : <span class="text-warning">Pending</span>
+                          </label>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <button ng-disabled="listing_ctrl.listing.status == 'approved'"
+                                  class="btn btn-success"
+                                  ng-click="approveDaycare(listing_ctrl.listing,'approved')">
+                            Approve
+                          </button>
+                          <button ng-disabled="listing_ctrl.listing.status == 'rejected'"
+                                  class="btn btn-danger"
+                                  ng-click="approveDaycare(listing_ctrl.listing,'rejected')">
+                            Reject
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div><!-- end box item details -->
+            </div>
+            <div class="col-md-3" id="rightSideLoginDayCare">
+
+              <!-- box affix right -->
+              <div class="block-section " id="affix-box">
+                <div class="text-right">
+                  <p><a href="#" class="btn btn-theme btn-t-primary btn-block-xs">Login to Save This
+                    Daycare</a></p>
+                  <!--<p><a href="#map-toogle" id="btn-map-toogle" data-toggle="collapse" class="btn btn-theme btn-t-primary btn-block-xs">Ofice Location</a></p>-->
+                  <p>Share This Daycare <span class="space-inline-5"></span> :</p>
+                  <p class="share-btns">
+                    <a href="#" class="btn btn-primary"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="btn btn-danger"><i class="fa fa-google-plus"></i></a>
+                    <a href="#" class="btn btn-warning"><i class="fa fa-envelope"></i></a>
+                  </p>
+                </div>
+              </div><!-- box affix right -->
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- block map -->
+      <div class="collapse" id="map-toogle">
+        <div class=" bg-color2" id="map-area">
+          <div class="container">
+            <div class="marker-description">
+              <div class="inner">
+                <h4 class="no-margin-top">Office Location</h4>
+                Orlando, FL
+              </div>
+            </div>
+          </div>
+          <div class="map-area-detail">
+            <!-- change data  lat abd lng here -->
+            <div class="box-map-detail" id="map-detail-job" data-lat="48.856318" data-lng="2.351866"></div>
+          </div>
+        </div>
+      </div><!-- end block map -->
+
+      <!-- modal apply -->
+      <div class="modal fade" id="modal-apply">
+        <div class="modal-dialog ">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header ">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Contact Us</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Full name</label>
+                  <input type="email" class="form-control " placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                  <label>Email address</label>
+                  <input type="email" class="form-control " placeholder="Enter Email">
+                </div>
+                <div class="form-group">
+                  <label>Tell us why you better?</label>
+                  <textarea class="form-control" rows="6" placeholder="Something Comment"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Your Application Form</label>
+                  <div class="input-group">
+                      <span class="input-group-btn">
+                        <span class="btn btn-default btn-theme btn-file">
+                          File  <input type="file">
+                        </span>
+                      </span>
+                    <input type="text" class="form-control form-flat" readonly="">
+                  </div>
+                  <small>Send your inquiries</small>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-theme" data-dismiss="modal">Close
+                </button>
+                <button type="submit" class="btn btn-success btn-theme">Send Application</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!-- end modal  apply -->
+
+      <!--modal tags -->
+      <div class="modal fade" id="modalTags" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+
+            <div class="modal-body">
+              <h3>{{modalTagHeader}}</h3>
+              <ul id="alltagsList">
+                <li ng-repeat="x in alltags">
+                  <p>
+                    {{x.name}}
+                    <span class="pull-right">
+             <label>{{x.tag}}</label>
+             <span ng-if="x.tag == 'like'" class="btn-sm btn-success" style="margin-right: 10px"><i
+                     class="fa fa-thumbs-up"></i></span>
+             <span ng-if="x.tag == 'unlike'" class="btn-sm btn-default"
+                   style="border:1px solid grey;margin-right: 10px"><i class="fa fa-thumbs-down"></i></span>
+             <span ng-if="x.tag == 'flag'" class="btn-sm btn-danger" style="margin-right: 10px"><i
+                     class="fa fa-flag"></i></span>
+            {{x.date}}
+            </span>
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--end modal tags-->
+    </div><!--end body-content -->
+
+    <auth-wrapper>
+      <content>
+        <sms-verify-modal backdrop="'static'" keyboard="true"></sms-verify-modal>
+      </content>
+    </auth-wrapper>
+
+    <div ui-view="footer"></div>
+    <div ui-view="auditlog"></div>
+
+  </div><!-- end wrapper page -->

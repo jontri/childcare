@@ -1,0 +1,52 @@
+<div class="col-xs-12 profile" style="min-height: 800px;">
+  <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+    <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancelUpdate()">Cancel</button>
+    <button type="button" class="btn btn-theme btn-t-primary" ng-click="switchForm(3)">Go Back</button>
+    <button type="button" class="btn btn-theme btn-t-primary" ng-click="update()">
+      <i class="fa fa-save"></i>
+      Update
+    </button>
+  </div>
+
+  <h3 class="line-bottom-5">Contact Information</h3>
+  <div class="col-xs-12 info">
+    <rv-info rv-label="'Name'" rv-info-text="{{listing.name}} ({{listing.uid}})"></rv-info>
+    <rv-info rv-label="'Lead Administrator'" rv-info-text="{{listing.director}}"></rv-info>
+    <rv-info rv-label="'Address'" rv-info-text="{{listing.address}}" rv-type="address"></rv-info>
+    <rv-info rv-label="'Phone #'" rv-info-text="{{listing.phone}}"></rv-info>
+    <rv-info rv-label="'Fax #'" rv-info-text="{{listing.fax}}"></rv-info>
+    <rv-info rv-label="'Email'" rv-info-text="{{listing.email}}"></rv-info>
+    <rv-info rv-label="'Website'" rv-info-text="{{listing.website}}"></rv-info>
+    <rv-info class="multi-lines" rv-label="'About Us'" rv-info-text="{{listing.description | linebreakToBrTag}}"></rv-info>
+    <div class="white-space-20"></div>
+  </div>
+
+  <h3 class="line-bottom-5">Operating Details</h3>
+  <div class="col-xs-12 info">
+    <rv-info rv-label="'Center type'" rv-info-text="{{listing.program}}"></rv-info>
+    <rv-info rv-label="'Date center opened'" rv-info-text="{{listing.dateFounded | date:'MM/dd/yyyy':'+0'}}"></rv-info>
+    <rv-info class="hours-table" rv-label="'Days/hours of operation'" rv-info-text="{{getHoursTable()}}" rv-type="table"></rv-info>
+    <rv-info rv-label="'License expiration'" rv-info-text="{{listing.license.endDate | date:'MM/dd/yyyy':'+0'}}"></rv-info>
+    <rv-info rv-label="'Curriculums'" rv-info-text="{{listing.curriculum}}" rv-type="list"></rv-info>
+    <div class="white-space-20"></div>
+  </div>
+
+  <h3 class="line-bottom-5">Coverages and Services</h3>
+  <div class="col-xs-12 info">
+    <rv-info rv-label="'Coverage'" rv-info-text="{{getCoverage()}}" rv-type="table"></rv-info>
+    <rv-info rv-label="'Service options'" rv-info-text="{{getServiceOpts()}}" rv-type="table"></rv-info>
+    <rv-info rv-label="'Other features'" rv-info-text="{{getOtherFeats()}}" rv-type="table"></rv-info>
+    <div class="white-space-20"></div>
+  </div>
+
+  <div class="col-xs-12">
+    <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancelUpdate()">Cancel</button>
+    <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+    <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="switchForm(3)">Go Back</button>
+    <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+    <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="update()">
+      <i class="fa fa-save"></i>
+      Update
+    </button>
+  </div>
+</div>

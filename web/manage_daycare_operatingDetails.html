@@ -1,0 +1,113 @@
+<div class="col-xs-12 profile">
+  <form id="detailFormTwo" name="detailFormTwo" ng-submit="switchForm(3)" novalidate>
+    <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+      <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancelUpdate()">Cancel</button>
+      <button type="button" class="btn btn-theme btn-t-primary" ng-click="switchForm(1)">Go Back</button>
+      <button type="submit" class="btn btn-theme btn-t-primary">
+        <i class="fa fa-save"></i>
+        Continue
+      </button>
+    </div>
+    <div class="col-xs-12 info" ng-init="formHash[2] = detailFormTwo">
+      <div class="row">
+        <span>Note:</span>&nbsp;
+        <b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+      </div>
+
+      <div class="form-inline">
+        <label>Center type</label>
+        <select type="text" class="form-control" name="program" ng-model="listing.program"
+          ng-options="type for type in COMMON.childCareTypes | orderBy:'toString()' track by type"></select>
+      </div>
+
+      <div class="form-inline">
+        <label>Date center opened</label>
+        <input type="text" class="form-control" name="facility_opened" ng-model="listing.dateFounded"
+          rv-date rv-date-max="'12/31/9999'" maxlength="10">
+      </div>
+
+      <div class="form-inline">
+        <label>Days/hours of operation</label>
+        <div class="table-responsive d-inline-block hours-table">
+          <table class="table-condensed">
+            <tr>
+              <th>Day</th>
+              <th>Closed</th>
+              <th style="padding-left:15px">Open</th>
+              <th style="padding-left:15px">Close</th>
+              <th style="padding-left:20px">Action</th>
+            </tr>
+
+            <tbody ng-if="listing.operatingHours" ng-repeat="day in listing.operatingHours" ng-init="parentIndex=$index" style="border-bottom: 30px solid #fff">
+              <tr ng-repeat="sched in day.sched" ng-init="schedIndex=$index">
+                <td class="capitalize"><p ng-if="$first">{{day.day}}</p></td>
+                <td class="text-center">
+                  <!-- need to update data binding and toggle functionality -->
+                  <input ng-if="$first" type="checkbox"
+                  ng-checked="{{day.closed}}"
+                  ng-click="toggleClosedDay(parentIndex)">
+                </td>
+                <td style="padding-left:15px">
+                  <!-- need to update data binding -->
+                  <time-selector  name="'open'" time="sched.open"
+                  is-disabled="day.closed==true"></time-selector>
+                </td>
+                <td style="padding-left:15px;">
+                  <!-- need to update data binding -->
+                  <time-selector  name="'close'" time="sched.close"
+                  is-disabled="day.closed==true"></time-selector>
+                </td>
+                <td style="padding-left:20px">
+                  <button ng-if="day.sched.length !== 1" class="btn  btn-t-danger" type="button" ng-click="removeSched(parentIndex, schedIndex)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                  <button ng-if="day.sched.length === 1 " class="btn  btn-t-primary" type="button" ng-click="addSched(parentIndex, schedIndex)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <label>License expiration <span style="color:red;">*</span></label>
+        <input type="text" class="form-control" name="license_end" ng-model="listing.license.endDate" placeholder="mm/dd/yyyy"
+          rv-date rv-date-max="'12/31/9999'" maxlength="10" required>
+        <div ng-messages="detailFormTwo.license_end.$error" ng-show="detailFormTwo.$submitted" class="error-label">
+          <div class="text-danger" ng-message="required">This is a required field.</div>
+          <div class="text-danger" ng-message="rvDate">Invalid date.</div>
+          <div class="text-danger" ng-message="rvDateFormat">Enter date as MMDDYYYY.</div>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <label>Curriculums
+          <i class="fa fa-info-circle" data-toggle="tooltip" data-title="Hold the Ctrl key or the Command key (&#8984; for Mac users) to select multiple curriculums" data-placement="top" rv-tooltip></i>
+        </label>
+        <select class="form-control d-inline-block" name="curriculum" ng-model="listing.curriculum" multiple style="vertical-align: top;max-width: 300px;"
+          ng-options="curriculum.description for curriculum in curriculums | orderBy:'description' track by curriculum.description"></select>
+        <div class="d-inline-block margin-left-20" style="max-width: 400px;vertical-align: top;">
+          <div ng-if="isOtherCurriculum()">
+            <input type="text" class="form-control" placeholder="Other" name="other_curriculum" ng-model="listing_ctrl.otherCurriculum" required/>
+            <span style="color:red;">*</span>
+            <div ng-messages="detailFormTwo.other_curriculum.$error" ng-if="detailFormTwo.$submitted && detailFormTwo.$invalid" class="error-label">
+                <div class="text-danger" ng-message="required">This is a required field.</div>
+            </div>
+          </div>
+          <div>
+            <span ng-repeat="curriculum in listing.curriculum | filter:{description: '!Other'} | orderBy:'description'">{{(!$first ? ', ' : '') + curriculum.description}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancelUpdate()">Cancel</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="switchForm(1)">Go Back</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="submit" class="btn btn-theme btn-t-primary btn-responsive2">
+          <i class="fa fa-save"></i>
+          Continue
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

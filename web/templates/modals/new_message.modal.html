@@ -1,0 +1,50 @@
+<!-- Modal -->
+<div class="modal fade" id="modalSendMessage" ng-init="modal_ctrl.initModalSendMessage()" tabindex="-1" role="dialog" aria-labelledby="modalSendMessageLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="modalSendMessageLabel">Send message to <strong>{{ modal_ctrl.new_message.recipient_name }}</strong></h4>
+      </div>
+      <div class="modal-body">
+          <!-- form contact -->
+          <div class="alert alert-success" role="alert" ng-if="modal_ctrl.is_message_sent">
+              Message successfully sent.
+          </div>
+          <div class="pull-right">
+            <span>Note:</span>&nbsp;<b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+          </div>
+          <div class="white-space-20"></div>
+          <form ng-submit="modal_ctrl.sendMessage(modal_ctrl.new_message,modal_ctrl.formSendMessage)" name="modal_ctrl.formSendMessage" novalidate>
+                <div class="form-group">
+                      <label>Subject</label>
+                      <input type="text" name="subject" ng-model="modal_ctrl.new_message.subject" class="form-control" />
+                </div>
+                <div class="form-group">
+                      <label>Message <span style="color:red;">*</span></label>
+                      <textarea name="message" class="form-control" ng-model="modal_ctrl.new_message.message" rows="6" required></textarea>
+                      <div ng-messages="modal_ctrl.formSendMessage.message.$error" ng-show="modal_ctrl.submitted" class="form-error-msg text-danger" >
+                        <div ng-message="required">This is a required field.</div>
+                      </div>
+                </div>
+                <div class="form-group">
+                      <label>Your Email <span style="color:red;">*</span></label>
+                      <input type="email" name="email" ng-model="modal_ctrl.new_message.sender_email" class="form-control" ng-pattern="modal_ctrl.emailRegex" required />
+                      <div ng-messages="modal_ctrl.formSendMessage.email.$error" ng-show="modal_ctrl.submitted" class="form-error-msg text-danger" >
+                        <div ng-message="required">This is a required field.</div>
+                        <div ng-message="pattern">Please provide a valid email address.</div>
+                      </div>
+                </div>
+                <div class="form-group text-center">
+                      <div class="white-space-10"></div>
+                      <button type="submit" class="btn btn-theme btn-long btn-t-primary">
+                          <span ng-if="!modal_ctrl.is_loading">Submit</span>
+                          <span ng-if="modal_ctrl.is_loading">Submitting message...</span>
+                      </button>
+                </div>
+          </form>
+          <!-- end form contact -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ui-view></div>
+    <div ui-view="footer"></div>
+  </header>
+</div>
+<!-- end wrapper page -->
+
+<!-- modals -->
+<div ng-controller="ModalCtrl as modal_ctrl">
+  <ng-include src="'templates/modals/new_message.modal.html'"></ng-include>
+</div>
+
+<div ng-controller="saveSearchCtrl as save_search_ctrl">
+    <ng-include src="'templates/modals/tag_search.modal.html'"></ng-include>
+</div>
+<!-- end modals  -->

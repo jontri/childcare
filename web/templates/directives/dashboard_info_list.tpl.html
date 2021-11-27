@@ -1,0 +1,3 @@
+<div class="form-inline">
+  <label>{{rvLabel}} </label> <span ng-if="!info || !info.length || (info.length === 1 && !info[0].description)">Not available</span><span ng-repeat="obj in info | orderBy:'description' track by $index">{{(!$first ? ', ' : '') + obj.description}}</span>
+</div>

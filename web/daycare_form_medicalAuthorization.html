@@ -1,0 +1,339 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: auto; min-height: 800px;">
+    <div class="col-md-12 ">
+        <h3 class="line-bottom-5">
+            Authorization for Medication <span ng-if="medAuthCtrl.editMode">( Update )</span>
+        </h3>
+        <div class="col-md-12 info">
+            <p>No medication shall be given by child care personnel without the signed permission of the parent
+            or legal guardian. All medication must be in the original container with the child's name, name of
+            the physician, medication name, and medication directions written on the label.</p>
+            <p>Non prescription medication brought in by the parent or legal guardian can only be dispensed if
+            there is written authorization from the parent or legal guardian to do so.</p>
+            <p>Medication which has expired or is no longer being administered shall be returned to the parent
+            or legal guardian.</p>
+        </div>
+
+        <form name="medAuthForm" id="medAuthForm" enctype="multipart/form-data" novalidate>
+
+            <!-- Child Profile -->
+            <div class="col-md-12 info">
+                <h4 class="line-bottom-5">
+                    Child's Profile
+                </h4>
+                <!-- First Name -->
+                <div class="form-inline">
+                    <label>First Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="firstName" class="form-control" autocomplete="off" 
+                    ng-model="medAuthCtrl.childData.firstName" required />
+                    <div ng-messages="medAuthForm.firstName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <!-- Middle Name -->
+                <div class="form-inline">
+                    <label>Middle Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="middleName" class="form-control" autocomplete="off" 
+                    ng-model="medAuthCtrl.childData.middleName"  required />
+                    <div ng-messages="medAuthForm.middleName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <!-- Last Name -->
+                <div class="form-inline">
+                    <label>Last Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="lastName" class="form-control" autocomplete="off" 
+                    ng-model="medAuthCtrl.childData.lastName"  required />
+                    <div ng-messages="medAuthForm.lastName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <!-- Date of Birth -->
+                <div class="form-inline">
+                    <label>Date of Birth
+                        <span style="color:red;">*</span>
+                    </label>
+                    <select class="form-control" ng-model="medAuthCtrl.childData.birthM" ng-options="index as m for (index,m) in medAuthCtrl.datePick.m" name="medAuthFormBirthM" ng-required="true">
+                        <option value="" disabled>{{medAuthCtrl.datePick.m[medAuthCtrl.childData.birthM] || 'Month'}}</option>                       
+                    </select>
+                    <select class="form-control" ng-model="medAuthCtrl.childData.birthD" ng-options="d for d in medAuthCtrl.datePick.d" name="medAuthFormBirthD" ng-required="true">
+                        <option value="" disabled selected>Day</option>
+                        
+                    </select>
+                    <select class="form-control" ng-model="medAuthCtrl.childData.birthY" ng-options="y for y in medAuthCtrl.datePick.y" name="medAuthFormBirthY" ng-required="true">
+                        <option value="" disabled selected>Year</option>
+                        
+                    </select>
+                    <div ng-messages="medAuthForm.$submitted && (medAuthForm.medAuthFormBirthM.$error||medAuthForm.medAuthFormBirthD.$error||medAuthForm.medAuthFormBirthY.$error)" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                   
+                </div>
+            
+                <!-- Medication Data and Records -->
+                <h4 class="line-bottom-5">
+                    Medication
+                </h4>
+                <div ng-repeat="data in medAuthCtrl.medicalData">
+                    <div class="col-md-12 info">
+                        <h4 class="line-bottom-5">
+                            {{data.name || 'Medication #'+($index+1 ) | uppercase }} <i ng-if='data.amt'>x <span ng-bind="data.amt"></span></i> <i ng-if='data.time'>@ <span ng-bind="data.time"></span></i>
+                        </h4>
+                        <!-- MEDICATION -->
+                        <div class="form-inline">
+                            <label>Name of Medication </label>
+                            <input type="text" name="{{data.inputName}}" ng-model="data.name" class="form-control">
+                        </div>
+                        <div class="form-inline">
+                            <label>Amount to be Given </label>
+                            <input type="text" name="{{data.inputAmt}}" ng-model="data.amt" class="form-control">
+                        </div>
+                        <div class="form-inline">
+                            <label>Time to be Given </label>
+                            <!--input type="text" name="{{data.inputTime}}" ng-model="data.time" class="form-control"-->
+                            <select name="{{data.inputTime}}" ng-model="data.time" ng-options="x.data as x.text for x in medAuthCtrl.hour" class="form-control">
+                                <option value="" selected disabled>Select Time</option>
+                            </select>
+                        </div>
+                        
+                        
+                        <!-- RECORD -->
+                        <h5 class="line-bottom-5">
+                            <strong>Record of <i>{{data.name || 'Medication #'+($index+1) | uppercase }}</i> Given</strong>
+                            <span><a class="text-danger pull-right" ng-click="medAuthCtrl.removeMedicalData($index)" ng-if="!$first &&medAuthCtrl.medicalData.length>1">Remove this Medication</a></span>
+                        </h5>
+
+                        <div class="form-inline">
+                        <!--input type="text" name="{{medAuthCtrl.recordInput.inputRecTime}}" ng-model="medAuthCtrl.recordInput.recTime" placeholder="Time and Date" class="form-control"-->
+                        <select name="{{medAuthCtrl.recordInput.inputRecTime}}" ng-model="medAuthCtrl.recordInput.recTime" ng-options="x.data as x.text for x in medAuthCtrl.hour" class="form-control">
+                            <option value="" selected disabled>Time Given</option>
+                        </select>
+                        <input type="text" name="{{medAuthCtrl.recordInput.inputRecAmt}}" ng-model="medAuthCtrl.recordInput.recAmt" placeholder="Amount Given" class="form-control">
+                        <input type="text" name="{{medAuthCtrl.recordInput.inputRecEmp}}" ng-model="medAuthCtrl.recordInput.recEmp" placeholder="Employee's Name" class="form-control">
+
+                        <a class="btn btn-t-primary btn-theme" ng-click="medAuthCtrl.addMedicalRecord($index)">Add to Record</a>    
+                        </div>
+
+                        
+                        <table class="table table-striped table-bordered" ng-init="dataIndex=$index" >
+                            <tr>
+                                <th>Time and Date</th>
+                                <th>Amount Given</th>
+                                <th>Employee</th>
+                                <th></th>
+                            </tr>
+                            <tr ng-repeat="record in data.record">
+                                <td>{{record.time}}</td>
+                                <td>{{record.amount}}</td>
+                                <td>{{record.employee}}</td>
+                                <td width="5%"><a class="btn btn-xs btn-t-primary btn-theme" ng-click="medAuthCtrl.removeMedicalRecord(dataIndex,$index)">Delete Row</a></td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    
+                    
+                        
+                </div>
+                    <a class="btn btn-t-primary btn-theme" ng-click="medAuthCtrl.addMedicalData()">Add Medication</a>
+            </div>
+
+            <div class="col-md-12 info" style="margin-top: 10px;">
+            <a class="btn btn-theme btn-t-primary" ng-click="medAuthCtrl.verifyForm(medAuthForm)">Submit Authorization for Medication</a>
+            </div>
+        </form>
+    </div>
+    <div ng-show="documentLoading == true" style="
+        position: absolute;
+        pointer-events: none;
+        background: rgba(255,255,255,0.6) no-repeat center center;
+        text-align: center;
+        width: 100%;
+        height: 100%;">
+        <i class="text-muted text-center center-block fa fa-refresh fa-spin"
+           style="font-size:40px;"></i>
+        <h3 style="font-size:40px;">Processing Form...</h3>
+
+    </div>
+
+    <div ng-show="errorLoading == true" style="
+        position: absolute;
+        pointer-events: none;
+        background: rgba(255,255,255,0.6) no-repeat center center;
+        text-align: center;
+        width: 100%;
+        height: 100%;">
+        <h3>Error Loading Application...</h3>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            <h4>Confirm Submission</h4>
+            <div style="max-height: 300px; overflow: auto;">
+                <table class="table table-striped">
+                  
+                </table>
+            </div>
+            <p class="text-warning text-center">
+              By clicking <strong>Confirm</strong>, the displayed items and the information on this <strong>Authorization for Medication</strong> Form is complete and accurate.
+            </p>
+                            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel
+                </button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="medAuthCtrl.submitForm()">Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="
+    display: none;
+    position: fixed;
+    left: 1000px;
+    top: 150px;
+    height: 500px;
+    background-color: white;
+    overflow-y: auto;">
+    
+    
+    <table class="table table-striped">
+    <tr>
+        <th>Field</th>
+        <th>Entry</th>
+    </tr>
+
+    <tr>
+        <td>First Name</td>
+        <td>{{medAuthForm.childData.firstName}}</td>
+    </tr>
+
+    <tr>
+        <td>Middle Name</td>
+        <td>{{medAuthForm.childData.middleName}}</td>
+    </tr>
+
+    <tr>
+        <td>Last Name</td>
+        <td>{{medAuthForm.childData.lastName}}</td>
+    </tr>
+
+    <tr>
+        <td>Birthday</td>
+        <td>{{medAuthForm.profileData.birth | date:'longDate'}}</td>
+    </tr>
+
+    <tr>
+        <td>Physical Address</td>
+        <td> 
+            <small>
+            PO Box: {{medAuthForm.profileData.pobox}}<br/>
+            Street: {{medAuthForm.profileData.street}}<br/>
+            Apt. Unit: {{medAuthForm.profileData.apt}}<br/>
+            Zip: {{medAuthForm.profileData.zip}}<br/>
+            City: {{medAuthForm.profileData.city}}<br/>
+            State: {{medAuthForm.profileData.state}}
+            </small>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Primary Hours of Care</td>
+        <td>From {{medAuthForm.profileData.careHourStart+':00'}} to {{medAuthForm.profileData.careHourEnd+':00'}}</td>
+    </tr>
+
+    <tr>
+        <td>Days of Week in Care</td>
+        <td><span ng-repeat="day in medAuthForm.profileData.careDay">{{day}}<span ng-if="!$last">, </span></span></td>
+    </tr>
+
+    <tr>
+        <td>Meals typically served</td>
+        <td><span ng-repeat="meal in medAuthForm.profileData.careMeal">{{meal}}<span ng-if="!$last">, </span></span></td>
+    </tr>
+
+    <tr>
+        <td>Child lives with</td>
+        <td>
+            <span ng-if="medAuthForm.profileData.liveWith!=other">{{medAuthForm.profileData.liveWith}}</span>
+            <span ng-if="medAuthForm.profileData.liveWith=='other'">{{medAuthForm.profileData.liveWithOther}}</span>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Mother</td>
+        <td>
+            <small>
+            Name: {{medAuthForm.profileData.motherName}} <br/>
+            Address: {{medAuthForm.profileData.motherAddress}} <br/>
+            Home Phone: {{medAuthForm.profileData.motherHomeNum}} <br/>
+            Work Phone: {{medAuthForm.profileData.motherWorkNum}} <br/>
+            Mobile Phone: {{medAuthForm.profileData.motherMobileNum}} <br/>
+            Employer: {{medAuthForm.profileData.motherEmployer}} <br/>
+            Employer Address: {{medAuthForm.profileData.motherEmployerAddress}}
+            </small>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Father</td>
+        <td>
+            <small>
+            Name: {{medAuthForm.profileData.fatherName}} <br/>
+            Address: {{medAuthForm.profileData.fatherAddress}} <br/>
+            Home Phone: {{medAuthForm.profileData.fatherHomeNum}} <br/>
+            Work Phone: {{medAuthForm.profileData.fatherWorkNum}} <br/>
+            Mobile Phone: {{medAuthForm.profileData.fatherMobileNum}} <br/>
+            Employer: {{medAuthForm.profileData.fatherEmployer}} <br/>
+            Employer Address: {{medAuthForm.profileData.fatherEmployerAddress}}
+            </small>
+        </td>
+    </tr>
+
+    <tr ng-repeat="doc in medAuthForm.doctor">
+        <td>Doctor #{{$index+1}}</td>
+        <td>
+            <small>
+            Name: {{doc.doctorName}} <br/>
+            Address: {{doc.doctorAddress}} <br/>
+            Phone: {{doc.doctorPhone}} <br/>
+            </small>
+        </td>
+    </tr>
+    <tr ng-repeat="contact in medAuthForm.contact">
+        <td>Contact #{{$index+1}}</td>
+        <td>
+            <small>
+            Name: {{contact.contactName}} <br/>
+            Address: {{contact.contactAddress}} <br/>
+            Home Number: {{contact.contactHomeNum}} <br/>
+            Work Number: {{contact.contactWorkNum}}
+            </small>
+        </td>
+    </tr>
+    <tr>
+        <td>Permission to Contact Doctor/Pediatrician</td>
+        <td>{{(medAuthForm.profileData.medicalPermission?'Yes':'No')}}</td>
+    </tr>
+    
+    <tr>
+        <td>Helpful Information</td>
+        <td>{{contact.profileData.note}}</td>
+    </tr>
+       
+    </table>
+
+</div>

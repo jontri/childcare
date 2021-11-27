@@ -1,0 +1,115 @@
+<form name="clientFormPedia" ng-submit="verifyClientForm(clientFormPedia,clientFormData,4,null,5)" enctype="multipart/form-data" novalidate>
+  <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+    <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancel('dashboard_client_list', {daycareId:daycareId})">Cancel</button>
+    <button type="button" class="btn btn-theme btn-t-primary" ng-click="overrideClientFormSequence(3,'clientFormSecondary')">Go Back</button>
+    <button id="submit-student" type="submit" class="btn btn-theme btn-t-primary">
+      <i class="fa fa-save"></i>
+      Continue
+    </button>
+  </div>
+  <div ng-init="setForm('clientFormPedia',clientFormPedia)" class="col-xs-12 client">
+    <div class="col-xs-12 info">
+      <div class="col-xs-12">
+        <h3 class="line-bottom-5">
+          Pediatrician's Information
+        </h3>
+        <!-- First Name -->
+        <div class="form-inline">
+          <label>First Name
+          </label>
+          <input type="text" name="clientFormPedFirstName" class="form-control" ng-model="clientFormData.pediatrician.firstName">
+        </div>
+
+        <!-- Middle Name -->
+        <div class="form-inline">
+          <label>Middle Name
+          </label>
+          <input type="text" name="clientFormPedMidInitial" class="form-control" ng-model="clientFormData.pediatrician.middleInitial">
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-inline">
+          <label>Last Name
+          </label>
+          <input type="text" name="clientFormPedLastName" class="form-control" ng-model="clientFormData.pediatrician.lastName">
+        </div>
+
+        <div class="form-inline">
+          <rv-phone-input form="clientFormPedia" inline="true" is-required="false" label="Work Number" name="clientFormWorkNum" value="clientFormData.pediatrician.workNum"
+            ng-model="clientFormData.pediatrician.workNum" ng-model-options="{}"></rv-phone-input>
+        </div>
+
+        <div class="form-inline">
+          <label>Practice/Hospital Name </label>
+          <input type="text" name="clientFormWorkName" class="form-control" ng-model="clientFormData.pediatrician.officeName">
+        </div>
+      </div>
+
+      <!-- Office Address -->
+      <div class="col-xs-12 info">
+        <h3 class="line-bottom-5">
+          Office Address
+        </h3>
+        <div class="form-inline">
+          <label>PO Box </label>
+          <input type="text" name="clientFormPobox" class="form-control" ng-model="clientFormData.pediatrician.work_address.pobox">
+        </div>
+        <div class="form-inline">
+          <label>Street </label>
+          <input type="text" name="clientFormStreet" class="form-control" ng-model="clientFormData.pediatrician.work_address.street">
+        </div>
+        <div class="form-inline">
+          <label>Suite/Unit </label>
+          <input type="text" name="clientFormSuite" class="form-control" ng-model="clientFormData.pediatrician.work_address.suite">
+        </div>
+        <div class="form-inline">
+          <label>Zip Code </label>
+          <input type="text" name="clientFormZipcode" class="form-control" 
+          ng-model="clientFormData.pediatrician.work_address.zip" 
+          gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+          gp-options="{ display: 'postal_code' }"
+          gp-components="gpComponents"
+          gp-city="clientFormData.pediatrician.work_address.city"
+          gp-state="clientFormData.pediatrician.work_address.state"
+          restrict-to="[0-9]" placeholder="">
+        </div>
+        <div class="form-inline">
+          <label>City </label>
+          <input type="text" name="clientFormCity" class="form-control" ng-model="clientFormData.pediatrician.work_address.city">
+        </div>
+        <div class="form-inline">
+          <label>State </label>
+          <select class="form-control" ng-model="clientFormData.pediatrician.work_address.state" name="state" ng-options="option for option in stateList" select-type="basic-dropdown" placeholder="Your State">
+          </select>
+        </div>
+      </div>
+
+      <div class="col-xs-12 visible-xs visible-sm">
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_client_list', {daycareId:daycareId})">Cancel</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="overrideClientFormSequence(3,'clientFormSecondary')">Go Back</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="submit" class="btn btn-theme btn-t-primary btn-responsive2">
+          <i class="fa fa-save"></i>
+          Continue
+        </button>
+      </div>
+        
+    </div>
+      
+  </div>
+  <!--<button type="submit" id="save-client-btn-add" ng-click="" class="btn btn-theme btn-t-primary" ng-if="progress.updateMode" >
+      <i class="fa fa-save"></i>
+      Update
+  </button>-->
+  <!--<span ng-show="clientForm.$submitted && clientForm.$invalid" class="text-danger">Error. Verify input for required fields.</span>-->
+  <div style="display: none">
+  <h4>Errors</h4>
+  <p ng-repeat="(k,v) in clientForm.$error.required">
+  {{k}} : { name:{{v.$name}},error:{{v.$error}},value:{{v.$viewValue}} }
+
+  </p>
+  <h4>Errors</h4>
+  {{clientForm.$error}}
+  </div>
+</form>

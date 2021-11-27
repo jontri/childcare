@@ -1,0 +1,148 @@
+<div class="modal fade" id="modalCompare" tabindex="-1" data-focus-on="input:first">
+    <div class="modal-dialog compareModal" role="document">
+        <div class="modal-content">
+            <div class="modal-header no-padding no-border">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1 text-middle"></th>
+                            <th class="col-md-2 text-middle" ng-repeat="name in search_ctrl.transformedCompare.name track by $index">
+                                {{name}}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!-- Daycare LOGO -->
+                            <td></td>
+                            <td class="text-middle" ng-repeat="logo in search_ctrl.transformedCompare.logo track by $index">
+                                <div class="img-item">
+                                    <img ng-src="{{logo == 0 ? 'assets/theme/images/company-logo/1.jpg' : 'assets/uploads/' + logo}}" alt=""/>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- Address -->
+                            <td>Address</td>
+                            <td class="text-middle" ng-repeat="address in search_ctrl.transformedCompare.address track by $index">
+                                <div>
+                                    {{address.line1}}
+                                </div>
+                                <div>
+                                    {{address.line2}}
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- Rating -->
+                            <td>Ratings</td>
+                            <td class="text-middle" ng-repeat="avgRating in search_ctrl.transformedCompare.avgOverAllRatings track by $index">
+                                    <span class="rate" rating={{avgRating}}></span>
+                                    ({{ avgRating ? avgRating.toFixed(1) : '0.0' }})
+                                <!--div ng-repeat="str in overAllRatings"></div-->
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- Cost -->
+                            <td>Cost</td>
+                            <td class="text-middle" ng-repeat="cost in search_ctrl.transformedCompare.cost track by $index">
+                                <span>
+                                    {{cost}}
+                                </span>
+                                <!--div ng-repeat="str in cost">{{str}}</div-->
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- Coverage -->
+                            <td>Coverage</td>
+                            <td class="text-middle" ng-repeat="coverage in search_ctrl.transformedCompare.coverage track by $index">
+                                <div ng-repeat="str in coverage">{{str}}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- Service Options -->
+                            <td>Service Options</td>
+                            <td class="text-middle" ng-repeat="service in search_ctrl.transformedCompare.service track by $index">
+                                <div ng-repeat="str in service">{{str}}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                        <tr>
+                            <!-- Daycare Features -->
+                            <td>Other Features</td>
+                            <td class="text-middle" ng-repeat="features in search_ctrl.transformedCompare.features track by $index">
+                                <div ng-repeat="str in features">{{str}}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- Daycare Accrediting Organization -->
+                            <td>Accrediting Organization</td>
+                            <td class="text-middle" ng-repeat="accreditingAgency in search_ctrl.transformedCompare.accreditingOrgs track by $index">
+                                <div ng-repeat="str in accreditingAgency">{{str}}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- Daycare Curriculum -->
+                            <td>Curriculum</td>
+                            <td class="text-middle" ng-repeat="curriculum in search_ctrl.transformedCompare.curriculum track by $index">
+                                <div ng-repeat="str in curriculum">{{str}}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+							<!-- Hours of Operation -->
+                            <td>Operating Hours</td>
+                            <td class="text-middle" ng-repeat="hoursOfOp in search_ctrl.transformedCompare.hoursOfOp track by $index">
+								<div ng-switch="hoursOfOp[0]" >
+									<div ng-switch-when = "Not available">{{hoursOfOp[0]}}</div>
+									<div ng-switch-default>
+										<div ng-repeat="schedule in hoursOfOp">
+											<div class="col-xs-3"> &nbsp </div>
+											<div class="col-xs-2 align-left no-padding">{{schedule.day}}</div>
+											<div class="col-xs-7 align-left no-padding">
+												<div ng-repeat="operatingTimes in schedule.time"> {{operatingTimes}} </div>
+											</div>
+										</div>
+									</div>									
+								</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button id="clearCompBtn" class="btn btn-sm btn-theme btn-t-primary btn-normal-border" ng-click="search_ctrl.clearCompare()" data-dismiss="modal">Clear Comparison</button>
+                <button id="doneCompBtn" class="btn btn-sm btn-theme btn-t-primary btn-normal-border" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- STYLE FOR THIS MODAL ONLY -->
+<style type="text/css">
+.compareModal {
+    width: 90%;
+}
+
+.table td.fit,
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.table td.text-middle,
+.table th.text-middle {
+	vertical-align: top;
+    text-align: center;
+}
+</style>

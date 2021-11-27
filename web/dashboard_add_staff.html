@@ -1,0 +1,170 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: auto; min-height: 800px;">
+    <div class="col-xs-12 fixedProgressBar hidden-xs hidden-sm">
+        <ul class="breadcrumb">
+            <li  ng-class="{completed: progress.staff,active: true,'not-completed': !progress.staff}">
+                <!--<a id="crumbStaff" data-toggle="tab" data-target="#staff">Staff Info</a>-->
+                <a id="crumbStaff" ng-click="overrideFormSequence(1,'StaffForm')" data-target="#staff">Staff</a>
+            </li>
+            <li  ng-class="{completed: progress.reference,active: false,'not-completed': !progress.reference}">
+                <!--<a id="crumbReference" data-toggle="tab" data-target="#reference">References</a>-->
+                <a id="crumbReference" ng-click="overrideFormSequence(2,'StaffRef')" data-target="#reference">References</a>
+            </li>
+            <li  ng-class="{completed: progress.employment,active: false,'not-completed': !progress.employment}">
+                <!--<a id="crumbEmployment" data-toggle="tab" data-target="#employment">Employment History</a>-->
+                <a id="crumbEmployment" ng-click="overrideFormSequence(3,'StaffEmployment')" data-target="#employment">Employment History</a>
+            </li>
+            <li  ng-class="{completed: false,active: false,'not-completed': false}">
+                <a id="crumbComplete" ng-click="overrideFormSequence(4,null)" data-target="#complete">Review and Save</a>
+            </li>
+        </ul>
+    </div>
+    <h2 class="col-xs-12 visible-xs visible-sm">
+        <span ng-show="progress.currentIndex === 1">Staff</span>
+        <span ng-show="progress.currentIndex === 2">References</span>
+        <span ng-show="progress.currentIndex === 3">Employment History</span>
+        <span ng-show="progress.currentIndex === 4">Review and Save</span>
+    </h2>
+    <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" />
+    <div class="tab-content staffMultiForm" >
+        <!-- Staff Profile -->
+
+        <div class="tab-pane active" id="staff" >
+            <div ng-include="'dashboard_add_staff_profile.html'"></div>
+        </div>
+
+
+        <!-- References -->
+        <div class="tab-pane" id="reference">
+            <div ng-include="'dashboard_add_staff_reference.html'"></div>
+        </div>
+
+        <!-- Employment History -->
+        <div class="tab-pane col-xs-12 info" id="employment">
+            <form name="StaffEmployment" ng-submit="checkProgress(StaffEmployment,3)" enctype="multipart/form-data" novalidate>
+            <div class="col-md-12" ng-init="setForm('StaffEmployment', StaffEmployment)" ng-include="'dashboard_add_staff_employment.html'"></div>
+            <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+                <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancel('dashboard_staff_list', {daycareId:StaffListingId})">Cancel</button>
+                <button type="button" class="btn btn-theme btn-t-primary" ng-click="overrideFormSequence(2,'StaffRef')">Go Back</button>
+                <button type="submit" class="btn btn-theme btn-t-primary">
+                    Continue
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="col-xs-12 visible-xs visible-sm">
+                <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_staff_list', {daycareId:StaffListingId})">Cancel</button>
+                <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+                <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="overrideFormSequence(2,'StaffRef')">Go Back</button>
+                <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+                <button type="submit" class="btn btn-theme btn-t-primary btn-responsive2">
+                    <i class="fa fa-save"></i>
+                    Continue
+                </button>
+            </div>
+            </form>
+
+
+        </div>
+        <div class="tab-pane col-xs-12 info" id="complete">
+            <div ng-include="'dashboard_add_staff_submit.html'"></div>
+            <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+                <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancel('dashboard_staff_list', {daycareId:StaffListingId})">Cancel</button>
+                <button type="button" class="btn btn-theme btn-t-primary" ng-click="overrideFormSequence(3,'StaffEmployment')">Go Back</button>
+                <button ng-if="!staffEditMode" type="button" id="save-profile-btn" class="btn btn-theme btn-t-primary" ng-click="submitAddStaff()" data-target="#confirm-submit">
+                    <i class="fa fa-save"></i>
+                    Save
+                </button>
+                <button ng-if="staffEditMode" type="button" id="save-profile-btn" class="btn btn-theme btn-t-primary" ng-click="updateStaff(Staff,role)" data-target="#confirm-submit">
+                    <i class="fa fa-save"></i>
+                    Update
+                </button>
+            </div>
+            <div class="col-xs-12 visible-xs visible-sm">
+                <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_staff_list', {daycareId:StaffListingId})">Cancel</button>
+                <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+                <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="overrideFormSequence(3,'StaffEmployment')">Go Back</button>
+                <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+                <button ng-if="!staffEditMode" type="button" id="save-profile-btn" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="submitAddStaff()" data-target="#confirm-submit">
+                    <i class="fa fa-save"></i>
+                    Save
+                </button>
+                <button ng-if="staffEditMode" type="button" id="save-profile-btn" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="updateStaff(Staff,role)" data-target="#confirm-submit">
+                    <i class="fa fa-save"></i>
+                    Update
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-12" style="display:none;">
+    <h3>Inputs:</h3>
+    <h4>Staff:</h4>
+    <p style="width: 300px;">
+    {{Staff}}
+    </p>
+    <hr/>
+    <h4>reference:</h4>
+    <p style="width: 300px;">
+    {{reference}}
+    </p>
+    <hr/>
+    <h4>prevEmployer:</h4>
+    <p style="width: 300px;">
+    {{prevEmployer}}
+    </p>
+</div>
+</div>
+
+<div class="modal fade" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Confirm Staff Info</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Entry</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>First Name: </td>
+                            <td>{{Staff.firstName}}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name: </td>
+                            <td>{{Staff.lastName}}</td>
+                        </tr>
+                        <tr>
+                            <td>E-Mail: </td>
+                            <td>{{Staff.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile: </td>
+                            <td>{{Staff.mobileNumber}}</td>
+                        </tr>
+                        <tr ng-if="Staff.phoneNumber">
+                            <td>Phone: </td>
+                            <td>{{Staff.phoneNumber}}</td>
+                        </tr>
+                        <tr ng-if="Staff.workNumber">
+                            <td>Work Number: </td>
+                            <td>{{Staff.workNumber}}</td>
+                        </tr>
+                        <tr>
+                            <td>Role:</td>
+                            <td>{{Staff.role}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-theme btn-secondary" data-dismiss="modal">Cancel</button>
+                <button ng-if="!staffEditMode" type="button" class="btn btn-theme btn-secondary" data-dismiss="modal" ng-click="submitAddStaff()">Submit</button>
+                <button ng-if="staffEditMode" type="button" class="btn btn-theme btn-secondary" data-dismiss="modal" ng-click="updateStaff(Staff,role)">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

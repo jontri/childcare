@@ -1,0 +1,293 @@
+<form name="clientForm"  id="clientForm" ng-submit="verifyClientForm(clientForm,clientFormData,2,'clientFormSecondary')" enctype="multipart/form-data" novalidate>
+    <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+        <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancel('dashboard_client_list', {daycareId:daycareId})">Cancel</button>
+        <button type="button" class="btn btn-theme btn-t-primary" ng-click="overrideClientFormSequence(1,'clientFormStudent')">Go Back</button>
+        <button type="submit" id="submit-primary" class="btn btn-theme btn-t-primary">
+            <i class="fa fa-save"></i>
+            Continue
+        </button>
+    </div>
+    <div ng-init="setForm('clientForm',clientForm)" class="col-xs-12 client">
+        <div class="col-xs-12 info">
+            <div class="col-xs-12">
+                <h3 class="line-bottom-5">
+                    Primary Parent/Guardian Information
+                    <!--<span ng-if="progress.updateMode"><a class="btn btn-defualt pull-right" ui-sref="dashboard_client_list({daycareId:daycareId})">Back to List</a></span>-->
+                </h3>
+                <div>
+                  <span>Note:</span>&nbsp;
+                  <b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;
+                  </b>
+
+                </div>
+                <!-- Client Relation -->
+                <div class="form-inline">
+
+                    <label>Relationship to Child <span style="color:red;">*</span>
+                    </label>
+
+
+                    <select id="clientFormRelationship" class="form-control" name="clientFormRelationship" ng-model="clientFormData.relationship" required>
+                        <option value="father">Father</option>
+                        <option value="mother">Mother</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <span ng-if="clientFormData.relationship=='other'">
+                      <input type="text" name="clientFormRelationshipOther" class="form-control" ng-model="clientFormData.relationshipOther" placeholder="Specify relationship" required />
+                    </span>
+
+                    <div ng-if="clientForm.$submitted && clientFormData.relationship=='other'" ng-messages="clientForm.clientFormRelationshipOther.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                    <div ng-messages="clientForm.$submitted && clientForm.clientFormRelationship.$error" ng-if="clientForm.$submitted && clientForm.clientFormRelationship.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <label>Child Custody Status
+                        <span style="color:red;">*</span>
+                    </label>
+                    <select id="clientFormCustody" class="form-control" name="clientFormCustody" ng-model="clientFormData.custody" ng-change="onPrimaryCustody(clientFormData.custody)" required>
+                        <option value="sole">Sole</option>
+                        <option value="joint">Joint</option>
+                    </select>
+                    <div ng-messages="clientForm.$submitted && clientForm.clientFormCustody.$error" ng-if="clientForm.$submitted && clientForm.clientFormCustody.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+
+                <div class="form-inline">
+                    <label>Emergency Contact
+                        <span style="color:red;">*</span>
+                    </label>
+                    <select class="form-control" name="clientFormEmergencyContact" ng-model="clientFormData.emergencyContact" required>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+                    <div ng-messages="clientForm.$submitted && clientForm.clientFormEmergencyContact.$error" ng-if="clientForm.$submitted && clientForm.clientFormEmergencyContact.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+
+                <!-- First Name -->
+                <div class="form-inline">
+                    <label>First Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="clientFormFirstName" class="form-control" ng-model="clientFormData.firstName" required>
+                    <div ng-messages="clientForm.$submitted && clientForm.clientFormFirstName.$error" ng-if="clientForm.$submitted && clientForm.clientFormFirstName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+
+                <!-- Middle Initial -->
+                <div class="form-inline">
+                    <label>Middle Name
+                    </label>
+                    <input type="text" name="clientFormMiddleInitial" class="form-control" ng-model="clientFormData.middleInitial">
+                </div>
+
+                <!-- Last Name -->
+                <div class="form-inline">
+                    <label>Last Name
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="clientFormLastName" class="form-control" ng-model="clientFormData.lastName" required>
+                    <div ng-messages="clientForm.$submitted && clientForm.clientFormLastName.$error" ng-if="clientForm.$submitted && clientForm.clientFormLastName.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+
+                <!-- Date of Birth -->
+                <div class="form-inline">
+                    <label>Date of Birth
+                    </label>
+                    <input type="text" name="clientFormBirth" class="form-control" ng-model="clientFormData.birth" rv-date rv-date-max="dateTmrw" maxlength="10" placeholder="mm/dd/yyyy">
+                    <div ng-if="clientForm.$submitted && clientForm.clientFormBirth.$error" ng-messages="clientForm.$submitted && clientForm.clientFormBirth.$error" ng-if="clientForm.$submitted && clientForm.clientFormBirth.$error" class="error-label">
+                        <div class="text-danger" ng-message="rvDate">Invalid date.</div>
+                        <div class="text-danger" ng-message="rvDateAllowedMin">Must be after 01/01/1900.</div>
+                        <div class="text-danger" ng-message="rvDateMax">Must be before {{dateTmrw}}.</div>
+                        <div class="text-danger" ng-message="rvDateFormat">Enter date as MMDDYYYY.</div>
+                    </div>
+                </div>
+
+                <!-- Employer -->
+                <div class="form-inline">
+                    <label>Employer
+                    </label>
+                    <input type="text" name="clientFormEmployer" class="form-control" ng-model="clientFormData.employer">
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-xs-12 info">
+                <h3 class="line-bottom-5">
+                    Contact Information
+                </h3>
+                <div>
+                    <span>Note:</span>&nbsp;
+                    <b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+                </div>
+                <!-- Email -->
+                <div class="form-inline">
+                    <label>Email
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="email" name="clientFormEmail" class="form-control" ng-model="clientFormData.email" autocomplete="off" ng-pattern="emailRegex" required>
+                    <div ng-messages="clientForm.$submitted && clientForm.clientFormEmail.$error" ng-if="clientForm.$submitted && clientForm.clientFormEmail.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                        <div class="text-danger" ng-message="pattern">Please enter a valid email address.</div>
+                    </div>
+                </div>
+
+                <!-- Mobile Num -->
+                <div class="form-inline">
+                    <rv-phone-input form="clientForm" inline="true" is-required="true" label="Cell Number" name="clientFormMobileNum" value="clientFormData.mobileNum"
+                        ng-model="clientFormData.mobileNum" ng-model-options="{}" next-elem="rv-phone-input input[name='clientFormContactNum1']"></rv-phone-input>
+                </div>
+
+                <!-- Home Num -->
+                <div class="form-inline">
+                    <rv-phone-input form="clientForm" inline="true" is-required="false" label="Home Number" name="clientFormContactNum" value="clientFormData.contactNum" compare="clientFormData.mobileNum"
+                        ng-model="clientFormData.contactNum" ng-model-options="{}" next-elem="rv-phone-input input[name='clientFormWorkNumber1']"></rv-phone-input>
+                </div>
+
+                <!-- Work Num -->
+                <div class="form-inline">
+                    <rv-phone-input form="clientForm" inline="true" is-required="false" label="Work Number" name="clientFormWorkNumber" value="clientFormData.workNum" compare="clientFormData.mobileNum"
+                        ng-model="clientFormData.workNum" ng-model-options="{}" next-elem="input[name='clientFormPobox']"></rv-phone-input>
+                </div>
+
+            </div>
+            <div class="col-xs-12 info">
+                <h3 class="line-bottom-5">
+                    Home Address
+                </h3>
+                <div class="form-inline">
+                    <label>PO Box </label>
+                    <input type="text" name="clientFormPobox" class="form-control" ng-model="clientFormData.mailing_address.pobox" copy-to="clientFormData.work_address.pobox" dont-copy="!clientFormData.sameAsHome">
+                </div>
+                <div class="form-inline">
+                    <label>Street
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="clientFormStreet" class="form-control" ng-model="clientFormData.mailing_address.street" copy-to="clientFormData.work_address.street" dont-copy="!clientFormData.sameAsHome" required>
+                    <div ng-messages="clientForm.$submitted && clientForm.clientFormStreet.$error" ng-if="clientForm.$submitted && clientForm.clientFormStreet.$error" class="error-label" ng-show="clientForm.$submitted && clientForm.clientFormStreet.$error">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <label>Apt./Unit </label>
+                    <input type="text" name="clientFormApt" class="form-control" ng-model="clientFormData.mailing_address.apt" copy-to="clientFormData.work_address.suite" dont-copy="!clientFormData.sameAsHome">
+                </div>
+                <div class="form-inline">
+                    <label>Zip Code
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="clientFormZipcode" class="form-control" 
+                    ng-model="clientFormData.mailing_address.zip" 
+                    gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+                    gp-options="{ display: 'postal_code' }"
+                    gp-components="gpComponents"
+                    gp-city="clientFormData.mailing_address.city"
+                    gp-state="clientFormData.mailing_address.state"
+                    restrict-to="[0-9]"
+                    ng-change="clientFormData.sameAsHome?clientFormData.work_address.zip=clientFormData.mailing_address.zip:return;" placeholder="" required>
+                    <div ng-if="clientForm.$submitted && clientForm.clientFormZipcode.$error" ng-messages="clientForm.$submitted && clientForm.clientFormZipcode.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <label>City
+                        <span style="color:red;">*</span>
+                    </label>
+                    <input type="text" name="clientFormCity" class="form-control" ng-model="clientFormData.mailing_address.city" copy-to="clientFormData.work_address.city" dont-copy="!clientFormData.sameAsHome" required>
+                    <div ng-if="clientForm.$submitted && clientForm.clientFormCity.$error" ng-messages="clientForm.$submitted && clientForm.clientFormCity.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+                <div class="form-inline">
+                    <!-- <label>State :  </label> <input type="text" name="state" class="form-control" ng-model="editUser.address.state" required> -->
+                    <label>State
+                        <span style="color:red;">*</span>
+                    </label>
+                    <select class="form-control" ng-model="clientFormData.mailing_address.state" name="state" ng-options="option for option in stateList" select-type="basic-dropdown" placeholder="Your State" copy-to="clientFormData.work_address.state" dont-copy="!clientFormData.sameAsHome" required>
+                    </select>
+                    <div ng-messages="clientForm.$submitted && clientForm.state.$error" ng-if="clientForm.$submitted && clientForm.state.$error" class="error-label">
+                        <div class="text-danger" ng-message="required">This is a required field.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 info">
+                <h3 class="line-bottom-5">
+                    Work Address
+                </h3>
+                <div class="form-inline">
+                    <label style="width:100%">
+                        <input type="checkbox" ng-model="clientFormData.sameAsHome" ng-change="copyHomeAddress(clientFormData)"> Same as home address</label>
+                </div>
+                <div class="form-inline">
+                    <label>PO Box </label>
+                    <input type="text" name="clientFormCityWorkPobox" class="form-control" ng-model="clientFormData.work_address.pobox" ng-disabled="clientFormData.sameAsHome">
+                </div>
+                <div class="form-inline">
+                    <label>Street </label>
+                    <input type="text" name="clientFormCityWorkStreet" class="form-control" ng-model="clientFormData.work_address.street" ng-disabled="clientFormData.sameAsHome">
+                </div>
+                <div class="form-inline">
+                    <label>Suite/Unit </label>
+                    <input type="text" name="clientFormCityWorkSuite" class="form-control" ng-model="clientFormData.work_address.suite" ng-disabled="clientFormData.sameAsHome">
+                </div>
+                <div class="form-inline">
+                    <label>Zip Code </label>
+                    <input type="text" name="clientFormCityWorkZipcode" class="form-control" 
+                    ng-model="clientFormData.work_address.zip" 
+                    gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+                    gp-options="{ display: 'postal_code' }"
+                    gp-components="gpComponents"
+                    gp-city="clientFormData.work_address.city"
+                    gp-state="clientFormData.work_address.state"
+                    restrict-to="[0-9]"
+                    ng-disabled="clientFormData.sameAsHome" placeholder="">
+                </div>
+                <div class="form-inline">
+                    <label>City </label>
+                    <input type="text" name="clientFormCityWorkCity" class="form-control" ng-model="clientFormData.work_address.city" ng-disabled="clientFormData.sameAsHome">
+                </div>
+                <div class="form-inline">
+                    <label>State </label>
+                    <select name="clientFormCityWorkState" class="form-control" ng-model="clientFormData.work_address.state"  ng-options="option for option in stateList" select-type="basic-dropdown" ng-disabled="clientFormData.sameAsHome" placeholder="Your State">
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 visible-xs visible-sm">
+                <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_client_list', {daycareId:daycareId})">Cancel</button>
+                <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+                <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="overrideClientFormSequence(1,'clientFormStudent')">Go Back</button>
+                <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+                <button type="submit" class="btn btn-theme btn-t-primary btn-responsive2">
+                    <i class="fa fa-save"></i>
+                    Continue
+                </button>
+            </div>
+        </div>
+        
+    </div>
+    <!--<button type="submit" id="save-client-btn-add" ng-click="" class="btn btn-theme btn-t-primary" ng-if="progress.updateMode" >
+        <i class="fa fa-save"></i>
+        Update
+    </button>-->
+    <!--<span ng-show="clientForm.$submitted && clientForm.$invalid" class="text-danger">Error. Verify input for required fields.</span>-->
+    <div style="display: none">
+    <h4>Errors</h4>
+    <p ng-repeat="(k,v) in clientForm.$error.required">
+    {{k}} : { name:{{v.$name}},error:{{v.$error}},value:{{v.$viewValue}} }
+
+    </p>
+    <h4>Errors</h4>
+    {{clientForm.$error}}
+    </div>
+</form>

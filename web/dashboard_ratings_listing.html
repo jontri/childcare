@@ -1,0 +1,72 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px">
+    <div class="col-md-12 home" style="float: none;">
+        <a ui-sref="dashboard_ratings" class="pull-right"><i class="fa fa-reply" aria-hidden="true"></i> Go back to child care center list</a>
+        <h3>{{::listing.name}}</h3>
+        <div class="avg-ratings">
+          <div><label>Safety:</label> <span class="rate" rating={{::listing.avgSafetyRatings}}></span> ({{ listing.avgSafetyRatings ? listing.avgSafetyRatings.toFixed(1) : '0.0' }})</div>
+          <div><label>Facilities:</label> <span class="rate" rating={{::listing.avgFacilitiesRatings}}></span> ({{ listing.avgFacilitiesRatings ? listing.avgFacilitiesRatings.toFixed(1) : '0.0' }})</div>
+          <div><label>Staff:</label> <span class="rate" rating={{::listing.avgStaffRatings}}></span> ({{ listing.avgStaffRatings ? listing.avgStaffRatings.toFixed(1) : '0.0' }})</div>
+          <div><label>Education:</label> <span class="rate" rating={{::listing.avgEducationRatings}}></span> ({{ listing.avgEducationRatings ? listing.avgEducationRatings.toFixed(1) : '0.0' }})</div>
+          <div><label>Overall:</label> <span class="rate" rating={{::listing.avgOverAllRatings}}></span> ({{ listing.avgOverAllRatings ? listing.avgOverAllRatings.toFixed(1) : '0.0' }})</div>
+        </div>
+        <ul class="nav all_reviews">
+            <li id="review{{review._id}}" data-ng-repeat="review in reviews | orderBy: '-dateOrder' | offset: offsetValue | limitTo: itemsPerPage track by review._id">
+                <review
+                    highlight-profanities="true"
+                    review="review">
+                    <actions class="pull-right">
+                        <a class="btn btn-sm btn-theme btn-link" href="" ng-click="createReply(review)">
+                            <span ng-if="!replies[review._id] || !replies[review._id].length">Reply</span>
+                            <span ng-if="replies[review._id] && replies[review._id].length">New reply</span>
+                        </a>
+                    </actions>
+                </review>
+                <reply-form id="replyForm{{review._id}}" class="d-block col-md-offset-1" ng-if="review.newReply"
+                    on-send="onSend(form, reply, review)"
+                    reply="review.newReply"
+                    review="review">
+                </reply-form>
+                <ul class="col-md-offset-1 nav all_replies" ng-if="replies[review._id] && replies[review._id].length">
+                    <div>Latest reply<span class="pull-right" ng-if="replies[review._id].length > 1">
+                        <a href="" ng-hide="review.showOldReplies" ng-click="review.showOldReplies = true">View all replies</a>
+                        <a href="" ng-show="review.showOldReplies" ng-click="review.showOldReplies = false">Hide older replies</a>
+                    </span></div>
+                    <li ng-repeat="reply in replies[review._id]" ng-show="$index == 0 || review.showOldReplies">
+                        <reply
+                            highlight-profanities="true"
+                            reply="reply">
+                            <actions class="pull-right">
+                                <a class="btn btn-sm btn-theme btn-link" ng-if="reply.sender_id._id === user._id && $first" ng-click="editReply(reply)">Edit</a>
+                            </actions>
+                        </reply>
+                        <reply-form id="replyForm{{reply._id}}" ng-if="reply.isEditMode"
+                            on-send="onSend(form, reply, review)"
+                            reply="reply"
+                            review="review">
+                        </reply-form>
+                    </li>
+                </ul>
+            </li>
+            <li data-ng-show="reviews.length <= 0">
+                <div class="main-content">
+                    <h4> No Reviews available yet.</h4>
+                </div>
+            </li>
+        </ul>
+        <ul class="pagination">
+            <li ng-class="prevPageDisabled()">
+                <a href="" ng-click="prevPage()" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+                <a href="">{{n+1}}</a>
+            </li>
+            <li ng-class="nextPageDisabled()">
+                <a href="" ng-click="nextPage()" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

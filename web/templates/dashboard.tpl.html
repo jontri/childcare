@@ -1,0 +1,29 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header no-bg-img">
+
+    <div ui-view="navbar-main"></div>
+
+    <!-- <div ui-view="navbar"></div> -->
+
+  </header>
+  <!-- end main-header -->
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div ui-view="dashboard_sidemenu" class="fixed-left hidden-sm hidden-xs sidemenu"></div>
+
+    <div class="sidemenu-show"> 
+        <div ui-view ></div>
+    </div>         
+    
+
+  </div>
+  <!--end body-content -->
+
+
+  <div ui-view="footer"></div>
+
+</div><!-- end wrapper page

@@ -1,0 +1,15 @@
+<div class="form-inline">
+  <div class="form-group" style="vertical-align: top;">
+    <label>{{rvLabel}} </label>
+  </div>
+  <div class="table-responsive d-inline-block">
+    <table class="table-condensed">
+      <tr ng-if="info.headings">
+        <th ng-repeat="heading in info.headings" ng-bind-html="$sce.trustAsHtml(heading)"></th>
+      </tr>
+      <tr ng-repeat="row in info.rows">
+        <td ng-repeat="column in row track by $index" ng-bind-html="$sce.trustAsHtml(column)"></td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+
+    <div ui-view="navbar"></div>
+
+  </header>
+  <!-- end main-header -->
+
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div class="block-section bg-color4">
+      <div class="container">
+        <div class="col-md-12 text-center color-white">
+          
+          <a href="" ui-sref="register_parent" class="btn btn-custom">A parent looking for Daycare</a>
+          <span>Or</span>
+          <a href="" ui-sref="register_owner" class="btn btn-custom">An owner of a Daycare</a>
+        </div>
+
+        <div class="white-space-60"></div>
+
+      </div>
+    </div>
+
+    <div class="block-section bg-color1">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <i class="fa fa-question fa-5x box-icon"></i>
+
+            <h2 class=""> Why create an account?</h2>
+            <hr>
+            <p><i class="fa fa-check"></i> Access your saved daycare and notes from any computer</p>
+          
+            <img src="assets\theme\images\World_map_png-7.png" alt="" class="img-full">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--end body-content -->
+
+
+  <div ui-view="footer"></div>
+
+</div><!-- end wrapper page

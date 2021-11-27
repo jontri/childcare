@@ -1,0 +1,103 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: hidden; min-height: 800px;">
+    <div class="col-md-12">
+
+        <div class="col-md-12">
+            <div class="col-sm-12 info">
+                <a id="edit-profile-btn" class="btn-theme btn btn-t-primary btn-responsive1" ui-sref="dashboard_edit_profile">
+                    <i class="fa fa-edit"></i>Edit Account Information
+                </a>            
+                <h3 class="line-bottom-5">
+                    Personal Information
+                    
+                </h3>
+
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Title </label>
+                    <span class="col-sm-8 col-xs-12">{{(!user.title || user.title == "Title") ? "Not provided" : user.title}}</span>
+                </div>
+
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">First Name </label> <span class="col-sm-8 col-xs-12">{{user.firstName}}</span>
+                </div>
+
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Middle Name </label> <span class="col-sm-8 col-xs-12">{{!user.middleName ? "Not provided" : user.middleName}}</span>
+                </div>
+
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Last Name </label> <span class="col-sm-8 col-xs-12">{{user.lastName}}</span>
+                </div>
+
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Alias </label>
+                    <span class="col-sm-8 col-xs-12">{{(!user.aliasName || user.aliasName == "") ? "Not provided" : user.aliasName}}</span>
+                </div>
+
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Suffix </label> <span class="col-sm-8 col-xs-12">{{(!user.suffix || user.suffix == "Suffix") ? "Not provided" : (user.suffix == "Other" ? user.otherSuffix : user.suffix)}}</span>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-sm-12 info">
+                <h3 class="line-bottom-5">
+                    Contact Information
+                </h3>
+
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Email Address </label> <span id="email" class="col-sm-8 col-xs-12">{{user.email}}</span>
+                </div>
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Cell Number </label> <span class="col-sm-8 col-xs-12">{{user.mobileNum}}</span>
+                </div>
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Home Number </label> <span class="col-sm-8 col-xs-12">{{!user.contactNum ? "Not provided" : user.contactNum}}</span>
+                </div>
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Work Number </label> <span class="col-sm-8 col-xs-12">{{!user.workNum ? "Not provided" : user.workNum}}</span>
+                </div>
+                <div class="form-inline row">
+                    <label class="col-sm-4 col-xs-12">Communication Preference </label> <span class="col-sm-8 col-xs-12">{{user.contactByEmail ? "Email Address" : ""}} </span>
+                </div>
+                <div class="form-inline row">
+                    <div class="form-inline row">
+                        <label class="col-sm-4 col-xs-12">Home Address </label>
+                        <div class="form-group col-sm-8 col-xs-12">
+                            <span ng-if="!user.address.pobox&&!user.address.street&&!user.address.suite&&!user.address.city&&(!user.address.state||user.address.state=='State')&&!user.address.zip">Not provided</span>
+                            <div ng-show="user.address.pobox"><span>PO Box</span> <span>{{user.address.pobox}}</span></div>
+                            <div>{{user.address.street}}</div>
+                            <div ng-show="user.address.apt"><span>Apt./Unit</span> <span>{{user.address.apt}}</span></div>
+                            <div><span>{{user.address.city}}</span><span
+                                    ng-show="user.address.city&&((user.address.state&&user.address.state!='State')||user.address.zip)">, </span><span>{{user.address.state!="State" ? user.address.state+" " : ""}}</span><span>{{user.address.zip}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-inline row">
+                        <label class="col-sm-4 col-xs-12">Work Address </label>
+                        <div class="form-group col-sm-8 col-xs-12">
+                            <span ng-if="!user.work_address.pobox&&!user.work_address.street&&!user.work_address.suite&&!user.work_address.city&&(!user.work_address.state||user.work_address.state=='State')&&!user.work_address.zip">Not provided</span>
+                            <div ng-show="user.work_address.pobox"><span>PO Box</span>
+                                <span>{{user.work_address.pobox}}</span></div>
+                            <div>{{user.work_address.street}}</div>
+                            <div ng-show="user.work_address.suite"><span>Suite/Unit</span> <span>{{user.work_address.suite}}</span>
+                            </div>
+                            <div><span>{{user.work_address.city}}</span><span
+                                    ng-show="user.work_address.city&&((user.work_address.state&&user.work_address.state!='State')||user.work_address.zip)">, </span><span>{{user.work_address.state!="State" ? user.work_address.state+" " : ""}}</span><span>{{user.work_address.zip}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <button id="sms-verify-btn" type="button" style="display: none" rv-modal modal-src-obj="user"
+                modal-id="#need-sms-verify" modal-no-esc modal-backdrop="static" />
+        <div ng-controller="authCtrl as auth_ctrl">
+            <ng-include src="'templates/modals/sms_verify.modal.html'"></ng-include>
+        </div>
+    </div>
+</div>

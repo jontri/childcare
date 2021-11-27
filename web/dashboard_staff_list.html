@@ -1,0 +1,93 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px" >
+  <div class="col-xs-12 daycares">
+    <!-- <a ui-sref="dashboard_staff" class="pull-right"><i class="fa fa-reply" aria-hidden="true"></i> Go back to child care center list</a> -->
+    <h3>Staff</h3>
+    <div>To add your child care center, go to <a ui-sref="dashboard_daycares">Child Care Centers</a> and click Request Ownership</div>
+    <div class="white-space-10"></div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-theme btn-t-primary pull-left" ng-click="deleteSelectedStaff()" ng-disabled="staffToDelete<=0">Delete</button>
+
+      </div>
+    </div>
+    
+    <div class="white-space-10"></div>
+
+    <div class="row">
+      <div class="col-xs-12 table-responsive hidden-xs">
+
+        <table class="table table-striped">
+          <thead><tr>
+          <th class="col-xs-1">
+            <div class="checkbox no-margin" align="left">
+              <label><input type="checkbox" ng-model="allChecked" ng-change="selectAllStaff(allChecked)" ng-disabled="staffData.length<=0" /></label>
+            </div>
+          </th>
+          <th class="col-xs-2">Staff</th>
+          <!--th class="col-md-1">SSN</th-->
+          <th class="col-xs-1">Role</th>
+          <th class="col-xs-2">Email Address</th>
+          <th class="col-xs-2">Cell Number</th>
+          <th class="col-xs-4"> </th>
+          
+          </tr></thead>
+          
+          <tbody ng-repeat="daycare in daycareList" ng-if="daycare.staffs.length > 0">
+            <tr>
+              <td colspan="6" class="bg-color1">
+                <span class="h5">{{daycare.daycareName}}</span> &nbsp;
+                <a id="add-student-btn" class="btn btn-xs btn-theme btn-secondary" ui-sref="addStaff({listingId: daycare.daycareId})">
+                  <i class="fa fa-plus"></i> Add Staff
+                </a>
+              </td>
+            </tr>
+
+            <tr ng-repeat="staff in daycare.staffs" >
+              <td>
+                <div class="checkbox no-margin" align="left">
+                  <label><input type="checkbox" ng-model="staff.toBeDeleted" ng-change="onSelectStaff(staff.toBeDeleted)" /></label>
+                </div>
+              </td>
+              <td>{{staff.firstName}} {{staff.middleInitial}} {{staff.lastName}}</td>
+              <!--td>{{(staff.ss | ssnFilter:'true')|| 'N/A' }} </td-->
+              <td>{{staff.role || 'N/A'}} </td>
+              <td>{{staff.email || 'N/A'}} </td>
+              <td>{{staff.mobileNumber  || 'N/A'}} </td>
+              <td><a class="btn btn-xs btn-theme btn-secondary" ui-sref="updateStaff({listingId:staff.listingId,staffId:staff._id,staffInfoObj:staff})"><i class="fa fa-edit"></i> Edit</a> </td>
+                
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+      <div class="col-xs-12 visible-xs">
+        <div>
+          <label class="no-margin"><input type="checkbox" ng-model="allChecked" ng-change="selectAllStaff(allChecked)" ng-disabled="staffData.length<=0" />
+            Select all
+          </label>
+        </div>
+        <rv-list-block ng-repeat="daycare in daycareList" ng-if="daycare.staffs.length > 0">
+          <h3>{{daycare.daycareName}}</h3>
+          <div class="d-table" ng-repeat="staff in daycare.staffs">
+            <div class="d-table-cell" style="padding-right: 10px;">
+              <label><input type="checkbox" ng-model="staff.toBeDeleted" ng-change="onSelectStaff(staff.toBeDeleted)" /></label>
+            </div>
+            <div class="d-table-cell">
+              <p><label>Staff:</label> {{staff.firstName}} {{staff.middleInitial}} {{staff.lastName}}</p>
+              <p><label>Role:</label> {{staff.role || 'N/A'}}</p>
+              <p><label>Email Address:</label> {{staff.email || 'N/A'}}</p>
+              <p><label>Cell Number:</label> {{staff.mobileNumber || 'N/A'}}</p>
+            </div>
+            <div class="d-table-cell">
+              <a class="btn btn-xs btn-theme btn-secondary" ui-sref="updateStaff({listingId:staff.listingId,staffId:staff._id,staffInfoObj:staff})"><i class="fa fa-edit"></i> Edit</a>
+            </div>
+          </div>
+        </rv-list-block>
+      </div>
+        
+    </div>
+    
+  </div>
+</div>

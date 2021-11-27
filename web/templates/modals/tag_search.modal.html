@@ -1,0 +1,205 @@
+<div class="modal fade" id="modalTagSearch" tabindex="-1" data-focus-on="input:first">
+    <div class="modal-dialog saveFilterModal" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Search Log</h3>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a id="tabPreviousSearch" href="" data-target="#prevSearch" aria-controls="prevSearch"
+                           role="tab" data-toggle="tab"></i>Previous Searches</a>
+                    </li>
+                    <li role="presentation">
+                        <a id="tabSavedSearch" href="" data-target="#savedSearch" aria-controls="savedSearch" role="tab"
+                           data-toggle="tab"></i>Saved Searches</a>
+                    </li>
+                </ul>
+                <div class="tab-content" style="padding-top: 20px">
+                    <div role="tabpanel" class="tab-pane fade in active" id="prevSearch">
+                        <div class="row" ng-if="unsavedSearch.length>0">
+                            <div class="col-xs-2">
+                                <button class="btn btn-sm btn-theme btn-t-primary"
+                                        ng-disabled="!selectedFilters.length"
+                                        ng-click="deleteSelectedFilters('unsaved');">Delete
+                                </button>
+                            </div>
+                        </div>
+                        <div ng-if="unsavedSearch.length>0" class="content"
+                             style="height:300px; overflow-y: auto; overflow-x:auto;">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <div ng-repeat="filter in unsavedFilters" class="checkbox no-margin"
+                                             align="center">
+                                            <label style="width: auto; min-height: 12px;">
+                                                <input type="checkbox" ng-model="filter.isChecked"
+                                                       ng-change="selectAllFilters('unsaved');">
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>Child Care Center Name</th>
+                                    <th>City, State, Country</th>
+                                    <th>Zip Code</th>
+                                    <th>County</th>
+                                    <th>Address</th>
+                                    <th>Proximity to Address</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="filter in tblUnsavedSearch" data-dismis="modal">
+                                    <td class="col-md-1">
+                                        <div class="checkbox no-margin" align="center">
+                                            <label style="width: auto;">
+                                                <input type="checkbox" ng-model="filter.isChecked"
+                                                       ng-change="addOrRemoveFilter(filter);">
+                                            </label>
+                                        </div>
+                                    </td>
+                                    <td class="col-md-2">
+                                        {{filter.keyword}}
+                                    </td>
+                                    <td class="col-md-2">
+                                        <span ng-if="filter.location">{{filter.location}}<br></span>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <span ng-if="filter.zip">{{filter.zip}}</span>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <span ng-if="filter.county">{{filter.county}}<br></span>
+                                    </td>
+                                    <td class="col-md-2">
+                                        <span ng-if="filter.fullAddress">{{filter.fullAddress}}</span>
+                                    </td>
+                                    <td class="col-md-1">
+                                            <span ng-if="filter.within && filter.fullAddress">
+                                            {{filter.within}} MILES
+                                            </span>
+                                    </td>
+
+                                    <td class="col-md-1">
+                                        <button class="btn btn-sm btn-theme btn-t-primary btn-block" style=""
+                                                rv-modal
+                                                modal-id="#modalConfirmSave"
+                                                modal-src-obj="filter"
+                                                ng-click="saveAlert(filter.id,'saved');">Save
+                                        </button>
+                                        <button class="btn btn-sm btn-theme btn-t-primary btn-block" style=""
+                                                ng-click="applyQuery(filter.id,unsavedSearch);">Retrieve Results
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-if="unsavedSearch.length==0" class="content"
+                             style="height:300px; overflow-y: auto; overflow-x:auto;">
+                            <center style="font-weight: bold;">
+                                No previous search.
+                            </center>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="savedSearch">
+                        <div class="row" ng-if="savedSearch.length>0">
+                            <div class="col-xs-2">
+                                <button class="btn btn-sm btn-theme btn-t-primary"
+                                        ng-disabled="!selectedFilters.length"
+                                        ng-click="deleteSelectedFilters('saved');">Delete
+                                </button>
+                            </div>
+                        </div>
+                        <div ng-if="savedSearch.length>0" class="content"
+                             style="height:300px; overflow-y: auto; overflow-x:auto;">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <div ng-repeat="filter in savedFilters" class="checkbox no-margin"
+                                             align="center">
+                                            <label style="width: auto; min-height: 12px;">
+                                                <input type="checkbox" ng-model="filter.isChecked"
+                                                       ng-change="selectAllFilters('saved');">
+                                            </label>
+                                        </div>
+                                    </th>
+                                    <th>Title</th>
+                                    <th>Child Care Center Name</th>
+                                    <th>City, State, Country</th>
+                                    <th>Zip Code</th>
+                                    <th>County</th>
+                                    <th>Address</th>
+                                    <th>Proximity to Address</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="filter in tblSavedSearch" data-dismis="modal">
+                                    <td class="col-md-1">
+                                        <div class="checkbox no-margin" align="center">
+                                            <label style="width: auto;">
+                                                <input type="checkbox" ng-model="filter.isChecked"
+                                                       ng-change="addOrRemoveFilter(filter);">
+                                            </label>
+                                        </div>
+                                    </td>
+
+                                    <td class="col-md-2">
+                                        {{filter.saveTitle}}
+                                    </td>
+                                    <td class="col-md-2">
+                                        {{filter.keyword}}
+                                    </td>
+                                    <td class="col-md-2">
+                                        <span ng-if="filter.location">{{filter.location}}<br></span>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <span ng-if="filter.zip">{{filter.zip}}</span>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <span ng-if="filter.county">{{filter.county}}<br></span>
+                                    </td>
+                                    <td class="col-md-2">
+                                        <span ng-if="filter.fullAddress">{{filter.fullAddress}}</span>
+                                    </td>
+                                    <td class="col-md-1">
+                                            <span ng-if="filter.within">
+                                            {{filter.within}} miles
+                                            </span>
+                                    </td>
+                                    <td class="col-md-1">
+                                        <button class="btn btn-sm btn-theme btn-t-primary btn-block"
+                                                ng-click="applyQuery(filter.id,savedSearch,true);">Retrieve Results
+                                        </button>
+                                    </td>
+
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-if="savedSearch.length==0" class="content"
+                             style="height:300px; overflow-y: auto; overflow-x:auto;">
+                            <center style="font-weight: bold;">
+                                No saved search.
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- STYLE FOR THIS MODAL ONLY -->
+<style type="text/css">
+
+    .saveFilterModal {
+        width: 75%;
+    }
+</style>

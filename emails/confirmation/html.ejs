@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style="margin: 0;padding: 0;">
+<head>
+    <title></title>
+</head>
+<body style="margin: 0;padding: 0;border: 2px solid #FFF;">
+
+<div style="background: #7a7a7a;padding: 1% 10%;border:2px solid #FFF;font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;">
+
+    <p class="logo_name"
+       style="font-size: 35px;font-weight: 600;color: #333; margin: 10px 0 10px 0;text-align: center;">
+        <img src="https://www.ratingsville.com/assets/img/logo-8.png"
+             style="width: 25%;position: relative;top: 10px;right: 10px;">
+        <!-- Ratingsville -->
+    </p>
+
+    <div class="body" style="position:relative;min-height: 150px;background: #FFF;padding: 20px 40px;border-radius:6px">
+        <h2 style="color: black;margin-bottom: 50px;font-weight:bold;">Hello <%= name %>,</h2>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            <% if (type==='register') { %>
+            Welcome to Ratingsville.com. Thank you for taking the time to register with us.
+            <% } else if (type==='changed') { %>
+            Our records show that you recently updated your email address. Change in email address requires verification of your new email address.
+            <% } %>
+            Please click the link below to verify that you own the email address associated with your Ratingsville account.
+            We appreciate your taking the time to complete this important and required step. It helps us keep your account secure.
+            <br/><br/>
+            Link: <a href="<%= conf_link %>">Verify your Email</a>
+        </p>
+        <% if (type==='changed') { %>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">
+            Thank you for being a valued customer. We look forward to your continued partnership.
+        </p>
+        <% } %>
+        <br/>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;">Sincerely,</p>
+        <p style="font-size: 17px;line-height: 24px;margin: 0 0 16px;"><b>The Ratingsville Team </b></p>
+        <hr style="border: none;border-bottom: 1px solid #ececec;margin: 40px 0 1.5rem 0;">
+
+
+    </div>
+
+
+    <div class="footer">
+        <p style="padding-top: 20px; font-size: 14px;color: white;text-align: center;font-weight: 600;">Copyright &copy;
+            2018 - Ratingsville</p>
+    </div>
+</div>
+<div style="height: 5px;"></div>
+</body>
+</html>
+
+

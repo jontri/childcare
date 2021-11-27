@@ -1,0 +1,122 @@
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader">
+      <div class="white-space-20"></div>
+      <h3 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h3>
+      <div class="white-space-20"></div>
+    </div>
+  </header>
+<!-- body-content -->
+  <div class="body-content clearfix">
+
+    <div class="block-section bg-color4">
+      <div class="container">
+        <div class="panel panel-custom">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12">
+
+                <!-- form login -->
+                <form name="register_ctrl.formUpdateUser" ng-submit="register_ctrl.updateUser(register_ctrl.existing_user)">
+                    <div class="col-md-12 col-sm-12 col-xs-12" data-ng-show="register_ctrl.existing_user.children.length > 0">
+                      <div class="form-group">
+                        <label>Are you looking for daycare options (including switching daycares for children currently enrolled in one) for any of your kids?</label>
+                        <select name="income" class="form-control" ng-model="register_ctrl.existing_user.switchDaycare">
+                            <option value="none">None</option>
+                            <option value="{{ child.firstName }}" ng-repeat="child in register_ctrl.existing_user.children track by $index">{{ child.firstName }}</option>
+                        </select>
+                      </div>
+                    </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                      <label>Household income </label>
+                      <select name="income" class="form-control" ng-model="register_ctrl.existing_user.income">
+                          <option value="">Select one</option>
+                          <option value="$0-$20K">$0-$20K</option>
+                          <option value="$20K - $50K">$20K - $50K</option>
+                          <option value="$20K - $50K">$50K - $100K</option>
+                          <option value="$100K-$200K">$100K-$200K</option>
+                          <option value="$200K+">$200K+</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 col-sm-12 col-xs-12" data-ng-show="register_ctrl.existing_user.children.length > 0">
+                    <div class="form-group">
+                      <label>How did you find out about the daycares your child/children are currently enrolled in? </label>
+                      <select name="income" class="form-control" ng-model="register_ctrl.existing_user.medium">
+                          <option value="">Select one</option>
+                          <option value="word of mouth">word of mouth</option>
+                          <option value="daycare advertising">daycare advertising</option>
+                          <option value="online search">online search</option>
+                          <option value="came across daycare while traveling/driving">came across daycare while traveling/driving</option>
+                          <option value="other">other</option>
+                      </select>
+                      <div ng-if="register_ctrl.existing_user.medium === 'other'" >
+                          <div class="white-space-10"></div>
+                           <input type="text" class="form-control" placeholder="Details" ng-model="register_ctrl.existing_user.submedium" />
+                      </div>
+                      <div ng-if="register_ctrl.existing_user.medium === 'daycare advertising'" >
+                          <div class="white-space-10"></div>
+                          <select class="form-control" ng-model="register_ctrl.existing_user.submedium">
+                              <option value="">Select one</option>
+                              <option value="TV advertising">TV advertising</option>
+                              <option value="radio advertising">radio advertising</option>
+                              <option value="online advertising">received email from daycare</option>
+                              <option value="received paper mail from daycare">received paper mail from childcare</option>
+                              <option value="other">Other</option>
+                          </select>
+                      </div>
+                      <div data-ng-if="register_ctrl.existing_user.submedium === 'other'">
+                          <div class="white-space-10"></div>
+                          <input type="text" class="form-control" placeholder="Other" data-ng-model="register_ctrl.existing_user.otherMedium"/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="white-space-10"></div>
+                  <div class="form-group no-margin">
+                    <button ng-disabled="register_ctrl.formUpdateUser.$invalid" class="btn btn-theme btn-lg btn-t-primary btn-block">
+                        <span>Finish</span>
+                    </button>
+                  </div>
+                </form>
+                <!-- form login -->
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="white-space-20"></div>
+        <div class="text-center color-white">By creating an account, you agree to Daycare <br><a href="#"
+                                                                                                 class="link-white"><strong>Terms
+          of Service</strong></a> and consent to our <a href="#" class="link-white"><strong>Privacy Policy</strong></a>.
+        </div>
+      </div>
+    </div>
+
+    <div class="block-section bg-color2">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <i class="fa fa-question fa-5x box-icon"></i>
+
+            <h2 class=""> Why create an account?</h2>
+            <hr>
+            <p><i class="fa fa-check"></i> Access your saved daycare and notes from any computer</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!--end body-content -->
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+</div>

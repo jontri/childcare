@@ -1,0 +1,58 @@
+<div class="col-md-12 col-sm-12 profile staff">
+    <h3 class="line-bottom-5">
+        Staff
+    </h3>
+    <div class="col-md-12 col-sm-12 info">
+        
+        <rv-info rv-label="'Name'" rv-info-text="{{newStaff.firstName}} {{newStaff.midInitial}} {{newStaff.lastName}}"></rv-info>
+        <rv-info rv-label="'Email'" rv-info-text="{{newStaff.email}}"></rv-info>
+        <rv-info rv-label="'Date of Birth'" rv-info-text="{{newStaff.birth | date:'longDate'}}"></rv-info>
+        <rv-info rv-label="'Social Security Number'" rv-info-text="{{newStaff.ss}}" rv-type="ss"></rv-info>
+        <rv-info rv-label="'Cell Number'" rv-info-text="{{newStaff.mobileNumber}}"></rv-info>
+        <rv-info rv-label="'Home Number'" rv-info-text="{{newStaff.homeNumber}}"></rv-info>
+        <rv-info rv-label="'Work Number'" rv-info-text="{{newStaff.workNumber}}"></rv-info>
+        <rv-info rv-label="'Role'" rv-info-text="{{newStaff.role}}"></rv-info>
+        <rv-info rv-label="'Home Address'" rv-info-text="{{newStaff}}" rv-type="address"></rv-info>
+
+    </div>
+
+    <h3 class="line-bottom-5">
+        References
+    </h3>
+    <div class="col-md-12 col-sm-12 info">
+        
+        <div ng-repeat="ref in newStaff.reference track by $index">
+            <h4>
+                Reference #{{$index+1}}
+            </h4>
+            <rv-info rv-label="'Name'" rv-info-text="{{ref.firstName}} {{ref.midInitial}} {{ref.lastName}}"></rv-info>
+            <rv-info rv-label="'Email'" rv-info-text="{{ref.email}}"></rv-info>
+            <rv-info rv-label="'Phone Number'" rv-info-text="{{ref.phoneNumber}}"></rv-info>
+        </div>
+
+    </div>
+
+    <h3 class="line-bottom-5">
+        Employment History
+    </h3>
+    <div class="col-md-12 col-sm-12 info">
+
+        <rv-info rv-label="'Current Employment'" rv-start="{{ newStaff.employmentStart | date:'longDate'}}" rv-end="{{ newStaff.employmentEnd | date:'longDate'}}" rv-type="date"></rv-info>
+
+        <div ng-repeat="history in newStaff.employmentHistory track by $index">
+            <h4>
+                Previous Employer #{{$index+1}}
+            </h4>
+            <rv-info rv-label="'Company Name'" rv-info-text="{{history.name}}"></rv-info>
+            <rv-info rv-label="'Company Address'" rv-info-text="{{history.address}}" rv-type="address"></rv-info>
+            <rv-info rv-label="'Employment Duration'" rv-start="{{ history.employmentStart | date:'longDate'}}" rv-end="{{ history.employmentEnd | date:'longDate'}}" rv-type="date"></rv-info>
+            <rv-info rv-label="'Point of Contact'" rv-info-text="{{history.contactFirstName}} {{history.contactMidInitial}} {{history.contactLastName}}"></rv-info>
+            <rv-info rv-label="'Phone Number'" rv-info-text="{{history.phoneNumber}}"></rv-info>
+            <rv-info rv-label="'Email'" rv-info-text="{{history.contactEmail}}"></rv-info>
+            <rv-info rv-label="'Annual Ending Compensation'" rv-info-text="{{history.endingCompensation}}"></rv-info>
+            <rv-info rv-label="'Reason for Leaving'" rv-info-text="{{history.reason}}"></rv-info>
+            <rv-info rv-label="'Authorization to Contact Employer'" rv-info-text="{{history.authorizeContact ? 'Yes' : 'No'}}"></rv-info>
+        </div>
+        
+    </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "name": "wecare",
+  "version": "1.0.0",
+  "description": "Single Page Application for Listing Project",
+  "main": "app.js",
+  "author": "Johnny Ruiz",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^2.0.0",
+    "delay": "^1.0.0",
+    "geocoder": "*",
+    "promise": "^1.0.0",
+    "promise-delay": "^1.0.0",
+    "xlsx": "*"
+  }
+}

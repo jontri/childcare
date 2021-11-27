@@ -1,0 +1,66 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: auto; min-height: 800px;">
+    <div class="col-md-12 fixedProgressBar" >
+      <ul class="breadcrumb hidden-xs hidden-sm">
+          <li id="crumbStudent"
+          ng-class="{completed: progress.studentCompleted,active: progress.formIndex ==1,'not-completed': !progress.studentCompleted  && progress.formIndex !=1}">
+            <a ng-click="overrideClientFormSequence(1,'clientFormStudent',clientFormData)" href="javascript:void(0);" data-target="#student">Child</a></li>
+
+          <li id="crumbPrimary" 
+          ng-class="{completed: progress.primaryCompleted,active: progress.formIndex ==2,'not-completed': !progress.primaryCompleted && progress.formIndex !=2}">
+            <a ng-click="overrideClientFormSequence(2,'clientForm',clientFormData)" href="javascript:void(0);" data-target="#primaryGuardian">Primary Parent/Guardian</a>
+          </li>
+
+          <li id="crumbSecondary" 
+          ng-class="{completed: progress.secondaryCompleted,active: progress.formIndex ==3,'not-completed': (!progress.secondaryCompleted  && progress.formIndex !=3)}">
+            <a ng-click="overrideClientFormSequence(3,'clientFormSecondary',clientFormData)" href="javascript:void(0);" data-target="#secondaryGuardian">Secondary Parent/Guardian</a></li>
+
+          <li id="crumbPedia" 
+          ng-class="{completed: progress.pediaCompleted,active: progress.formIndex ==4,'not-completed': (!progress.pediaCompleted  && progress.formIndex !=4)}">
+            <a ng-click="overrideClientFormSequence(4,'clientFormPedia',clientFormData)" href="javascript:void(0);" data-target="#pediaInfo">Pediatrician</a></li>
+
+        <li id="crumbComplete"
+        ng-class="{completed: progress.studentCompleted  && progress.secondaryCompleted && progress.primaryCompleted && progress.pediaCompleted,
+                active: progress.formIndex ==5,
+                'not-completed': !progress.studentCompleted  && !progress.secondaryCompleted && !progress.primaryCompleted && !progress.pediaCompleted}">
+        <a href="javascript:void(0);" ng-click="overrideClientFormSequence(5,null,clientFormData)" data-target="#clientComplete">Review and Save</a></li>
+      </ul>
+    </div>
+    <h2 class="col-xs-12 visible-xs visible-sm">
+      <span ng-show="progress.formIndex === 1">Child</span>
+      <span ng-show="progress.formIndex === 2">Primary Parent/Guardian</span>
+      <span ng-show="progress.formIndex === 3">Secondary Parent/Guardian</span>
+      <span ng-show="progress.formIndex === 4">Pediatrician</span>
+      <span ng-show="progress.formIndex === 5">Review and Save</span>
+    </h2>
+    <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" />
+    <div class="col-xs-12">
+        <div class="tab-content">
+
+          <!-- Primary Guardian Tab -->
+            <div class="tab-pane active" id="primaryGuardian" >
+                <div ng-include="'dashboard_add_client_formPrimary.html'"></div>
+            </div>
+
+          <!-- Secondary Guardian Tab -->
+            <div class="tab-pane" id="secondaryGuardian" >
+                <div ng-include="'dashboard_add_client_formSecondary.html'"></div>
+                
+            </div>
+          <!-- Student Tab -->
+            <div class="tab-pane" id="student" >
+                <div ng-include="'dashboard_add_client_formStudent.html'"></div>
+            </div>
+          <!-- Student Tab -->
+            <div class="tab-pane" id="pediaInfo" >
+                <div ng-include="'dashboard_add_client_formPedia.html'"></div>
+            </div>
+          <!-- Complete -->
+            <div class="tab-pane" id="clientComplete" >
+                <div ng-include="'dashboard_add_client_submit.html'"></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+

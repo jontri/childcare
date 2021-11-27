@@ -1,0 +1,157 @@
+<form name="appointmentForm">
+        <!-- body-content -->
+        <div class="body-content clearfix bg-color2">
+            <div class="container">
+    
+                <div class="col-md-12">
+    
+                    <div class="block-section box-item-details no-top text-center" style="min-height: 600px;">
+                        <div class="white-space-40"></div>
+                        <!--<a ui-sref="dashboard_appointments" class="pull-right"><i class="fa fa-reply" aria-hidden="true"></i> Go back to appointment list</a>-->
+    
+                        <h3 class="align-left">Schedule Appointment with {{appointment_ctrl.listingName}}</h3>
+                        <br/>
+                        <br/>    
+    
+                        <div class="col-md-12">
+                               <div class="pull-left">
+                                   <div>
+                                       <span>Note :</span>&nbsp;<b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+                                   </div>
+                               </div>
+                                <br/>
+                                <br/> 
+                                <div class="row">
+                                    <div class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-3" style="text-align:left;">Select date: <span style="color:red;">*</span></label>
+                                            <div class="col-md-5">
+                                                <input type="text" class="form-control text-center"
+                                                style="width:100%; cursor: pointer; background-color: white;"
+                                                id="inputDt"
+                                                uib-datepicker-popup="MM/dd/yyyy"
+                                                ng-click="open1()"
+                                                ng-keyup="keyUp($event)"
+                                                ng-model="dt"
+                                                is-open="popup1.opened"
+                                                datepicker-options="dateOptions"
+                                                ng-required="true"
+                                                close-text="Close"
+                                                alt-input-formats="altInputFormats"
+                                                datepicker-append-to-body="true"
+                                                popup-placement="top"
+                                                ng-change="validateDate()"
+                                                simple-date
+                                                />
+                                            </div>
+    
+                                            <span class="control-label text-danger col-md-4" style="text-align:left;" ng-show="appointment_ctrl.errorDateFormat">Enter date as MMDDYYYY.</span>
+                                            <span class="control-label text-danger col-md-4" style="text-align:left;" ng-show="appointment_ctrl.errorDate">Invalid date.</span>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-horizontal col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="col-md-3" style="text-align:left;">Select time slot: <span style="color:red;">*</span></label>
+                                            <div class="col-md-5">
+                                                <button id="pickTimeslot" type="button"
+                                                        class="form-control btn dropdown-toggle" data-toggle="dropdown">
+                                                        {{appointmentTime ? (appointmentTime| date:'shortTime') : 'Available time slots'}}
+                                                    <span class="glyphicon glyphicon-chevron-down pull-right"></span>
+                                                </button>
+                                                <div class="dropdown-menu" style=" margin:0px 30px 0px 30px" aria-labelledby="pickTimeslot" id="timeDropDown">
+                                                    <div ng-repeat="slot in timeSlot" class="btn btn-theme btn-default col-md-6" ng-class="{'focus': ( isOriginalSchedule(slot) && appointment && appointment.status !== 'cancelled' && !isPastDate(slot)) }" ng-disabled="!isAvailableSchedule(slot) || isPastDate(slot)"  ng-click="chooseTimeSlot(slot);">
+                                                        {{slot| date:'shortTime'}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="control-label text-danger col-md-4" style="text-align:left;" ng-show="appointment_ctrl.errorTime">Select a time slot.</span>
+                                            <span class="control-label text-danger col-md-4" style="text-align:left;" ng-show="appointment_ctrl.scheduleTaken">Time slot is not available.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-12">
+                                        <div class="col-md-3" style="text-align:left;"></div>
+                                        <div class="col-md-4 margin-left-20">
+                                            <button type="button" ng-click="submitSched()"
+                                                class="btn btn-theme btn-t-primary btn-block"  >Schedule Appointment <i class="glyphicon glyphicon-calendar"></i></button>
+                                            <div class="white-space-10"></div>
+                                            <button type="button" ng-click="cancelSched()" ng-if="appointment && appointment.status !== 'cancelled' && !isPastDate(originalTimeSlot)"
+                                                class="btn btn-theme btn-t-primary btn-block">Cancel Appointment <i class="glyphicon glyphicon-calendar"></i></button>  
+                                        </div>
+                                        <div class="control-label text-danger col-md-4" style="text-align:left;"></div>
+                                </div>
+                        </div>
+    
+    
+    
+    
+                        <div style="padding:20px" ng-if="appointment_ctrl.emailDate != null">
+                            <div style="padding:20px" id="submitResponse" class="alert-success">
+                                <div ng-if="appointment.status !== 'cancelled' && appointment_ctrl.existingEmailDate != null">
+                                    Appointment request with <b>{{appointment_ctrl.listingName}}</b> for <b>{{appointment_ctrl.emailDate}}</b> is already outstanding.  To reschedule, please select another date and/or time slot and click Schedule Appointment.
+                                </div>
+                                <div ng-if="appointment.status !== 'cancelled' && appointment_ctrl.existingEmailDate == null">
+                                    Appointment request with <b>{{appointment_ctrl.listingName}}</b> for <b>{{appointment_ctrl.emailDate}}</b> successfully submitted.  To reschedule, please select another day and/or time slot and click Schedule Appointment.
+                                </div>
+                                <div ng-if="appointment.status === 'cancelled'">
+                                    Appointment with <b>{{appointment_ctrl.listingName}}</b> for <b>{{appointment_ctrl.emailDate}}</b> successfully cancelled.
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div style="padding:30px" ng-show="appointment_ctrl.pastDate">
+                            Select a date and time slot on or after {{ nextAvailableSlot | date:'shortDate' }} {{ nextAvailableSlot | date:'shortTime' }}
+                        </div>
+                        <div style="padding:30px" ng-show="appointment_ctrl.noTimeslotAvailable">
+                            All time slots for {{ dt | date:'shortDate' }} have already been booked.  Please select an available date and time slot combination on or after {{ nextAvailableSlot | date:'shortDate' }} {{ nextAvailableSlot | date:'shortTime' }}
+                        </div>
+    
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    
+    
+        </div>
+        </form>
+
+
+<!--button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button-->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><strong>Confirm Appointment</strong></h4>
+      </div>
+      <div class="modal-body">
+        <!--h4>Confirm {{appointmentDate | date:'fullDate' }} @ {{appointmentDate | date:'shortTime' }}</h4-->
+        <h3>{{appointment_ctrl.listingName}}</h3>
+        <h4><strong>Set on {{appointmentDate | date:'fullDate' }} @ {{appointmentDate | date:'shortTime' }}</strong></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success" ng-click="submitSched()" data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<auth-wrapper>
+    <content>
+        <login-modal is-open="appointment_ctrl.isLoginModalOpen" backdrop="'static'" email="{{appointment_ctrl.email}}"></login-modal>
+        <sms-verify-modal backdrop="'static'" is-open="appointment_ctrl.showSmsModal" keyboard="true"></sms-verify-modal>
+    </content>
+</auth-wrapper>
+
+

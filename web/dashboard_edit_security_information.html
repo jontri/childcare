@@ -1,0 +1,77 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: hidden;min-height: 800px;">
+  
+  <div class="col-md-12">
+
+
+      <div class="col-md-9 info">
+          
+          <h4 class="line-bottom-5">Security Questions :</h4>
+          <form name="editQuestionForm" ng-submit="updateSecurityQuestions(editUser, editQuestionForm)" novalidate>
+
+            <div class="no-padding">
+              <div class="form-group col-md-6 col-sm-12">
+                <label>
+                  Question 1
+                </label>
+                <select class="form-control" ng-model="editUser.security_question.question1" 
+                            ng-options="secQ for secQ in securityQuestion[0]" ng-change="secQuestSelected(editUser.security_question.question1, 0)">
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-sm-12">
+                <label>
+                  Answer
+                </label>
+                <input class="form-control" value="{{user.security_question.answer1}}" name="answer1" ng-model="editUser.security_question.answer1" ng-disabled="ans1Disabled">
+              </div>
+              <div class="form-group col-md-6 col-sm-12">
+                <label>
+                  Question 2
+                </label>
+                <select class="form-control" ng-model="editUser.security_question.question2" 
+                            ng-options="secQ for secQ in securityQuestion[1]" ng-change="secQuestSelected(editUser.security_question.question2, 1)">
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-sm-12">
+                <label>
+                  Answer
+                </label>
+                <input class="form-control" value="{{user.security_question.answer2}}" name="answer2" ng-model="editUser.security_question.answer2" ng-disabled="ans2Disabled">
+              </div>
+              <div class="form-group col-md-6 col-sm-12">
+                <label>
+                  Question 3
+                </label>
+                <select class="form-control" ng-model="editUser.security_question.question3" 
+                            ng-options="secQ for secQ in securityQuestion[2]" ng-change="secQuestSelected(editUser.security_question.question3, 2)">
+                </select>
+              </div>
+              <div class="form-group col-md-6 col-sm-12">
+                <label>
+                  Answer
+                </label>
+                <input class="form-control" value="{{user.security_question.answer3}}" name="answer3" ng-model="editUser.security_question.answer3" ng-disabled="ans3Disabled">
+              </div>
+            </div>
+
+            <div class="col-md-12 no-padding">
+              <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_security_information')">Cancel</button>
+              <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+              <button type="submit" id="save-profile-btn" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="submitted=true;"><i class="fa fa-save"></i>
+                {{status}}
+              </button>
+            </div>
+
+          </form>
+          
+
+      </div>
+
+      <div class="col-md-12">
+          {{result}}
+      </div>
+        
+
+  </div>
+  </form>
+
+</div>

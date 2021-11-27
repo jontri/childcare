@@ -1,0 +1,50 @@
+<!-- modal need sms-verify -->
+<div class="modal fade" id="need-sms-verify" style="height: 100%;">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <h3 class="no-margin-top">Cell Number Verification Pending</h3>
+                <hr>
+                <p>Cell number verification will allow us to verify that you are the owner of the cell number associated with this account. It is an important and required step to use certain features on Ratingsville.com. To verify your cell number, please click <b>Request SMS Code</b>. Once received, please enter the code in the input box below and click <b>Submit</b>. To skip this step now, please click <b>Remind me Later</b>.</p>
+
+              <div class="alert alert-success" role="alert" ng-if="auth_ctrl.tokenSentCount == 1" ng-cloak x-ms-format-detection="none">
+                We sent your verification code to:</br>{{auth_ctrl.user.mobileNum|phoneFormatter}}
+              </div>
+              <div class="alert alert-success" role="alert" ng-if="auth_ctrl.tokenSentCount > 1" ng-cloak x-ms-format-detection="none">
+                We re-sent your verification code to:</br>{{auth_ctrl.user.mobileNum|phoneFormatter}}
+              </div>			  
+                <form ng-if="auth_ctrl.isTokenVerified!= true" ng-submit="auth_ctrl.verifyOrSendSmsToken(auth_ctrl.tokenCode, auth_ctrl.user.email, auth_ctrl.sendToken, auth_ctrl.remindMe)" name="auth_ctrl.smsVerify" novalidate>
+                    <div class="form-group">
+                        <button type="button" ng-click="auth_ctrl.verifyOrSendSmsToken(auth_ctrl.tokenCode=null, auth_ctrl.user.email, auth_ctrl.sendToken=true, auth_ctrl.remindMe)" class="btn btn-theme btn-t-primary btn-lg btn-block">
+                            <i class="fa fa-spinner fa-spin spin" style="font-size:18px"></i>&nbsp;&nbsp;
+
+                    <span ng-if="!auth_ctrl.is_loading&&auth_ctrl.tokenSentCount == 0">Request SMS Code</span>
+                    <span ng-if="auth_ctrl.is_loading">Sending reset link...</span>
+                    <span ng-if="!auth_ctrl.is_loading&&auth_ctrl.tokenSentCount > 0">Didn't receive a code?<br/>Request another one</span>
+                        </button>
+                        <button type="button" class="btn btn-theme btn-t-primary btn-lg btn-block" ng-click="auth_ctrl.verifyOrSendSmsToken(auth_ctrl.tokenCode, auth_ctrl.user.email, auth_ctrl.sendToken, auth_ctrl.remindMe=true)">Remind me Later</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Please enter your SMS code in the box below: </label>
+                        <div ng-messages="auth_ctrl.submitted && auth_ctrl.smsVerify.tokenCode.$error">
+                            <span class="text-danger" ng-message="required">Enter your verification code.</span>
+                        </div>
+                        <input id="verifySMSInput" type="text" ng-model="auth_ctrl.tokenCode" name="tokenCode" class="form-control" focus="true" required autocomplete="off">
+                    </div>
+                    <div class="white-space-15"></div>
+                    <div class="form-group">
+                        <button type="submit" ng-click="auth_ctrl.submitted=true; auth_ctrl.sendToken=false; " class="btn btn-theme btn-t-primary btn-lg btn-block">
+                            <i class="fa fa-spinner fa-spin spin" style="font-size:18px"></i>&nbsp;&nbsp;
+                            <span ng-if="!auth_ctrl.is_loading">Submit</span>
+                            <span ng-if="auth_ctrl.is_loading">Sending reset link...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal  sms-verify -->

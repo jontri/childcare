@@ -1,0 +1,162 @@
+  <div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+  </header><!-- end main-header -->
+
+  <!-- body-content -->
+  <div class="body-content clearfix">
+
+    <!-- link top -->
+    <div class="bg-color2 block-section-xs line-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 hidden-xs">
+            <div>
+            </div>
+          </div>
+          <div class="col-sm-6 text-right" style="padding-top:10px;">
+            <!--<span  ng-if="!review_ctrl.updateReviewMode"><a ui-sref="search">&laquo; Go back to childcare listings</a>&nbsp;&nbsp;</span>-->
+            <!--<span  ng-if="review_ctrl.updateReviewMode"><a ui-sref="dashboard_reviews">&laquo; Go back to My Reviews</a>&nbsp;&nbsp;</span>-->
+            <!--<span  ng-if="!review_ctrl.updateReviewMode"><a ui-sref="listingDetail({ listingId: review_ctrl.listingData._id })">&laquo; Go back to Listing</a>&nbsp;</span>-->
+          </div>
+        </div>
+      </div>
+    </div><!-- end link top -->
+
+    <div class="bg-color2">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-9">
+
+            <!-- box item details -->
+			<div class="block-section box-item-details no-top">
+
+              <h3 class="title" ng-if="review_ctrl.updateReviewMode">Edit Review for {{review_ctrl.listingData.name}}</h3>
+              <h3 class="title" ng-if="!review_ctrl.updateReviewMode">Write a Review for {{review_ctrl.listingData.name}}</h3>
+              <div class="pull-right">
+              <p>Note: (<span style="color:red;">*</span>) = Required, unless not applicable</p>
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12">
+                
+                  <form name="reviewForm">
+                    <div class="form-group form-rate ">
+                      <label>Safety </label>
+                      <button ng-if="review_ctrl.formValidate.safety.rateRequired" ng-click="skipSafety()" class="btn btn-xs btn-theme btn-t-primary">Not Applicable</button>
+                      <button ng-if="!review_ctrl.formValidate.safety.rateRequired" ng-click="skipSafety()" class="btn btn-xs btn-theme btn-t-primary">Provide Feedback</button>
+                      <p ng-if="review_ctrl.formValidate.safety.commentRequired">
+                        <label>Rating <span class="text-danger">*</span>  </label>
+                        
+                        <span id="safetyRate" uib-rating ng-model="review_ctrl.reviewForm.safetyRate" max="5" state-on="'star star-on'" state-off="'star star-off'" ng-if="review_ctrl.formValidate.safety.rateRequired" ng-change="computeAvgOverall();"></span>
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.safety.errRate" ng-if="review_ctrl.formValidate.safety.rateRequired && review_ctrl.reviewForm.safetyRate==0"></span>
+
+                      </p>
+                      <p ng-if="review_ctrl.formValidate.safety.commentRequired">
+                        <label>Feedback <span class="text-danger">*</span>  </label>
+                        
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.safety.errComment" ng-if="review_ctrl.formValidate.safety.commentRequired && !review_ctrl.reviewForm.safetyComment"></span>
+                        <textarea id="safetyText" class="form-control" cols="5" rows="5" style="resize:none" ng-model="review_ctrl.reviewForm.safetyComment" ng-if="review_ctrl.formValidate.safety.commentRequired"></textarea>
+                      </p>
+                    </div>
+
+                    <div class="form-group form-rate ">
+                      <label>Facilities </label>
+                      <button ng-if="review_ctrl.formValidate.facilities.rateRequired" ng-click="skipFacilities()" class="btn btn-xs btn-theme btn-t-primary" >Not Applicable</button>
+                        <button ng-if="!review_ctrl.formValidate.facilities.rateRequired" ng-click="skipFacilities()" class="btn btn-xs btn-theme btn-t-primary" >Provide Feedback</button>
+                      <p ng-if="review_ctrl.formValidate.facilities.commentRequired">
+                        <label>Rating <span class="text-danger">*</span> </label>
+                        
+                        <span id="facilitiesRate" uib-rating ng-model="review_ctrl.reviewForm.facilitiesRate" max="5" state-on="'star star-on'" state-off="'star star-off'" ng-if="review_ctrl.formValidate.facilities.rateRequired" ng-change="computeAvgOverall();"></span>
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.facilities.errRate" ng-if="review_ctrl.formValidate.facilities.rateRequired && review_ctrl.reviewForm.facilitiesRate==0"></span>
+                      </p>
+                      <p ng-if="review_ctrl.formValidate.facilities.commentRequired">
+                        <label>Feedback <span class="text-danger">*</span></label>
+                        
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.facilities.errComment" ng-if="review_ctrl.formValidate.facilities.commentRequired && !review_ctrl.reviewForm.facilitiesComment"></span>
+                        <textarea id="facilitiesText" class="form-control" cols="5" rows="5" style="resize:none" ng-model="review_ctrl.reviewForm.facilitiesComment" ng-if="review_ctrl.formValidate.facilities.commentRequired"></textarea>
+                      </p>
+                    </div>
+
+                    <div class="form-group form-rate ">
+                      <label>Staff </label>
+                      <button ng-if="review_ctrl.formValidate.staff.rateRequired" ng-click="skipStaff()" class="btn btn-xs btn-theme btn-t-primary">Not Applicable</button>
+                      <button ng-if="!review_ctrl.formValidate.staff.rateRequired" ng-click="skipStaff()" class="btn btn-xs btn-theme btn-t-primary">Provide Feedback</button>
+                      <p ng-if="review_ctrl.formValidate.staff.rateRequired">
+                        <label>Rating <span class="text-danger">*</span> </label>
+                        
+                        <span id="staffRate" uib-rating ng-model="review_ctrl.reviewForm.staffRate" max="5" state-on="'star star-on'" state-off="'star star-off'" ng-if="review_ctrl.formValidate.staff.rateRequired" ng-change="computeAvgOverall();"></span>
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.staff.errRate" ng-if="review_ctrl.formValidate.staff.rateRequired && review_ctrl.reviewForm.staffRate==0"></span>
+                      </p>
+                      <p ng-if="review_ctrl.formValidate.staff.rateRequired">
+                        <label>Feedback <span class="text-danger">*</span> </label>
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.staff.errComment" ng-if="review_ctrl.formValidate.staff.commentRequired && !review_ctrl.reviewForm.staffComment"></span>
+                        <textarea id="staffText" class="form-control" cols="5" rows="5" style="resize:none" ng-model="review_ctrl.reviewForm.staffComment" ng-if="review_ctrl.formValidate.staff.rateRequired">
+                        </textarea>   
+                      </p>
+                    </div>
+                    <div class="form-group form-rate ">
+                      <label>Education </label>
+
+                      <button ng-if="review_ctrl.formValidate.education.rateRequired" ng-click="skipEducation()" class="btn btn-xs btn-theme btn-t-primary" >Not Applicable</button>
+                      <button ng-if="!review_ctrl.formValidate.education.rateRequired" ng-click="skipEducation()" class="btn btn-xs btn-theme btn-t-primary" >Provide Feedback</button>
+                      <p ng-if="review_ctrl.formValidate.education.rateRequired">
+                        <label>Rating <span class="text-danger">*</span> </label>
+                        
+                        <span id="educationRate" uib-rating ng-model="review_ctrl.reviewForm.educationRate" max="5" state-on="'star star-on'" state-off="'star star-off'" ng-if="review_ctrl.formValidate.education.rateRequired" ng-change="computeAvgOverall();"></span>
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.education.errRate" ng-if="review_ctrl.formValidate.education.rateRequired && review_ctrl.reviewForm.educationRate==0" ></span>
+                         
+                      </p>
+                      <p ng-if="review_ctrl.formValidate.education.rateRequired">
+                        <label>Feedback <span class="text-danger">*</span> </label>
+                        
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.education.errComment" ng-if="review_ctrl.formValidate.education.commentRequired && !review_ctrl.reviewForm.educationComment"></span>
+                        <textarea id="educationText" class="form-control" cols="5" rows="5" style="resize:none" ng-model="review_ctrl.reviewForm.educationComment" ng-if="review_ctrl.formValidate.education.rateRequired"></textarea>
+                      </p>
+                    </div>
+                    <div class="form-group form-rate">
+                      <label><b><font size="3" color="#333">Overall</font></b></label>
+
+                      <p>
+                        <label>Suggested Rating (please adjust as necessary)
+                          <span class="text-danger">*</span>
+                          <i class="fa fa-info-circle" data-toggle="tooltip"
+                             data-title="Overall rating determined as an average of your ratings for the individual categories above. Please adjust if necessary."
+                             data-placement="top" rv-tooltip></i>
+                        </label>
+                        <span id="overAllRate" uib-rating ng-model="review_ctrl.reviewForm.overAllRate" max="5" state-on="'star star-on'" state-off="'star star-off'"></span>
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.overAll.errRate" ng-if="review_ctrl.reviewForm.overAllRate==0"></span>
+                        
+                      </p>
+                      <p>
+                        <label>Feedback <span class="text-danger">*</span> </label>
+                        <span class="form-error text-danger" ng-bind="review_ctrl.formValidate.overAll.errComment" ng-if="!review_ctrl.reviewForm.overAllComment" ></span>
+                        <textarea id="overAllText" class="form-control" cols="5" rows="5" style="resize:none" ng-model="review_ctrl.reviewForm.overAllComment"></textarea>
+                      </p>
+                    </div>
+                    <div class="white-space-40"></div>
+                    <div class="form-group no-margin">
+                      <button id="submit" class="btn btn-theme btn-lg btn-t-primary col-xs-12 col-md-5" ng-click="review_ctrl.submitReview()">
+                        {{review_ctrl.updateReviewMode ? 'Update' : 'Submit'}} Review
+                      </button>
+                      <div class="full-width visible-sm visible-xs white-space-10" style="overflow: hidden;"></div>
+                      <button id="cancel" class="btn btn-theme btn-lg btn-t-primary pull-right col-xs-12 col-md-3" ng-click="review_ctrl.cancelReview()">
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div><!-- end box item details -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--end body-content -->
+
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+
+</div>

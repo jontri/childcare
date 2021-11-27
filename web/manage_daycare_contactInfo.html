@@ -1,0 +1,155 @@
+<div class="col-xs-12 profile">
+  <h3 class="line-bottom-5">
+    {{listing.name}} ({{listing.uid}})
+  </h3>
+  <form id="detailFormOne" name="detailFormOne" ng-submit="switchForm(2)" novalidate>
+    <div rv-floater="{{floaterInit}}" rv-obj-height="{{headerHeight}}" rv-right="{{rightOffset}}" class="hidden-xs hidden-sm">
+      <button type="button" class="btn btn-theme btn-t-primary" ng-click="cancelUpdate()">Cancel</button>
+      <button type="submit" class="btn btn-theme btn-t-primary">
+        <i class="fa fa-save"></i>
+        Continue
+      </button>
+    </div>
+    <div class="col-xs-12 info" ng-init="formHash[1] = detailFormOne">
+      <div class="row">
+        <span>Note:</span>&nbsp;
+        <b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+      </div>
+      <div class="col-xs-12 col-md-7">
+        <div class="row">
+          <div class="d-inline-block text-center col-xs-12 col-md-3">
+            <label>Upload logo
+              <i class="fa fa-info-circle"
+                data-toggle="tooltip"
+                data-title="Acceptable file types: PDF, JPG, GIF, PNG; Max file size: {{::maxFileSize}}"
+                data-placement="top"
+                rv-tooltip></i>
+            </label>
+            <div class="uploaded-photo-wrapper">
+              <img ng-src="{{ listing_ctrl.croppedDataUrl }}"/>
+            </div>
+            <button class="btn btn-sm btn-default" type="button" name="logoBtn" ngf-select="onFileSelected($file);" ng-model="listing.logo" ngf-model-options="modelOptions" ngf-max-size="{{::maxFileSize}}" ngf-pattern="{{::filePattern}}">
+              Change
+            </button>
+            <p ng-messages="detailFormOne.logoBtn.$error || detailFormOne.logoDrop.$error" class="text-red font-small">
+              <span ng-message="pattern">File type not supported.</span>
+              <span ng-message="maxSize">File too large. Max size is {{::maxFileSize}}</span>
+            </p>
+          </div>
+          <div class="d-inline-block col-xs-12 col-md-9">
+            <div class="cropArea" ngf-drop="onFileSelected($file);" ng-model="listing.logo" name="logoDrop" ngf-model-options="modelOptions" ngf-max-size="{{::maxFileSize}}" ngf-pattern="{{::filePattern}}">
+              <img-crop
+                image="logoToCrop" result-image="listing_ctrl.croppedDataUrl" result-image-format="image/png" ng-init="listing_ctrl.croppedDataUrl = ''" area-type="square">
+              </img-crop>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <label>Description ( 2-3 Sentences )</label>
+          <span class="form-error text-danger" ng-bind="formError.description"></span>
+          <textarea class="form-control" cols="10" rows="5" style="resize: none" ng-model="listing.description">
+          </textarea>
+        </div> -->
+
+        <div class="form-inline">
+          <label>Lead Administrator <span style="color:red;">*</span>
+            <i class="fa fa-info-circle"
+              data-toggle="tooltip"
+              data-title="To change lead administrator's name, please contact us at admin@ratingsville.com"
+              data-placement="top"
+              rv-tooltip></i></label>
+          <input type="text" readonly class="form-control" placeholder="Lead Administrator" name="director" ng-model="listing.director" ng-required="listing.director">
+          <div class="error-label" ng-messages="detailFormOne.director.$error" ng-show="detailFormOne.$submitted">
+            <div class="text-danger" ng-message="required">This is a required field.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <h3 class="line-bottom-5">
+          Address
+        </h3>
+        <div class="col-xs-12">
+          <div class="form-inline">
+            <label>Street <span style="color:red;">*</span></label>
+            <input type="text" name="addrStreet" class="form-control" ng-model="listing.address.addressLine1" required>
+            <div ng-messages="detailFormOne.addrStreet.$error" ng-show="detailFormOne.$submitted" class="error-label">
+              <div class="text-danger" ng-message="required">This is a required field.</div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <label>Suite</label>
+            <input type="text" name="addrApt" class="form-control" ng-model="listing.address.suite">
+          </div>
+          <div class="form-inline">
+              <label>Zip Code <span style="color:red;">*</span></label>
+              <input type="text" name="addrZipcode" class="form-control" 
+              ng-model="listing.address.zip" 
+              gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+              gp-options="{ display: 'postal_code' }"
+              gp-city="listing.address.city"
+              gp-state="listing.address.state"
+              restrict-to="[0-9]"
+              placeholder="" required>
+              <div ng-messages="detailFormOne.addrZipcode.$error" ng-show="detailFormOne.$submitted" class="error-label">
+                <div class="text-danger" ng-message="required">This is a required field.</div>
+              </div>
+          </div>
+          <div class="form-inline">
+            <label>City <span style="color:red;">*</span></label>
+            <input type="text" name="addrCity" class="form-control" ng-model="listing.address.city" required>
+            <div ng-messages="detailFormOne.addrCity.$error" ng-show="detailFormOne.$submitted" class="error-label">
+              <div class="text-danger" ng-message="required">This is a required field.</div>
+            </div>
+          </div>
+          <div class="form-inline">
+            <label>State <span style="color:red;">*</span></label>
+            <select class="form-control" ng-model="listing.address.state" name="addrState" ng-options="option for option in stateList" select-type="basic-dropdown" placeholder="Your State" required>
+            </select>
+            <div ng-messages="detailFormOne.addrState.$error" ng-show="detailFormOne.$submitted" class="error-label">
+              <div class="text-danger" ng-message="required">This is a required field.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <rv-phone-input form="detailFormOne" inline="true" is-required="true" label="Phone #" name="phone" value="listing.phone"
+          next-elem="rv-phone-input input[name='fax1']" ng-model="listing.phone" ng-model-options="{}"></rv-phone-input>
+        <rv-phone-input form="detailFormOne" inline="true" label="Fax #" name="fax" value="listing.fax"
+          next-elem="input[type='email']" ng-model="listing.fax" ng-model-options="{}"></rv-phone-input>
+
+        <div class="form-inline">
+          <label>Email</label>
+          <input ng-if="!listing_ctrl.isAdmin" type="email" class="form-control" placeholder="Email" ng-model="user.email" disabled="disabled">
+          <input ng-if="listing_ctrl.isAdmin" type="email" class="form-control" placeholder="Email" ng-model="listing.email" disabled="disabled">
+        </div>
+
+        <div class="form-inline">
+          <label>Website</label>
+          <input type="text" class="form-control" placeholder="Website" ng-model="listing.website">
+        </div>
+
+        <div class="form-inline">
+          <label>About Us
+            <i class="fa fa-info-circle" data-toggle="tooltip" data-title="A brief description about your center, limited to 200 words" data-placement="top" rv-tooltip></i>
+          </label>
+          <div class="d-inline-block">
+            <div>{{numOfWords}} more words allowed</div>
+            <textarea class="form-control" name="description" ng-model="listing.description" word-counter="numOfWords" word-max="200" cols="50" rows="5" style="vertical-align: top;"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancelUpdate()">Cancel</button>
+        <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+        <button type="submit" class="btn btn-theme btn-t-primary btn-responsive2">
+          <i class="fa fa-save"></i>
+          Continue
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

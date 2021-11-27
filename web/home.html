@@ -1,0 +1,116 @@
+ <!-- wrapper page -->
+<div class="wrapper landing-page">
+  <!-- main-header -->
+  <header class="main-header">
+
+    <div ui-view="navbar"></div>
+    <div class="hero-header" >
+
+      <div class="overlay"></div>
+      <div class="inner-middle-hero clearfix" >
+        <div class="white-space-40"></div>
+        <img id="main-logo" src="assets/img/find_your_child_care_here.png" class="center-block col-xs-12 col-sm-10 col-md-8 col-lg-6" />
+      </div>
+      <div class="white-space-20"></div>
+      <div class="inner-hero-header margin-b-20">
+        <div class="container" ng-init="basicSearch=true">
+          <div class="col-xs-12 form-note color-white">
+            <span class="pull-right">Note: (<span style="color:red">*</span>) = City/State, Zip Code or County is a Required Field</span>
+          </div>
+
+          <div class="relative">
+            <!-- form search -->
+
+            <form class="form-search-home" style="max-width: 100%;min-height: 100%;" method="get"
+                   ng-submit="home_ctrl.goToSearch({limit: '10', skip: '0', category: 'daycare', name: home_ctrl.keyword, location: home_ctrl.location, city: home_ctrl.city, state: home_ctrl.state,zip:home_ctrl.zip, county:home_ctrl.county, query: true, saveSearch: true})"
+                      name="home_ctrl.formSearch" ng-show="basicSearch">
+
+              <div class="row">
+                  <div class="col-md-3" >
+                    <div class="form-group" >
+                      <label>Child Care Center Name</label>
+                      <input id="homeTxtDayCare" class="form-control" ng-model="home_ctrl.keyword"
+                             placeholder="Name or Keyword">
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-9">
+
+					<label>Location
+
+                      <span style="color:red">*</span>
+                      <span class="border-error-text"
+                            ng-if="home_ctrl.formSearch.$submitted && !home_ctrl.location && !home_ctrl.county && !home_ctrl.zip">
+                           City/State, Zip Code or County is required. </span>
+                      <span style="color:red;"
+                            ng-if="home_ctrl.formSearch.$submitted && (home_ctrl.zip && home_ctrl.zip.length != 5)">Zip code must be 5 digits.</span>
+                    </label>
+                    <div class="row" ng-class="{'border-error':(home_ctrl.formSearch.$submitted && !home_ctrl.location && (!home_ctrl.zip || home_ctrl.zip.length != 5) && !home_ctrl.county )}">
+                      <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <input gp-gac="{ types: ['(cities)'],  componentRestrictions: { country: 'US' }}" class="form-control"
+                            ng-model="home_ctrl.location"
+                            gp-components="{ locality: 'long_name', administrative_area_level_1: 'short_name' }"
+                            gp-callback="home_ctrl.gpSearchCb(result, place)"
+                            vs-city="home_ctrl.city"
+                            vs-state="home_ctrl.state"
+                            placeholder="City, State"
+                            id="txtCity">
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                          <input onkeypress='return !(event.charCode > 31 && (event.charCode<48 || event.charCode >57) )'
+                           class="form-control "
+                           ng-model="home_ctrl.zip"
+                           ng-maxlength="5"
+                           maxlength="5"
+                           id="txtZip"
+                           placeholder="5 digit Zip Code">
+                         </div>
+                      </div>
+                      <div class="col-md-3 col-sm-6 col-xs-6">
+                        <div class="form-group">
+                          <input class="form-control" ng-model="home_ctrl.county" placeholder="County">
+                         </div>
+                      </div>
+                      <div class="col-md-2 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-theme btn-t-primary full-width">Search</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              <div class="text-center">
+                <a id="changeStatus" href="#" ui-sref="search">Search By Distance</a>
+              </div>
+              <div class="announcement-middle">
+                <p>Now serving Florida, New Jersey, New York and Virginia</p>
+              </div>
+              <!--</div>-->
+
+
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </header><!-- end main-header -->
+  <!--<div id="content-two" ui-view="stats" class="bg-color2"></div>
+  </div>-->
+ </div>
+</div><!--end body-content -->
+
+
+<div ui-view="footer" ></div>
+<div ui-view="auditlog"></div>
+
+</div><!-- end wrapper page -->
+

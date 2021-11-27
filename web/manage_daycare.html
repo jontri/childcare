@@ -1,0 +1,51 @@
+﻿<!-- block top -->
+<div class="bg-color1 block-section-sm listing" style="overflow: auto;">
+  <div class="col-xs-12 fixedProgressBar" >
+    <ul class="breadcrumb hidden-xs hidden-sm">
+      <li id="crumbContactInfo"
+        ng-class="{completed: progress.contactInfoCompleted,active: progress.formIndex === 1,'not-completed': !progress.contactInfoCompleted  && progress.formIndex !== 1}">
+        <a ng-click="switchForm(1)" href="javascript:void(0);" data-target="#contactInfo">Contact Information</a>
+      </li>
+
+      <li id="crumbOperating" 
+        ng-class="{completed: progress.operatingCompleted,active: progress.formIndex === 2,'not-completed': !progress.operatingCompleted && progress.formIndex !== 2}">
+        <a ng-click="switchForm(2)" href="javascript:void(0);" data-target="#operating">Operating Details</a>
+      </li>
+
+      <li id="crumbCoverages" 
+        ng-class="{completed: progress.coveragesCompleted,active: progress.formIndex === 3,'not-completed': !progress.coveragesCompleted  && progress.formIndex !== 3}">
+        <a ng-click="switchForm(3)" href="javascript:void(0);" data-target="#coverages">Coverages and Services</a>
+      </li>
+
+      <li id="crumbComplete"
+        ng-class="{completed: progress.contactInfoCompleted  && progress.operatingCompleted && progress.coveragesCompleted,
+          active: progress.formIndex === 4,
+          'not-completed': !progress.contactInfoCompleted  && !progress.operatingCompleted && !progress.coveragesCompleted}">
+        <a href="javascript:void(0);" ng-click="switchForm(4)" data-target="#complete">Review and Save</a>
+      </li>
+    </ul>
+  </div>
+  <h2 class="col-xs-12 visible-xs visible-sm">
+    <span ng-show="progress.formIndex === 1">Contact Information</span>
+    <span ng-show="progress.formIndex === 2">Operating Details</span>
+    <span ng-show="progress.formIndex === 3">Coverages and Services</span>
+    <span ng-show="progress.formIndex === 4">Review and Save</span>
+  </h2>
+  <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" /> <br class="hidden-xs hidden-sm" /> 
+  <div class="col-xs-12">
+    <div class="tab-content">
+      <div class="tab-pane active" id="contactInfo" >
+        <div ng-include="'manage_daycare_contactInfo.html'"></div>
+      </div>
+      <div class="tab-pane" id="operating" >
+        <div ng-include="'manage_daycare_operatingDetails.html'"></div>
+      </div>
+      <div class="tab-pane" id="coverages" >
+        <div ng-include="'manage_daycare_coverages.html'"></div>
+      </div>
+      <div class="tab-pane" id="complete" >
+        <div ng-include="'manage_daycare_submit.html'"></div>
+      </div>
+    </div>
+  </div>
+</div>

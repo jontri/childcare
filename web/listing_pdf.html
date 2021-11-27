@@ -1,0 +1,89 @@
+
+<div class="container">
+    <h1 class="text-center">{{ listing_ctrl.listing.name }}</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="assets/img/slider_1.jpg" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-6">
+            <ul>
+                <li>Lead Administrator:
+                  <span ng-if="listing_ctrl.listing.director ">{{ listing_ctrl.listing.director }}</span> 
+                  <span ng-if="!listing_ctrl.listing.director ">Not Provided</span> 
+                </li>
+                <li>Address: 
+                {{listing_ctrl.listing.address.addressLine1}}. {{listing_ctrl.listing.address.city}},{{listing_ctrl.listing.address.state}}. {{listing_ctrl.listing.address.zip}}
+                </li>
+                <li>Phone (1): 
+                  <span ng-if="listing_ctrl.listing.phone">{{ listing_ctrl.listing.phone }}</span>
+                  <span ng-if="!listing_ctrl.listing.phone">Not Provided</span>
+                </li>
+                <li>Phone (2): 
+                  <span ng-if="listing_ctrl.listing.altPhone">{{ listing_ctrl.listing.altPhone }}</span>
+                  <span ng-if="!listing_ctrl.listing.altPhone">Not Provided</span>
+                </li>
+                <li>Fax: 
+                  <span ng-if="listing_ctrl.listing.fax">{{ listing_ctrl.listing.fax }}</span>
+                  <span ng-if="!listing_ctrl.listing.fax">Not Provided</span>
+                </li>
+                <li>Email: 
+                  <span ng-if="listing_ctrl.listing.email">{{ listing_ctrl.listing.email }}</span> 
+                  <span ng-if="!listing_ctrl.listing.email">Not Provided</span>
+                </li>
+                <li>Website: 
+                <span ng-if="listing_ctrl.listing.website">{{ listing_ctrl.listing.website }}</span>
+                <span ng-if="!listing_ctrl.listing.website">Not Provided</span>
+                </li>
+                <li>State license details: {{listing_ctrl.listing.license.legalId}}, {{listing_ctrl.listing.license.legalStatus}}</li>
+                <li>Overall rating: {{listing_ctrl.listing.overAllRatings}}/5</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            Daycare description: {{ listing_ctrl.listing.description }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="content">
+                      <h4>Ratings:</h4>
+                      <p ng-repeat="result in listing_ctrl.ratings">
+                        <label>{{result.label}}:</label>
+                        <span class="rate" rating={{result.rating}}></span>
+                        <span>{{result.rating}}</span>
+                      </p>
+            </div>
+            <div class="white-space-40"></div>
+            <div class="content reviews" ng-show="!listing_ctrl.isAdmin">
+                      <p><h4>Reviews:</h4>
+                         <ul class="nav">
+                           <li data-ng-repeat="review in listing_ctrl.reviews" ng-show="review.approved">
+                             <div class="img-avatar">
+                              <img ng-src="assets/uploads/{{review.user_id.photo}}" data-ng-show="review.user_id.photo" class="img-circle img-responsive" style="width:50px ">
+                              <img ng-src="assets/theme/images/people/4.jpg" data-ng-show="!review.user_id.photo" class="img-circle img-responsive" style="width:50px ">
+                             </div>
+                             <div class="pull-right">
+                                <span>{{review.dateSaved}}</span>
+                             </div>
+                             <div class="rate">
+                               <label> {{review.user_id.aliasName ? review.user_id.aliasName : (review.user_id.firstName[0].toUpperCase()+" "+review.user_id.lastName[0].toUpperCase())}}</label>
+                               <p>
+                                 <span rating={{review.reviewInfo}}>
+                                 </span>
+                              </p>
+                             </div>
+                             <div class="comment">
+                                <p>{{filterProfanity(review.reviewInfo.general)}}</p>
+                             </div>
+                           </li>
+                           <li data-ng-show="listing_ctrl.reviews.length <= 0">
+                            <h4> No Reviews available yet.</h4>
+                           </li>
+                         </ul>
+                      </p>
+                    </div>
+          </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="block-section-sm bg-color1" style="min-height: 800px;padding-top: 10px">
+  <div class="col-md-12 daycares" style="float: none;">
+
+		<h3>Child Care Centers</h3>
+
+		<div class="white-space-10"></div>
+		<div>
+			Click
+			<a class="btn btn-xs btn-theme btn-t-primary" ui-sref="dashboard_daycares_owner_request">Request Ownership</a>
+			to add a new child care center to your list below
+		</div>
+		<div class="white-space-10"></div>
+
+    <div class="hidden-xs">
+
+        <table class="table table-striped">
+            <thead><tr>
+                <th class="col-md-3">Child Care Center Name</th>
+                <th class="col-md-2" style="text-align: center">Reviews</th>
+                <th class="col-md-3">Overall Rating</th>
+                <th></th>
+
+
+            </tr></thead>
+
+            <tbody>
+
+            <tr ng-repeat="mydaycare in mydaycares | offset: offsetValue | limitTo: itemsPerPage" ng-if="mydaycares.length >= 1">
+                <td><a ui-sref="listingDetail({ listingId: mydaycare._id })" class="" ng-click="add_previous_page()">{{mydaycare.name}}</a></td>
+                <td style="text-align: center">{{mydaycare.totalReviews}}</td>
+                <td><span class="rate" rating={{mydaycare.avgOverAllRatings}}></span>
+                    ({{ mydaycare.avgOverAllRatings ? mydaycare.avgOverAllRatings.toFixed(1) : '0.0' }})</td>
+                <td><a class="btn btn-xs btn-theme btn-secondary" ui-sref="manageDaycare({ listingId: mydaycare._id })">Edit</a> </td>
+            </tr>
+            <tr ng-if="mydaycares.length <= 0">
+                <td>You currently do not own any child care centers. To take ownership of a center, click the Request Ownership box on top.</td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <rv-list-block class="visible-xs" ng-repeat="mydaycare in mydaycares | offset: offsetValue | limitTo: itemsPerPage">
+      <div class="d-table">
+        <div class="d-table-cell full-width">
+          <h3 class="no-margin-top"><a ui-sref="listingDetail({ listingId: mydaycare._id })" ng-click="add_previous_page()" class="">{{mydaycare.name}}
+            <!--<i class="fa fa-link color-white-mute font-1x"></i>-->
+            </a>
+          </h3>
+					<p ng-show="CheckTotalReviews(mydaycare) == 1"><label>Number of Reviews: </label> {{mydaycare.totalReviews?mydaycare.totalReviews:0}} </p>
+					<label>Overall Rating : </label> <span class="rate" rating={{mydaycare.avgOverAllRatings}}></span>
+				</div>
+				<div class="d-table-cell">
+					<a href="" ui-sref="manageDaycare({ listingId: mydaycare._id })" class="btn btn-sm btn-theme btn-t-primary">Edit profile</a>
+				</div>
+      </div>
+    </rv-list-block><!-- end item list -->
+
+    <ul class="pagination">
+      <li ng-class="prevPageDisabled()">
+        <a href="" ng-click="prevPage()" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li ng-repeat="n in no_items" ng-class="{active: n == currentPage}" ng-click="setPage(n)">
+          <a href="">{{n+1}}</a>
+      </li>
+      <li ng-class="nextPageDisabled()">
+        <a href="" ng-click="nextPage()" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</div>      

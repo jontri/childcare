@@ -1,0 +1,10 @@
+{
+  "secretKey": "sssssshhhh",
+  "googleApiKey": "AIzaSyDl2ikxbcOis7ygzuAzhSBDGqxaA_CSHKs",
+  "stripe": {
+    "test_api_key_public": "pk_test_SsJkxNbJJvlU8rBGPjw8xKEU",
+    "test_api_key_secret": "sk_test_vwY7PRnFWTSxElOBOiIKv7Db",
+    "live_api_key_public": "",
+    "live_api_key_secret": ""
+  }
+}

@@ -1,0 +1,27 @@
+<!-- wrapper page -->
+<div class="wrapper">
+  <!-- main-header -->
+  <header class="main-header">
+    <div ui-view="navbar"></div>
+    <div ng-if="includeSubheader">
+      <div class="white-space-20"></div>
+      <h3 class="color-white text-center">
+        <div ng-bind-html="subHeaderContent"></div>
+      </h3>
+      <div class="white-space-20"></div>
+    </div>
+  </header>
+  <!-- body-content -->
+  <div class="body-content clearfix">
+    <div class="block-section bg-color4 login" style="min-height: 500px;"></div>
+  </div><!--end body-content -->
+  <div ui-view="footer"></div>
+  <div ui-view="auditlog"></div>
+</div>
+
+<auth-wrapper>
+  <content>
+      <login-modal is-open="auth_ctrl.isLoginModalOpen" backdrop="'static'" email="{{auth_ctrl.email}}"></login-modal>
+      <sms-verify-modal backdrop="'static'" is-open="auth_ctrl.showSmsModal" keyboard="true"></sms-verify-modal>
+  </content>
+</auth-wrapper>

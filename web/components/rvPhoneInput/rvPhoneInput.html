@@ -1,0 +1,21 @@
+<div ng-class="$ctrl.inline ? 'form-inline' : 'form-group'">
+  <label ng-if="$ctrl.label">{{$ctrl.label}}<span style="color:red;" ng-if="$ctrl.isRequired">*</span></label>
+  <div ng-class="$ctrl.inline ? 'd-inline-block' : ''">
+    <span class="color-black">(</span>
+    <input type="text" name="{{$ctrl.phone[0].name}}" class="form-control" ng-model="$ctrl.phone[0].num" ng-required="$ctrl.isRequired"
+      ng-minlength="3" ng-model-options="$ctrl.modelOpts" ng-keydown="$ctrl.maxlength($event, 3, 0)" ng-disabled="$ctrl.isDisabled">
+    <span class="color-black">)</span>
+    <input type="text" name="{{$ctrl.phone[1].name}}" class="form-control" ng-model="$ctrl.phone[1].num" ng-required="$ctrl.isRequired" ng-disabled="$ctrl.isDisabled"
+      ng-minlength="3" ng-model-options="$ctrl.modelOpts" ng-keydown="$ctrl.maxlength($event, 3, 1)">
+    <span class="color-black">-</span>
+    <input type="text" name="{{$ctrl.phone[2].name}}" class="form-control" ng-model="$ctrl.phone[2].num" ng-required="$ctrl.isRequired" ng-disabled="$ctrl.isDisabled"
+      ng-minlength="4" ng-model-options="$ctrl.modelOpts" ng-keydown="$ctrl.maxlength($event, 4, 2)">
+  </div>
+  <div ng-if="$ctrl.validateRequired()" class="error-label">
+    <div class="text-danger">This is a required field.</div>
+  </div>
+  <div ng-messages="$ctrl.form.$submitted && $ctrl.form[$ctrl.name].$error" class="error-label">
+    <div class="text-danger" ng-message="sameNum">Your <span style="text-transform: lowercase">{{$ctrl.label}}</span> cannot be the same as your cell number.</div>
+    <div class="text-danger" ng-message="phoneLength">Phone number must be 10 digits.</div>
+  </div>
+</div>

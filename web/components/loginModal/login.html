@@ -1,0 +1,51 @@
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" data-show="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header no-padding no-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          ng-if="$ctrl.backdrop === true"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body login">
+          <h3 class="no-margin-top">Log In</h3>
+          <hr>
+          <!-- form login -->
+          <div class="alert alert-danger" role="alert" ng-if="$ctrl.authWrapCtrl.authCtrl.unauthorized">
+              Please try again. The Username and/or Password you entered is incorrect
+          </div>
+          <div class="alert alert-success" role="alert" ng-if="$ctrl.authWrapCtrl.authCtrl.login_successful">
+              Login successful! Please wait while you are being redirected.
+          </div>
+          <form ng-submit="$ctrl.authWrapCtrl.authCtrl.login($ctrl.authWrapCtrl.authCtrl.user, true)" name="formLogin" ng-if="!$ctrl.authWrapCtrl.authCtrl.account_blocked" novalidate >
+            <div class="form-group">
+              <label>Username</label>
+              <input id="modal_email_login" type="email" class="form-control" name="username" ng-model="$ctrl.authWrapCtrl.authCtrl.user.username" ng-disabled="$ctrl.email" required placeholder="Your Email Address"/>
+              <div ng-messages="formLogin.username.$error" ng-show="formLogin.$submitted" class="form-error-msg">
+                <div ng-message="required" class="text-danger">This is a required field.</div>
+              </div>
+            </div>
+            <div class="form-group clearfix">
+              <label>Password</label>
+              <input id="modal_pass_login" type="{{$ctrl.passType}}" class="form-control" name="password" ng-model="$ctrl.authWrapCtrl.authCtrl.user.password" required />
+              <div class="pull-right"><a href="" ng-click="$ctrl.showPassword()"><span ng-show="$ctrl.passType === 'password'">Show Password</span><span ng-hide="$ctrl.passType === 'password'">Hide Password</span></a></div>
+              <div ng-messages="formLogin.password.$error" ng-show="formLogin.$submitted" class="form-error-msg">
+                <div ng-message="required" class="text-danger">This is a required field.</div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="form-group no-margin">
+                <button id="modal-log-in-btn" type="submit" class="btn btn-theme btn-lg btn-t-primary btn-block">
+                  Log In
+                </button>
+                <button id="modal-hidden-log-in-btn" type="button" ng-click="$ctrl.authWrapCtrl.authCtrl.processUser()" style="display:none" />
+              </div>
+              <div class="col-xs-12 text-center">
+                <p class="help-block">Forgot <a ui-sref="forgotUsername">username</a> or <a ui-sref="forgotPassword">password?</a></p>
+                <p class="help-block" ng-if="!$ctrl.authWrapCtrl.authCtrl.account_blocked">Not a member? &nbsp; <a ui-sref="register">Create a free account</a></div>
+              </div>
+            </div>
+          </form><!-- form login -->
+      </div>
+    </div>
+  </div>
+</div>

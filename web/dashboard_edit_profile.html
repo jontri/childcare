@@ -1,0 +1,255 @@
+<div class="block-section-sm bg-color1 profile" style="overflow: hidden; padding-top: 80px; padding-left: 20px;">
+  <form name="editUserForm" ng-submit="submitEditUser(editUserForm)" enctype="multipart/form-data" novalidate>
+  <div class="col-md-12">
+            <div class="col-md-12">
+                <!-- form login -->
+                <div class="col-md-7 spacer-bottom">
+                  <div class="row">
+                    <div class="col-md-3 spacer-bottom text-center">
+                      <label>Upload picture
+                        <i class="fa fa-info-circle"
+                          data-toggle="tooltip"
+                          data-title="JPG and PNG files only; 5MB max file size"
+                          data-placement="top"
+                        rv-tooltip></i>
+                      </label>
+                      <div class="uploaded-photo-wrapper">
+                        <img ng-src="{{ croppedDataUrl }}"/>
+                      </div>
+                      <button class="btn btn-sm btn-default"
+                              ng-click="clickBtn('#btn-update-profile-photo2')" type="button">Change
+                      </button>
+
+                       <input type="file" id="btn-update-profile-photo2" class="btn-file-select" ngf-select ng-model="editUser.photo" name="file" ngf-change="imgSelected($file);imgChanged=true;" ngf-max-size="5mb"  accept="image/*" ngf-model-invalid="errorFile"/>
+
+                      <p ng-show="editUserForm.file.$error.maxSize" class="text-red font-small">File too large. Max size is 5mb</p>
+
+                      <p ng-show="editUserForm.file.$error.pattern" class="text-red font-small">File type not supported.</p>
+                      <p ng-show="editUserForm.file.$error.accept" class="text-red font-small">File type not supported.</p>
+
+                    </div>
+                    <div class="col-md-9">
+                      <div ngf-drop ng-model="editUser.photo" name="drop_file"
+                           ngf-pattern="image/*"
+                           class="cropArea">
+                        <img-crop
+                            
+                            image="imgToCrop"
+                            result-image="croppedDataUrl" result-image-format="image/png"
+                            area-type="square" ng-init="croppedDataUrl=''"
+                            on-load-done="imgToCropLoaded=true" on-change="imgToCropLoaded?imgChanged=true:return">
+                        </img-crop>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+      <!-- <div class="col-md-7 col-sm-12">
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div class="fileinput-new thumbnail" style="width: 220.09px;">
+              <img src="assets/theme/images/people/avatar_blank_female.jpg" ng-if="!user.photo && user.sex=='Female'" class="img-responsive img-full img-thumbnail">
+              <img src="assets/theme/images/people/avatar_blank_male.jpg" ng-if="!user.photo && user.sex!='Female'" class="img-responsive img-full img-thumbnail">
+              <img ng-src="assets/uploads/{{ user.photo }}" ng-if="user.photo" class="img-full">
+            </div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+            <div>
+              <span class="btn btn-default btn-file"><span class="fileinput-new">Change image</span><span class="fileinput-exists">Change</span><input type="file" name="file" onchange="angular.element(this).scope().uploadFile(this.files)"></span>
+              <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+            </div>
+          </div>
+      </div> -->
+
+      <div class="col-md-12 col-sm-12 info">
+          <h2 class="line-bottom-5">
+              Personal Information
+          </h2>
+
+          <div>
+              <span>Note :</span>&nbsp;<b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+          </div>
+
+          <div class="form-inline">
+				<label>Title </label>
+				<select class="form-control" ng-model="editUser.title" 
+				name="title"
+				ng-options="option for option in titleList"
+				select-type="basic-dropdown"
+				placeholder="Title">
+				</select>
+          </div>
+
+          <div class="form-inline">
+              <label>First Name<span style="color:red;">*</span> </label> <input type="text" name="firstName" class="form-control" ng-model="editUser.firstName" required>
+			  <div ng-messages="submitted && editUserForm.firstName.$error" class="error-label">
+					<div class="text-danger" ng-message="required">This is a required field.</div>
+                </div>
+          </div>
+
+          <div class="form-inline">
+              <label>Middle Name </label> <input type="text" class="form-control" ng-model="editUser.middleName">
+          </div>
+
+          <div class="form-inline">
+              <label>Last Name<span style="color:red;">*</span> </label> <input type="text" name="lastName" class="form-control" ng-model="editUser.lastName" required>
+			  <div ng-messages="submitted && editUserForm.lastName.$error" class="error-label">
+					<div class="text-danger" ng-message="required">This is a required field.</div>
+                </div>
+          </div>
+
+          <div class="form-inline">
+            <label>Alias <i class="fa fa-info-circle"
+                data-toggle="tooltip"
+                data-title="To avoid revealing your identity, please choose a unique alias to be displayed next to anything you post on our site. Without an alias, your initials will be displayed instead."
+                data-placement="top"
+                rv-tooltip></i>
+            </label>
+            <input type="text" id="txtEditAlias" class="form-control" ng-model="editUser.aliasName">
+          </div>
+
+          <div class="form-inline">
+				<label>Suffix </label>
+				<select class="form-control" ng-model="editUser.suffix" 
+				name="suffix"
+				ng-options="option for option in suffixList"
+				select-type="basic-dropdown"
+				placeholder="Suffix">
+				</select>
+                <input type="text" class="form-control" ng-model="editUser.otherSuffix" ng-show="editUser.suffix=='Other'">
+          </div>
+      </div>
+
+      <div class="col-md-12 info">
+          <h3 class="line-bottom-5">
+              Contact Information
+          </h3>
+
+          <div>
+              <span>Note :</span>&nbsp;<b>(<span style="color:red;">*</span>) = Required Field &nbsp;&nbsp;</b>
+          </div>
+
+          <div class="form-inline">
+              <label>Email Address<span style="color:red;">*</span>  </label> <input type="email" name="eadd" id="txtEditEmail" class="form-control" ng-model="editUser.email" autocomplete="off" ng-pattern="emailRegex" required>
+			  <div ng-messages="submitted && editUserForm.eadd.$error" class="error-label">
+				<div class="text-danger" ng-message="required">This is a required field.</div>
+                <div class="text-danger" ng-message="pattern">Please enter a valid email address.</div>
+			  </div>
+          </div>
+          
+          <rv-phone-input form="editUserForm" inline="true" is-required="true" label="Cell Number" name="mobileNumber" value="editUser.mobileNum"
+            next-elem="rv-phone-input input[name='phoneNumber1']" ng-model="editUser.mobileNum" ng-model-options="{}"></rv-phone-input>
+          <rv-phone-input form="editUserForm" inline="true" label="Home Number" name="phoneNumber" value="editUser.contactNum" compare="editUser.mobileNum"
+            next-elem="rv-phone-input input[name='workNumber1']" ng-model="editUser.contactNum" ng-model-options="{}"></rv-phone-input>
+          <rv-phone-input form="editUserForm" inline="true" label="Work Number" name="workNumber" value="editUser.workNum" compare="editUser.mobileNum"
+            next-elem="input[type='checkbox'][name='chkbxEmail']" ng-model="editUser.workNum" ng-model-options="{}"></rv-phone-input>
+         
+		  <div class="form-inline">
+            <label>Communication Preference (check all that apply)<span style="color:red;">*</span>  </label>
+			<label><input type="checkbox" ng-model="editUser.contactByEmail" name="chkbxEmail" id="chkbxEmail" required> Email Address (default)</label>
+			<!--<label><input type="checkbox" ng-model="editUser.contactBySms" id="chkbxSMS">SMS</label>-->
+			<div ng-messages="submitted && editUserForm.chkbxEmail.$error" class="error-label">
+                <div class="text-danger" ng-message="required">Required</div>
+            </div>
+          </div>
+      </div> 
+
+      <div class="col-md-12 info">
+          <h3 class="line-bottom-5">
+              Home Address
+          </h3>
+          
+          <div class="form-inline">
+              <label>PO Box </label> <input type="text" name="pobox" class="form-control" ng-model="editUser.address.pobox" copy-to="editUser.work_address.pobox" dont-copy="!editUser.sameAsHome">
+          </div>
+          <div class="form-inline">
+              <label>Street </label> <input type="text" name="street" class="form-control" ng-model="editUser.address.street" copy-to="editUser.work_address.street" dont-copy="!editUser.sameAsHome">
+          </div>
+          <div class="form-inline">
+              <label>Apt./Unit </label> <input type="text" name="apt" class="form-control" ng-model="editUser.address.apt" copy-to="editUser.work_address.suite" dont-copy="!editUser.sameAsHome">
+          </div>
+          <div class="form-inline">
+              <label>Zip Code  </label>
+              <input type="text" name="zipcode" class="form-control" ng-model="editUser.address.zip"
+                gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+                gp-options="{ display: 'postal_code' }"
+                gp-components="gpComponents"
+                gp-city="editUser.address.city"
+                gp-state="editUser.address.state"
+                ng-change="editUser.sameAsHome?editUser.work_address.zip=editUser.address.zip:return;"
+                restrict-to="[0-9]"
+                placeholder="">
+          </div>
+          <div class="form-inline">
+				<label>City </label> <input type="text" name="city" class="form-control" ng-model="editUser.address.city" copy-to="editUser.work_address.city" dont-copy="!editUser.sameAsHome">
+          </div> 
+          <div class="form-inline">
+              <!-- <label>State :  </label> <input type="text" name="state" class="form-control" ng-model="editUser.address.state" required> -->
+				<label>State </label>
+				<select class="form-control" ng-model="editUser.address.state" 
+				name="state"
+				ng-options="option for option in stateList"
+				select-type="basic-dropdown"
+                copy-to="editUser.work_address.state" dont-copy="!editUser.sameAsHome"
+				placeholder="Your State">
+				</select>
+          </div>  
+      </div>
+
+      <div class="col-md-12 info">
+          <h3 class="line-bottom-5">
+              Work Address
+          </h3>
+		
+          <div class="form-inline">
+              <label style="width:100%"><input type="checkbox" ng-model="editUser.sameAsHome" ng-change="populateWorkAddr()"> Same as home address</label>
+          </div>
+          <div class="form-inline">
+              <label>PO Box </label> <input type="text" name="pobox" class="form-control" ng-model="editUser.work_address.pobox" ng-disabled="editUser.sameAsHome">
+          </div>
+          <div class="form-inline">
+              <label>Street </label> <input type="text" name="work-street" class="form-control" ng-model="editUser.work_address.street" ng-disabled="editUser.sameAsHome">
+          </div>
+          <div class="form-inline">
+              <label>Suite/Unit </label> <input type="text" name="work-suite" class="form-control" ng-model="editUser.work_address.suite" ng-disabled="editUser.sameAsHome">
+          </div>
+          <div class="form-inline">
+              <label>Zip Code  </label>
+              <input type="text" name="work-zipcode" class="form-control" ng-model="editUser.work_address.zip"
+                gp-gac="{ types: ['(regions)'],  componentRestrictions: { country: 'US' }}"
+                gp-options="{ display: 'postal_code' }"
+                gp-components="gpComponents"
+                gp-city="editUser.work_address.city"
+                gp-state="editUser.work_address.state"
+                ng-disabled="editUser.sameAsHome"
+                restrict-to="[0-9]"
+                placeholder="">
+          </div>
+          <div class="form-inline">
+				<label>City </label> <input type="text" name="work-city" class="form-control" ng-model="editUser.work_address.city" ng-disabled="editUser.sameAsHome">
+          </div> 
+          <div class="form-inline">
+              <!-- <label>State :  </label> <input type="text" name="state" class="form-control" ng-model="editUser.address.state" required> -->
+				<label>State </label>
+				<select class="form-control" ng-model="editUser.work_address.state" 
+				name="work-state"
+				ng-options="option for option in stateList"
+				select-type="basic-dropdown"
+                ng-disabled="editUser.sameAsHome"
+				placeholder="Your State">
+				</select>
+          </div>  
+      </div>
+
+
+        <div class="col-md-12">
+          <button type="button" class="btn btn-theme btn-t-primary btn-responsive2" ng-click="cancel('dashboard_profile')">Cancel</button>
+          <div class="white-space-10 hidden-sm hidden-md hidden-lg"></div>
+          <button class="btn btn-theme btn-t-primary btn-responsive2" ng-disabled="status!='Save'" type="submit" id="save-profile-btn" ng-click="submitted=true;"><i class="fa fa-save"></i> 
+            {{status}}
+          </button>
+        </div>  
+
+  </div>
+
+  </form>
+</div>      
